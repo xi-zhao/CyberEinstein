@@ -4,7 +4,7 @@ English | [Chinese](README.zh-CN.md)
 
 **An AI Scientist Workbench for discovering, verifying, and advancing knowledge that matters.**
 
-CyberEinstein is an AI scientist product built for real research. It is not a general-purpose chat interface, and its goal is not merely to generate papers. It begins with an audit of available research capabilities and a structured understanding of a field, then continuously organizes hypotheses, experiments, evidence, lessons from failure, and peer review to produce trustworthy, traceable, and reproducible knowledge.
+CyberEinstein is an AI scientist product built for real research. It is not a general-purpose chat interface, and its goal is not merely to generate papers. It organizes research as interconnected scientific objects and exposes bounded capabilities that can be used independently or composed as needed. A paper, question, hypothesis, dataset, anomaly, instrument, or failed run can all be valid starting points.
 
 > **Mission:** We want everyone to have the opportunity to become an Einstein in the research field they care about and fulfill their dream of becoming a scientist.
 
@@ -12,58 +12,87 @@ CyberEinstein is an AI scientist product built for real research. It is not a ge
 
 ## Vision
 
-CyberEinstein models research as a continuously evolving research program:
+CyberEinstein models research as a continuously evolving graph of scientific objects:
 
 ```text
-Research Capabilities -> Field Understanding -> Paper Reproduction
-                      -> Opportunity Discovery -> Testable Hypotheses
-                      -> Experiments or Computation -> Evidence and Counterevidence
-                      -> Independent Review -> Experience Feedback
-                      -> Reproducible Results
+Paper --contains--> Claim
+Hypothesis --competes with / extends--> Claim
+Claim --tested by--> Experiment
+Experiment --produces--> Evidence
+Evidence --supports / refutes--> Claim
+Review --challenges / validates--> Evidence
+FailureLesson --constrains--> Capability / Experiment
 ```
 
+This is not a mandatory execution pipeline. Every object preserves useful research state, and every capability can contribute without requiring the entire process to run. Literature review, reproduction, optimization, discovery, validation, and experience feedback are reusable compositions over the same research graph.
+
 The long-term goal is to enable AI and human scientists to work together on original, verifiable research that has a meaningful impact.
+
+## Atomic Research Capabilities
+
+Each CyberEinstein plugin contributes one or more bounded scientific capabilities instead of owning an end-to-end workflow.
+
+| Capability | Typical input | Persistent contribution |
+| --- | --- | --- |
+| Discover literature | Question, topic, or claim | Source candidates and field relationships |
+| Acquire and parse a source | DOI, URL, or document | Normalized artifact with provenance |
+| Structure claims | Paper, artifact, or evidence | Typed claims and explicit relationships |
+| Design or run an experiment | Hypothesis and available infrastructure | Plan, run record, artifacts, and evidence |
+| Validate or challenge | Claim, evidence, or run | Checks, counterevidence, and review state |
+| Record a failure lesson | Expected and observed outcomes | Versioned lesson with scope and confidence |
+| Assess impact | Question, project, or result | Benefits, risks, and approval constraints |
+
+Every capability must declare what it reads, what it produces, its preconditions, side effects, validation method, and permissions. A blocked or negative result is still a first-class contribution when its reason and evidence are preserved. Common research loops are optional recipes assembled from these capabilities, not hard-coded stages.
 
 ## Core Principles
 
 - **Evidence first:** Every scientific claim must be connected to supporting evidence, counterevidence, and explicit uncertainty.
+- **Atomic and composable:** Every research capability has an independent purpose, a bounded contract, and reusable outputs.
 - **Research for everyone:** Give more people the ability to understand problems, design research, and test ideas without lowering scientific standards.
 - **Science and technology for good:** Evaluate expected benefits, potential harms, dual-use risks, and broader social impact.
-- **Infrastructure before execution:** Confirm available compute, data, software, instruments, and human capabilities before producing an executable research plan.
+- **Capability-aware execution:** Every action declares the compute, data, software, instruments, people, cost, and permissions it requires before it runs.
 - **Traceable process:** Literature, prompts, tool calls, code, parameters, data, and results all become part of the research record.
 - **Reproducible outcomes:** Experiments and computations must preserve the environment, inputs, and methods needed for reproduction.
-- **Learn from failure:** Every research loop retrieves prior experience, diagnoses errors, and feeds validated lessons back into the system.
+- **Learn from failure:** Every capability invocation checks applicable failure lessons before execution, then records deviations and validated lessons afterward.
 - **Humans retain consequential decisions:** Publication, external writes, expensive computation, and physical equipment control require explicit authorization.
 - **Scientific logic stays in CyberEinstein plugins:** Domain objects and research rules belong to CyberEinstein packages, not patches to the DeepSeek Harness core.
-- **Capabilities extend through Cordis plugins:** Scientific tools, models, storage, policies, and workflows are mounted through the native plugin system.
+- **Capabilities extend through Cordis plugins:** Scientific tools, models, storage, policies, and optional recipes are mounted through the native plugin system.
 
 ## System Boundary
 
 ```text
 CyberEinstein Workbench
-  -> CyberEinstein Research Plugins
-  -> DeepSeek Harness / Cordis
-  -> Models / Papers / Code / Data / Simulators / Lab Tools
+  |-- Research Graph and Evidence Ledgers
+  |-- Atomic Research Capability Plugins
+  `-- Optional Loops and Research Recipes
+          |
+          v
+DeepSeek Harness / Cordis
+          |
+          v
+Models / Papers / Code / Data / Simulators / Lab Tools
 ```
 
-CyberEinstein owns research programs, scientific capabilities, project state, evidence relationships, experience promotion, approval rules, and the user experience. DeepSeek Harness provides profiles, sessions, the agent loop, tool execution, runtime traces, permissions, and Cordis plugin orchestration. The first stage reuses that complete stack without forking or modifying its core.
+CyberEinstein owns research objects, their relationships and state transitions, capability contracts, evidence rules, experience promotion, approval rules, and the user experience. DeepSeek Harness provides profiles, sessions, agent execution, runtime traces, permissions, and Cordis plugin orchestration. The first stage reuses that complete stack without forking or modifying its core.
 
 ## First Phase
 
-The first runnable version will validate one complete scientific workflow:
+The first runnable version will validate a small set of independently useful capabilities and prove that they can be composed in different ways:
 
-1. Audit the research capabilities that are genuinely available and build a capability graph.
-2. Select a narrow research direction and map its history and claims.
-3. Reproduce a set of anchor papers and capture tacit experimental details.
-4. Identify research opportunities from anomalies, contradictions, and bottlenecks found during reproduction.
-5. Run a computational experiment loop with RSI-based experience feedback.
-6. Produce a reproducible research report after independent review.
+- Register available compute, data, software, instruments, people, cost, and permissions.
+- Discover, acquire, parse, and connect scientific sources.
+- Create and update claims, hypotheses, evidence, counterevidence, and reviews.
+- Import, rerun, and extend reproducible research cases.
+- Execute bounded computational experiments and attach independently checked evidence.
+- Capture negative results and failure lessons that can affect later decisions.
+
+Example compositions include `Paper -> Claim -> Review`, `Hypothesis -> Experiment -> Evidence`, `Failed Run -> FailureLesson -> Revised Experiment`, and `Available Capability -> Feasible Research Questions`. None of these paths is required to precede another.
 
 The first validation scenario may begin with quantum computing, but the core model is not tied to a single discipline.
 
 ## Project Status
 
-CyberEinstein is currently in the product-definition and architectural-foundation stage. The repository now pins and directly runs the complete official `@deepseek-ai/dsh@0.1.1-rc.2` stack. No upstream core or profile has been modified. The next milestone is the first CyberEinstein research plugin.
+CyberEinstein is currently in the product-definition and architectural-foundation stage. The repository now pins and directly runs the complete official `@deepseek-ai/dsh@0.1.1-rc.2` stack. No upstream core or profile has been modified. The next milestone is the shared research-object contract and the first atomic capability plugin bundle.
 
 ## Developer Quick Start
 
