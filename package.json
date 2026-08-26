@@ -1,0 +1,21 @@
+{
+  "name": "cybereinstein",
+  "version": "0.1.0",
+  "private": true,
+  "description": "An AI scientist workbench built on DeepSeek Harness and Cordis.",
+  "license": "UNLICENSED",
+  "packageManager": "pnpm@11.7.0",
+  "engines": {
+    "node": "^22.19.0 || >=24.0.0"
+  },
+  "scripts": {
+    "dsh:version": "dsh --version",
+    "dsh:check": "DSH_HOME=.cybereinstein/dsh-home dsh --profile headless --dump-config",
+    "dsh:web": "DSH_HOME=.cybereinstein/dsh-home dsh web",
+    "dsh:headless": "DSH_HOME=.cybereinstein/dsh-home dsh --profile headless",
+    "test": "pnpm run dsh:check"
+  },
+  "dependencies": {
+    "@deepseek-ai/dsh": "0.1.1-rc.2"
+  }
+}

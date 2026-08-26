@@ -8,7 +8,7 @@ CyberEinstein is an AI scientist product built for real research. It is not a ge
 
 > **Mission:** We want everyone to have the opportunity to become an Einstein in the research field they care about and fulfill their dream of becoming a scientist.
 
-> **Architecture principle:** CyberEinstein is the product and scientific research system; DeepSeek Harness is a replaceable agent runtime.
+> **Architecture principle:** CyberEinstein is the product and scientific research system; DeepSeek Harness and Cordis provide the complete runtime foundation, and research capabilities are added as upper-layer plugins.
 
 ## Vision
 
@@ -34,20 +34,19 @@ The long-term goal is to enable AI and human scientists to work together on orig
 - **Reproducible outcomes:** Experiments and computations must preserve the environment, inputs, and methods needed for reproduction.
 - **Learn from failure:** Every research loop retrieves prior experience, diagnoses errors, and feeds validated lessons back into the system.
 - **Humans retain consequential decisions:** Publication, external writes, expensive computation, and physical equipment control require explicit authorization.
-- **Scientific logic remains independent of the agent runtime:** Domain objects and research rules must not depend on a particular model or harness.
-- **Capabilities extend through plugins:** Scientific tools, models, storage, and workflows connect through explicit interfaces instead of modifications to the DeepSeek Harness core.
+- **Scientific logic stays in CyberEinstein plugins:** Domain objects and research rules belong to CyberEinstein packages, not patches to the DeepSeek Harness core.
+- **Capabilities extend through Cordis plugins:** Scientific tools, models, storage, policies, and workflows are mounted through the native plugin system.
 
 ## System Boundary
 
 ```text
 CyberEinstein Workbench
-  -> Research Domain
-  -> Harness Adapter
-  -> DeepSeek Harness
+  -> CyberEinstein Research Plugins
+  -> DeepSeek Harness / Cordis
   -> Models / Papers / Code / Data / Simulators / Lab Tools
 ```
 
-CyberEinstein owns research programs, scientific capabilities, project state, evidence relationships, experience promotion, approval rules, and the user experience. DeepSeek Harness owns task threads, the agent loop, tool execution, runtime traces, and plugin orchestration. An adapter separates the two so other runtimes can be substituted or connected in parallel later.
+CyberEinstein owns research programs, scientific capabilities, project state, evidence relationships, experience promotion, approval rules, and the user experience. DeepSeek Harness provides profiles, sessions, the agent loop, tool execution, runtime traces, permissions, and Cordis plugin orchestration. The first stage reuses that complete stack without forking or modifying its core.
 
 ## First Phase
 
@@ -64,6 +63,18 @@ The first validation scenario may begin with quantum computing, but the core mod
 
 ## Project Status
 
-CyberEinstein is currently in the product-definition and architectural-foundation stage. There is no runnable release yet. The next milestone is to implement the minimum `ResearchProgram`, capability graph, and experience-feedback model, then connect a pinned version of DeepSeek Harness through an adapter.
+CyberEinstein is currently in the product-definition and architectural-foundation stage. The repository now pins and directly runs the complete official `@deepseek-ai/dsh@0.1.1-rc.2` stack. No upstream core or profile has been modified. The next milestone is the first CyberEinstein research plugin.
+
+## Developer Quick Start
+
+Node.js 24 or newer is recommended.
+
+```bash
+corepack pnpm install
+corepack pnpm dsh:check
+corepack pnpm dsh:web
+```
+
+`dsh:check` composes the full official headless profile without sending a model request, so it does not require an API key. `dsh:web` starts the official workbench at `http://127.0.0.1:3080`. Real model requests require `DEEPSEEK_API_KEY`. See the [DeepSeek Harness baseline](docs/harness-integration.md).
 
 The detailed [development vision](docs/development-vision.md) and [architecture principles](docs/architecture.md) are currently maintained in Chinese.

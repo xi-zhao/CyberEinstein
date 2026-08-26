@@ -1,0 +1,72 @@
+# DeepSeek Harness 底座基线
+
+- 状态：已接入官方完整底座
+- 日期：2026-08-26
+- 固定版本：`@deepseek-ai/dsh@0.1.1-rc.2`
+
+## 当前决策
+
+第一阶段完整复用 DeepSeek Harness，不 fork、不修改上游核心，也不额外封装另一套 Agent Runtime。CyberEinstein 直接使用 dsh 已有的：
+
+- Cordis 插件生命周期与依赖注入；
+- `base`、`web` 和 `headless` Profile；
+- Agent Loop、Session 与运行事件；
+- 模型适配、工具、文件和 Shell 能力；
+- 会话持久化、权限、审批与沙箱策略；
+- 官方 Web 工作台和 headless 入口。
+
+后续的科研能力以独立 Cordis 插件或组合包加入，例如能力图、论文 Claim、复现流程、证据账本和 RSI 经验回流。只有遇到明确产品缺口时，才替换某个上游插件或覆盖 Profile 配置。
+
+## 本地运行
+
+推荐 Node.js 24 或更高版本。
+
+```bash
+corepack pnpm install
+corepack pnpm dsh:version
+corepack pnpm dsh:check
+```
+
+`dsh:check` 使用官方 headless Profile 生成最终 Cordis 配置树，以验证整套插件组合能够被解析。该检查不会调用模型，不需要 API Key。
+
+启动官方 Web 工作台：
+
+```bash
+corepack pnpm dsh:web
+```
+
+默认地址为 `http://127.0.0.1:3080`。运行真实模型任务前，在本地 `.env` 中设置：
+
+```bash
+DEEPSEEK_API_KEY=your-key
+# DEEPSEEK_BASE_URL=https://your-compatible-endpoint
+```
+
+运行官方 headless Agent：
+
+```bash
+corepack pnpm dsh:headless -- "summarize this workspace"
+```
+
+项目脚本把 `DSH_HOME` 放在 `.cybereinstein/dsh-home`，避免污染用户全局的 `~/.dsh`。该目录和 `.env` 都不会进入 Git。
+
+## 后续插件开发
+
+下一步不是修改 dsh，而是创建第一个 CyberEinstein 插件 bundle：
+
+```text
+CyberEinstein product
+  -> CyberEinstein Cordis bundles
+  -> official dsh profiles and services
+  -> models, papers, code, data and lab infrastructure
+```
+
+插件应通过 Cordis 的 Service、事件和可逆 effect 接入已有能力。科研业务状态和规则放在插件自己的模块中，不散落到 YAML 或提示词里。插件成熟后通过 `dsh plugin --profile <name> add <package>` 安装到独立 Profile；在此之前先保持官方 Profile 原样。
+
+## 升级规则
+
+DeepSeek Harness 仍处于开发者预览阶段。升级固定版本前只做三项检查：
+
+1. 查看上游破坏性变更和安全说明。
+2. 运行 `corepack pnpm dsh:check`，确认完整 Profile 仍能组合。
+3. 在隔离目录中分别验证一次 Web 启动和 headless 任务。

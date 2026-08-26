@@ -7,7 +7,7 @@
 
 CyberEinstein 是 AI 科学家工作台。它服务的业务过程是科研，而不是对话：用户和 Agent 共同建设一个研究方向的能力、知识和经验基础，并持续推进其中的研究项目，直到形成经过证据支持、能够复现并接受审查的科研成果。它以科技向善和科研普惠为价值使命，让更多人有机会在热爱的方向上提出重要问题、验证想法并完成自己做科学家的梦想。
 
-DeepSeek Harness 是默认 Agent 运行内核，但不是产品领域模型，也不是不可替换的基础设施。
+DeepSeek Harness 与 Cordis 是当前完整复用的 Agent 运行底座，但不是 CyberEinstein 的产品定义。第一阶段不 fork、不修改上游核心；科研能力以后通过独立 Cordis 插件增加。
 
 ## 2. 核心领域模型
 
@@ -85,45 +85,33 @@ any non-final state -> archived
 │ Application / Use Cases                     │
 │ 创建课题、推进研究、影响审查与高风险审批     │
 ├─────────────────────────────────────────────┤
-│ Research Domain                             │
+│ CyberEinstein Research Plugins              │
 │ 科研对象、状态转换、证据规则与经验晋级       │
 ├─────────────────────────────────────────────┤
-│ Harness Adapter                             │
-│ 运行任务、恢复会话、流式事件、取消与审批     │
-├─────────────────────────────────────────────┤
-│ DeepSeek Harness                            │
-│ Agent Loop、Session、Tools、Plugins、Sandbox │
+│ DeepSeek Harness / Cordis                   │
+│ Profile、Agent Loop、Session、Tools、Policy │
 ├─────────────────────────────────────────────┤
 │ Infrastructure                              │
 │ 模型、论文库、代码执行、数据、GPU、实验设备  │
 └─────────────────────────────────────────────┘
 ```
 
-依赖方向只能向下。`Research Domain` 不得导入 DeepSeek Harness 类型，Harness 的会话标识和事件必须在适配层转换为 CyberEinstein 自己的接口。
+依赖方向只能向下。科研状态和规则应在 CyberEinstein 插件内部保持清晰模块边界；Cordis 负责插件生命周期、服务依赖和事件扩展，不把业务规则散落进 Profile YAML 或提示词补丁。
 
 ## 4. Harness 接入决策
 
-CyberEinstein 采用 DeepSeek Harness 的固定版本，通过独立适配层接入。
+CyberEinstein 当前直接固定并完整复用 `@deepseek-ai/dsh@0.1.1-rc.2`。官方 `base`、`web` 和 `headless` Profile 以及其中的 Session、Agent Loop、工具、权限、持久化和 UI 都保持原样。
 
 约束如下：
 
 - 不 fork 或直接修改 DeepSeek Harness 核心来实现科研业务规则。
-- 科研能力优先实现为 CyberEinstein 插件、工具或领域服务。
-- Harness 版本升级必须通过契约测试后才能进入主分支。
-- 模型选择属于运行配置，DeepSeek 是默认选项而不是领域依赖。
-- 每个研究项目使用隔离的工作目录和会话存储。
-- Shell、文件编辑和网络访问遵循最小权限；不得沿用全权限示例配置进入生产。
+- 暂不重写官方 Profile，也不额外封装一套运行时接口。
+- 新科研能力实现为独立 CyberEinstein Cordis 插件或插件组合包。
+- 只有当官方底座明确不能满足产品需求时，才评估替换某个插件或调整 Profile。
+- DeepSeek Harness 版本升级必须先验证官方 Profile 能完整组合并启动。
+- Shell、文件编辑、网络和未来实验设备访问继续使用 dsh 的权限与审批机制，并按科研风险逐步收紧。
 
-适配层的最小接口应覆盖：
-
-```text
-startResearchTask
-continueResearchTask
-streamTaskEvents
-cancelResearchTask
-requestApproval
-readRunTrace
-```
+当前运行基线见 [harness-integration.md](harness-integration.md)。
 
 ## 5. 首条产品闭环
 

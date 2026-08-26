@@ -9,7 +9,7 @@ CyberEinstein 的长期目标是成为能够参与真实科研、持续修正自
 
 它不是论文问答工具、自动写作工具或单次实验 Agent。它是一套科研工作台和科学执行系统：先理解我们实际拥有的科研能力，再建立研究方向的数据与证据基础，随后通过复现、优化、发现、验证和经验回流持续推进科研。
 
-> CyberEinstein 是产品与科研系统，DeepSeek Harness 是可替换的 Agent 运行内核。
+> CyberEinstein 是产品与科研系统，DeepSeek Harness 与 Cordis 是当前完整复用的运行底座，科研能力通过上层插件扩展。
 
 ## 2. 科技向善与做科学家的梦想
 
@@ -212,7 +212,7 @@ CyberEinstein 长期积累的不是一个论文文件夹，而是相互连接的
 
 ### 阶段 0：科研基础建模
 
-建立 `ResearchProgram`、`CapabilityGraph`、`ClaimGraph`、证据规则、`ImpactAssessment` 和 RSI 经验模型，完成 DeepSeek Harness 适配边界。
+建立 `ResearchProgram`、`CapabilityGraph`、`ClaimGraph`、证据规则、`ImpactAssessment` 和 RSI 经验模型，并把它们组织为边界清晰的 CyberEinstein Cordis 插件。
 
 ### 阶段 1：最小科研就绪闭环
 

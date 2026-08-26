@@ -8,7 +8,7 @@ CyberEinstein 是面向真实科研工作的 AI 科学家产品。它不是一�
 
 > **使命**：我们希望让每一个人，都有机会在自己感兴趣的科研方向上成为爱因斯坦，完成自己做科学家的梦想。
 
-> **架构原则**：CyberEinstein 是产品与科研系统，DeepSeek Harness 是可替换的 Agent 运行内核。
+> **架构原则**：CyberEinstein 是产品与科研系统，DeepSeek Harness 与 Cordis 提供完整运行底座，科研能力通过上层插件逐步加入。
 
 ## 产品愿景
 
@@ -32,20 +32,19 @@ CyberEinstein 将科研过程建模为可持续演进的研究计划：
 - **成果可复现**：实验和计算必须保留足以复现的环境、输入和方法。
 - **从错误中修正**：每个研究 Loop 都要检索旧经验、诊断偏差并将验证过的教训回流到系统。
 - **人类负责关键决策**：发表、外部写入、高成本计算和实验设备控制必须经过明确授权。
-- **科研领域独立于 Agent 内核**：业务对象和科研规则不依赖某个模型或 Harness。
-- **通过插件扩展能力**：科研工具、模型、存储和工作流以明确接口接入，避免修改 DeepSeek Harness 核心。
+- **科研逻辑属于 CyberEinstein 插件**：业务对象和科研规则放在 CyberEinstein 自己的包中，不修改 DeepSeek Harness 核心。
+- **通过 Cordis 插件扩展能力**：科研工具、模型、存储、策略和工作流都通过原生插件体系装配。
 
 ## 系统边界
 
 ```text
 CyberEinstein Workbench
-  -> Research Domain
-  -> Harness Adapter
-  -> DeepSeek Harness
+  -> CyberEinstein Research Plugins
+  -> DeepSeek Harness / Cordis
   -> Models / Papers / Code / Data / Simulators / Lab Tools
 ```
 
-CyberEinstein 自己负责研究计划、科研能力、项目状态、证据关系、经验晋级、审批规则和用户体验。DeepSeek Harness 负责任务线程、Agent Loop、工具执行、运行轨迹和插件编排。两者之间通过适配层连接，以便未来替换或并行接入其他运行内核。
+CyberEinstein 自己负责研究计划、科研能力、项目状态、证据关系、经验晋级、审批规则和用户体验。DeepSeek Harness 提供 Profile、Session、Agent Loop、工具执行、运行轨迹、权限和 Cordis 插件编排。第一阶段完整复用这套能力，不 fork，也不修改上游核心。
 
 ## 第一阶段
 
@@ -62,6 +61,18 @@ CyberEinstein 自己负责研究计划、科研能力、项目状态、证据关
 
 ## 项目状态
 
-当前处于产品定义和架构奠基阶段，尚无可运行版本。下一里程碑是建立最小 `ResearchProgram`、科研能力图和经验回流模型，并通过适配层接入固定版本的 DeepSeek Harness。
+当前处于产品定义和架构奠基阶段。仓库已经固定并可直接运行官方完整底座 `@deepseek-ai/dsh@0.1.1-rc.2`，没有修改上游核心或 Profile。下一里程碑是开发第一个 CyberEinstein 科研插件。
+
+## 开发者快速开始
+
+推荐使用 Node.js 24 或更高版本。
+
+```bash
+corepack pnpm install
+corepack pnpm dsh:check
+corepack pnpm dsh:web
+```
+
+`dsh:check` 会组合并验证官方完整 headless Profile，但不会发送模型请求，所以不需要 API Key。`dsh:web` 会在 `http://127.0.0.1:3080` 启动官方工作台。真实模型请求需要 `DEEPSEEK_API_KEY`。详见 [DeepSeek Harness 底座说明](docs/harness-integration.md)。
 
 项目的完整发展方向见 [docs/development-vision.md](docs/development-vision.md)，详细架构决策见 [docs/architecture.md](docs/architecture.md)。

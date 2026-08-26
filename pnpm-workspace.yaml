@@ -1,0 +1,15 @@
+packages: []
+
+# Match the React pair used by the tested DeepSeek Harness release lockfile.
+overrides:
+  react: 18.3.1
+  react-dom: 18.3.1
+
+# Keep the same reviewed dependency-build policy as DeepSeek Harness upstream.
+allowBuilds:
+  '@deepseek-ai/dsh-subprocess-local': true
+  node-pty: true
+  koffi: true
+  '@google/genai': false
+  protobufjs: false
+  node-addon-require-builtin: false
