@@ -2,7 +2,7 @@
   "name": "cybereinstein",
   "version": "0.1.0",
   "private": true,
-  "description": "An AI scientist workbench built on DeepSeek Harness and Cordis.",
+  "description": "An AI for Science workbench built on DeepSeek Harness and Cordis.",
   "license": "UNLICENSED",
   "packageManager": "pnpm@11.7.0",
   "engines": {

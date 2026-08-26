@@ -2,13 +2,13 @@
 
 English | [Chinese](README.zh-CN.md)
 
-**An AI Scientist Workbench for discovering, verifying, and advancing knowledge that matters.**
+**An AI for Science (AI4S) workbench for discovering, verifying, and advancing knowledge that matters.**
 
-CyberEinstein is an AI scientist product built for real research. It is not a general-purpose chat interface, and its goal is not merely to generate papers. It organizes research as interconnected scientific objects and exposes bounded capabilities that can be used independently or composed as needed. A paper, question, hypothesis, dataset, anomaly, instrument, or failed run can all be valid starting points.
+CyberEinstein is an AI for Science (AI4S) product built for real scientific work. It uses AI to help people understand research fields, reproduce known results, design and execute studies, evaluate evidence, and develop new knowledge. It is not a general-purpose chat interface, and its goal is not merely to generate papers. It organizes research as interconnected scientific objects and exposes bounded capabilities that can be used independently or composed as needed. A paper, question, hypothesis, dataset, anomaly, instrument, or failed run can all be valid starting points.
 
 > **Mission:** We want everyone to have the opportunity to become an Einstein in the research field they care about and fulfill their dream of becoming a scientist.
 
-> **Architecture principle:** CyberEinstein is the product and scientific research system; DeepSeek Harness and Cordis provide the complete runtime foundation, and research capabilities are added as upper-layer plugins.
+> **Architecture principle:** CyberEinstein is the AI4S product and scientific research system; DeepSeek Harness and Cordis provide the complete runtime foundation, and research capabilities are added as upper-layer plugins.
 
 ## Vision
 
@@ -44,21 +44,22 @@ Each CyberEinstein plugin contributes one or more bounded scientific capabilitie
 
 Every capability must declare what it reads, what it produces, its preconditions, side effects, validation method, and permissions. A blocked or negative result is still a first-class contribution when its reason and evidence are preserved. Common research loops are optional recipes assembled from these capabilities, not hard-coded stages.
 
-## PRAgent: The First Core Capability
+## PRAgent: Paper Reproduction Agent
 
-PRAgent is CyberEinstein's first and most important product capability. It is the research-context engine that turns disconnected papers, evidence, reproduction work, and open questions into a durable understanding of a research field.
+PRAgent, the Paper Reproduction Agent, is CyberEinstein's first and most important product capability. It is the first product entry point into AI4S, not the full boundary of CyberEinstein. It turns an identifiable paper or scientific claim into a runnable, checkable, and extendable reproduction case.
 
-PRAgent is not a paper summarizer or a monolithic agent that owns the whole research process. It is a family of atomic capabilities with a unified product entry point:
+PRAgent is not a paper summarizer and does not treat reproduction as a binary success label. It is a family of atomic capabilities with a unified product entry point:
 
-- discover and continuously update relevant literature from a question, topic, paper, or claim;
-- acquire and normalize sources while preserving identity, rights, and provenance;
-- decompose papers into typed claims, methods, assumptions, evidence, limitations, and unresolved details;
-- connect historical development, method lineages, competing explanations, disputes, and key contributors;
-- identify whether a claim needs theoretical, computational, physical, or mixed verification and what capabilities that verification requires;
-- connect reproduction scope, run evidence, negative results, tacit details, and missing inputs back to the original claims;
-- expose contradictions, knowledge gaps, and questions that deserve further investigation.
+- establish paper identity and acquire permitted sources while preserving rights and provenance;
+- decompose the paper into explicit target claims, methods, assumptions, evidence, limitations, and unresolved details;
+- reconstruct formulas, parameters, data requirements, software environments, experimental conditions, and tacit implementation choices;
+- classify each target as theoretical, computational, physical, or mixed, together with the infrastructure and permissions it requires;
+- build and execute computational reproductions when the required infrastructure is available;
+- prepare protocols and evidence handoffs for physical claims without marking them reproduced before real observations return;
+- compare generated results with paper targets using machine checks, baselines, robustness tests, and independent review;
+- preserve negative results, failure lessons, review state, provenance, and an explicit remaining boundary.
 
-Its primary outputs are continuously updated `FieldMap`, `ClaimGraph`, `ReproductionPortfolio`, and `OpportunityMap` records, not a one-off narrative report. Each PRAgent capability can be invoked independently, and its outputs remain available to later hypothesis, experiment, review, and discovery capabilities. Search MCPs, scholarly databases, document parsers, and reproduction repositories are replaceable adapters behind PRAgent; they are not the product itself.
+Its primary output is a versioned `ReproductionCase` connected to claim targets, experiments, runs, evidence, reviews, failure lessons, and a precise reproduction boundary. Each capability can be invoked independently when its required inputs already exist, and every output remains reusable by later research capabilities. Search MCPs, document parsers, scientific runtimes, simulators, and laboratory interfaces are replaceable adapters behind PRAgent; they are not the product itself.
 
 ## Core Principles
 
@@ -93,23 +94,23 @@ CyberEinstein owns research objects, their relationships and state transitions, 
 
 ## First Phase: PRAgent
 
-The first runnable version will center on PRAgent. It will validate a small set of independently useful research-context capabilities and prove that they can be composed in different ways:
+The first runnable version will center on PRAgent. It will validate a small set of independently useful paper-reproduction capabilities and prove that they can be composed in different ways:
 
-- Accept a research direction, question, paper, or claim as an independent starting point.
-- Discover, acquire, parse, and connect scientific sources with explicit provenance.
-- Build and update field history, method lineages, claims, evidence, counterevidence, and uncertainty.
-- Classify the verification requirements and infrastructure dependencies of individual claims.
-- Import and connect reproduction scope, results, hidden details, failures, and unresolved inputs.
-- Surface contradictions and knowledge gaps without presenting them as discoveries by default.
-- Expose every resulting object for reuse by later scientific capabilities.
+- Accept a paper, DOI, source artifact, or specific claim as an independent starting point.
+- Build a claim-target ledger with explicit reproduction scope and success criteria.
+- Reconstruct methods, parameters, data, environments, and missing implementation details.
+- Classify computational and physical verification requirements without hiding unavailable infrastructure.
+- Execute bounded computational targets and preserve inputs, outputs, and environment evidence.
+- Compare results against paper targets and record checks, deviations, negative results, and independent review.
+- Return a reusable reproduction case even when the result is partial, blocked, invalid, or still awaiting physical evidence.
 
-Example compositions include `Research Direction -> FieldMap`, `Paper -> Claims`, `Claim -> Verification Requirements`, `Reproduction Result -> Evidence`, and `Contradictory Evidence -> Open Question`. None of these paths is required to precede another.
+Example compositions include `Paper -> Claim Targets`, `Claim -> Reproduction Requirements`, `Computational Claim -> Run -> Evidence`, `Physical Claim -> Protocol -> Pending Evidence`, and `Failed Run -> FailureLesson -> Revised Run`. A capability may start from any existing object that satisfies its input contract; unrelated work is never forced through one pipeline.
 
 The first validation scenario may begin with quantum computing, but the core model is not tied to a single discipline.
 
 ## Project Status
 
-CyberEinstein is currently in the product-definition and architectural-foundation stage. The repository now pins and directly runs the complete official `@deepseek-ai/dsh@0.1.1-rc.2` stack. No upstream core or profile has been modified. The next milestone is the PRAgent research-object contract and its first atomic capability plugin bundle.
+CyberEinstein is currently in the AI4S product-definition and architectural-foundation stage. The repository now pins and directly runs the complete official `@deepseek-ai/dsh@0.1.1-rc.2` stack. No upstream core or profile has been modified. The next milestone is the PRAgent reproduction-case contract and its first atomic capability plugin bundle.
 
 ## Developer Quick Start
 
