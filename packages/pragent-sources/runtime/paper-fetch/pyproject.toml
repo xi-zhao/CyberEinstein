@@ -1,0 +1,12 @@
+[project]
+name = "cybereinstein-paper-fetch-runtime"
+version = "0.1.0"
+description = "Locked runtime for lawful known-paper acquisition."
+requires-python = ">=3.11,<3.15"
+dependencies = [
+  "mcp==2.1.1",
+  "paper-fetch-skill @ https://github.com/Dictation354/paper-fetch-skill/releases/download/v5.5.0/paper_fetch_skill-5.5.0-py3-none-any.whl",
+]
+
+[tool.uv]
+package = false

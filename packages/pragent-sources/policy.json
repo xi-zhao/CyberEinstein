@@ -1,0 +1,42 @@
+{
+  "paperSearch": {
+    "defaultSources": [
+      "arxiv",
+      "crossref",
+      "openalex",
+      "semantic"
+    ],
+    "allowedSources": [
+      "arxiv",
+      "pubmed",
+      "biorxiv",
+      "medrxiv",
+      "iacr",
+      "semantic",
+      "crossref",
+      "openalex",
+      "pmc",
+      "core",
+      "europepmc",
+      "dblp",
+      "openaire",
+      "citeseerx",
+      "doaj",
+      "base",
+      "zenodo",
+      "hal",
+      "unpaywall"
+    ],
+    "maxResultsPerSource": 20,
+    "accessMode": "metadata-discovery-only"
+  },
+  "paperFetch": {
+    "accessMode": "open-or-user-authorized-full-text",
+    "browserAutoPrepare": false,
+    "artifactWrites": false
+  },
+  "forbiddenPathways": [
+    "download_scihub",
+    "download_with_fallback(use_scihub=true)"
+  ]
+}

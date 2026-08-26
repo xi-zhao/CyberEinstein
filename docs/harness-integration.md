@@ -50,9 +50,9 @@ corepack pnpm dsh:headless -- "summarize this workspace"
 
 项目脚本把 `DSH_HOME` 放在 `.cybereinstein/dsh-home`，避免污染用户全局的 `~/.dsh`。该目录和 `.env` 都不会进入 Git。
 
-## 后续插件开发
+## CyberEinstein 插件层
 
-下一步不是修改 dsh，而是创建第一个 CyberEinstein 插件 bundle：
+首个插件 bundle 已落地为 `@cybereinstein/pragent-sources`：
 
 ```text
 CyberEinstein product
@@ -61,7 +61,9 @@ CyberEinstein product
   -> models, papers, code, data and lab infrastructure
 ```
 
-插件应通过 Cordis 的 Service、事件和可逆 effect 接入已有能力。科研业务状态和规则放在插件自己的模块中，不散落到 YAML 或提示词里。插件成熟后通过 `dsh plugin --profile <name> add <package>` 安装到独立 Profile；在此之前先保持官方 Profile 原样。
+该 bundle 通过两个 `@deepseek-ai/dsh-mcp-client` 实例挂载论文发现和已知论文读取能力。`corepack pnpm pragent:sources:setup` 将它作为附加层安装到项目隔离的 headless/web Profile，不改官方 bundle 或上游源码。来源适配器与科研业务对象保持分离：它们只负责外部系统协议和来源内容读取，受控 Artifact 保存、`ReproductionCase`、Claim、证据和失败经验规则仍属于后续 CyberEinstein 领域插件。
+
+插件应继续通过 Cordis 的 Service、事件和可逆 effect 接入已有能力。科研业务状态和规则放在插件自己的模块中，不散落到 YAML 或提示词里。来源集成的具体边界见 [pragent-source-integrations.md](pragent-source-integrations.md)。
 
 ## 升级规则
 

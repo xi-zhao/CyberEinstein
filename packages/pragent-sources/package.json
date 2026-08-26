@@ -1,0 +1,32 @@
+{
+  "name": "@cybereinstein/pragent-sources",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Replaceable paper discovery and acquisition adapters for PRAgent.",
+  "license": "UNLICENSED",
+  "exports": {
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./policy.json": "./policy.json",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "cordis.patch.yml",
+    "policy.json",
+    "runtime/paper-search/.python-version",
+    "runtime/paper-search/pyproject.toml",
+    "runtime/paper-search/server.py",
+    "runtime/paper-search/uv.lock",
+    "runtime/paper-fetch/.python-version",
+    "runtime/paper-fetch/pyproject.toml",
+    "runtime/paper-fetch/server.py",
+    "runtime/paper-fetch/uv.lock"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "dependencies": {
+    "@deepseek-ai/dsh-mcp-client": "0.1.1-rc.2"
+  }
+}

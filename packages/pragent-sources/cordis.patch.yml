@@ -1,0 +1,36 @@
+# PRAgent source adapters are infrastructure seams, not scientific domain logic.
+# Each server is independently replaceable and can be disabled without changing
+# the other one or the DeepSeek Harness core.
+- insert:
+    - id: pragent-paper-search
+      name: '@deepseek-ai/dsh-mcp-client'
+      disabled: !!js (process.env.CYBEREINSTEIN_PAPER_SEARCH_ENABLED ?? 'true').toLowerCase() === 'false'
+      config:
+        serverName: paper_search
+        transport: stdio
+        command: uv
+        args: ['run', '--offline', '--locked', 'python', 'server.py']
+        cwd: !!js (process.env.CYBEREINSTEIN_ROOT ?? process.cwd()) + '/packages/pragent-sources/runtime/paper-search'
+        env:
+          PYTHONUNBUFFERED: '1'
+          UV_NO_PROGRESS: '1'
+          PAPER_SEARCH_MCP_ENV_FILE: !!js process.env.CYBEREINSTEIN_SOURCES_ENV_FILE ?? ((process.env.CYBEREINSTEIN_ROOT ?? process.cwd()) + '/.cybereinstein/pragent-sources.env')
+        toolCallTimeoutMs: 120000
+        failOnStartupError: true
+
+    - id: pragent-paper-fetch
+      name: '@deepseek-ai/dsh-mcp-client'
+      disabled: !!js (process.env.CYBEREINSTEIN_PAPER_FETCH_ENABLED ?? 'true').toLowerCase() === 'false'
+      config:
+        serverName: paper_fetch
+        transport: stdio
+        command: uv
+        args: ['run', '--offline', '--locked', 'python', 'server.py']
+        cwd: !!js (process.env.CYBEREINSTEIN_ROOT ?? process.cwd()) + '/packages/pragent-sources/runtime/paper-fetch'
+        env:
+          PYTHONUNBUFFERED: '1'
+          UV_NO_PROGRESS: '1'
+          PAPER_FETCH_ENV_FILE: !!js process.env.CYBEREINSTEIN_SOURCES_ENV_FILE ?? ((process.env.CYBEREINSTEIN_ROOT ?? process.cwd()) + '/.cybereinstein/pragent-sources.env')
+          PAPER_FETCH_BROWSER_AUTO_PREPARE: 'false'
+        toolCallTimeoutMs: 180000
+        failOnStartupError: true

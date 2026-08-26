@@ -108,9 +108,20 @@ CyberEinstein 自己负责科研对象及其关系和状态变化、能力契约
 
 首个验证场景可以从量子计算研究切入，但核心模型不绑定具体学科。
 
+## 已接入的首批来源能力
+
+仓库现在包含首个 CyberEinstein Cordis bundle：`@cybereinstein/pragent-sources`。它没有把第三方项目变成 PRAgent 本身，而是为后续复现能力提供两个可独立启停、可替换的来源适配器：
+
+| 适配器 | 原子作用 | 当前边界 |
+| --- | --- | --- |
+| `paper_search` | 从 arXiv、Crossref、OpenAlex、Semantic Scholar 等来源发现候选论文 | 只返回元数据；合规门面不暴露下载、Sci-Hub 或 Google Scholar 抓取 |
+| `paper_fetch` | 将已知 DOI、URL 或标题解析为元数据、可用性判断和允许访问的全文内容 | 不绕过付费墙；合规门面强制无落盘、无浏览器准备；当前轻量运行时不含浏览器与 PDF 扩展 |
+
+Agent 中的工具名稳定为 `mcp__paper_search__discover_papers`、`mcp__paper_fetch__resolve_paper`、`mcp__paper_fetch__has_fulltext` 和 `mcp__paper_fetch__fetch_paper`。两个适配器使用各自的 Python 环境和 `uv.lock`，因为它们依赖不同主版本的 MCP SDK；一个来源故障或被替换不会污染另一个来源，也不会改变 `ReproductionCase` 的领域模型。来源内容后续由 CyberEinstein 领域插件在受控目录持久化，第三方 MCP 不能自行指定文件路径。
+
 ## 项目状态
 
-当前处于 AI4S 产品定义和架构奠基阶段。仓库已经固定并可直接运行官方完整底座 `@deepseek-ai/dsh@0.1.1-rc.2`，没有修改上游核心或 Profile。下一里程碑是建立 PRAgent 复现案例契约，并开发它的第一组原子能力插件。
+当前处于 AI4S 产品定义和架构奠基阶段。仓库已经固定并可直接运行官方完整底座 `@deepseek-ai/dsh@0.1.1-rc.2`，并完成首个 PRAgent 来源适配器 bundle；没有 fork 或修改上游核心。下一里程碑是建立 `ReproductionCase` 契约，把论文身份、来源 Artifact 和 Claim 目标转化为可持久化的复现案例，而不是继续堆叠无边界工具。
 
 ## 开发者快速开始
 
@@ -118,10 +129,12 @@ CyberEinstein 自己负责科研对象及其关系和状态变化、能力契约
 
 ```bash
 corepack pnpm install
+corepack pnpm pragent:sources:setup
+corepack pnpm pragent:sources:check
 corepack pnpm dsh:check
 corepack pnpm dsh:web
 ```
 
-`dsh:check` 会组合并验证官方完整 headless Profile，但不会发送模型请求，所以不需要 API Key。`dsh:web` 会在 `http://127.0.0.1:3080` 启动官方工作台。真实模型请求需要 `DEEPSEEK_API_KEY`。详见 [DeepSeek Harness 底座说明](docs/harness-integration.md)。
+`pragent:sources:setup` 会同步两个锁定运行时，并把 bundle 作为附加层安装到项目内的 headless 和 web Profile。`pragent:sources:check` 只做 MCP 握手和工具边界检查；`pragent:sources:smoke` 还会发起最小联网调用。`dsh:web` 会在 `http://127.0.0.1:3080` 启动工作台，真实模型请求才需要 `DEEPSEEK_API_KEY`。详见 [PRAgent 来源集成](docs/pragent-source-integrations.md) 和 [DeepSeek Harness 底座说明](docs/harness-integration.md)。
 
 项目的完整发展方向见 [docs/development-vision.md](docs/development-vision.md)，详细架构决策见 [docs/architecture.md](docs/architecture.md)。

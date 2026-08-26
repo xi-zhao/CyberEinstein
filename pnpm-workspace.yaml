@@ -1,4 +1,5 @@
-packages: []
+packages:
+  - 'packages/*'
 
 # Match the React pair used by the tested DeepSeek Harness release lockfile.
 overrides:

@@ -108,9 +108,20 @@ Example compositions include `Paper -> Claim Targets`, `Claim -> Reproduction Re
 
 The first validation scenario may begin with quantum computing, but the core model is not tied to a single discipline.
 
+## First Source Capabilities
+
+The repository now includes its first CyberEinstein Cordis bundle, `@cybereinstein/pragent-sources`. These are replaceable infrastructure adapters behind PRAgent, not PRAgent itself:
+
+| Adapter | Atomic role | Current boundary |
+| --- | --- | --- |
+| `paper_search` | Discover candidate papers through arXiv, Crossref, OpenAlex, Semantic Scholar, and other approved sources | Metadata only; the compliance facade exposes no downloads, Sci-Hub path, or Google Scholar scraping |
+| `paper_fetch` | Resolve a known DOI, URL, or title and read metadata or authorized full text | Never bypasses paywalls; the facade enforces no artifact writes and no browser preparation; the initial lightweight runtime excludes browser and PDF extras |
+
+The stable model-facing names are `mcp__paper_search__discover_papers`, `mcp__paper_fetch__resolve_paper`, `mcp__paper_fetch__has_fulltext`, and `mcp__paper_fetch__fetch_paper`. Each adapter has its own locked Python environment because the upstream projects require incompatible MCP SDK major versions. Either adapter can be disabled or replaced without changing the other adapter, the Harness core, or the future `ReproductionCase` model. A later CyberEinstein domain capability will persist source content through a controlled artifact boundary; the third-party MCP cannot choose filesystem paths.
+
 ## Project Status
 
-CyberEinstein is currently in the AI4S product-definition and architectural-foundation stage. The repository now pins and directly runs the complete official `@deepseek-ai/dsh@0.1.1-rc.2` stack. No upstream core or profile has been modified. The next milestone is the PRAgent reproduction-case contract and its first atomic capability plugin bundle.
+CyberEinstein is currently in the AI4S product-definition and architectural-foundation stage. The repository pins and directly runs the complete official `@deepseek-ai/dsh@0.1.1-rc.2` stack and now includes the first PRAgent source-adapter bundle. No upstream core has been forked or modified. The next milestone is the `ReproductionCase` contract that turns paper identity, source artifacts, and claim targets into durable reproduction cases instead of accumulating unbounded tools.
 
 ## Developer Quick Start
 
@@ -118,10 +129,12 @@ Node.js 24 or newer is recommended.
 
 ```bash
 corepack pnpm install
+corepack pnpm pragent:sources:setup
+corepack pnpm pragent:sources:check
 corepack pnpm dsh:check
 corepack pnpm dsh:web
 ```
 
-`dsh:check` composes the full official headless profile without sending a model request, so it does not require an API key. `dsh:web` starts the official workbench at `http://127.0.0.1:3080`. Real model requests require `DEEPSEEK_API_KEY`. See the [DeepSeek Harness baseline](docs/harness-integration.md).
+`pragent:sources:setup` syncs both locked runtimes and installs the bundle as an extra layer in the project-local headless and web profiles. `pragent:sources:check` performs MCP handshake and tool-boundary checks without a live research query; `pragent:sources:smoke` adds minimal network calls. `dsh:web` starts the workbench at `http://127.0.0.1:3080`; only real model requests require `DEEPSEEK_API_KEY`. See the [PRAgent source integration](docs/pragent-source-integrations.md) and [DeepSeek Harness baseline](docs/harness-integration.md).
 
 The detailed [development vision](docs/development-vision.md) and [architecture principles](docs/architecture.md) are currently maintained in Chinese.

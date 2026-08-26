@@ -129,6 +129,10 @@ PRAgent 是 Paper Reproduction Agent（论文复现 Agent），也是 CyberEinst
 - 保存部分、受阻、无效和负结果，以及 FailureLesson 与明确剩余边界；
 - 让复现案例中的所有对象可以继续被其他 AI4S 能力复用。
 
+首个基础设施 bundle 是 `@cybereinstein/pragent-sources`，只提供论文发现和已知论文获取两个来源适配器。它们产生候选元数据或待持久化的来源内容，不直接创建“已复现”结论，也不拥有 `ReproductionCase` 状态。搜索适配器通过合规门面只暴露元数据发现；全文适配器仅使用开放获取或用户已有合法权限。两个适配器分别锁定运行环境并可独立启停，避免第三方 MCP 依赖或故障进入科研领域模型。
+
+具体装配和运行边界见 [pragent-source-integrations.md](pragent-source-integrations.md)。
+
 第一阶段不包含：
 
 - 无人审批的自主发表；
