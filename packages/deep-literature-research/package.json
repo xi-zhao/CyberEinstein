@@ -1,0 +1,26 @@
+{
+  "name": "@cybereinstein/deep-literature-research",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A DSH-native, evidence-traceable deep literature research capability for CyberEinstein.",
+  "license": "UNLICENSED",
+  "type": "module",
+  "main": "./index.js",
+  "exports": {
+    ".": "./index.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./literature-review.schema.json": "./literature-review.schema.json",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "index.js",
+    "skill.md",
+    "literature-review.schema.json",
+    "cordis.patch.yml"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}

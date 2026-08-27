@@ -1,7 +1,7 @@
 # PRAgent 来源集成
 
 - 状态：首批适配器已可运行
-- 日期：2026-08-26
+- 日期：2026-08-27
 - Cordis bundle：`@cybereinstein/pragent-sources@0.1.0`
 
 ## 1. 产品边界
@@ -16,6 +16,8 @@ PRAgent 的目标是形成可运行、可检查、可扩展的 `ReproductionCase
 | `paper_fetch` | 已知 DOI、URL 或标题 | 标准化元数据、全文可用性、受限长度的结构化全文或明确缺失原因 | 只读网络请求；合规门面强制禁止 Artifact 写入 |
 
 两者不是固定流水线。已有 DOI 时可直接使用 `paper_fetch`；只做领域扫描时可只使用 `paper_search`。未来任一适配器都可以替换，而不改变 PRAgent 的领域对象。
+
+`@cybereinstein/deep-literature-research` 可以组合这两个来源建设 `LiteratureReview`，但不会反向改变来源适配器的职责。来源负责发现和读取；文献调研负责问题、证据、反证、缺口和停止决定；PRAgent 再把相关来源与 Claim 目标带入 `ReproductionCase`。三层可以独立替换，具体见 [deep-literature-research.md](deep-literature-research.md)。
 
 ## 2. 上游与固定版本
 

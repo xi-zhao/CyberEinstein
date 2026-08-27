@@ -1,0 +1,6 @@
+# Deep literature research is a CyberEinstein capability running inside the
+# existing DSH Agent loop. It does not mount a second Agent harness.
+- insert:
+    - id: cybereinstein-deep-literature-research
+      name: '@cybereinstein/deep-literature-research'
+      disabled: !!js (process.env.CYBEREINSTEIN_DEEP_RESEARCH_ENABLED ?? 'true').toLowerCase() === 'false'

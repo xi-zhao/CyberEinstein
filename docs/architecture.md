@@ -1,7 +1,7 @@
 # CyberEinstein 架构原则
 
 - 状态：已接受
-- 日期：2026-08-26
+- 日期：2026-08-27
 
 ## 1. 产品定义
 
@@ -19,6 +19,7 @@ DeepSeek Harness 与 Cordis 是当前完整复用的 Agent 运行底座，但不
 ResearchProgram
 ├── CapabilityGraph
 ├── FieldMap
+├── LiteratureReviews
 ├── ClaimGraph
 ├── ReproductionPortfolio
 ├── OpportunityMap
@@ -45,6 +46,7 @@ any non-final state -> archived
 | `ResearchProgram` | 管理一个方向的长期科研能力、知识、经验和项目组合 |
 | `CapabilityGraph` | 描述算力、数据、软件、仪器、人员、成本和权限 |
 | `FieldMap` | 记录领域历史、方法谱系、前沿进展、争议和关键参与者 |
+| `LiteratureReview` | 保存问题范围、检索批次、来源访问级别、证据、反证、矛盾、缺口和停止决定 |
 | `ClaimGraph` | 连接论文主张、支持证据、反证、复现状态和依赖关系 |
 | `ReproductionPortfolio` | 管理论文复现范围、层级、结果和隐性实验细节 |
 | `ReproductionCase` | 管理一篇论文或一组目标 Claim 的方法重建、运行证据、审查状态和剩余边界 |
@@ -75,6 +77,8 @@ any non-final state -> archived
 10. 具有明显安全、伦理或双重用途风险的研究，在执行和公开前必须通过 `ImpactAssessment`。
 11. 文献来源、数据来源、作者和人类贡献必须可追溯，AI 不得抹去真实贡献者的署名。
 12. 降低科研使用门槛不得以降低证据、复现和审查标准为代价。
+13. 元数据来源只能证明文献身份与候选关系，不能直接支持实质科研结论；摘要与全文证据必须明确区分。
+14. `LiteratureReview` 只有在问题范围、支持与反对证据、关键缺口和停止理由均被记录后才可标记为完成；达到搜索深度或预算上限不等于完成。
 
 ## 3. 分层架构
 
@@ -131,7 +135,9 @@ PRAgent 是 Paper Reproduction Agent（论文复现 Agent），也是 CyberEinst
 
 首个基础设施 bundle 是 `@cybereinstein/pragent-sources`，只提供论文发现和已知论文获取两个来源适配器。它们产生候选元数据或待持久化的来源内容，不直接创建“已复现”结论，也不拥有 `ReproductionCase` 状态。搜索适配器通过合规门面只暴露元数据发现；全文适配器仅使用开放获取或用户已有合法权限。两个适配器分别锁定运行环境并可独立启停，避免第三方 MCP 依赖或故障进入科研领域模型。
 
-具体装配和运行边界见 [pragent-source-integrations.md](pragent-source-integrations.md)。
+第二个 bundle `@cybereinstein/deep-literature-research` 在 DSH 中注册按需加载的文献调研 Skill。它以 `LiteratureReview` 契约组织问题分解、迭代检索、论文筛选、证据提取、反证搜索、缺口反思和综合，但不运行第二套 Agent Harness。DSH 继续负责 Agent Loop、subagent、workflow、会话和权限；Skill 负责版本化编排指导，JSON Schema 固定当前结构契约，后续领域服务负责持久化与不可绕过的状态规则。
+
+具体装配和运行边界见 [pragent-source-integrations.md](pragent-source-integrations.md) 与 [deep-literature-research.md](deep-literature-research.md)。
 
 第一阶段不包含：
 
@@ -154,5 +160,6 @@ PRAgent 是 Paper Reproduction Agent（论文复现 Agent），也是 CyberEinst
 7. 错误经验在未通过复验前不能自动改变全局科研策略。
 8. 高影响研究能够说明预期受益者、潜在伤害、双重用途风险和缓解措施。
 9. 科研成果能够保留来源、作者和人类参与者的真实贡献记录。
+10. 文献调研能够区分元数据、摘要和全文证据，并在预算或访问受限时保留明确的部分结果与下一步行动。
 
 更完整的发展路径和产品边界见 [development-vision.md](development-vision.md)。

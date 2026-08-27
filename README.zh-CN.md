@@ -35,6 +35,7 @@ FailureLesson --约束--> Capability / Experiment
 | 能力 | 典型输入 | 持久化贡献 |
 | --- | --- | --- |
 | 发现文献 | 问题、方向或 Claim | 候选来源和领域关系 |
+| 深度文献调研 | 问题、论文集合或现有综述 | 检索轨迹、证据、反证、矛盾、缺口和停止决定 |
 | 获取与解析资料 | DOI、URL 或文档 | 带来源记录的标准化 Artifact |
 | 结构化 Claim | 论文、资料或证据 | 分类后的 Claim 和明确关系 |
 | 设计或执行实验 | 假设与可用基础设施 | 计划、运行记录、产物和 Evidence |
@@ -119,9 +120,27 @@ CyberEinstein 自己负责科研对象及其关系和状态变化、能力契约
 
 Agent 中的工具名稳定为 `mcp__paper_search__discover_papers`、`mcp__paper_fetch__resolve_paper`、`mcp__paper_fetch__has_fulltext` 和 `mcp__paper_fetch__fetch_paper`。两个适配器使用各自的 Python 环境和 `uv.lock`，因为它们依赖不同主版本的 MCP SDK；一个来源故障或被替换不会污染另一个来源，也不会改变 `ReproductionCase` 的领域模型。来源内容后续由 CyberEinstein 领域插件在受控目录持久化，第三方 MCP 不能自行指定文件路径。
 
+## Deep Literature Research：深度文献调研
+
+仓库还包含独立 Cordis bundle `@cybereinstein/deep-literature-research`。它不是另一个 Agent Harness，而是向 DSH 注册按需加载的 `deep-literature-research` Skill，直接复用 DSH 的模型循环、Session、subagent、`workflow`、权限和现有论文来源。
+
+它的核心产出是版本化 `LiteratureReview`，而不是一篇看起来完整的长报告：
+
+```text
+研究问题与范围
+-> 子问题和竞争解释
+-> 检索批次、候选论文与访问级别
+-> 证据、反证、矛盾与缺口
+-> 带有明确理由的继续、受阻或停止决定
+```
+
+这也不是固定流水线。用户可以单独执行领域历史重建、先行工作检索、论文筛选、反证搜索、争议分析、覆盖审计或证据综合；新证据可以重新打开旧结论。每批检索后都必须总结错误、负结果和判断偏差，并在下一轮规划前查询适用的失败经验。元数据不能直接支持实质科研结论，摘要和全文证据必须明确区分，达到检索深度或 token 上限也不等于调研完成。
+
+选择 DSH 原生实现是有意的架构决策：LangChain Open Deep Research、Deep Agents、GPT Researcher 等项目都自带自己的模型与 Agent 循环，直接嵌入会重复 CyberEinstein 已选定的运行底座。我们复用其问题分解、并行调查、缺口反思和反证搜索方法，但科研对象、来源合规和状态契约由 CyberEinstein 自己维护。详见 [Deep Literature Research 集成](docs/deep-literature-research.md)。
+
 ## 项目状态
 
-当前处于 AI4S 产品定义和架构奠基阶段。仓库已经固定并可直接运行官方完整底座 `@deepseek-ai/dsh@0.1.1-rc.2`，并完成首个 PRAgent 来源适配器 bundle；没有 fork 或修改上游核心。下一里程碑是建立 `ReproductionCase` 契约，把论文身份、来源 Artifact 和 Claim 目标转化为可持久化的复现案例，而不是继续堆叠无边界工具。
+当前处于 AI4S 产品定义和架构奠基阶段。仓库已经固定并可直接运行官方完整底座 `@deepseek-ai/dsh@0.1.1-rc.2`，完成 PRAgent 来源适配器和 DSH 原生深度文献调研两个 bundle；没有 fork 或修改上游核心。下一里程碑仍以 PRAgent 为优先：建立可持久化的 `ReproductionCase` 领域服务，并让 `LiteratureReview` 通过同一证据边界为它提供研究脉络，而不是继续堆叠无边界工具。
 
 ## 开发者快速开始
 
@@ -129,12 +148,13 @@ Agent 中的工具名稳定为 `mcp__paper_search__discover_papers`、`mcp__pape
 
 ```bash
 corepack pnpm install
-corepack pnpm pragent:sources:setup
+corepack pnpm setup
 corepack pnpm pragent:sources:check
+corepack pnpm deep-research:check
 corepack pnpm dsh:check
 corepack pnpm dsh:web
 ```
 
-`pragent:sources:setup` 会同步两个锁定运行时，并把 bundle 作为附加层安装到项目内的 headless 和 web Profile。`pragent:sources:check` 只做 MCP 握手和工具边界检查；`pragent:sources:smoke` 还会发起最小联网调用。`dsh:web` 会在 `http://127.0.0.1:3080` 启动工作台，真实模型请求才需要 `DEEPSEEK_API_KEY`。详见 [PRAgent 来源集成](docs/pragent-source-integrations.md) 和 [DeepSeek Harness 底座说明](docs/harness-integration.md)。
+`setup` 会同步两个锁定的论文来源运行时，并把来源与 Deep Research bundle 一起安装到项目内的 headless 和 web Profile。`pragent:sources:check` 检查 MCP 工具边界，`deep-research:check` 检查 Skill 与 `LiteratureReview` 契约；`pragent:sources:smoke` 还会发起最小联网调用。在工作台中可以自然提出文献调研任务，也可以用 `/deep-literature-research` 显式加载 Skill。`dsh:web` 会在 `http://127.0.0.1:3080` 启动工作台，真实模型请求才需要 `DEEPSEEK_API_KEY`。详见 [PRAgent 来源集成](docs/pragent-source-integrations.md)、[Deep Literature Research 集成](docs/deep-literature-research.md) 和 [DeepSeek Harness 底座说明](docs/harness-integration.md)。
 
 项目的完整发展方向见 [docs/development-vision.md](docs/development-vision.md)，详细架构决策见 [docs/architecture.md](docs/architecture.md)。

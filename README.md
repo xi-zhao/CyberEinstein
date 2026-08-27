@@ -35,6 +35,7 @@ Each CyberEinstein plugin contributes one or more bounded scientific capabilitie
 | Capability | Typical input | Persistent contribution |
 | --- | --- | --- |
 | Discover literature | Question, topic, or claim | Source candidates and field relationships |
+| Investigate literature deeply | Question, paper set, or existing review | Search history, evidence, counterevidence, conflicts, gaps, and stop rationale |
 | Acquire and parse a source | DOI, URL, or document | Normalized artifact with provenance |
 | Structure claims | Paper, artifact, or evidence | Typed claims and explicit relationships |
 | Design or run an experiment | Hypothesis and available infrastructure | Plan, run record, artifacts, and evidence |
@@ -119,9 +120,27 @@ The repository now includes its first CyberEinstein Cordis bundle, `@cybereinste
 
 The stable model-facing names are `mcp__paper_search__discover_papers`, `mcp__paper_fetch__resolve_paper`, `mcp__paper_fetch__has_fulltext`, and `mcp__paper_fetch__fetch_paper`. Each adapter has its own locked Python environment because the upstream projects require incompatible MCP SDK major versions. Either adapter can be disabled or replaced without changing the other adapter, the Harness core, or the future `ReproductionCase` model. A later CyberEinstein domain capability will persist source content through a controlled artifact boundary; the third-party MCP cannot choose filesystem paths.
 
+## Deep Literature Research
+
+`@cybereinstein/deep-literature-research` adds a scientific Deep Research capability without adding another Agent harness. It registers the on-demand `deep-literature-research` Skill in DSH and reuses the selected runtime's model loop, sessions, subagents, `workflow`, permissions, and bounded paper adapters.
+
+The durable concept is a versioned `LiteratureReview`, not an impressive-looking report:
+
+```text
+Question and scope
+-> Subquestions and rival explanations
+-> Search batches, papers, and access levels
+-> Evidence, counterevidence, contradictions, and gaps
+-> An explicit continue, partial, blocked, or completion decision
+```
+
+This capability is also non-linear. Prior-art discovery, historical reconstruction, source screening, contradiction search, coverage audit, and synthesis can each be invoked on their own. New evidence may reopen any conclusion. Every useful search batch ends with a gap and counterevidence reflection, and each new invocation must consult applicable failure lessons when that service is available. Metadata establishes source identity but cannot substantiate a scientific conclusion; abstract and full-text evidence remain distinct; exhausting a depth or token budget never means the review is complete.
+
+This DSH-native design is deliberate. Open Deep Research, Deep Agents, GPT Researcher, and similar projects bring their own model and Agent loops. Embedding one would duplicate the runtime CyberEinstein already selected. The bundle adopts the useful research pattern—question decomposition, parallel investigation, reflective gap filling, adversarial search, and evidence synthesis—while CyberEinstein owns the scientific state and compliance contract. See [Deep Literature Research integration](docs/deep-literature-research.md).
+
 ## Project Status
 
-CyberEinstein is currently in the AI4S product-definition and architectural-foundation stage. The repository pins and directly runs the complete official `@deepseek-ai/dsh@0.1.1-rc.2` stack and now includes the first PRAgent source-adapter bundle. No upstream core has been forked or modified. The next milestone is the `ReproductionCase` contract that turns paper identity, source artifacts, and claim targets into durable reproduction cases instead of accumulating unbounded tools.
+CyberEinstein is currently in the AI4S product-definition and architectural-foundation stage. The repository pins and directly runs the complete official `@deepseek-ai/dsh@0.1.1-rc.2` stack and now includes both the PRAgent source adapters and a DSH-native deep literature research bundle. No upstream core has been forked or modified. PRAgent remains the next product milestone: a durable `ReproductionCase` service, with `LiteratureReview` feeding it through the same evidence boundary instead of adding more unbounded tools.
 
 ## Developer Quick Start
 
@@ -129,12 +148,13 @@ Node.js 24 or newer is recommended.
 
 ```bash
 corepack pnpm install
-corepack pnpm pragent:sources:setup
+corepack pnpm setup
 corepack pnpm pragent:sources:check
+corepack pnpm deep-research:check
 corepack pnpm dsh:check
 corepack pnpm dsh:web
 ```
 
-`pragent:sources:setup` syncs both locked runtimes and installs the bundle as an extra layer in the project-local headless and web profiles. `pragent:sources:check` performs MCP handshake and tool-boundary checks without a live research query; `pragent:sources:smoke` adds minimal network calls. `dsh:web` starts the workbench at `http://127.0.0.1:3080`; only real model requests require `DEEPSEEK_API_KEY`. See the [PRAgent source integration](docs/pragent-source-integrations.md) and [DeepSeek Harness baseline](docs/harness-integration.md).
+`setup` syncs the two locked paper-source runtimes and installs both CyberEinstein bundles into the project-local headless and web profiles. `pragent:sources:check` verifies MCP boundaries, while `deep-research:check` verifies the registered Skill and `LiteratureReview` contract; `pragent:sources:smoke` adds minimal live network calls. In the workbench, a matching request loads the Skill on demand, or the user can invoke `/deep-literature-research` explicitly. `dsh:web` starts at `http://127.0.0.1:3080`; only a real model request requires `DEEPSEEK_API_KEY`. See the [PRAgent source integration](docs/pragent-source-integrations.md), [Deep Literature Research integration](docs/deep-literature-research.md), and [DeepSeek Harness baseline](docs/harness-integration.md).
 
 The detailed [development vision](docs/development-vision.md) and [architecture principles](docs/architecture.md) are currently maintained in Chinese.

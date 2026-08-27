@@ -1,7 +1,7 @@
 # DeepSeek Harness 底座基线
 
 - 状态：已接入官方完整底座
-- 日期：2026-08-26
+- 日期：2026-08-27
 - 固定版本：`@deepseek-ai/dsh@0.1.1-rc.2`
 
 ## 当前决策
@@ -52,7 +52,7 @@ corepack pnpm dsh:headless -- "summarize this workspace"
 
 ## CyberEinstein 插件层
 
-首个插件 bundle 已落地为 `@cybereinstein/pragent-sources`：
+当前已落地两个边界独立的插件 bundle：
 
 ```text
 CyberEinstein product
@@ -61,9 +61,13 @@ CyberEinstein product
   -> models, papers, code, data and lab infrastructure
 ```
 
-该 bundle 通过两个 `@deepseek-ai/dsh-mcp-client` 实例挂载论文发现和已知论文读取能力。`corepack pnpm pragent:sources:setup` 将它作为附加层安装到项目隔离的 headless/web Profile，不改官方 bundle 或上游源码。来源适配器与科研业务对象保持分离：它们只负责外部系统协议和来源内容读取，受控 Artifact 保存、`ReproductionCase`、Claim、证据和失败经验规则仍属于后续 CyberEinstein 领域插件。
+`@cybereinstein/pragent-sources` 通过两个 `@deepseek-ai/dsh-mcp-client` 实例挂载论文发现和已知论文读取能力。来源适配器与科研业务对象保持分离：它们只负责外部系统协议和来源内容读取，受控 Artifact 保存、`ReproductionCase`、Claim、证据和失败经验规则仍属于 CyberEinstein 领域插件。
 
-插件应继续通过 Cordis 的 Service、事件和可逆 effect 接入已有能力。科研业务状态和规则放在插件自己的模块中，不散落到 YAML 或提示词里。来源集成的具体边界见 [pragent-source-integrations.md](pragent-source-integrations.md)。
+`@cybereinstein/deep-literature-research` 直接向 DSH 的 Skill Registry 注册 `deep-literature-research`，组合现有论文来源、subagent 和 `workflow` 完成文献调研。它不启动 LangGraph、Deep Agents、GPT Researcher 或独立模型客户端，因此不存在第二套 Session、权限、模型密钥和 Agent Loop。编排指导放在版本化 Skill，`LiteratureReview` 结构放在 JSON Schema；未来不可绕过的持久化和状态规则仍应进入领域服务，不能只依赖提示词。
+
+`corepack pnpm setup` 将两个 bundle 都安装到项目隔离的 headless/web Profile，不改官方 bundle 或上游源码。也可以使用 `pragent:sources:setup` 和 `deep-research:setup` 分别装配。
+
+插件应继续通过 Cordis 的 Service、事件和可逆 effect 接入已有能力。科研业务状态和规则放在插件自己的模块中，不散落到 YAML，也不能只靠提示词约束。来源与 Deep Research 的具体边界见 [pragent-source-integrations.md](pragent-source-integrations.md) 和 [deep-literature-research.md](deep-literature-research.md)。
 
 ## 升级规则
 

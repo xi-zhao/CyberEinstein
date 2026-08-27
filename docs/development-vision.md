@@ -1,7 +1,7 @@
 # CyberEinstein 发展愿景
 
 - 状态：方向基线
-- 日期：2026-08-26
+- 日期：2026-08-27
 
 ## 1. 我们要建设什么
 
@@ -77,6 +77,10 @@ CyberEinstein 按照实际执行依赖，而不是简单按照学科划分研究
 - 已知失败路线、负结果和长期未解决问题。
 
 这里不存在“收集完某方向所有数据”的终点。系统应定义研究就绪门槛，在覆盖关键历史、前沿论文、主要 Claim、锚点复现和基础评价体系后启动有限研究，并在执行中持续补全 FieldMap。
+
+`LiteratureReview` 是建设 `FieldMap` 的版本化工作对象。它不只是最终综述，而是保存问题范围、检索批次、候选来源、全文访问级别、证据、反证、矛盾、缺口、失败经验和停止决定。一次调研可以从任意子问题、论文或冲突开始，也可以在新证据出现后重新打开旧结论。
+
+首个 `@cybereinstein/deep-literature-research` bundle 已将问题分解、迭代检索、缺口反思、反证搜索和证据综合组织为 DSH 原生 Skill。它复用现有论文来源、Agent Loop、subagent 和权限，不额外嵌入另一套 Agent Harness。达到检索深度、时间或 token 上限只能形成部分结果，不能自动宣告一个研究方向已经理解完成。
 
 ## 6. 论文复现是证据基础设施
 
@@ -214,7 +218,7 @@ CyberEinstein 长期积累的不是一个论文文件夹，而是相互连接的
 
 ### 阶段 0：科研基础建模
 
-建立 `ResearchProgram`、`CapabilityGraph`、`ClaimGraph`、证据规则、`ImpactAssessment` 和 RSI 经验模型，并把它们组织为边界清晰的 CyberEinstein Cordis 插件。
+建立 `ResearchProgram`、`CapabilityGraph`、`LiteratureReview`、`ClaimGraph`、证据规则、`ImpactAssessment` 和 RSI 经验模型，并把它们组织为边界清晰的 CyberEinstein Cordis 插件。
 
 ### 阶段 1：PRAgent 论文复现
 
