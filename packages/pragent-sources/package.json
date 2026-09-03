@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "description": "Replaceable paper discovery and acquisition adapters for PRAgent.",
-  "license": "UNLICENSED",
+  "license": "Apache-2.0",
   "exports": {
     "./cordis.patch.yml": "./cordis.patch.yml",
     "./policy.json": "./policy.json",

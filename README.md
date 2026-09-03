@@ -16,6 +16,10 @@
 </p>
 
 <p align="center">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache%202.0-0B7285.svg" alt="Apache License 2.0" /></a>
+</p>
+
+<p align="center">
   <a href="#ai-can-generate-ideas-science-needs-memory">Why it exists</a> ·
   <a href="#who-cybereinstein-is-for">Who it is for</a> ·
   <a href="#from-history-to-discovery">How it researches</a> ·
@@ -179,9 +183,7 @@ CyberEinstein is intended to open its code and the core protocols needed for sci
 
 Openness lets researchers inspect how conclusions were produced, connect private data and tools locally, add capabilities for new disciplines, and collectively extend the Executable History of Science through reproduction, correction, and independent review.
 
-> The GitHub repository is currently developed in public, but it does not yet include an open-source license and `package.json` still declares `UNLICENSED`. Until a license is added, it is not formally released as open-source software.
-
-Once the license is decided, open protocols, community contributions, domain plugins, and self-hosted deployment will become a central part of CyberEinstein's compounding moat.
+CyberEinstein is released under the [Apache License 2.0](LICENSE). Its permissive terms and explicit patent grant support open protocols, community contributions, domain plugins, commercial adoption, and self-hosted deployment as part of CyberEinstein's compounding moat.
 
 ## What exists today—and what comes next
 

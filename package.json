@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "description": "An evidence-native AI scientist built on the Executable History of Science.",
-  "license": "UNLICENSED",
+  "license": "Apache-2.0",
   "packageManager": "pnpm@11.7.0",
   "engines": {
     "node": "^22.19.0 || >=24.0.0"

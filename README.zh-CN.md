@@ -16,6 +16,10 @@
 </p>
 
 <p align="center">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache%202.0-0B7285.svg" alt="Apache License 2.0" /></a>
+</p>
+
+<p align="center">
   <a href="#ai-可以生成-idea科学更需要记忆">为什么需要它</a> ·
   <a href="#谁会使用-cybereinstein">谁会使用</a> ·
   <a href="#从历史走向发现">如何研究</a> ·
@@ -179,9 +183,7 @@ CyberEinstein 的目标是开放代码，也开放科研协作所需的核心协
 
 开放让研究者能够检查结论如何产生，在本地连接私有数据、算力和工具，为新学科增加能力，并通过复现、纠错和独立审查共同扩展可执行科学史。
 
-> 当前 GitHub 仓库处于公开开发状态，但尚未加入正式开源许可证，`package.json` 仍声明 `UNLICENSED`。在许可证落地前，它还不是法律意义上的正式开源发布。
-
-许可证确定后，开放协议、社区贡献、领域插件和自托管部署将成为 CyberEinstein 综合壁垒的重要组成部分。
+CyberEinstein 采用 [Apache License 2.0](LICENSE) 正式开源。它宽松的使用条款和明确的专利授权，有利于开放协议、社区贡献、领域插件、商业采用和自托管部署共同形成 CyberEinstein 持续增长的综合壁垒。
 
 ## 当前实现与下一步
 
