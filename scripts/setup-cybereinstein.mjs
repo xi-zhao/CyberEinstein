@@ -6,6 +6,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const setupScripts = [
   'setup-pragent-sources.mjs',
   'setup-deep-literature-research.mjs',
+  'setup-reproduction-case.mjs',
 ];
 
 for (const script of setupScripts) {

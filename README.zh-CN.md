@@ -1,160 +1,252 @@
-# CyberEinstein
+<h1 align="center">CyberEinstein</h1>
 
-[英文](README.md) | 中文
+<p align="center"><strong>让 AI 继承科学走过的路，再探索科学的下一步。</strong></p>
 
-**面向真实科研与重要知识发现的 AI for Science（AI4S）工作台。**
+<p align="center">
+  一个建立在 <strong>Executable History of Science（可执行科学史）</strong>之上的开放、证据原生 AI 科学家系统。<br />
+  它从论文、代码、成功证据和失败尝试中理解一个学科如何走到今天，再与科学家共同开展可验证的新研究。
+</p>
 
-CyberEinstein 的核心定位是 AI for Science（AI4S）：用 AI 帮助人理解研究方向、复现已知结果、设计和执行研究、判断证据并产生新知识。它不是一个通用聊天界面，也不以自动生成论文为终点。它把科研组织为相互连接的科学对象，并提供可以独立使用、按需组合的原子能力。论文、问题、假设、数据、异常、仪器或一次失败实验，都可以成为科研工作的起点。
+<p align="center">
+  <a href="README.md">English</a> ·
+  <strong>简体中文</strong>
+</p>
 
-> **使命**：我们希望让每一个人，都有机会在自己感兴趣的科研方向上成为爱因斯坦，完成自己做科学家的梦想。
+<p align="center">
+  <a href="#可执行科学史">理解可执行科学史</a> ·
+  <a href="#从历史走向发现">看它如何研究</a> ·
+  <a href="#100-篇论文不是奖杯而是起点">检查公开证据</a> ·
+  <a href="#开发者快速开始">在本地运行</a>
+</p>
 
-> **架构原则**：CyberEinstein 是 AI4S 产品与科研系统，DeepSeek Harness 与 Cordis 提供完整运行底座，科研能力通过上层插件逐步加入。
+> **科学发现，不应该从一个空白提示词开始。**
 
-## 产品愿景
+## 新 Idea 不稀缺，有根据的下一步才稀缺
 
-CyberEinstein 将科研建模为一张持续演进的科学对象图：
+AI 已经可以阅读最新论文、生成假设、编写代码，甚至完成一篇看起来完整的研究报告。但科研不是从几篇摘要跳到一个新 Idea，也不是让 Agent 宣布“实验成功”。
+
+每个真正值得研究的问题都有来路：前人建立过什么、哪些代码真正跑通、哪些实验失败、哪些假设被反驳、哪些异常仍未解释，以及过去的阻塞条件今天是否已经消失。
+
+如果 AI 不继承这些历史，它产生的新 Idea 很容易成为无根之木：重复旧问题，踩进已知错误，或者把实现偏差误认为科学发现。
+
+CyberEinstein 的起点不是一个空白 Prompt，而是一个学科已经走过的完整证据历史。
+
+## 可执行科学史
+
+**Executable History of Science** 不是论文数据库，也不是普通知识图谱。它试图保存科学知识是怎样产生、失败、修正和继续发展的：
 
 ```text
-论文 --包含--> Claim
-假设 --竞争或扩展--> Claim
-Claim --由实验检验--> Experiment
-Experiment --产生--> Evidence
-Evidence --支持或反驳--> Claim
-Review --质疑或确认--> Evidence
-FailureLesson --约束--> Capability / Experiment
+历史问题
+→ 历代 Claims 与竞争假设
+→ 方法、代码、参数和环境
+→ 计算、实验与 observation
+→ 成功证据、反证和失败尝试
+→ 审查、争议与修正
+→ 当前共识、未知边界和前沿机会
 ```
 
-这不是一条强制执行的流水线。每个对象都保存独立有用的科研状态，每项能力都可以单独产生价值，不需要把整套流程跑完。文献研究、论文复现、工程优化、机制发现、证据验证和经验回流，只是基于同一张科研对象图形成的不同组合。
+| 普通文献上下文 | 可执行科学史 |
+| --- | --- |
+| 论文说了什么 | 结论是怎样被建立和修正的 |
+| 引用和摘要 | Claim、证据、反证与依赖关系 |
+| 最终代码 | 正确代码、参数、环境与真实运行 |
+| 成功结果 | 成功、受阻、无效和错误尝试 |
+| 一次问答的上下文 | 跨人员、Agent 和项目持续生长的科研记忆 |
 
-长期目标是让 AI 能够与人类科学家共同完成有原创性、可验证并真正产生影响的科研工作。
+这让 CyberEinstein 不只是知道人类目前知道什么，还能理解：我们为什么相信它、在哪里失败过、科学为什么走到今天，以及下一步最值得往哪里走。
 
-## 原子科研能力
+## 从历史走向发现
 
-每个 CyberEinstein 插件提供一个或多个边界清楚的科研能力，而不是独占一条端到端流程。
+科学发现不是一次生成，而是一个不断被 observation 修正的过程。CyberEinstein 的完整研究闭环是：
 
-| 能力 | 典型输入 | 持久化贡献 |
+### 1. 重建历史
+
+把领域论文、Claim、代码、参数、运行、证据、反证、审查和失败经验连接起来，形成可检查、可执行的研究谱系。
+
+### 2. 理解学科状态
+
+区分稳定共识、竞争解释、证据薄弱的流行结论、历史阻塞、异常现象、已经走不通的路径和正在形成的新 Topic。
+
+### 3. 判断前沿机会
+
+不急着生成 Idea，而是先判断哪个问题兼具科学价值、新颖性、区分能力、可执行性和潜在影响，并明确成本、风险与验证条件。
+
+### 4. 开展原创研究
+
+基于历史上已经验证的代码和方法提出竞争假设，设计能够区分它们的计算或实验，调用真实工具执行，再根据 observation 修正下一步。
+
+### 5. 主动寻找反证
+
+发现 Agent 负责推进假设，独立验证过程负责寻找反例、替代解释和实现错误。Agent 完成任务不等于科学结论成立。
+
+### 6. 把结果写回历史
+
+无论得到候选新 Claim、负结果还是客观阻塞，都保留完整依据，让下一位研究者和下一次 Agent 运行不必从头开始。
+
+CyberEinstein 最终交付的不是一段对话或一篇自动生成的论文，而是一项可以检查、反驳、复现和继续推进的研究。
+
+## 我们的综合壁垒
+
+可执行科学史是核心，但不是唯一壁垒。CyberEinstein 由七层相互增强的能力组成：
+
+| 壁垒 | CyberEinstein 积累什么 | 给研究者带来什么 |
 | --- | --- | --- |
-| 发现文献 | 问题、方向或 Claim | 候选来源和领域关系 |
-| 深度文献调研 | 问题、论文集合或现有综述 | 检索轨迹、证据、反证、矛盾、缺口和停止决定 |
-| 获取与解析资料 | DOI、URL 或文档 | 带来源记录的标准化 Artifact |
-| 结构化 Claim | 论文、资料或证据 | 分类后的 Claim 和明确关系 |
-| 设计或执行实验 | 假设与可用基础设施 | 计划、运行记录、产物和 Evidence |
-| 验证或质疑 | Claim、Evidence 或运行结果 | 检查、反证和 Review 状态 |
-| 记录失败经验 | 预期结果与实际结果 | 带范围和可信度的版本化 FailureLesson |
-| 评估影响 | 问题、项目或结果 | 受益、风险和审批约束 |
+| 数据 | 可执行科学史、正确代码、证据和失败历史 | 不再从论文摘要和空白代码开始 |
+| 认知 | 持续更新的学科状态模型 | 看清共识、争议、异常和真正前沿 |
+| 决策 | 有历史依据的研究机会判断 | 把资源投入最值得验证的下一步 |
+| 执行 | 领域工具、科学计算、模拟器和未来仪器接口 | 把假设变成真实 observation |
+| 可信 | Claim-first、反证、独立审查和外部复现 | 知道一个结论为什么值得相信 |
+| 网络 | 研究者、课题组、审查者和工具开发者 | 让一次贡献改善整个领域的科研记忆 |
+| 开放生态 | 可检查规则、共享协议、可替换模型与本地部署 | 不被黑盒系统和单一模型锁定 |
 
-每项能力都必须声明读取什么、产生什么、执行前提、副作用、验证方式和权限。只要原因与证据得到保留，受阻、失败和负结果同样是有效科研贡献。常见科研 Loop 是由这些能力组成的可选配方，而不是系统写死的阶段。
-
-## PRAgent：论文复现 Agent
-
-PRAgent，即 Paper Reproduction Agent（论文复现 Agent），是 CyberEinstein 首个也是最重要的产品能力。它是项目进入 AI4S 的第一个产品入口，但不等于 CyberEinstein 的全部边界。它负责把一篇身份明确的论文或一个具体科学 Claim，转化为可运行、可检查、可继续扩展的复现案例。
-
-PRAgent 不是论文总结器，也不把复现简化成“成功或失败”的二元标签。它是一组拥有统一产品入口的原子能力：
-
-- 确认论文身份并获取允许使用的资料，同时保留权利边界和来源记录；
-- 将论文拆成明确的目标 Claim、方法、假设前提、证据、局限和未解决细节；
-- 重建公式、参数、数据要求、软件环境、实验条件和隐性的实现选择；
-- 判断每个目标属于理论、计算、物理实验还是混合验证，并登记所需基础设施和权限；
-- 在基础设施允许时，建立并执行计算复现；
-- 为物理实验 Claim 准备协议和证据交接，但在真实观测返回前不标记为已复现；
-- 通过机器检查、基线、稳健性测试和独立审查，将生成结果与论文目标进行比较；
-- 保存负结果、失败经验、审查状态、来源记录和明确的剩余复现边界。
-
-PRAgent 最重要的产出是版本化的 `ReproductionCase`，其中连接目标 Claim、Experiment、Run、Evidence、Review、FailureLesson 和精确的复现边界。只要输入契约得到满足，每项能力都可以独立调用，每个产出也能够被后续科研能力继续复用。论文搜索 MCP、文档解析器、科学计算运行时、模拟器和实验室接口只是 PRAgent 背后可替换的适配器，不是产品本身。
-
-## 核心原则
-
-- **证据优先**：每个科研结论必须关联支持证据、反证和不确定性。
-- **原子化与可组合**：每项科研能力都有独立作用、清楚边界和可复用输出。
-- **科研普惠**：让更多人获得理解问题、设计研究和验证想法的能力，但不降低科学标准。
-- **科技向善**：同时评估科研的预期受益、潜在伤害、双重用途和社会影响。
-- **执行感知能力边界**：每个动作在运行前声明并检查所需算力、数据、软件、仪器、人员、成本和权限。
-- **过程可追溯**：文献、提示、工具调用、代码、参数、数据和结果都进入研究记录。
-- **成果可复现**：实验和计算必须保留足以复现的环境、输入和方法。
-- **从错误中修正**：每次能力调用前都必须检索适用的失败经验，执行后记录偏差并回流经过验证的教训。
-- **人类负责关键决策**：发表、外部写入、高成本计算和实验设备控制必须经过明确授权。
-- **科研逻辑属于 CyberEinstein 插件**：业务对象和科研规则放在 CyberEinstein 自己的包中，不修改 DeepSeek Harness 核心。
-- **通过 Cordis 插件扩展能力**：科研工具、模型、存储、策略和可选配方都通过原生插件体系装配。
-
-## 系统边界
+真正难以复制的不是某个 Agent 工作流，而是这个不断复利的循环：
 
 ```text
-CyberEinstein Workbench
-  |-- 科研对象图与证据账本
-  |-- 原子科研能力插件
-  `-- 可选 Loop 与科研配方
-          |
-          v
-DeepSeek Harness / Cordis
-          |
-          v
-Models / Papers / Code / Data / Simulators / Lab Tools
+更多历史复现
+→ 更准确的学科状态
+→ 更好的前沿机会
+→ 更可信的新研究
+→ 更多成功、失败和审查证据
+→ 更完整的可执行科学史
 ```
 
-CyberEinstein 自己负责科研对象及其关系和状态变化、能力契约、证据规则、经验晋级、审批规则和用户体验。DeepSeek Harness 提供 Profile、Session、Agent 执行、运行轨迹、权限和 Cordis 插件编排。第一阶段完整复用这套能力，不 fork，也不修改上游核心。
+## 三个项目，一条科研证据链
 
-## 第一阶段：PRAgent
-
-首个可运行版本将以 PRAgent 为中心，验证一组可以独立产生价值的论文复现能力，并证明它们能够形成不同组合：
-
-- 接受论文、DOI、来源文件或具体 Claim 作为相互独立的起点。
-- 建立带有明确复现范围和成功标准的 Claim 目标账本。
-- 重建方法、参数、数据、环境和缺失的实现细节。
-- 区分计算与物理验证要求，不隐藏当前缺失的基础设施。
-- 执行有边界的计算目标，并保存输入、输出和环境证据。
-- 将结果与论文目标比较，记录检查、偏差、负结果和独立审查。
-- 即使结果是部分完成、受阻、无效或等待物理证据，也返回可以继续使用的复现案例。
-
-典型组合包括 `论文 -> Claim 目标`、`Claim -> 复现要求`、`计算 Claim -> Run -> Evidence`、`物理 Claim -> 实验协议 -> 待返回证据`，以及 `失败运行 -> FailureLesson -> 修订运行`。只要已有对象满足输入契约，能力就可以从该对象开始；无关工作不会被强制塞进同一条流水线。
-
-首个验证场景可以从量子计算研究切入，但核心模型不绑定具体学科。
-
-## 已接入的首批来源能力
-
-仓库现在包含首个 CyberEinstein Cordis bundle：`@cybereinstein/pragent-sources`。它没有把第三方项目变成 PRAgent 本身，而是为后续复现能力提供两个可独立启停、可替换的来源适配器：
-
-| 适配器 | 原子作用 | 当前边界 |
+| 项目 | 角色 | 核心产出 |
 | --- | --- | --- |
-| `paper_search` | 从 arXiv、Crossref、OpenAlex、Semantic Scholar 等来源发现候选论文 | 只返回元数据；合规门面不暴露下载、Sci-Hub 或 Google Scholar 抓取 |
-| `paper_fetch` | 将已知 DOI、URL 或标题解析为元数据、可用性判断和允许访问的全文内容 | 不绕过付费墙；合规门面强制无落盘、无浏览器准备；当前轻量运行时不含浏览器与 PDF 扩展 |
-
-Agent 中的工具名稳定为 `mcp__paper_search__discover_papers`、`mcp__paper_fetch__resolve_paper`、`mcp__paper_fetch__has_fulltext` 和 `mcp__paper_fetch__fetch_paper`。两个适配器使用各自的 Python 环境和 `uv.lock`，因为它们依赖不同主版本的 MCP SDK；一个来源故障或被替换不会污染另一个来源，也不会改变 `ReproductionCase` 的领域模型。来源内容后续由 CyberEinstein 领域插件在受控目录持久化，第三方 MCP 不能自行指定文件路径。
-
-## Deep Literature Research：深度文献调研
-
-仓库还包含独立 Cordis bundle `@cybereinstein/deep-literature-research`。它不是另一个 Agent Harness，而是向 DSH 注册按需加载的 `deep-literature-research` Skill，直接复用 DSH 的模型循环、Session、subagent、`workflow`、权限和现有论文来源。
-
-它的核心产出是版本化 `LiteratureReview`，而不是一篇看起来完整的长报告：
+| [PRAgent](https://github.com/xi-zhao/PRAgent) | 历史证据生产引擎 | 把论文和 Claim 变成可运行、可检查的 `ReproductionCase` |
+| [RunThePaper](https://github.com/xi-zhao/RunThePaper) | 公开验证场与社区入口 | 展示真实运行、成功证据、失败尝试和剩余边界 |
+| **CyberEinstein** | 科学发现系统 | 继承学科历史，选择下一步研究，并产生新的可验证证据 |
 
 ```text
-研究问题与范围
--> 子问题和竞争解释
--> 检索批次、候选论文与访问级别
--> 证据、反证、矛盾与缺口
--> 带有明确理由的继续、受阻或停止决定
+PRAgent 重建历史研究
+→ RunThePaper 公开和验证历史
+→ CyberEinstein 理解前沿并开展新研究
+→ 新的成功与失败写回可执行科学史
 ```
 
-这也不是固定流水线。用户可以单独执行领域历史重建、先行工作检索、论文筛选、反证搜索、争议分析、覆盖审计或证据综合；新证据可以重新打开旧结论。每批检索后都必须总结错误、负结果和判断偏差，并在下一轮规划前查询适用的失败经验。元数据不能直接支持实质科研结论，摘要和全文证据必须明确区分，达到检索深度或 token 上限也不等于调研完成。
+PRAgent 不是 CyberEinstein 的最终定位。它让 CE 有能力理解已知科学，而不是在不知道历史是否可靠的情况下直接生成新结论。
 
-选择 DSH 原生实现是有意的架构决策：LangChain Open Deep Research、Deep Agents、GPT Researcher 等项目都自带自己的模型与 Agent 循环，直接嵌入会重复 CyberEinstein 已选定的运行底座。我们复用其问题分解、并行调查、缺口反思和反证搜索方法，但科研对象、来源合规和状态契约由 CyberEinstein 自己维护。详见 [Deep Literature Research 集成](docs/deep-literature-research.md)。
+## 100 篇论文不是奖杯，而是起点
 
-## 项目状态
+[RunThePaper](https://github.com/xi-zhao/RunThePaper) 已经公开 100 篇物理论文复现案例，并完成固定分母的 [Claim-first 100 篇审计](https://github.com/xi-zhao/RunThePaper/tree/main/evaluation/claim-first-100)。这批案例开始构成 CyberEinstein 的第一段可执行科学史。
 
-当前处于 AI4S 产品定义和架构奠基阶段。仓库已经固定并可直接运行官方完整底座 `@deepseek-ai/dsh@0.1.1-rc.2`，完成 PRAgent 来源适配器和 DSH 原生深度文献调研两个 bundle；没有 fork 或修改上游核心。下一里程碑仍以 PRAgent 为优先：建立可持久化的 `ReproductionCase` 领域服务，并让 `LiteratureReview` 通过同一证据边界为它提供研究脉络，而不是继续堆叠无边界工具。
+| 公开证据 | 审计结果 |
+| --- | ---: |
+| 论文案例 | 100 |
+| 论文原始 Claims | 1,427 |
+| Claim Checks | 3,933 |
+| 已复现 Checks | 2,068 |
+| 客观受阻 Checks | 1,134 |
+| 已尝试但未复现 Checks | 731 |
+| 尚未归档 Checks | 0 |
+
+按每个数值 Claim 等权计算，成功覆盖率为 **40.55%**。在具有合格科学区域证据的成功 Claim 上，条件 Fidelity 为 **92.97/100**，对应的证据覆盖成功 Claim 质量的 **23.37%**。
+
+这不代表“一百篇论文全部复现成功”。它代表所有 3,933 个 Checks 都有直接 Claim 映射和终态，成功、客观阻塞和真实失败都没有从历史中消失。
+
+对于 CyberEinstein，错误尝试不是需要清理的噪声，而是阻止未来研究重复踩坑的负知识。
+
+## 谁会使用 CyberEinstein
+
+第一批核心用户是手里有真实开放问题、并且能够判断科学有效性的研究者：
+
+- 青年 PI、博士后、博士生和科研工程师；
+- 以理论、计算和数据驱动研究为主的课题组；
+- 建设 AI for Science 能力的科研院所与研发团队；
+- 需要本地部署、模型可替换和研究过程可审计的组织。
+
+第一阶段从量子计算、量子信息、多体物理、非厄米物理和相邻计算物理方向切入。这不是 CyberEinstein 的学科边界，而是我们拥有领域判断、历史案例和可执行工具的第一块研究阵地。
+
+典型用户不是来问“给我十个新 Idea”，而是带着这样的任务：
+
+> 这个问题过去为什么没有解决？哪些路径已经失败？现在什么条件发生了变化？下一项最能区分竞争解释的计算或实验是什么？
+
+## 开放，不只是公开代码
+
+CyberEinstein 的目标是开放代码，也开放科研协作所需的核心协议：`Claim`、`Evidence`、`ReproductionCase`、`FailureLesson`、学科状态、研究机会和未来的 `DiscoveryCase`。
+
+开放让研究者能够检查结论如何产生，在本地连接私有数据、算力和工具，为新学科增加能力，并通过复现、纠错和独立审查共同扩展可执行科学史。
+
+> 当前 GitHub 仓库处于公开开发状态，但尚未加入正式开源许可证，`package.json` 仍声明 `UNLICENSED`。在许可证落地前，它还不是法律意义上的正式开源发布。
+
+许可证确定后，开放协议、社区贡献、领域插件和自托管部署将成为 CyberEinstein 综合壁垒的重要组成部分。
+
+## 当前实现与下一步
+
+我们把已经存在的基础与尚未完成的产品能力明确分开。
+
+| 状态 | 能力 |
+| --- | --- |
+| 已实现 | 官方 `@deepseek-ai/dsh@0.1.1-rc.2` Agent、Session、权限、Web 与 Cordis 插件底座 |
+| 已实现 | 受限论文发现与获准全文读取适配器 |
+| 已实现 | 记录证据、反证、矛盾、缺口和停止理由的 Deep Literature Research |
+| 已实现 | 持久化、版本化 `ReproductionCase` 及其证据、并发和独立审查规则 |
+| 正在建设 | 将 RunThePaper 与 PRAgent 资产转化为跨论文、跨项目的可执行科学史 |
+| 正在建设 | 学科状态、前沿机会、竞争假设和 `DiscoveryCase` 领域模型 |
+| 长期方向 | 科学发现闭环、跨课题学习，以及在明确授权下连接真实实验 observation 与仪器 |
+
+CyberEinstein 今天还不是一个已经完成的自主科学家。当前仓库正在建立它最难替代的基础：让科研历史、证据和失败能够被 Agent 真正继承。
+
+## 不变的科学规则
+
+- 每个新 Claim 都必须连接历史依据、运行证据、反证和不确定性。
+- 计算或实验结果必须追溯到代码、环境、参数、输入和 observation。
+- 新颖性必须说明相对已有 Claim 的真实增量，而不是依赖模型自述。
+- 发现过程与反证、独立审查过程保持分离。
+- 受阻、负结果和无效运行都是科研历史的一部分。
+- 发表、外部写入、昂贵计算和真实设备控制必须经过人类授权。
+- 降低科研门槛不能以降低证据、复现和审查标准为代价。
+
+详细产品边界见 [发展愿景](docs/development-vision.md) 与 [架构原则](docs/architecture.md)。
 
 ## 开发者快速开始
 
-推荐使用 Node.js 24 或更高版本。
+### 环境要求
+
+- Node.js 24 或更高版本（也支持 22.19+）
+- Corepack / pnpm
+- Python 3.11–3.14 和 [uv](https://docs.astral.sh/uv/)
+
+### 安装与验证
 
 ```bash
+git clone https://github.com/xi-zhao/CyberEinstein.git
+cd CyberEinstein
 corepack pnpm install
 corepack pnpm setup
-corepack pnpm pragent:sources:check
-corepack pnpm deep-research:check
-corepack pnpm dsh:check
+corepack pnpm test
+```
+
+静态检查无需 API Key。运行真实模型任务前：
+
+```bash
+cp .env.example .env
+# 编辑 .env，填入 DEEPSEEK_API_KEY
 corepack pnpm dsh:web
 ```
 
-`setup` 会同步两个锁定的论文来源运行时，并把来源与 Deep Research bundle 一起安装到项目内的 headless 和 web Profile。`pragent:sources:check` 检查 MCP 工具边界，`deep-research:check` 检查 Skill 与 `LiteratureReview` 契约；`pragent:sources:smoke` 还会发起最小联网调用。在工作台中可以自然提出文献调研任务，也可以用 `/deep-literature-research` 显式加载 Skill。`dsh:web` 会在 `http://127.0.0.1:3080` 启动工作台，真实模型请求才需要 `DEEPSEEK_API_KEY`。详见 [PRAgent 来源集成](docs/pragent-source-integrations.md)、[Deep Literature Research 集成](docs/deep-literature-research.md) 和 [DeepSeek Harness 底座说明](docs/harness-integration.md)。
+工作台默认启动于 `http://127.0.0.1:3080`。也可以单独检查各项基础能力：
 
-项目的完整发展方向见 [docs/development-vision.md](docs/development-vision.md)，详细架构决策见 [docs/architecture.md](docs/architecture.md)。
+```bash
+corepack pnpm pragent:sources:check
+corepack pnpm deep-research:check
+corepack pnpm dsh:headless -- "重建这个研究方向的历史证据和当前争议"
+```
+
+实现说明：
+
+- [PRAgent 来源集成](docs/pragent-source-integrations.md)
+- [Deep Literature Research](docs/deep-literature-research.md)
+- [ReproductionCase 领域服务](docs/reproduction-case.md)
+- [DeepSeek Harness 底座](docs/harness-integration.md)
+
+## 从这里开始
+
+如果你手里有一个真正值得研究的问题，不要让 AI 从空白提示词开始。
+
+- 查看 [RunThePaper 的 100 篇公开案例](https://github.com/xi-zhao/RunThePaper#paper-reproduction-catalog)，了解现有证据怎样进入历史；
+- 在本地运行 CyberEinstein，检查科研对象、证据规则和 Agent 基础；
+- 带着一个研究方向、一段正确代码、一次失败尝试或一种更可靠的验证方法，[参与讨论](https://github.com/xi-zhao/CyberEinstein/issues/new)。
+
+<p align="center"><strong>继承科学走过的每一步，才更有机会走出下一步。</strong></p>

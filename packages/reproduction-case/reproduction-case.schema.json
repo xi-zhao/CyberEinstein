@@ -1,0 +1,394 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:cybereinstein:schema:reproduction-case:0.1.0",
+  "title": "ReproductionCase",
+  "description": "Versioned state for reproducing one paper or a bounded set of scientific claims.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "id",
+    "version",
+    "status",
+    "title",
+    "researchProgramId",
+    "source",
+    "claims",
+    "methodReconstructions",
+    "infrastructureRequirements",
+    "runs",
+    "evidence",
+    "reviews",
+    "failureLessons",
+    "reproductionBoundary",
+    "createdBy",
+    "createdAt",
+    "updatedAt"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "0.1.0" },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+    },
+    "version": { "type": "integer", "minimum": 1 },
+    "status": {
+      "enum": [
+        "scoping",
+        "reconstructing",
+        "ready",
+        "executing",
+        "under_review",
+        "partial",
+        "blocked",
+        "invalid",
+        "reproduced",
+        "archived"
+      ]
+    },
+    "title": { "type": "string", "minLength": 1 },
+    "researchProgramId": { "type": ["string", "null"] },
+    "source": { "$ref": "#/$defs/source" },
+    "claims": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/claim" }
+    },
+    "methodReconstructions": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/method" }
+    },
+    "infrastructureRequirements": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/requirement" }
+    },
+    "runs": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/run" }
+    },
+    "evidence": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/evidence" }
+    },
+    "reviews": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/review" }
+    },
+    "failureLessons": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/failureLesson" }
+    },
+    "reproductionBoundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["included", "excluded", "remaining"],
+      "properties": {
+        "included": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "excluded": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "remaining": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "createdBy": { "type": "string", "minLength": 1 },
+    "createdAt": { "type": "string", "minLength": 1 },
+    "updatedAt": { "type": "string", "minLength": 1 }
+  },
+  "$defs": {
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "stableId",
+        "title",
+        "provenance",
+        "accessLevel"
+      ],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "kind": { "enum": ["paper", "doi", "url", "artifact", "claim"] },
+        "stableId": { "type": ["string", "null"] },
+        "title": { "type": "string", "minLength": 1 },
+        "provenance": { "type": "string", "minLength": 1 },
+        "accessLevel": {
+          "enum": ["metadata_only", "abstract", "full_text", "user_provided"]
+        }
+      }
+    },
+    "claim": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "text",
+        "kind",
+        "verificationType",
+        "target",
+        "status",
+        "successCriteria",
+        "methodIds",
+        "runIds",
+        "evidenceIds",
+        "counterEvidenceIds",
+        "reviewIds",
+        "uncertainties"
+      ],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "text": { "type": "string", "minLength": 1 },
+        "kind": {
+          "enum": [
+            "background",
+            "method",
+            "empirical_result",
+            "mechanism",
+            "generalization",
+            "novelty"
+          ]
+        },
+        "verificationType": {
+          "enum": ["theoretical", "computational", "physical", "hybrid"]
+        },
+        "target": { "type": "boolean" },
+        "status": {
+          "enum": [
+            "unassessed",
+            "scoped",
+            "ready",
+            "executing",
+            "supported",
+            "challenged",
+            "blocked",
+            "invalid",
+            "reproduced"
+          ]
+        },
+        "successCriteria": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "methodIds": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "runIds": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "evidenceIds": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "counterEvidenceIds": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "reviewIds": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "uncertainties": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "method": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "claimIds",
+        "description",
+        "assumptions",
+        "parameters",
+        "software",
+        "data",
+        "missingDetails"
+      ],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "claimIds": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" }
+        },
+        "description": { "type": "string", "minLength": 1 },
+        "assumptions": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "parameters": { "type": "object" },
+        "software": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "data": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "missingDetails": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "requirement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "claimIds", "kind", "description", "status", "blocking"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "claimIds": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "kind": {
+          "enum": ["compute", "data", "software", "instrument", "personnel", "cost", "permission"]
+        },
+        "description": { "type": "string", "minLength": 1 },
+        "status": { "enum": ["unknown", "available", "missing", "pending_approval"] },
+        "blocking": { "type": "boolean" }
+      }
+    },
+    "run": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "claimIds",
+        "methodId",
+        "kind",
+        "status",
+        "startedAt",
+        "finishedAt",
+        "environment",
+        "parameters",
+        "inputArtifacts",
+        "outputArtifacts",
+        "executor"
+      ],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "claimIds": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" }
+        },
+        "methodId": { "type": "string", "minLength": 1 },
+        "kind": { "enum": ["derivation", "computation", "physical_experiment", "analysis"] },
+        "status": { "enum": ["planned", "running", "completed", "failed", "cancelled", "blocked"] },
+        "startedAt": { "type": ["string", "null"] },
+        "finishedAt": { "type": ["string", "null"] },
+        "environment": {
+          "type": "object",
+          "minProperties": 1
+        },
+        "parameters": { "type": "object" },
+        "inputArtifacts": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "outputArtifacts": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "executor": { "type": "string", "minLength": 1 }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "anyOf": [
+        {
+          "properties": {
+            "sourceId": { "type": "string", "minLength": 1 }
+          },
+          "required": ["sourceId"]
+        },
+        {
+          "properties": {
+            "runId": { "type": "string", "minLength": 1 }
+          },
+          "required": ["runId"]
+        }
+      ],
+      "required": [
+        "id",
+        "claimIds",
+        "relation",
+        "kind",
+        "sourceId",
+        "runId",
+        "locator",
+        "summary",
+        "assessment",
+        "createdBy"
+      ],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "claimIds": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" }
+        },
+        "relation": { "enum": ["supports", "challenges", "context"] },
+        "kind": { "enum": ["source", "run_result", "comparison", "observation", "derivation"] },
+        "sourceId": { "type": ["string", "null"] },
+        "runId": { "type": ["string", "null"] },
+        "locator": { "type": ["string", "null"] },
+        "summary": { "type": "string", "minLength": 1 },
+        "assessment": { "type": "string", "minLength": 1 },
+        "createdBy": { "type": "string", "minLength": 1 }
+      }
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "targetType",
+        "targetId",
+        "reviewer",
+        "independent",
+        "decision",
+        "findings",
+        "createdAt"
+      ],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "targetType": { "enum": ["claim", "run", "evidence", "case"] },
+        "targetId": { "type": "string", "minLength": 1 },
+        "reviewer": { "type": "string", "minLength": 1 },
+        "independent": { "type": "boolean" },
+        "decision": { "enum": ["accepted", "changes_requested", "rejected", "inconclusive"] },
+        "findings": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "createdAt": { "type": "string", "minLength": 1 }
+      }
+    },
+    "failureLesson": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "role", "effect", "scope", "validationStatus"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "role": { "enum": ["retrieved", "candidate_created"] },
+        "effect": { "type": "string", "minLength": 1 },
+        "scope": { "type": "string", "minLength": 1 },
+        "validationStatus": { "enum": ["candidate", "validated", "rejected", "unknown"] }
+      }
+    }
+  }
+}

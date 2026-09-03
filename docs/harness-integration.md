@@ -52,7 +52,7 @@ corepack pnpm dsh:headless -- "summarize this workspace"
 
 ## CyberEinstein 插件层
 
-当前已落地两个边界独立的插件 bundle：
+当前已落地三个边界独立的插件 bundle：
 
 ```text
 CyberEinstein product
@@ -65,9 +65,11 @@ CyberEinstein product
 
 `@cybereinstein/deep-literature-research` 直接向 DSH 的 Skill Registry 注册 `deep-literature-research`，组合现有论文来源、subagent 和 `workflow` 完成文献调研。它不启动 LangGraph、Deep Agents、GPT Researcher 或独立模型客户端，因此不存在第二套 Session、权限、模型密钥和 Agent Loop。编排指导放在版本化 Skill，`LiteratureReview` 结构放在 JSON Schema；未来不可绕过的持久化和状态规则仍应进入领域服务，不能只依赖提示词。
 
-`corepack pnpm setup` 将两个 bundle 都安装到项目隔离的 headless/web Profile，不改官方 bundle 或上游源码。也可以使用 `pragent:sources:setup` 和 `deep-research:setup` 分别装配。
+`@cybereinstein/reproduction-case` 提供持久化、版本化的 `ReproductionCase` 领域服务。它把 Claim 目标、运行、证据、审查、失败经验和复现边界保存在 Agent 会话之外，并通过领域规则阻止元数据充当科研证据、过期写入覆盖新版本，以及未经独立审查的 Claim 被标记为已复现。
 
-插件应继续通过 Cordis 的 Service、事件和可逆 effect 接入已有能力。科研业务状态和规则放在插件自己的模块中，不散落到 YAML，也不能只靠提示词约束。来源与 Deep Research 的具体边界见 [pragent-source-integrations.md](pragent-source-integrations.md) 和 [deep-literature-research.md](deep-literature-research.md)。
+`corepack pnpm setup` 将三个 bundle 都安装到项目隔离的 headless/web Profile，不改官方 bundle 或上游源码。也可以使用 `pragent:sources:setup`、`deep-research:setup` 和 `reproduction-case:setup` 分别装配。
+
+插件应继续通过 Cordis 的 Service、事件和可逆 effect 接入已有能力。科研业务状态和规则放在插件自己的模块中，不散落到 YAML，也不能只靠提示词约束。具体边界见 [pragent-source-integrations.md](pragent-source-integrations.md)、[deep-literature-research.md](deep-literature-research.md) 和 [reproduction-case.md](reproduction-case.md)。
 
 ## 升级规则
 

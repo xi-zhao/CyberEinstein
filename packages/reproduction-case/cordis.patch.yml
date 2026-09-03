@@ -1,0 +1,8 @@
+# ReproductionCase owns scientific state and validation. DSH remains the Agent
+# runtime; this bundle only provides a domain service.
+- insert:
+    - id: cybereinstein-reproduction-case
+      name: '@cybereinstein/reproduction-case'
+      disabled: !!js (process.env.CYBEREINSTEIN_REPRODUCTION_CASE_ENABLED ?? 'true').toLowerCase() === 'false'
+      config:
+        root: !!js process.env.CYBEREINSTEIN_REPRODUCTION_STORE ?? '.cybereinstein/reproduction-cases'
