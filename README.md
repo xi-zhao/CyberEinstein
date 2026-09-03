@@ -7,7 +7,7 @@
 <p align="center">
   <strong>Executable History of Science</strong><br />
   Inherit every step science has taken. Then take the next one.<br />
-  An evidence-native AI scientist, open by design, that learns how a field reached today’s frontier—then conducts the next verifiable study.
+  An evidence-native AI scientist that turns a field's Claims, code, runs, evidence, and failed attempts into the foundation for its next verifiable study.
 </p>
 
 <p align="center">
@@ -16,11 +16,11 @@
 </p>
 
 <p align="center">
-  <a href="#the-executable-history-of-science">Understand the idea</a> ·
-  <a href="#from-history-to-discovery">See how it researches</a> ·
+  <a href="#ai-can-generate-ideas-science-needs-memory">Why it exists</a> ·
+  <a href="#who-cybereinstein-is-for">Who it is for</a> ·
+  <a href="#from-history-to-discovery">How it researches</a> ·
   <a href="#100-papers-are-a-starting-point-not-a-trophy-wall">Inspect the evidence</a> ·
-  <a href="#developer-quick-start">Run it locally</a> ·
-  <a href="docs/brand.md">Brand system</a>
+  <a href="#developer-quick-start">Run it locally</a>
 </p>
 
 > **Scientific discovery should not start from a blank prompt.**
@@ -29,7 +29,7 @@
   <img src="assets/readme/proof-strip.svg" width="100%" alt="CyberEinstein starts from a public evidence foundation: 100 paper cases, 1,427 Claims, and 3,933 terminally accounted Claim Checks" />
 </p>
 
-## New ideas are abundant. The next justified step is not.
+## AI can generate ideas. Science needs memory.
 
 AI can already read recent papers, generate hypotheses, write code, and produce a complete-looking research report. But science is not a jump from a few abstracts to a new idea, and an Agent declaring success does not make a scientific result valid.
 
@@ -38,6 +38,8 @@ Every worthwhile question has a history: what prior researchers established, whi
 If AI does not inherit that history, its ideas are rootless. It repeats old questions, falls into known failure modes, and can mistake an implementation artifact for a discovery.
 
 CyberEinstein does not begin with an empty prompt. It begins with the evidence history of a field.
+
+> Most AI research workflows retrieve history as temporary context for one answer. CyberEinstein turns it into durable, executable infrastructure for every study that follows.
 
 ## The Executable History of Science
 
@@ -56,6 +58,23 @@ The **Executable History of Science** is not a paper database or a conventional 
 | Context for one answer | Scientific memory that grows across people, Agents, and projects |
 
 This means CyberEinstein aims to understand not only what humanity currently knows, but why we believe it, where we failed, how the field arrived here, and which next step is worth taking.
+
+## Who CyberEinstein is for
+
+CyberEinstein is for researchers who own a real open problem, can judge scientific validity, and want an AI collaborator that leaves a durable evidence trail—not just a plausible answer.
+
+| User | The question they bring |
+| --- | --- |
+| Research lead or PI | Which next study deserves our time, compute, and funding? |
+| Postdoc, doctoral researcher, or research scientist | What is genuinely established, what already failed, and what should I test next? |
+| Scientific software engineer or AI4S team | How do we turn code, runs, reviews, and negative results into reusable research infrastructure? |
+| Research institute or R&D organization | Can we deploy privately, replace models, connect internal tools, and still audit every conclusion? |
+
+The first vertical covers quantum computing, quantum information, many-body physics, non-Hermitian physics, and adjacent computational physics. This is not CyberEinstein's final disciplinary boundary. It is the first area where we have domain judgment, historical cases, and executable tools.
+
+The intended user does not ask, “Give me ten new ideas.” They bring a harder question:
+
+> Why did this problem remain unsolved? Which paths already failed? What conditions have changed? Which next computation or experiment would best distinguish the competing explanations?
 
 ## From history to discovery
 
@@ -90,31 +109,6 @@ The discovery process advances a hypothesis; an independent validation process s
 Whether the outcome is a candidate new Claim, a negative result, or an objective blocker, preserve the full basis so the next researcher and the next Agent do not start over.
 
 CyberEinstein's ultimate output is not a chat transcript or an automatically generated paper. It is a piece of research that can be inspected, challenged, reproduced, and continued.
-
-## Our compounding moat
-
-The Executable History of Science is the core, but it is not the whole moat. CyberEinstein combines seven mutually reinforcing layers:
-
-| Moat | What CyberEinstein accumulates | What researchers gain |
-| --- | --- | --- |
-| Data | Executable scientific history, correct code, evidence, and failed attempts | No restart from abstracts and empty files |
-| Cognition | Continuously updated models of a field's state | A view of consensus, disputes, anomalies, and the real frontier |
-| Decision | Historically grounded research-opportunity selection | Resources go to the next study worth running |
-| Execution | Domain tools, scientific runtimes, simulators, and future instrument interfaces | Hypotheses become real observations |
-| Trust | Claim-first rules, falsification, independent review, and external reproduction | A reason to believe a result beyond the Agent's own claim |
-| Network | Researchers, labs, reviewers, and tool builders | One contribution improves the scientific memory of the field |
-| Open ecosystem | Inspectable rules, shared protocols, replaceable models, and self-hosting | No lock-in to an opaque system or a single model provider |
-
-The durable advantage is not one Agent workflow. It is a compounding loop:
-
-```text
-More historical reproductions
-→ More accurate field state
-→ Better frontier opportunities
-→ More credible new research
-→ More evidence from successes, failures, and reviews
-→ A richer Executable History of Science
-```
 
 ## Three projects, one scientific evidence chain
 
@@ -154,20 +148,30 @@ This does not mean that all 100 papers were completely reproduced. It means that
 
 For CyberEinstein, a failed attempt is not noise to delete. It is negative knowledge that can stop future research from repeating the same mistake.
 
-## Who CyberEinstein is for
+## Why this moat compounds
 
-The first core users are researchers who own a real open problem and can judge the scientific validity of a result:
+The Executable History of Science is the core asset, but it does not stand alone. CyberEinstein combines seven layers that make one another more valuable as the history grows:
 
-- PIs, postdoctoral researchers, doctoral researchers, and scientific engineers;
-- labs centered on theoretical, computational, or data-driven research;
-- research institutes and R&D teams building AI for Science capabilities;
-- organizations that need local deployment, replaceable models, and auditable research processes.
+| Layer | What CyberEinstein accumulates | What researchers gain |
+| --- | --- | --- |
+| Data | Executable scientific history, correct code, evidence, and failed attempts | No restart from abstracts and empty files |
+| Cognition | Continuously updated models of a field's state | A view of consensus, disputes, anomalies, and the real frontier |
+| Decision | Historically grounded research-opportunity selection | Resources go to the next study worth running |
+| Execution | Domain tools, scientific runtimes, simulators, and future instrument interfaces | Hypotheses become real observations |
+| Trust | Claim-first rules, falsification, independent review, and external reproduction | A reason to believe a result beyond the Agent's own claim |
+| Network | Researchers, labs, reviewers, and tool builders | One contribution improves the scientific memory of the field |
+| Open ecosystem | Inspectable rules, shared protocols, replaceable models, and self-hosting | No lock-in to an opaque system or a single model provider |
 
-The first vertical covers quantum computing, quantum information, many-body physics, non-Hermitian physics, and adjacent computational physics. This is not CyberEinstein's final disciplinary boundary. It is the first area where we have domain judgment, historical cases, and executable tools.
+The durable advantage is not one Agent workflow. It is a compounding loop:
 
-The intended user does not ask, “Give me ten new ideas.” They bring a harder question:
-
-> Why did this problem remain unsolved? Which paths already failed? What conditions have changed? Which next computation or experiment would best distinguish the competing explanations?
+```text
+More historical reproductions
+→ More accurate field state
+→ Better frontier opportunities
+→ More credible new research
+→ More evidence from successes, failures, and reviews
+→ A richer Executable History of Science
+```
 
 ## Open means more than public code
 
