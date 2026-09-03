@@ -1,10 +1,10 @@
-<h1 align="center">CyberEinstein</h1>
-
-<p align="center"><strong>Let AI inherit the path science has taken—then explore what comes next.</strong></p>
+<p align="center">
+  <img src="assets/brand/cybereinstein-hero.svg" width="100%" alt="CyberEinstein — Executable History of Science" />
+</p>
 
 <p align="center">
-  An open, evidence-native AI scientist built on the <strong>Executable History of Science</strong>.<br />
-  It learns how a field reached today's frontier from papers, code, successful evidence, and failed attempts, then works with scientists on verifiable new research.
+  <strong>Inherit every step science has taken. Then take the next one.</strong><br />
+  An evidence-native AI scientist, open by design, that learns how a field reached today’s frontier—then conducts the next verifiable study.
 </p>
 
 <p align="center">
@@ -16,7 +16,8 @@
   <a href="#the-executable-history-of-science">Understand the idea</a> ·
   <a href="#from-history-to-discovery">See how it researches</a> ·
   <a href="#100-papers-are-a-starting-point-not-a-trophy-wall">Inspect the evidence</a> ·
-  <a href="#developer-quick-start">Run it locally</a>
+  <a href="#developer-quick-start">Run it locally</a> ·
+  <a href="docs/brand.md">Brand system</a>
 </p>
 
 > **Scientific discovery should not start from a blank prompt.**
@@ -33,17 +34,11 @@ CyberEinstein does not begin with an empty prompt. It begins with the evidence h
 
 ## The Executable History of Science
 
-The **Executable History of Science** is not a paper database or a conventional knowledge graph. It preserves how scientific knowledge was produced, challenged, corrected, and extended:
+The **Executable History of Science** is not a paper database or a conventional knowledge graph. It preserves how scientific knowledge was produced, challenged, corrected, and extended.
 
-```text
-Historical questions
-→ Claims and competing hypotheses
-→ Methods, code, parameters, and environments
-→ Computations, experiments, and observations
-→ Supporting evidence, counterevidence, and failed attempts
-→ Reviews, disputes, and corrections
-→ Current consensus, unknown boundaries, and frontier opportunities
-```
+<p align="center">
+  <img src="assets/readme/executable-history.svg" width="100%" alt="Claims, methods, runs, evidence, and failures become an executable scientific history" />
+</p>
 
 | Conventional literature context | Executable History of Science |
 | --- | --- |
@@ -58,6 +53,10 @@ This means CyberEinstein aims to understand not only what humanity currently kno
 ## From history to discovery
 
 Scientific discovery is not a single generation. It is a process continually corrected by observation. CyberEinstein's intended research loop is:
+
+<p align="center">
+  <img src="assets/readme/research-loop.svg" width="100%" alt="CyberEinstein's six-step research loop from historical reconstruction to new evidence" />
+</p>
 
 ### 1. Reconstruct the history
 
@@ -112,24 +111,25 @@ More historical reproductions
 
 ## Three projects, one scientific evidence chain
 
+<p align="center">
+  <img src="assets/readme/ecosystem.svg" width="100%" alt="PRAgent, RunThePaper, and CyberEinstein form one compounding scientific evidence chain" />
+</p>
+
 | Project | Role | Primary output |
 | --- | --- | --- |
 | [PRAgent](https://github.com/xi-zhao/PRAgent) | Historical evidence engine | Turns papers and Claims into runnable, checkable `ReproductionCase` objects |
 | [RunThePaper](https://github.com/xi-zhao/RunThePaper) | Public validation ground and community entry point | Exposes real runs, successful evidence, failed attempts, and remaining boundaries |
 | **CyberEinstein** | Scientific discovery system | Inherits field history, selects the next research step, and produces new verifiable evidence |
 
-```text
-PRAgent reconstructs historical research
-→ RunThePaper exposes and validates the history
-→ CyberEinstein understands the frontier and conducts new research
-→ New successes and failures return to the Executable History of Science
-```
-
 PRAgent is not CyberEinstein's final positioning. It gives CyberEinstein a way to understand known science before generating unknown conclusions on top of an unverified history.
 
 ## 100 papers are a starting point, not a trophy wall
 
 [RunThePaper](https://github.com/xi-zhao/RunThePaper) contains 100 public physics-paper reproduction cases and a frozen [Claim-first audit of the 100-paper cohort](https://github.com/xi-zhao/RunThePaper/tree/main/evaluation/claim-first-100). Together they form the beginning of CyberEinstein's first executable scientific history.
+
+<p align="center">
+  <img src="assets/readme/evidence-base.svg" width="100%" alt="RunThePaper's 100-paper evidence base: 1,427 Claims and 3,933 terminally accounted Claim Checks" />
+</p>
 
 | Public evidence | Audited result |
 | --- | ---: |
@@ -249,4 +249,8 @@ If you have a question worth investigating, do not ask AI to start from a blank 
 - Run CyberEinstein locally and inspect its scientific objects, evidence rules, and Agent foundation.
 - Bring a research direction, a piece of correct code, a failed attempt, or a better validation method, and [start a discussion](https://github.com/xi-zhao/CyberEinstein/issues/new).
 
-<p align="center"><strong>Inherit every step science has taken. Then take the next one.</strong></p>
+<p align="center">
+  <img src="assets/brand/logo-mark.svg" width="72" alt="CyberEinstein logo" /><br />
+  <strong>Inherit every step science has taken. Then take the next one.</strong><br />
+  <sub>Executable History of Science · Open by design · Built for verifiable discovery</sub>
+</p>

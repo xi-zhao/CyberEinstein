@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520" role="img" aria-labelledby="title desc">
+  <title id="title">CyberEinstein research loop</title>
+  <desc id="desc">A six-step loop reconstructs history, models field state, selects opportunities, conducts studies, challenges results, and writes outcomes back into history.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="520" gradientUnits="userSpaceOnUse"><stop stop-color="#081725"/><stop offset="1" stop-color="#100D24"/></linearGradient>
+    <linearGradient id="active" x1="112" y1="0" x2="1090" y2="0" gradientUnits="userSpaceOnUse"><stop stop-color="#5EEBFF"/><stop offset=".55" stop-color="#8B99FF"/><stop offset="1" stop-color="#F4C95D"/></linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#64829D"/></marker>
+  </defs>
+  <rect width="1200" height="520" rx="24" fill="url(#bg)"/>
+  <rect x="1" y="1" width="1198" height="518" rx="23" fill="none" stroke="#29445D" stroke-width="2"/>
+  <g font-family="Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif">
+    <text x="56" y="58" fill="#F4F8FC" font-size="24" font-weight="700">From inherited evidence to new research</text>
+    <text x="56" y="84" fill="#91A9BC" font-size="14">Discovery is a loop corrected by observations—not a single generated answer.</text>
+
+    <g fill="none" stroke="#64829D" stroke-width="2" marker-end="url(#arrow)">
+      <path d="M337 190h58"/><path d="M685 190h58"/><path d="M905 258v42"/><path d="M743 370h-58"/><path d="M395 370h-58"/><path d="M175 300v-42"/>
+    </g>
+    <path d="M174 190h730" stroke="url(#active)" stroke-width="3" opacity=".4"/>
+    <path d="M904 370H174" stroke="url(#active)" stroke-width="3" opacity=".28"/>
+
+    <g transform="translate(95 120)">
+      <rect width="242" height="138" rx="18" fill="#0C2738" stroke="#28576B"/>
+      <circle cx="32" cy="32" r="16" fill="#14384B"/><text x="32" y="38" text-anchor="middle" fill="#6FEAF7" font-size="16" font-weight="700">1</text>
+      <text x="24" y="78" fill="#F1F7FB" font-size="18" font-weight="650">Reconstruct history</text>
+      <text x="24" y="103" fill="#96AEBC" font-size="12">Claims · code · parameters · failures</text>
+      <text x="24" y="122" fill="#96AEBC" font-size="12">become an inspectable lineage.</text>
+    </g>
+    <g transform="translate(395 120)">
+      <rect width="290" height="138" rx="18" fill="#10223B" stroke="#354F77"/>
+      <circle cx="32" cy="32" r="16" fill="#192E50"/><text x="32" y="38" text-anchor="middle" fill="#82C6FF" font-size="16" font-weight="700">2</text>
+      <text x="24" y="78" fill="#F1F7FB" font-size="18" font-weight="650">Model the field state</text>
+      <text x="24" y="103" fill="#96AEBC" font-size="12">Consensus · disputes · anomalies · blockers</text>
+      <text x="24" y="122" fill="#96AEBC" font-size="12">show why today’s frontier exists.</text>
+    </g>
+    <g transform="translate(743 120)">
+      <rect width="322" height="138" rx="18" fill="#151F3B" stroke="#4B4B7B"/>
+      <circle cx="32" cy="32" r="16" fill="#232D54"/><text x="32" y="38" text-anchor="middle" fill="#A59BFF" font-size="16" font-weight="700">3</text>
+      <text x="24" y="78" fill="#F1F7FB" font-size="18" font-weight="650">Select an opportunity</text>
+      <text x="24" y="103" fill="#96AEBC" font-size="12">Value · novelty · discriminating power</text>
+      <text x="24" y="122" fill="#96AEBC" font-size="12">are judged before ideas are generated.</text>
+    </g>
+    <g transform="translate(743 300)">
+      <rect width="322" height="138" rx="18" fill="#211F36" stroke="#67566E"/>
+      <circle cx="32" cy="32" r="16" fill="#342C4B"/><text x="32" y="38" text-anchor="middle" fill="#E0A8DD" font-size="16" font-weight="700">4</text>
+      <text x="24" y="78" fill="#F1F7FB" font-size="18" font-weight="650">Conduct the study</text>
+      <text x="24" y="103" fill="#96AEBC" font-size="12">Competing hypotheses meet real tools,</text>
+      <text x="24" y="122" fill="#96AEBC" font-size="12">computations, experiments, and observations.</text>
+    </g>
+    <g transform="translate(395 300)">
+      <rect width="290" height="138" rx="18" fill="#241D34" stroke="#704B68"/>
+      <circle cx="32" cy="32" r="16" fill="#3A2945"/><text x="32" y="38" text-anchor="middle" fill="#F18EB2" font-size="16" font-weight="700">5</text>
+      <text x="24" y="78" fill="#F1F7FB" font-size="18" font-weight="650">Challenge the result</text>
+      <text x="24" y="103" fill="#96AEBC" font-size="12">Counterevidence · alternative explanations</text>
+      <text x="24" y="122" fill="#96AEBC" font-size="12">and independent review test the Claim.</text>
+    </g>
+    <g transform="translate(95 300)">
+      <rect width="242" height="138" rx="18" fill="#1D2435" stroke="#5D625E"/>
+      <circle cx="32" cy="32" r="16" fill="#303947"/><text x="32" y="38" text-anchor="middle" fill="#F4C95D" font-size="16" font-weight="700">6</text>
+      <text x="24" y="78" fill="#F1F7FB" font-size="18" font-weight="650">Write back</text>
+      <text x="24" y="103" fill="#96AEBC" font-size="12">Success, negative result, or blocker:</text>
+      <text x="24" y="122" fill="#96AEBC" font-size="12">every outcome enriches the history.</text>
+    </g>
+
+    <rect x="414" y="468" width="372" height="30" rx="15" fill="#142233" stroke="#334B5F"/>
+    <text x="600" y="488" text-anchor="middle" fill="#B6C8D5" font-size="11" font-weight="700" letter-spacing="1.3">TRUST GATE · FALSIFICATION · INDEPENDENT REVIEW</text>
+  </g>
+</svg>

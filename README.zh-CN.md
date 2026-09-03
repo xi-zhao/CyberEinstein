@@ -1,10 +1,10 @@
-<h1 align="center">CyberEinstein</h1>
-
-<p align="center"><strong>让 AI 继承科学走过的路，再探索科学的下一步。</strong></p>
+<p align="center">
+  <img src="assets/brand/cybereinstein-hero.svg" width="100%" alt="CyberEinstein — 可执行科学史" />
+</p>
 
 <p align="center">
-  一个建立在 <strong>Executable History of Science（可执行科学史）</strong>之上的开放、证据原生 AI 科学家系统。<br />
-  它从论文、代码、成功证据和失败尝试中理解一个学科如何走到今天，再与科学家共同开展可验证的新研究。
+  <strong>继承科学走过的每一步，才更有机会走出下一步。</strong><br />
+  一个证据原生、为开放而设计的 AI 科学家系统：先理解学科如何走到今天，再开展下一项可验证的新研究。
 </p>
 
 <p align="center">
@@ -16,7 +16,8 @@
   <a href="#可执行科学史">理解可执行科学史</a> ·
   <a href="#从历史走向发现">看它如何研究</a> ·
   <a href="#100-篇论文不是奖杯而是起点">检查公开证据</a> ·
-  <a href="#开发者快速开始">在本地运行</a>
+  <a href="#开发者快速开始">在本地运行</a> ·
+  <a href="docs/brand.md">品牌系统</a>
 </p>
 
 > **科学发现，不应该从一个空白提示词开始。**
@@ -33,17 +34,11 @@ CyberEinstein 的起点不是一个空白 Prompt，而是一个学科已经走�
 
 ## 可执行科学史
 
-**Executable History of Science** 不是论文数据库，也不是普通知识图谱。它试图保存科学知识是怎样产生、失败、修正和继续发展的：
+**Executable History of Science** 不是论文数据库，也不是普通知识图谱。它试图保存科学知识是怎样产生、失败、修正和继续发展的。
 
-```text
-历史问题
-→ 历代 Claims 与竞争假设
-→ 方法、代码、参数和环境
-→ 计算、实验与 observation
-→ 成功证据、反证和失败尝试
-→ 审查、争议与修正
-→ 当前共识、未知边界和前沿机会
-```
+<p align="center">
+  <img src="assets/readme/executable-history.svg" width="100%" alt="Claim、方法、运行、证据和失败共同形成可执行科学史" />
+</p>
 
 | 普通文献上下文 | 可执行科学史 |
 | --- | --- |
@@ -58,6 +53,10 @@ CyberEinstein 的起点不是一个空白 Prompt，而是一个学科已经走�
 ## 从历史走向发现
 
 科学发现不是一次生成，而是一个不断被 observation 修正的过程。CyberEinstein 的完整研究闭环是：
+
+<p align="center">
+  <img src="assets/readme/research-loop.svg" width="100%" alt="CyberEinstein 从历史重建到新证据的六步研究闭环" />
+</p>
 
 ### 1. 重建历史
 
@@ -112,24 +111,25 @@ CyberEinstein 最终交付的不是一段对话或一篇自动生成的论文，
 
 ## 三个项目，一条科研证据链
 
+<p align="center">
+  <img src="assets/readme/ecosystem.svg" width="100%" alt="PRAgent、RunThePaper 与 CyberEinstein 构成持续复利的科研证据链" />
+</p>
+
 | 项目 | 角色 | 核心产出 |
 | --- | --- | --- |
 | [PRAgent](https://github.com/xi-zhao/PRAgent) | 历史证据生产引擎 | 把论文和 Claim 变成可运行、可检查的 `ReproductionCase` |
 | [RunThePaper](https://github.com/xi-zhao/RunThePaper) | 公开验证场与社区入口 | 展示真实运行、成功证据、失败尝试和剩余边界 |
 | **CyberEinstein** | 科学发现系统 | 继承学科历史，选择下一步研究，并产生新的可验证证据 |
 
-```text
-PRAgent 重建历史研究
-→ RunThePaper 公开和验证历史
-→ CyberEinstein 理解前沿并开展新研究
-→ 新的成功与失败写回可执行科学史
-```
-
 PRAgent 不是 CyberEinstein 的最终定位。它让 CE 有能力理解已知科学，而不是在不知道历史是否可靠的情况下直接生成新结论。
 
 ## 100 篇论文不是奖杯，而是起点
 
 [RunThePaper](https://github.com/xi-zhao/RunThePaper) 已经公开 100 篇物理论文复现案例，并完成固定分母的 [Claim-first 100 篇审计](https://github.com/xi-zhao/RunThePaper/tree/main/evaluation/claim-first-100)。这批案例开始构成 CyberEinstein 的第一段可执行科学史。
+
+<p align="center">
+  <img src="assets/readme/evidence-base.svg" width="100%" alt="RunThePaper 的百篇论文证据基础：1,427 个 Claim 与 3,933 个全部归档的 Claim Check" />
+</p>
 
 | 公开证据 | 审计结果 |
 | --- | ---: |
@@ -249,4 +249,8 @@ corepack pnpm dsh:headless -- "重建这个研究方向的历史证据和当前�
 - 在本地运行 CyberEinstein，检查科研对象、证据规则和 Agent 基础；
 - 带着一个研究方向、一段正确代码、一次失败尝试或一种更可靠的验证方法，[参与讨论](https://github.com/xi-zhao/CyberEinstein/issues/new)。
 
-<p align="center"><strong>继承科学走过的每一步，才更有机会走出下一步。</strong></p>
+<p align="center">
+  <img src="assets/brand/logo-mark.svg" width="72" alt="CyberEinstein 标志" /><br />
+  <strong>继承科学走过的每一步，才更有机会走出下一步。</strong><br />
+  <sub>可执行科学史 · 为开放而设计 · 为可验证发现而构建</sub>
+</p>
