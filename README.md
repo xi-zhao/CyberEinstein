@@ -25,6 +25,10 @@
 
 > **Scientific discovery should not start from a blank prompt.**
 
+<p align="center">
+  <img src="assets/readme/proof-strip.svg" width="100%" alt="CyberEinstein starts from a public evidence foundation: 100 paper cases, 1,427 Claims, and 3,933 terminally accounted Claim Checks" />
+</p>
+
 ## New ideas are abundant. The next justified step is not.
 
 AI can already read recent papers, generate hypotheses, write code, and produce a complete-looking research report. But science is not a jump from a few abstracts to a new idea, and an Agent declaring success does not make a scientific result valid.

@@ -25,6 +25,10 @@
 
 > **科学发现，不应该从一个空白提示词开始。**
 
+<p align="center">
+  <img src="assets/readme/proof-strip.svg" width="100%" alt="CyberEinstein 从公开证据基础出发：100 篇论文案例、1,427 个 Claim 与 3,933 个全部终态归档的 Claim Check" />
+</p>
+
 ## 新 Idea 不稀缺，有根据的下一步才稀缺
 
 AI 已经可以阅读最新论文、生成假设、编写代码，甚至完成一篇看起来完整的研究报告。但科研不是从几篇摘要跳到一个新 Idea，也不是让 Agent 宣布“实验成功”。

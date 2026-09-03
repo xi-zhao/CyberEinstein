@@ -47,6 +47,7 @@ Campaign line:
 | Asset | Use |
 | --- | --- |
 | [`einstein-pixel-logo.png`](../assets/brand/einstein-pixel-logo.png) | The single primary logo for repository headers, square avatars, social previews, and product surfaces |
+| [`proof-strip.svg`](../assets/readme/proof-strip.svg) | Compact proof immediately below the repository's primary brand claim |
 
 Rules:
 

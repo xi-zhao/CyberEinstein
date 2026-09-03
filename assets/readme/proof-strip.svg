@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="176" viewBox="0 0 1200 176" role="img" aria-labelledby="title desc">
+  <title id="title">CyberEinstein public evidence foundation</title>
+  <desc id="desc">RunThePaper's fixed public cohort contains 100 paper cases, 1,427 authored Claims, and 3,933 Claim Checks with complete terminal accounting.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="176" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#081725"/>
+      <stop offset="1" stop-color="#100D24"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="56" y1="0" x2="1144" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5EEBFF"/>
+      <stop offset=".58" stop-color="#9B9DFF"/>
+      <stop offset="1" stop-color="#F4C95D"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="176" rx="24" fill="url(#bg)"/>
+  <rect x="1" y="1" width="1198" height="174" rx="23" fill="none" stroke="#29445D" stroke-width="2"/>
+  <rect x="56" y="32" width="1088" height="3" rx="1.5" fill="url(#accent)" opacity=".9"/>
+
+  <g font-family="Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif">
+    <g transform="translate(56 58)">
+      <text x="0" y="35" fill="#5EEBFF" font-size="38" font-weight="760">100</text>
+      <text x="0" y="58" fill="#91A9BC" font-size="12" font-weight="700" letter-spacing="1.2">PUBLIC PAPER CASES</text>
+    </g>
+
+    <line x1="302" y1="56" x2="302" y2="124" stroke="#29445D"/>
+    <g transform="translate(350 58)">
+      <text x="0" y="35" fill="#F5F8FC" font-size="38" font-weight="760">1,427</text>
+      <text x="0" y="58" fill="#91A9BC" font-size="12" font-weight="700" letter-spacing="1.2">AUTHORED CLAIMS</text>
+    </g>
+
+    <line x1="596" y1="56" x2="596" y2="124" stroke="#29445D"/>
+    <g transform="translate(644 58)">
+      <text x="0" y="35" fill="#9B9DFF" font-size="38" font-weight="760">3,933</text>
+      <text x="0" y="58" fill="#91A9BC" font-size="12" font-weight="700" letter-spacing="1.2">CLAIM CHECKS</text>
+    </g>
+
+    <line x1="890" y1="56" x2="890" y2="124" stroke="#29445D"/>
+    <g transform="translate(938 58)">
+      <text x="0" y="35" fill="#F4C95D" font-size="38" font-weight="760">100%</text>
+      <text x="0" y="58" fill="#91A9BC" font-size="12" font-weight="700" letter-spacing="1.2">TERMINAL ACCOUNTING</text>
+    </g>
+
+    <text x="600" y="151" text-anchor="middle" fill="#829BAE" font-size="12">Fixed public RunThePaper cohort · every Claim Check maps to a Claim and a terminal outcome</text>
+  </g>
+</svg>
