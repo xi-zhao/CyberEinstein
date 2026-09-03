@@ -12,7 +12,7 @@ The visual system connects three ideas:
 2. **Pixels signal execution.** The low-resolution visual language connects the scientific icon to code, open-source culture, and computational research.
 3. **History is executable.** Claims, code, runs, evidence, failures, and reviews form an inspectable chain that pushes research toward the next justified step.
 
-The primary logo is an original pixel-art reinterpretation of Einstein's iconic tongue-out portrait. Wild white hair and the magenta tongue create instant recognition; a cyan optical implant, black hacker jacket, and hazard-yellow field turn the historical scientist into CyberEinstein.
+The primary logo is an original pixel-art reinterpretation of Einstein's iconic tongue-out portrait. Wild silver hair and the burgundy tongue create instant recognition; a transparent monocular research scouter, black technical jacket, and midnight coordinate field turn the historical scientist into CyberEinstein without turning him into a cyborg.
 
 ## Message hierarchy
 
@@ -51,18 +51,20 @@ Campaign line:
 Rules:
 
 - Keep clear space around the hair silhouette equal to eight logical pixels.
-- Preserve the wild hair, direct gaze, tongue-out expression, cyan eye, magenta implant pixels, black jacket, and hazard-yellow field.
+- Preserve the wild silver hair, two natural eyes, tongue-out expression, transparent monocular scouter, burgundy tongue, black technical jacket, and midnight coordinate field.
 - Scale with nearest-neighbor resampling whenever possible. Do not blur, smooth, recolor, or add typography inside the mark.
-- Do not crop away the tongue or hair, add atom or brain icons, or turn the portrait into a photorealistic cyborg.
+- Do not crop away the tongue or hair, replace the scouter with an implanted eye, add atom or brain icons, or turn the portrait into a photorealistic cyborg.
 - The mark is an original AI-generated transformation using Arthur Sasse's 1951 photograph as a pose reference. [Wikimedia Commons marks the source image public domain in the United States](https://commons.wikimedia.org/wiki/File:Albert_Einstein_sticks_his_tongue_1951.jpg); copyright and commercial likeness treatment can vary by jurisdiction and should receive project-appropriate legal review.
 
 ## Color
 
 | Token | Hex | Meaning |
 | --- | --- | --- |
-| Hazard Yellow | `#FCEE09` | Primary logo field; energy, disruption, and visibility |
-| Cyber Cyan | `#00F0FF` | Optical implant and executable-system accent |
-| Rebel Magenta | `#FF2A6D` | Tongue, personality, and controlled defiance |
+| Obsidian | `#05080E` | Deepest logo shadows and technical jacket |
+| Instrument Silver | `#AABBC8` | Hair, scouter body, and precision-hardware cues |
+| Optics Cyan | `#43D9F5` | Transparent lens edge and executable-system accent |
+| Reasoning Indigo | `#6574D9` | Restrained scouter status signal |
+| Research Burgundy | `#8F3E5D` | Tongue and controlled personality accent |
 | History Night | `#071321` | Primary background; accumulated scientific history |
 | Deep Field | `#0C1C2C` | Secondary surfaces and diagrams |
 | Evidence Cyan | `#5EEBFF` | Traceable evidence, sources, and verified connections |
