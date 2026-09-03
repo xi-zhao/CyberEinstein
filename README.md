@@ -1,9 +1,12 @@
 <p align="center">
-  <img src="assets/brand/cybereinstein-hero.svg" width="100%" alt="CyberEinstein — Executable History of Science" />
+  <img src="assets/brand/einstein-pixel-logo.png" width="240" alt="CyberEinstein pixel-art logo" />
 </p>
 
+<h1 align="center">CyberEinstein</h1>
+
 <p align="center">
-  <strong>Inherit every step science has taken. Then take the next one.</strong><br />
+  <strong>Executable History of Science</strong><br />
+  Inherit every step science has taken. Then take the next one.<br />
   An evidence-native AI scientist, open by design, that learns how a field reached today’s frontier—then conducts the next verifiable study.
 </p>
 
@@ -250,7 +253,6 @@ If you have a question worth investigating, do not ask AI to start from a blank 
 - Bring a research direction, a piece of correct code, a failed attempt, or a better validation method, and [start a discussion](https://github.com/xi-zhao/CyberEinstein/issues/new).
 
 <p align="center">
-  <img src="assets/brand/logo-mark.svg" width="72" alt="CyberEinstein logo" /><br />
   <strong>Inherit every step science has taken. Then take the next one.</strong><br />
   <sub>Executable History of Science · Open by design · Built for verifiable discovery</sub>
 </p>

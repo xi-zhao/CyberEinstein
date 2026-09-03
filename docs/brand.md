@@ -1,17 +1,18 @@
 # CyberEinstein Brand System
 
-CyberEinstein should feel like serious scientific infrastructure with a visible frontier—not a generic chatbot, a paper-summary product, or science-fiction decoration.
+CyberEinstein should feel like serious scientific infrastructure with a rebellious digital personality—not a generic chatbot, a paper-summary product, or anonymous enterprise software.
 
 ## Brand idea
 
-**Core concept:** the evidence chain becomes a frontier.
+**Core concept:** Einstein's radical curiosity, made executable in pixels.
 
-The visual system connects two ideas:
+The visual system connects three ideas:
 
-1. **History is executable.** Claims, code, runs, evidence, failures, and reviews form an inspectable chain.
-2. **Research moves forward.** That chain converges on a luminous frontier: the next justified scientific step.
+1. **Radical curiosity is memorable.** Einstein's tongue-out expression gives the project an unmistakable, human, anti-corporate personality.
+2. **Pixels signal execution.** The low-resolution visual language connects the scientific icon to code, open-source culture, and computational research.
+3. **History is executable.** Claims, code, runs, evidence, failures, and reviews form an inspectable chain that pushes research toward the next justified step.
 
-The logo therefore combines an open **C-shaped evidence chain** with a **frontier star**. The chain is deliberately incomplete: CyberEinstein is not a closed body of knowledge. Every validated result extends it.
+The primary logo is an original pixel-art reinterpretation of Einstein's iconic tongue-out portrait. Wild white hair and the magenta tongue create instant recognition; a cyan optical implant, black hacker jacket, and hazard-yellow field turn the historical scientist into CyberEinstein.
 
 ## Message hierarchy
 
@@ -45,21 +46,23 @@ Campaign line:
 
 | Asset | Use |
 | --- | --- |
-| [`logo-mark.svg`](../assets/brand/logo-mark.svg) | Square avatars, repository social preview, favicons, and compact product surfaces |
-| [`wordmark.svg`](../assets/brand/wordmark.svg) | Partner material, documentation covers, and wide product headers |
-| [`cybereinstein-hero.svg`](../assets/brand/cybereinstein-hero.svg) | GitHub README and project landing surfaces |
+| [`einstein-pixel-logo.png`](../assets/brand/einstein-pixel-logo.png) | The single primary logo for repository headers, square avatars, social previews, and product surfaces |
 
 Rules:
 
-- Keep clear space around the mark equal to the diameter of one evidence node.
-- Do not rotate the chain, recolor individual nodes, or replace the frontier star with an atom icon.
-- Do not put the transparent mark directly on a busy image.
-- The hero is the preferred README entry point; the standalone wordmark is the preferred partner lockup.
+- Keep clear space around the hair silhouette equal to eight logical pixels.
+- Preserve the wild hair, direct gaze, tongue-out expression, cyan eye, magenta implant pixels, black jacket, and hazard-yellow field.
+- Scale with nearest-neighbor resampling whenever possible. Do not blur, smooth, recolor, or add typography inside the mark.
+- Do not crop away the tongue or hair, add atom or brain icons, or turn the portrait into a photorealistic cyborg.
+- The mark is an original AI-generated transformation using Arthur Sasse's 1951 photograph as a pose reference. [Wikimedia Commons marks the source image public domain in the United States](https://commons.wikimedia.org/wiki/File:Albert_Einstein_sticks_his_tongue_1951.jpg); copyright and commercial likeness treatment can vary by jurisdiction and should receive project-appropriate legal review.
 
 ## Color
 
 | Token | Hex | Meaning |
 | --- | --- | --- |
+| Hazard Yellow | `#FCEE09` | Primary logo field; energy, disruption, and visibility |
+| Cyber Cyan | `#00F0FF` | Optical implant and executable-system accent |
+| Rebel Magenta | `#FF2A6D` | Tongue, personality, and controlled defiance |
 | History Night | `#071321` | Primary background; accumulated scientific history |
 | Deep Field | `#0C1C2C` | Secondary surfaces and diagrams |
 | Evidence Cyan | `#5EEBFF` | Traceable evidence, sources, and verified connections |
@@ -87,7 +90,7 @@ Color never carries scientific status alone. Pair it with a label, number, shape
 - Solid connections represent executed or evidenced relationships.
 - Dashed rose connections represent failures, counterevidence, or paths returning to history.
 - The gold frontier star appears only for a selected opportunity or justified next step.
-- Avoid generic robot heads, glowing brains, Einstein portraits, DNA stock imagery, and decorative atom symbols.
+- Avoid generic robot heads, glowing brains, unrelated Einstein stock photos, DNA stock imagery, and decorative atom symbols.
 
 ## Voice
 

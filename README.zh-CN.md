@@ -1,9 +1,12 @@
 <p align="center">
-  <img src="assets/brand/cybereinstein-hero.svg" width="100%" alt="CyberEinstein — 可执行科学史" />
+  <img src="assets/brand/einstein-pixel-logo.png" width="240" alt="CyberEinstein 像素风 Logo" />
 </p>
 
+<h1 align="center">CyberEinstein</h1>
+
 <p align="center">
-  <strong>继承科学走过的每一步，才更有机会走出下一步。</strong><br />
+  <strong>Executable History of Science · 可执行科学史</strong><br />
+  继承科学走过的每一步，才更有机会走出下一步。<br />
   一个证据原生、为开放而设计的 AI 科学家系统：先理解学科如何走到今天，再开展下一项可验证的新研究。
 </p>
 
@@ -250,7 +253,6 @@ corepack pnpm dsh:headless -- "重建这个研究方向的历史证据和当前�
 - 带着一个研究方向、一段正确代码、一次失败尝试或一种更可靠的验证方法，[参与讨论](https://github.com/xi-zhao/CyberEinstein/issues/new)。
 
 <p align="center">
-  <img src="assets/brand/logo-mark.svg" width="72" alt="CyberEinstein 标志" /><br />
   <strong>继承科学走过的每一步，才更有机会走出下一步。</strong><br />
   <sub>可执行科学史 · 为开放而设计 · 为可验证发现而构建</sub>
 </p>
