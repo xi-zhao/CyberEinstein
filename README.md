@@ -4,149 +4,77 @@
 
 <h1 align="center">CyberEinstein</h1>
 
-<p align="center">
-  <strong>Inherit the path of science. Discover what comes next.</strong><br />
-  Open-source AI scientist · Executable History of Science · Wider participation
-</p>
+<p align="center"><strong>Give everyone a chance to discover something humanity does not yet know.</strong></p>
 
 <p align="center">
   <strong>English</strong> · <a href="README.zh-CN.md">简体中文</a>
 </p>
 
-**CyberEinstein is an open-source AI scientist being built to conduct original research and discover new knowledge. Its foundation is the Executable History of Science.**
+CyberEinstein is an open-source AI scientist in development, built toward a goal: asking questions, conducting original research, and discovering and testing new knowledge alongside people.
 
-Our chosen approach is to let AI inherit a field's validated methods, real runs, and failed attempts; understand how science reached its current frontier; and investigate the next step. Each new study then becomes part of the history others can inherit.
+Our approach starts with the history of science. We want AI to inherit earlier methods, evidence, failures, and corrections, then find questions that remain unanswered or deserve another attempt. We call this the **Executable History of Science**.
 
-We want this kind of AI scientist to give more people the opportunity to help create knowledge.
-
-<p align="center">
-  <a href="#story">The dream behind the name</a> ·
-  <a href="#discovery">Our approach</a> ·
-  <a href="#mission">Wider participation</a> ·
-  <a href="#today">Available today</a> ·
-  <a href="#start">Get started</a> ·
-  <a href="https://github.com/xi-zhao/CyberEinstein/issues">Contribute</a>
-</p>
-
-> **Current stage: developer preview.** Paper maps, literature-research workflows, and reproduction-record foundations are available. The complete original-discovery loop and an accessible experience for nontechnical users are still being built.
+[Why we are building it](#story) · [Our approach](#approach) · [Progress](#today) · [Get involved](#start)
 
 <a id="story"></a>
 
-## Why CyberEinstein
+## A childhood dream
 
 I have loved physics since childhood, and I dreamed of becoming a scientist who could stand alongside Einstein: asking my own questions, discovering something humanity did not yet know, and adding a new possibility to the way we understand the world.
 
-From university through my PhD, I continued working in physics. Doing research gave me a clearer understanding of its difficulty: asking a good question is hard; finding a reliable answer is harder still.
+From university through my PhD, I continued working in physics. I know how difficult research is: asking a good question is hard; finding a reliable answer is harder still.
 
-Honestly, on my own, I will never reach Einstein's stature. But seeing what AI can do made me think about that dream again. If we combine human curiosity and scientific judgment with AI's capabilities, could we make real progress on profoundly important questions—even take a step toward a grand unified theory?
+Honestly, on my own, I will never reach Einstein's stature. But seeing what AI can do brought that dream back. If we combine human curiosity and scientific judgment with AI's capabilities, could we make real progress on profoundly important questions—even take a step toward a grand unified theory?
 
-I do not know how far this path can take us. But I want to give it a serious try.
+I do not know how far this path can take us. But I want to give it a serious try. That is where CyberEinstein began.
 
-That is why I want to build CyberEinstein: an AI scientist that explores the unknown, conducts original research, and discovers new knowledge alongside people. It should inherit the paths others have taken—their validated methods, actual research processes, failures, and corrections—and use them to find science's next step.
+And I hope that dream can belong to more people. A student, a teacher, or an independent researcher should have the opportunity to ask their own questions, find support for investigating them, and put their findings to the test.
 
-I also want that opportunity to reach more people. Students, teachers, independent researchers, and research teams should all have a chance to advance their own questions with AI. The childhood dream of becoming a scientist could find a new way forward.
+**To me, equitable access to science means giving more people the opportunity to explore the unknown and contribute new knowledge.**
 
-**That dream does not have to belong to me alone.**
+<a id="approach"></a>
 
-<a id="discovery"></a>
+## New discoveries can begin with the paths science has already taken
 
-## Our approach: turn science's past into a foundation for discovery
+A paper leaves a conclusion. To take the work further, a researcher also needs to understand why it holds, which conditions it depends on, what did not work, and what remains unresolved.
 
-CyberEinstein's goal is to discover new knowledge. Its defining choice is to build a field's research history into a foundation that AI can continually inherit, test, and use. This is the **Executable History of Science**.
+CyberEinstein aims to connect those research processes so AI can inspect evidence, rerun computations, understand failures, and use that experience to propose worthwhile next steps.
 
-Its value comes through three concrete commitments:
+That is what we mean by an Executable History of Science: **earlier investigations become experience that the next study can actually use.**
 
-### Inherit the investigation, as well as the conclusion
+Consider an idea once set aside because the computation was too expensive. When new tools become available, does it deserve another attempt? Does the old constraint still apply? What result would demonstrate progress?
 
-Connect published conclusions to methods, code, run conditions, evidence, and failure records. Where resources permit, a computation can be rerun. A disputed result can be traced to its basis. A failed attempt can be understood in its original conditions and limitations.
+We want CyberEinstein to follow such leads: identify a question, propose hypotheses, conduct computations or experiments, seek counterevidence, and submit the results to independent scrutiny. New findings and unsuccessful attempts should both remain available for others to build on.
 
-We want AI to move beyond explaining what a paper says and judge which prior work offers a reliable starting point for a new study.
-
-### Find questions in history that are worth reopening
-
-Conflicting findings, unexplained anomalies, and ideas once constrained by tools or resources can all point toward new research opportunities.
-
-Imagine a method that could not previously be tested because the necessary computation was out of reach. New tools become available. The useful questions extend beyond the latest papers: does the old constraint still apply, is this problem worth reopening, and what result would support or refute the idea?
-
-This is the judgment we want CyberEinstein to develop: finding a next step into the unknown by understanding the path of established science.
-
-### Let each study leave a foundation for the next discovery
-
-New findings, useful methods, ruled-out explanations, and unresolved questions should remain available with their applicable conditions and evidence. As research proceeds, that history is expanded and corrected.
-
-**What we want to accumulate is research experience that can support further discovery.** Executable scientific history is the core asset; original research is the purpose; open collaboration gives that accumulated work a chance to help more people.
-
-## How it should investigate an unknown
-
-A study can start with an open question, anomalous data, or an idea for a new method—not necessarily a paper selected for reproduction. The complete experience we are building is:
-
-1. **Identify a worthwhile unknown.** Understand prior progress, contradictions, and limitations, then judge which question deserves attention.
-2. **Propose new hypotheses and methods.** Develop possible explanations or solutions, with studies that can distinguish between them.
-3. **Execute and revise the study.** Conduct computations or experiments within resources and permissions, letting observations change the next action.
-4. **Test the contribution to knowledge.** Compare with prior work, seek counterexamples and alternative explanations, and undergo independent review.
-5. **Write the outcome back into history.** Preserve supported new conclusions, negative results, and unresolved questions so others can inspect and continue the work.
-
-**Reproduction asks whether an existing conclusion holds. Original research asks what else we can discover.** The former establishes a trusted starting point; the latter is CyberEinstein's central task. This complete discovery loop is still being built.
-
-<a id="mission"></a>
-
-## Open more paths into science
-
-People who dream of becoming scientists do not all start with the same opportunities. Students and teachers may lack a path into frontier research. Independent researchers and small teams may lack methods, tools, or collaborators. Professional teams also need ways to inherit the experience of those who came before them.
-
-Scientific curiosity exists far beyond a few institutions. Access to research knowledge, tools, methodological guidance, and collaboration should extend further too.
-
-This is what widening access to science means for CyberEinstein: making AI scientist capabilities available to more people and opening more opportunities to conduct original research. We aim to lower four barriers:
-
-- **Reaching the frontier:** Understand what a field knows and does not know, and find questions worth exploring.
-- **Conducting research:** Get support for forming hypotheses, designing methods, and carrying out validation to advance an original idea.
-- **Testing discoveries:** Judge whether a result is reliable, whether it adds new knowledge, and what evidence is still missing.
-- **Contributing knowledge:** Make new findings, reproductions, corrections, and negative results useful to the next researcher.
-
-We want the opportunity to do research to depend less on background, geography, or institutional resources. AI's role here is to expand human capability and enable more people to take part in creating knowledge.
-
-**Lower barriers to participation. Uphold scientific standards.** Wider access means helping people obtain the learning, expertise, and experimental conditions they need—not bypassing them.
+**Reproduction establishes a trusted starting point. Original discovery gives us a direction.** The accumulation of experience between scientific history and new research is the core we have chosen to build.
 
 <a id="today"></a>
 
-## What you can use today
+## Where we are today
 
-We are starting with quantum and computational physics to build the capabilities needed for original research. These foundations are implemented in the current repository:
+CyberEinstein is a **developer preview**, starting with quantum and computational physics. Three foundations are available to try:
 
-| Capability | What it provides |
+| What you want to do | What is available today |
 | --- | --- |
-| Paper maps | Start from one paper to explore related work, historical context, and recent developments in an interactive reading map. Automatically inferred relationships still need verification. |
-| Literature-research workflows | Organize searches and reading around a question; record supporting and opposing evidence, contradictions, gaps, and access limitations. |
-| Reproduction-record service | Preserve research targets, methods, runs, evidence, reviews, and failures with version history, providing a foundation for work to continue later. |
+| Understand how a field reached its current frontier | Generate an interactive map from a paper to explore related work and recent developments. |
+| Investigate the literature around a question | Organize searches and reading, and record evidence, contradictions, and unresolved questions. |
+| Preserve a study so work can continue | Record targets, methods, runs, evidence, and failures with version history. |
 
-Next, we will connect these foundations with real research cases and test a minimal discovery loop around an unanswered question: propose hypotheses, conduct the study, seek counterevidence, and obtain independent review. Research-opportunity selection, hypothesis generation, and sustained research execution still require implementation and validation. Real instrument connections are a later direction.
+These foundations are implemented. The complete process of generating new hypotheses, sustaining a study, and validating a discovery is still being built. Automatically inferred paper relationships require verification, and an accessible experience for nontechnical users is not yet complete.
 
-### Built on work you can inspect
+We have a body of work that anyone can inspect: [RunThePaper](https://github.com/xi-zhao/RunThePaper) publishes reproduction cases for 100 physics papers, including successful, blocked, and unsuccessful attempts. This does not mean all 100 papers have been fully reproduced; see the [public audit](https://github.com/xi-zhao/RunThePaper/tree/main/evaluation/claim-first-100) for the results. [PRAgent](https://github.com/xi-zhao/PRAgent) focuses on paper reproduction. CyberEinstein will build on this accumulated work to pursue original research; the complete cross-project integration remains under development.
 
-The related project [RunThePaper](https://github.com/xi-zhao/RunThePaper) publishes reproduction cases for 100 physics papers, including successful, blocked, and unsuccessful attempts. This does not mean all 100 papers have been fully reproduced; the [public audit](https://github.com/xi-zhao/RunThePaper/tree/main/evaluation/claim-first-100) explains the evidence and its limits.
-
-[PRAgent](https://github.com/xi-zhao/PRAgent) focuses on paper reproduction, while RunThePaper provides public cases and validation evidence. CyberEinstein is the AI scientist intended to conduct original research. Those accumulated records are a foundation for exploring the unknown, not the endpoint of its capabilities. The complete cross-project integration is still being built.
-
-## Technology for good shapes how we do research
-
-We want the new knowledge discovered with AI scientists to help people understand the world and address real problems. We also want more people to have the opportunity to create that knowledge. The project is guided by four commitments:
-
-- **Human agency.** AI helps people understand and act. Research direction, important conclusions, and high-risk actions retain human judgment and necessary authorization.
-- **Honesty and inspection.** Show evidence and uncertainty; preserve counterevidence and failure. An AI's self-assessment is not a scientific conclusion.
-- **Respect for contributions and rights.** Preserve sources and credit real contributors. Respect permissions for data, code, and literature; open science does not require publishing confidential or sensitive material.
-- **Public benefit.** Ask not only whether a study can succeed, but who benefits, who could be harmed, and how risks can be reduced.
-
-Our aim is to expand the opportunity to participate in science, not to guarantee a major discovery for everyone. Necessary safety conditions, expert guidance, and independent review remain essential.
+**Our next step is a research process around a real unanswered question that can be independently inspected.** It may produce a new result or rule out an explanation. Either way, we will preserve the evidence and limitations so the next attempt has a better starting point.
 
 <a id="start"></a>
 
-## Get started
+## Bring your question
 
-You do not need a major discovery to contribute.
+You may have a phenomenon you have always wanted to understand, an idea you have not yet tested, or research experience that could save someone else a failed attempt.
 
-- **Explore first:** Read [RunThePaper's public cases](https://github.com/xi-zhao/RunThePaper) to see how research records both results and limitations.
-- **Bring a question or experience:** [Join the discussion](https://github.com/xi-zhao/CyberEinstein/issues/new). Bring an open question worth investigating, an idea for a new method, or experience that could help a study. Do not submit sensitive material or anything you lack permission to publish.
-- **Help build it:** Run the current capabilities locally and improve documentation, case validation, or tools to make the next participant's first steps easier.
+[Bring it to CyberEinstein](https://github.com/xi-zhao/CyberEinstein/issues/new). You can also start by reading the [public cases](https://github.com/xi-zhao/RunThePaper), running the current tools, or improving the documentation and validation methods.
+
+We want open source to make research experience available for more people to build on. New knowledge should help people understand the world and address real problems. The opportunity to contribute to its discovery should reach more people too.
 
 ### Try it locally
 
@@ -188,7 +116,3 @@ Further reading: [Development vision](docs/development-vision.md) · [Architectu
 </details>
 
 Project code is licensed under [Apache-2.0](LICENSE). Referenced papers, data, and external cases remain subject to their own terms.
-
----
-
-**Inherit the path of science. Discover what comes next. Give everyone a chance to pursue their own dream of becoming a scientist.**
