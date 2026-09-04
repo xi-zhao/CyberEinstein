@@ -251,7 +251,17 @@ corepack pnpm field-history:benchmark -- --strict --output .cybereinstein/field-
 corepack pnpm dsh:headless -- "重建这个研究方向的历史证据和当前争议"
 ```
 
-Field History 可以匿名运行小型 OpenAlex 演示；正式使用请按照 `config/field-history.env.example` 配置 `OPENALEX_API_KEY`。请求具备缓存与瞬时失败重试，无需人工标注的基准覆盖非厄米拓扑、Surface Code QEC 和 CRISPR。过滤、消融与验收证据见 [Field History 与 OpenAlex 图谱](docs/field-history.md)。生成的关系分类都是待全文核验的发现假设，只有经过全文或可执行证据验证后才能支持科学 Claim。
+Field History 本身**不需要模型 API**。默认链路使用 OpenAlex 元数据、本地 TF-IDF 相关性、确定性图评分和保守的规则关系分类。小型演示可以匿名调用 OpenAlex；持续使用建议按照 `config/field-history.env.example` 配置免费的 `OPENALEX_API_KEY`。只有调用 CyberEinstein 的模型驱动 Agent 任务时才需要 `DEEPSEEK_API_KEY`。
+
+### 流水线，而不是黑箱
+
+```text
+解析 → 发现 → 去重 → 排序 → 筛选 → 组图 → 主干提取 → 校验
+```
+
+以上每个阶段都是可独立注入的模块，只暴露最小方法契约。数据访问、候选过滤、关系解释、图谱构建与校验不共享凭据或隐藏状态。未来可以通过异步 `classify()` 适配器单独增加模型增强的关系分类，而无需修改论文发现、相关性排序、`FieldHistoryMap` Schema 或查看器，也不会让模型 API 变成其他用户的必选项。
+
+OpenAlex 响应具备缓存与瞬时失败重试，无需人工标注的基准覆盖非厄米拓扑、Surface Code QEC 和 CRISPR。过滤、消融、模块边界与验收证据见 [Field History 与 OpenAlex 图谱](docs/field-history.md)。生成的关系分类都是待全文核验的发现假设，只有经过全文或可执行证据验证后才能支持科学 Claim。
 
 实现说明：
 

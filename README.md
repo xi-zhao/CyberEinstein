@@ -251,7 +251,17 @@ corepack pnpm field-history:benchmark -- --strict --output .cybereinstein/field-
 corepack pnpm dsh:headless -- "Reconstruct this field's evidence history and current disputes"
 ```
 
-The Field History command can make a small anonymous OpenAlex demo. Set `OPENALEX_API_KEY` as shown in `config/field-history.env.example` for real use. Responses are cached, transient failures are retried, and the human-label-free benchmark covers non-Hermitian topology, surface-code QEC, and CRISPR. Its filtering, ablation, and acceptance evidence are documented in [Field History and OpenAlex graph](docs/field-history.md). Every resulting relation classification remains a discovery hypothesis until full-text review or executable evidence supports a scientific Claim.
+The Field History feature does **not** require a model API. Its default path uses OpenAlex metadata, local TF-IDF relevance, deterministic graph scoring, and conservative rule-based relation hypotheses. A small demo can call OpenAlex anonymously; sustained use should set the free `OPENALEX_API_KEY` shown in `config/field-history.env.example`. `DEEPSEEK_API_KEY` is only needed when you invoke CyberEinstein's model-driven Agent tasks.
+
+### A pipeline, not a black box
+
+```text
+resolve → discover → deduplicate → rank → select → assemble → backbone → validate
+```
+
+Every stage above is an independently injectable module with a narrow method contract. Data access, candidate filtering, relation interpretation, graph construction, and validation do not share credentials or hidden state. A future model-assisted relation classifier can be added behind an asynchronous `classify()` adapter without changing discovery, ranking, the `FieldHistoryMap` schema, or the viewer—and without making a model API mandatory for everyone else.
+
+Responses are cached, transient failures are retried, and the human-label-free benchmark covers non-Hermitian topology, surface-code QEC, and CRISPR. Its filtering, ablation, module boundaries, and acceptance evidence are documented in [Field History and OpenAlex graph](docs/field-history.md). Every resulting relation classification remains a discovery hypothesis until full-text review or executable evidence supports a scientific Claim.
 
 Implementation details:
 
