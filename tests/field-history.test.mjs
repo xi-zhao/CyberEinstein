@@ -2,15 +2,20 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { fieldHistoryRelevanceFixture } from '../evaluation/field-history-relevance.fixture.mjs';
 import {
+  BackboneExtractor,
+  BalancedCandidateSelector,
   CitationTraversal,
+  FieldGraphAssembler,
   FieldHistoryBenchmark,
   FieldHistoryError,
+  FieldHistoryMapValidator,
   FieldHistoryService,
   MemoryResponseCache,
   OpenAlexClient,
   RelevanceRanker,
   ResearchRelationClassifier,
   TopicFrontierDiscovery,
+  WorkDeduplicator,
   apply,
   evaluateBackboneAgainstReviewConsensus,
   evaluateBackboneStability,
@@ -454,6 +459,77 @@ test('Field History orchestrator accepts independently injected discovery module
   const map = await service.build({ seed: 'W100' });
   assert.equal(map.nodes.length, 1);
   assert.deepEqual(map.views.backbone, ['W100']);
+});
+
+test('Field History stages are independently replaceable and allow async classifiers', async () => {
+  const calls = [];
+  const deduplicator = new WorkDeduplicator();
+  const selector = new BalancedCandidateSelector();
+  const validator = new FieldHistoryMapValidator();
+  const backbone = new BackboneExtractor();
+  const graph = new FieldGraphAssembler({
+    relationClassifier: {
+      async classify() {
+        calls.push('relationClassifier');
+        return {
+          kind: 'unclassified',
+          confidence: 0.25,
+          basis: ['Async adapter result pending full-text verification.'],
+          accessLevel: 'abstract',
+          needsFullTextReview: true,
+        };
+      },
+    },
+  });
+  const service = new FieldHistoryService({
+    client: createFixtureClient([]),
+    workDeduplicator: {
+      deduplicate(input) {
+        calls.push('workDeduplicator');
+        return deduplicator.deduplicate(input);
+      },
+    },
+    candidateSelector: {
+      select(input) {
+        calls.push('candidateSelector');
+        return selector.select(input);
+      },
+    },
+    graphAssembler: {
+      async assemble(input) {
+        calls.push('graphAssembler');
+        return graph.assemble(input);
+      },
+    },
+    backboneExtractor: {
+      extract(input) {
+        calls.push('backboneExtractor');
+        return backbone.extract(input);
+      },
+    },
+    mapValidator: {
+      validate(input) {
+        calls.push('mapValidator');
+        return validator.validate(input);
+      },
+    },
+    now: () => '2026-09-03T12:00:00.000Z',
+  });
+
+  const map = await service.build({ seed: 'W100', citationDepth: 1 });
+
+  assert.equal(map.status, 'bounded_complete');
+  assert(calls.includes('relationClassifier'));
+  assert.deepEqual(
+    calls.filter((name) => name !== 'relationClassifier'),
+    [
+      'workDeduplicator',
+      'candidateSelector',
+      'graphAssembler',
+      'backboneExtractor',
+      'mapValidator',
+    ],
+  );
 });
 
 test('Field History merges preprint and published records before ranking', async () => {

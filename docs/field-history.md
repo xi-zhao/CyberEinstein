@@ -18,17 +18,24 @@
 
 ## 解耦边界
 
-`FieldHistoryService` 只负责编排，五个能力可以分别测试或替换：
+`FieldHistoryService` 只负责解析参数和编排，不保存算法规则。下面的能力通过最小方法契约注入，可以分别测试或替换：
 
 | 模块 | 单一职责 |
 | --- | --- |
+| `resolver.resolveWork()` | 把 DOI、标题或数据源 ID 解析为种子论文；默认由 `OpenAlexClient` 提供 |
 | `CitationTraversal` | 前向 / 后向 1–3 跳有界扩展；先取参考文献元数据，再按共同引用与影响力截断 |
-| `RelevanceRanker` | 文本、主题、引用距离、图结构的严格相关性过滤 |
 | `TopicFrontierDiscovery` | 从整个主题检索近期和高影响工作 |
+| `WorkDeduplicator` | 合并 DOI 相同或题名、作者与时间窗口一致的重复记录 |
+| `RelevanceRanker` | 文本、主题、引用距离、图结构的严格相关性过滤 |
+| `BalancedCandidateSelector` | 在相关性门槛之上按历史、分叉、后续、前沿配额保留候选 |
 | `ResearchRelationClassifier` | 为引用边生成可核验的关系假设 |
+| `FieldGraphAssembler` | 把保留论文和关系假设组装为节点与边 |
 | `BackboneExtractor` | 结合相关性、连通性、桥接性和历史层级提取主干 |
+| `FieldHistoryMapValidator` | 独立执行 JSON Schema 与跨引用完整性校验 |
 
-这里没有引入向量数据库、LLM 分类服务或工作流框架。当前文本相似度使用依赖为零的 TF-IDF；关系分类使用标题、摘要和论文类型中的保守规则。后续可以单独升级其中一个模块，不改变其他模块的数据契约。
+默认实现没有引入向量数据库、LLM 分类服务或工作流框架。当前文本相似度使用依赖为零的 TF-IDF；关系分类使用标题、摘要和论文类型中的保守规则。编排器不读取任何模型凭据，默认完整链路只调用 OpenAlex。`FieldGraphAssembler` 同时接受同步或异步的 `classify()`，因此将来可以把关系分类单独替换为模型适配器；模型的密钥、限流、缓存和费用预算都应封装在该适配器内，不能渗入候选发现、过滤、主干提取或展示模块。
+
+模块数据流保持单向：`resolver → discovery → deduplication → relevance → selection → graph → backbone → validation`。每个阶段只消费上一个阶段的内存数据契约，不直接访问其他阶段的网络客户端。Cordis 装配入口会把自定义组件原样传给 `FieldHistoryService`，因此命令行、插件和测试使用同一套边界。
 
 ## 严格相关性过滤
 

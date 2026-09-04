@@ -18,7 +18,9 @@
     "backbone.js",
     "benchmark.js",
     "cache.js",
+    "candidates.js",
     "frontier.js",
+    "graph.js",
     "index.js",
     "model.js",
     "openalex.js",
@@ -26,6 +28,7 @@
     "relevance.js",
     "service.js",
     "traversal.js",
+    "validator.js",
     "viewer.js",
     "field-history.schema.json",
     "cordis.patch.yml"

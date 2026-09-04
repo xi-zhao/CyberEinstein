@@ -2,14 +2,18 @@ import { FieldHistoryService, OpenAlexClient } from './service.js';
 
 export {
   BackboneExtractor,
+  BalancedCandidateSelector,
   CitationTraversal,
   FIELD_HISTORY_SCHEMA_VERSION,
+  FieldGraphAssembler,
   FieldHistoryError,
+  FieldHistoryMapValidator,
   FieldHistoryService,
   OpenAlexClient,
   RelevanceRanker,
   ResearchRelationClassifier,
   TopicFrontierDiscovery,
+  WorkDeduplicator,
   runRelevanceAblation,
 } from './service.js';
 export { DEFAULT_RELEVANCE_WEIGHTS } from './relevance.js';
@@ -36,6 +40,7 @@ export function apply(ctx, config = {}) {
       cacheDir: config.cacheDir,
     });
   const service = new FieldHistoryService({
+    ...config,
     client,
   });
   ctx.provide('fieldHistory', service);
