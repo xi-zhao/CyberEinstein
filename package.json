@@ -20,6 +20,10 @@
     "deep-research:setup": "node scripts/setup-deep-literature-research.mjs",
     "deep-research:check": "node scripts/check-deep-literature-research.mjs",
     "reproduction-case:setup": "node scripts/setup-reproduction-case.mjs",
+    "field-history:setup": "node scripts/setup-field-history.mjs",
+    "field-history:build": "node scripts/build-field-history.mjs",
+    "field-history:ablation": "node scripts/run-field-history-ablation.mjs",
+    "field-history:benchmark": "node scripts/run-field-history-benchmark.mjs",
     "test": "pnpm run dsh:check && node --test tests/*.test.mjs"
   },
   "dependencies": {

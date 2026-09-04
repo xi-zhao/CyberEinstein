@@ -137,7 +137,9 @@ PRAgent 是 Paper Reproduction Agent（论文复现 Agent），也是 CyberEinst
 
 第二个 bundle `@cybereinstein/deep-literature-research` 在 DSH 中注册按需加载的文献调研 Skill。它以 `LiteratureReview` 契约组织问题分解、迭代检索、论文筛选、证据提取、反证搜索、缺口反思和综合，但不运行第二套 Agent Harness。DSH 继续负责 Agent Loop、subagent、workflow、会话和权限；Skill 负责版本化编排指导，JSON Schema 固定当前结构契约，后续领域服务负责持久化与不可绕过的状态规则。
 
-具体装配和运行边界见 [pragent-source-integrations.md](pragent-source-integrations.md) 与 [deep-literature-research.md](deep-literature-research.md)。
+`@cybereinstein/field-history` 是 `FieldMap` 的首个领域服务。它将引用扩展、相关性过滤、主题级前沿检索、关系分类和历史主干提取拆成独立模块，通过 OpenAlex 元数据与可用摘要构建两到三跳候选图，并输出 Cytoscape.js 图数据。关系标签均为待全文核验的假设；只有经过文献调研、引用语境核对或复现链连接后，才可以进入 Claim/Evidence 判断。
+
+具体装配和运行边界见 [pragent-source-integrations.md](pragent-source-integrations.md)、[deep-literature-research.md](deep-literature-research.md) 与 [field-history.md](field-history.md)。
 
 第一阶段不包含：
 

@@ -1,0 +1,66 @@
+{
+  "version": "1.0.0",
+  "description": "Human-label-free Field History benchmark using review consensus, temporal backtesting, and multi-seed stability.",
+  "cases": [
+    {
+      "name": "non-hermitian-band-topology",
+      "seeds": [
+        "10.1103/PhysRevLett.121.086803",
+        "10.1103/PhysRevLett.121.026808"
+      ],
+      "buildOptions": {
+        "citationDepth": 2,
+        "frontierYears": 3,
+        "relevanceThreshold": 0.3,
+        "retentionFloor": 0.17
+      },
+      "frontierOptions": {
+        "cutoffYear": 2021,
+        "horizonYears": 3,
+        "lookbackYears": 3,
+        "candidateLimit": 100,
+        "k": 10
+      }
+    },
+    {
+      "name": "surface-code-quantum-error-correction",
+      "seeds": [
+        "10.1063/1.1499754",
+        "10.1103/PhysRevA.86.032324"
+      ],
+      "buildOptions": {
+        "citationDepth": 2,
+        "frontierYears": 3,
+        "relevanceThreshold": 0.3,
+        "retentionFloor": 0.17
+      },
+      "frontierOptions": {
+        "cutoffYear": 2021,
+        "horizonYears": 3,
+        "lookbackYears": 3,
+        "candidateLimit": 100,
+        "k": 10
+      }
+    },
+    {
+      "name": "crispr-genome-engineering",
+      "seeds": [
+        "10.1126/science.1225829",
+        "10.1126/science.1231143"
+      ],
+      "buildOptions": {
+        "citationDepth": 2,
+        "frontierYears": 3,
+        "relevanceThreshold": 0.3,
+        "retentionFloor": 0.17
+      },
+      "frontierOptions": {
+        "cutoffYear": 2020,
+        "horizonYears": 3,
+        "lookbackYears": 3,
+        "candidateLimit": 100,
+        "k": 10
+      }
+    }
+  ]
+}

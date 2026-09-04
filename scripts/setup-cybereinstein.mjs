@@ -7,6 +7,7 @@ const setupScripts = [
   'setup-pragent-sources.mjs',
   'setup-deep-literature-research.mjs',
   'setup-reproduction-case.mjs',
+  'setup-field-history.mjs',
 ];
 
 for (const script of setupScripts) {

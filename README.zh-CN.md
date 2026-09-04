@@ -195,6 +195,7 @@ CyberEinstein 采用 [Apache License 2.0](LICENSE) 正式开源。它宽松的�
 | 已实现 | 受限论文发现与获准全文读取适配器 |
 | 已实现 | 记录证据、反证、矛盾、缺口和停止理由的 Deep Literature Research |
 | 已实现 | 持久化、版本化 `ReproductionCase` 及其证据、并发和独立审查规则 |
+| 已实现 | 两到三跳 Field History：严格相关性过滤、历史主干提取、主题级前沿检索、研究关系分类假设与交互式 Cytoscape.js 图谱 |
 | 正在建设 | 将 RunThePaper 与 PRAgent 资产转化为跨论文、跨项目的可执行科学史 |
 | 正在建设 | 学科状态、前沿机会、竞争假设和 `DiscoveryCase` 领域模型 |
 | 长期方向 | 科学发现闭环、跨课题学习，以及在明确授权下连接真实实验 observation 与仪器 |
@@ -244,14 +245,20 @@ corepack pnpm dsh:web
 ```bash
 corepack pnpm pragent:sources:check
 corepack pnpm deep-research:check
+corepack pnpm field-history:build -- --seed 10.1103/PhysRevLett.121.086803 --output .cybereinstein/field-history/non-hermitian.json --html .cybereinstein/field-history/non-hermitian.html
+corepack pnpm field-history:ablation
+corepack pnpm field-history:benchmark -- --strict --output .cybereinstein/field-history/benchmark.json
 corepack pnpm dsh:headless -- "重建这个研究方向的历史证据和当前争议"
 ```
+
+Field History 可以匿名运行小型 OpenAlex 演示；正式使用请按照 `config/field-history.env.example` 配置 `OPENALEX_API_KEY`。请求具备缓存与瞬时失败重试，无需人工标注的基准覆盖非厄米拓扑、Surface Code QEC 和 CRISPR。过滤、消融与验收证据见 [Field History 与 OpenAlex 图谱](docs/field-history.md)。生成的关系分类都是待全文核验的发现假设，只有经过全文或可执行证据验证后才能支持科学 Claim。
 
 实现说明：
 
 - [PRAgent 来源集成](docs/pragent-source-integrations.md)
 - [Deep Literature Research](docs/deep-literature-research.md)
 - [ReproductionCase 领域服务](docs/reproduction-case.md)
+- [Field History 与 OpenAlex 图谱](docs/field-history.md)
 - [DeepSeek Harness 底座](docs/harness-integration.md)
 
 ## 从这里开始

@@ -1,0 +1,42 @@
+{
+  "name": "@cybereinstein/field-history",
+  "version": "0.3.0",
+  "private": true,
+  "description": "Evidence-aware scientific field history maps for CyberEinstein.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "./index.js",
+  "exports": {
+    ".": "./index.js",
+    "./viewer": "./viewer.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./field-history.schema.json": "./field-history.schema.json",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "ablation.js",
+    "backbone.js",
+    "benchmark.js",
+    "cache.js",
+    "frontier.js",
+    "index.js",
+    "model.js",
+    "openalex.js",
+    "relation-classifier.js",
+    "relevance.js",
+    "service.js",
+    "traversal.js",
+    "viewer.js",
+    "field-history.schema.json",
+    "cordis.patch.yml"
+  ],
+  "dependencies": {
+    "ajv": "8.20.0",
+    "cytoscape": "3.34.2"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}

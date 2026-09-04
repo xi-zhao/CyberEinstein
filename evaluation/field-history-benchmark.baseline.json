@@ -1,0 +1,57 @@
+{
+  "version": "1.0.0",
+  "generatedAt": "2026-09-04T03:43:09.862Z",
+  "provider": "OpenAlex",
+  "description": "Reproducible, human-label-free acceptance snapshot. Re-run the benchmark because OpenAlex metadata changes over time.",
+  "passed": true,
+  "cases": [
+    {
+      "name": "non-hermitian-band-topology",
+      "passed": true,
+      "history": {
+        "reviewCoverage": 1,
+        "meanRecallAt20": 0.25,
+        "meanNdcgAt20": 0.5213,
+        "citationOnlyNdcgAt20": 0.456
+      },
+      "frontier": {
+        "ndcgAt10": 0.8469,
+        "citationOnlyNdcgAt10": 0.7109,
+        "topQuartileLift": 1.5714
+      },
+      "multiSeedOverlap": 0.5
+    },
+    {
+      "name": "surface-code-quantum-error-correction",
+      "passed": true,
+      "history": {
+        "reviewCoverage": 0.5,
+        "meanRecallAt20": 0.3,
+        "meanNdcgAt20": 0.2799,
+        "citationOnlyNdcgAt20": 0.2837
+      },
+      "frontier": {
+        "ndcgAt10": 0.8839,
+        "citationOnlyNdcgAt10": 0.8935,
+        "topQuartileLift": 1.6
+      },
+      "multiSeedOverlap": 0.7143
+    },
+    {
+      "name": "crispr-genome-engineering",
+      "passed": true,
+      "history": {
+        "reviewCoverage": 1,
+        "meanRecallAt20": 0.3472,
+        "meanNdcgAt20": 0.5635,
+        "citationOnlyNdcgAt20": 0.5766
+      },
+      "frontier": {
+        "ndcgAt10": 0.8119,
+        "citationOnlyNdcgAt10": 0.8285,
+        "topQuartileLift": 1.5714
+      },
+      "multiSeedOverlap": 0.55
+    }
+  ]
+}

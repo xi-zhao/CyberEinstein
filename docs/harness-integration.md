@@ -52,7 +52,7 @@ corepack pnpm dsh:headless -- "summarize this workspace"
 
 ## CyberEinstein 插件层
 
-当前已落地三个边界独立的插件 bundle：
+当前已落地四个边界独立的插件 bundle：
 
 ```text
 CyberEinstein product
@@ -67,9 +67,11 @@ CyberEinstein product
 
 `@cybereinstein/reproduction-case` 提供持久化、版本化的 `ReproductionCase` 领域服务。它把 Claim 目标、运行、证据、审查、失败经验和复现边界保存在 Agent 会话之外，并通过领域规则阻止元数据充当科研证据、过期写入覆盖新版本，以及未经独立审查的 Claim 被标记为已复现。
 
-`corepack pnpm setup` 将三个 bundle 都安装到项目隔离的 headless/web Profile，不改官方 bundle 或上游源码。也可以使用 `pragent:sources:setup`、`deep-research:setup` 和 `reproduction-case:setup` 分别装配。
+`@cybereinstein/field-history` 提供 `FieldMap` 的学科历史视图。它通过 OpenAlex 元数据与可用摘要完成两到三跳引用扩展、严格相关性过滤、主题级前沿发现、研究关系分类和历史主干提取，输出可解释的 Cytoscape.js 图数据，并为 RunThePaper/PRAgent 对象预留稳定连接。服务不会把引用、相似关系或自动分类提升为科学证据。
 
-插件应继续通过 Cordis 的 Service、事件和可逆 effect 接入已有能力。科研业务状态和规则放在插件自己的模块中，不散落到 YAML，也不能只靠提示词约束。具体边界见 [pragent-source-integrations.md](pragent-source-integrations.md)、[deep-literature-research.md](deep-literature-research.md) 和 [reproduction-case.md](reproduction-case.md)。
+`corepack pnpm setup` 将四个 bundle 都安装到项目隔离的 headless/web Profile，不改官方 bundle 或上游源码。也可以使用 `pragent:sources:setup`、`deep-research:setup`、`reproduction-case:setup` 和 `field-history:setup` 分别装配。
+
+插件应继续通过 Cordis 的 Service、事件和可逆 effect 接入已有能力。科研业务状态和规则放在插件自己的模块中，不散落到 YAML，也不能只靠提示词约束。具体边界见 [pragent-source-integrations.md](pragent-source-integrations.md)、[deep-literature-research.md](deep-literature-research.md)、[reproduction-case.md](reproduction-case.md) 和 [field-history.md](field-history.md)。
 
 ## 升级规则
 

@@ -1,0 +1,10 @@
+# Field History turns bibliographic metadata into a traceable FieldMap view.
+# Metadata remains discovery evidence only; it never becomes a scientific Claim.
+- insert:
+    - id: cybereinstein-field-history
+      name: '@cybereinstein/field-history'
+      disabled: !!js (process.env.CYBEREINSTEIN_FIELD_HISTORY_ENABLED ?? 'true').toLowerCase() === 'false'
+      config:
+        baseUrl: !!js process.env.OPENALEX_BASE_URL ?? 'https://api.openalex.org'
+        apiKeyEnv: OPENALEX_API_KEY
+        cacheDir: !!js process.env.OPENALEX_CACHE_DIR ?? '.cybereinstein/cache/openalex'

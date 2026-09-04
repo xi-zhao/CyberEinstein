@@ -1,0 +1,433 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cybereinstein.org/schemas/field-history.schema.json",
+  "title": "FieldHistoryMap",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "id",
+    "generatedAt",
+    "seed",
+    "scope",
+    "provider",
+    "status",
+    "nodes",
+    "edges",
+    "views",
+    "relationSummary",
+    "excludedCandidates",
+    "limitations"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "0.2.0" },
+    "id": { "type": "string", "minLength": 1 },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "seed": { "$ref": "#/$defs/seed" },
+    "scope": { "$ref": "#/$defs/scope" },
+    "provider": { "$ref": "#/$defs/provider" },
+    "status": { "enum": ["bounded_complete", "partial"] },
+    "nodes": { "type": "array", "items": { "$ref": "#/$defs/node" } },
+    "edges": { "type": "array", "items": { "$ref": "#/$defs/edge" } },
+    "views": { "$ref": "#/$defs/views" },
+    "relationSummary": { "$ref": "#/$defs/relationSummary" },
+    "excludedCandidates": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/excludedCandidate" }
+    },
+    "limitations": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    }
+  },
+  "$defs": {
+    "nullableString": {
+      "anyOf": [
+        { "type": "string", "minLength": 1 },
+        { "type": "null" }
+      ]
+    },
+    "nullableYear": {
+      "anyOf": [
+        { "type": "integer", "minimum": 1000, "maximum": 3000 },
+        { "type": "null" }
+      ]
+    },
+    "nullableHop": {
+      "anyOf": [
+        { "type": "integer", "minimum": 0, "maximum": 3 },
+        { "type": "null" }
+      ]
+    },
+    "score": { "type": "number", "minimum": 0, "maximum": 1 },
+    "idList": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "workIdList": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^W[0-9]+$" },
+      "uniqueItems": true
+    },
+    "seed": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["input", "resolution", "workId", "title", "year", "doi"],
+      "properties": {
+        "input": { "type": "string", "minLength": 1 },
+        "resolution": { "enum": ["openalex_id", "doi", "exact_title", "title_candidate"] },
+        "workId": { "type": "string", "pattern": "^W[0-9]+$" },
+        "title": { "type": "string", "minLength": 1 },
+        "year": { "$ref": "#/$defs/nullableYear" },
+        "doi": { "$ref": "#/$defs/nullableString" }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "citationDepth",
+        "relevanceThreshold",
+        "retentionFloor",
+        "frontierYears",
+        "frontierTopics",
+        "maxWorks",
+        "backboneLimit"
+      ],
+      "properties": {
+        "citationDepth": { "type": "integer", "minimum": 1, "maximum": 3 },
+        "relevanceThreshold": { "$ref": "#/$defs/score" },
+        "retentionFloor": { "$ref": "#/$defs/score" },
+        "frontierYears": { "type": "integer", "minimum": 1, "maximum": 20 },
+        "frontierTopics": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^T[0-9]+$" },
+          "uniqueItems": true
+        },
+        "maxWorks": { "type": "integer", "minimum": 20, "maximum": 500 },
+        "backboneLimit": { "type": "integer", "minimum": 5, "maximum": 100 }
+      }
+    },
+    "provider": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "baseUrl",
+        "accessLevel",
+        "scientificEvidence",
+        "retrievedAt",
+        "requestCount",
+        "coverage"
+      ],
+      "properties": {
+        "name": { "const": "OpenAlex" },
+        "baseUrl": { "type": "string", "format": "uri" },
+        "accessLevel": { "const": "metadata_and_abstract" },
+        "scientificEvidence": { "const": false },
+        "retrievedAt": { "type": "string", "format": "date-time" },
+        "requestCount": { "type": "integer", "minimum": 0 },
+        "coverage": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "citationDepthRequested",
+            "backwardDepthCompleted",
+            "forwardDepthCompleted",
+            "backwardWorksRetrieved",
+            "forwardWorksRetrieved",
+            "relatedWorksRetrieved",
+            "topicFrontierRetrieved",
+            "candidatesDiscovered",
+            "worksIncluded",
+            "worksFiltered",
+            "abstractsAvailable"
+          ],
+          "properties": {
+            "citationDepthRequested": { "type": "integer", "minimum": 1, "maximum": 3 },
+            "backwardDepthCompleted": { "type": "integer", "minimum": 0, "maximum": 3 },
+            "forwardDepthCompleted": { "type": "integer", "minimum": 0, "maximum": 3 },
+            "backwardWorksRetrieved": { "type": "integer", "minimum": 0 },
+            "forwardWorksRetrieved": { "type": "integer", "minimum": 0 },
+            "relatedWorksRetrieved": { "type": "integer", "minimum": 0 },
+            "topicFrontierRetrieved": { "type": "integer", "minimum": 0 },
+            "candidatesDiscovered": { "type": "integer", "minimum": 1 },
+            "worksIncluded": { "type": "integer", "minimum": 1 },
+            "worksFiltered": { "type": "integer", "minimum": 0 },
+            "abstractsAvailable": { "type": "integer", "minimum": 0 }
+          }
+        }
+      }
+    },
+    "author": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name"],
+      "properties": {
+        "id": { "$ref": "#/$defs/nullableString" },
+        "name": { "type": "string", "minLength": 1 }
+      }
+    },
+    "topic": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "score"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^T[0-9]+$" },
+        "name": { "type": "string", "minLength": 1 },
+        "score": { "$ref": "#/$defs/score" }
+      }
+    },
+    "depth": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["backward", "forward"],
+      "properties": {
+        "backward": { "$ref": "#/$defs/nullableHop" },
+        "forward": { "$ref": "#/$defs/nullableHop" }
+      }
+    },
+    "relevance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "included",
+        "textSimilarity",
+        "topicOverlap",
+        "citationProximity",
+        "graphConnectivity",
+        "total",
+        "reasons"
+      ],
+      "properties": {
+        "included": { "type": "boolean" },
+        "textSimilarity": { "$ref": "#/$defs/score" },
+        "topicOverlap": { "$ref": "#/$defs/score" },
+        "citationProximity": { "$ref": "#/$defs/score" },
+        "graphConnectivity": { "$ref": "#/$defs/score" },
+        "total": { "$ref": "#/$defs/score" },
+        "reasons": { "$ref": "#/$defs/idList" }
+      }
+    },
+    "scores": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "citationStrength",
+        "historicalSupport",
+        "sharedReferences",
+        "topicOverlap",
+        "recency",
+        "total"
+      ],
+      "properties": {
+        "citationStrength": { "$ref": "#/$defs/score" },
+        "historicalSupport": { "$ref": "#/$defs/score" },
+        "sharedReferences": { "$ref": "#/$defs/score" },
+        "topicOverlap": { "$ref": "#/$defs/score" },
+        "recency": { "$ref": "#/$defs/score" },
+        "total": { "$ref": "#/$defs/score" }
+      }
+    },
+    "backbone": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["connectivity", "bridge", "lineage", "total", "selected"],
+      "properties": {
+        "connectivity": { "$ref": "#/$defs/score" },
+        "bridge": { "$ref": "#/$defs/score" },
+        "lineage": { "$ref": "#/$defs/score" },
+        "total": { "$ref": "#/$defs/score" },
+        "selected": { "type": "boolean" }
+      }
+    },
+    "executableHistory": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reproductionCaseIds", "claimIds", "runIds", "failureLessonIds"],
+      "properties": {
+        "reproductionCaseIds": { "$ref": "#/$defs/idList" },
+        "claimIds": { "$ref": "#/$defs/idList" },
+        "runIds": { "$ref": "#/$defs/idList" },
+        "failureLessonIds": { "$ref": "#/$defs/idList" }
+      }
+    },
+    "node": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "title",
+        "abstract",
+        "workType",
+        "year",
+        "publicationDate",
+        "doi",
+        "openAlexUrl",
+        "venue",
+        "authors",
+        "topics",
+        "citationCount",
+        "referencedWorkIds",
+        "depth",
+        "discoverySources",
+        "roles",
+        "relevance",
+        "scores",
+        "backbone",
+        "why",
+        "sourceAccess",
+        "scientificEvidence",
+        "executableHistory"
+      ],
+      "properties": {
+        "id": { "type": "string", "pattern": "^W[0-9]+$" },
+        "title": { "type": "string", "minLength": 1 },
+        "abstract": { "$ref": "#/$defs/nullableString" },
+        "workType": { "$ref": "#/$defs/nullableString" },
+        "year": { "$ref": "#/$defs/nullableYear" },
+        "publicationDate": { "$ref": "#/$defs/nullableString" },
+        "doi": { "$ref": "#/$defs/nullableString" },
+        "openAlexUrl": { "type": "string", "format": "uri" },
+        "venue": { "$ref": "#/$defs/nullableString" },
+        "authors": { "type": "array", "items": { "$ref": "#/$defs/author" } },
+        "topics": { "type": "array", "items": { "$ref": "#/$defs/topic" } },
+        "citationCount": { "type": "integer", "minimum": 0 },
+        "referencedWorkIds": { "$ref": "#/$defs/workIdList" },
+        "depth": { "$ref": "#/$defs/depth" },
+        "discoverySources": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "enum": ["seed", "citation_history", "citation_descendant", "related", "topic_frontier"] }
+        },
+        "roles": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "enum": ["seed", "foundation", "branch", "derivative", "frontier"] }
+        },
+        "relevance": { "$ref": "#/$defs/relevance" },
+        "scores": { "$ref": "#/$defs/scores" },
+        "backbone": { "$ref": "#/$defs/backbone" },
+        "why": { "$ref": "#/$defs/idList" },
+        "sourceAccess": { "enum": ["metadata_only", "abstract"] },
+        "scientificEvidence": { "const": false },
+        "executableHistory": { "$ref": "#/$defs/executableHistory" }
+      }
+    },
+    "researchRelation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "confidence", "basis", "accessLevel", "needsFullTextReview"],
+      "properties": {
+        "kind": {
+          "enum": [
+            "theoretical_extension",
+            "method_improvement",
+            "experimental_validation",
+            "engineering_application",
+            "review_citation",
+            "contradiction_or_debate",
+            "unclassified"
+          ]
+        },
+        "confidence": { "$ref": "#/$defs/score" },
+        "basis": { "$ref": "#/$defs/idList" },
+        "accessLevel": { "enum": ["metadata_only", "abstract"] },
+        "needsFullTextReview": { "const": true }
+      }
+    },
+    "edge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "source",
+        "target",
+        "type",
+        "directed",
+        "score",
+        "basis",
+        "researchRelation",
+        "sourceAccess",
+        "scientificEvidence"
+      ],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "source": { "type": "string", "pattern": "^W[0-9]+$" },
+        "target": { "type": "string", "pattern": "^W[0-9]+$" },
+        "type": { "enum": ["cites", "bibliographic_coupling", "semantic_similarity"] },
+        "directed": { "type": "boolean" },
+        "score": { "$ref": "#/$defs/score" },
+        "basis": { "$ref": "#/$defs/idList" },
+        "researchRelation": { "$ref": "#/$defs/researchRelation" },
+        "sourceAccess": { "enum": ["metadata_only", "abstract"] },
+        "scientificEvidence": { "const": false }
+      }
+    },
+    "views": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "foundations",
+        "branches",
+        "seed",
+        "derivatives",
+        "frontier",
+        "backbone",
+        "backboneEdges"
+      ],
+      "properties": {
+        "foundations": { "$ref": "#/$defs/workIdList" },
+        "branches": { "$ref": "#/$defs/workIdList" },
+        "seed": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1,
+          "items": { "type": "string", "pattern": "^W[0-9]+$" }
+        },
+        "derivatives": { "$ref": "#/$defs/workIdList" },
+        "frontier": { "$ref": "#/$defs/workIdList" },
+        "backbone": { "$ref": "#/$defs/workIdList" },
+        "backboneEdges": { "$ref": "#/$defs/idList" }
+      }
+    },
+    "relationSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "theoretical_extension",
+        "method_improvement",
+        "experimental_validation",
+        "engineering_application",
+        "review_citation",
+        "contradiction_or_debate",
+        "unclassified"
+      ],
+      "properties": {
+        "theoretical_extension": { "type": "integer", "minimum": 0 },
+        "method_improvement": { "type": "integer", "minimum": 0 },
+        "experimental_validation": { "type": "integer", "minimum": 0 },
+        "engineering_application": { "type": "integer", "minimum": 0 },
+        "review_citation": { "type": "integer", "minimum": 0 },
+        "contradiction_or_debate": { "type": "integer", "minimum": 0 },
+        "unclassified": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "excludedCandidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title", "year", "score", "reasons"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^W[0-9]+$" },
+        "title": { "type": "string", "minLength": 1 },
+        "year": { "$ref": "#/$defs/nullableYear" },
+        "score": { "$ref": "#/$defs/score" },
+        "reasons": { "$ref": "#/$defs/idList" }
+      }
+    }
+  }
+}

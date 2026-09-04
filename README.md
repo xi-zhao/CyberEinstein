@@ -195,6 +195,7 @@ We keep the implemented foundation separate from unfinished product capability.
 | Implemented | Bounded paper-discovery and permitted full-text adapters |
 | Implemented | Deep Literature Research with evidence, counterevidence, contradictions, gaps, and explicit stop decisions |
 | Implemented | Persistent, versioned `ReproductionCase` state with evidence, concurrency, and independent-review rules |
+| Implemented | Two-to-three-hop Field History maps with strict relevance filtering, historical-backbone extraction, topic-wide frontier discovery, typed relation hypotheses, and an interactive Cytoscape.js graph |
 | Building | A cross-paper, cross-project Executable History of Science from RunThePaper and PRAgent assets |
 | Building | Field state, frontier opportunities, competing hypotheses, and `DiscoveryCase` domain models |
 | Long term | A scientific-discovery loop, cross-project learning, and explicitly authorized access to real observations and instruments |
@@ -244,14 +245,20 @@ The workbench starts at `http://127.0.0.1:3080`. You can also check individual f
 ```bash
 corepack pnpm pragent:sources:check
 corepack pnpm deep-research:check
+corepack pnpm field-history:build -- --seed 10.1103/PhysRevLett.121.086803 --output .cybereinstein/field-history/non-hermitian.json --html .cybereinstein/field-history/non-hermitian.html
+corepack pnpm field-history:ablation
+corepack pnpm field-history:benchmark -- --strict --output .cybereinstein/field-history/benchmark.json
 corepack pnpm dsh:headless -- "Reconstruct this field's evidence history and current disputes"
 ```
+
+The Field History command can make a small anonymous OpenAlex demo. Set `OPENALEX_API_KEY` as shown in `config/field-history.env.example` for real use. Responses are cached, transient failures are retried, and the human-label-free benchmark covers non-Hermitian topology, surface-code QEC, and CRISPR. Its filtering, ablation, and acceptance evidence are documented in [Field History and OpenAlex graph](docs/field-history.md). Every resulting relation classification remains a discovery hypothesis until full-text review or executable evidence supports a scientific Claim.
 
 Implementation details:
 
 - [PRAgent source integration](docs/pragent-source-integrations.md)
 - [Deep Literature Research](docs/deep-literature-research.md)
 - [ReproductionCase domain service](docs/reproduction-case.md)
+- [Field History and OpenAlex graph](docs/field-history.md)
 - [DeepSeek Harness baseline](docs/harness-integration.md)
 
 ## Start from here
