@@ -62,7 +62,9 @@ CyberEinstein is a **developer preview**, starting with quantum and computationa
 
 These foundations are implemented. The complete process of generating new hypotheses, sustaining a study, and validating a discovery is still being built. Automatically inferred paper relationships require verification, and an accessible experience for nontechnical users is not yet complete.
 
-We have a body of work that anyone can inspect: [RunThePaper](https://github.com/xi-zhao/RunThePaper) publishes reproduction cases for 100 physics papers, including successful, blocked, and unsuccessful attempts. This does not mean all 100 papers have been fully reproduced; see the [public audit](https://github.com/xi-zhao/RunThePaper/tree/main/evaluation/claim-first-100) for the results. [PRAgent](https://github.com/xi-zhao/PRAgent) focuses on paper reproduction. CyberEinstein will build on this accumulated work to pursue original research; the complete cross-project integration remains under development.
+This path already has a starting point: [RunThePaper](https://github.com/xi-zhao/RunThePaper) has accumulated reproduction cases across 100 physics papers, preserving successful, blocked, and unsuccessful attempts. These [open research records](https://github.com/xi-zhao/RunThePaper/tree/main/evaluation/claim-first-100) provide a foundation for asking further questions, testing ideas, and exploring new knowledge.
+
+[PRAgent](https://github.com/xi-zhao/PRAgent) focuses on paper reproduction. CyberEinstein will build on this accumulated work to pursue original research; the complete cross-project integration remains under development.
 
 **Our next step is a research process around a real unanswered question that can be independently inspected.** It may produce a new result or rule out an explanation. Either way, we will preserve the evidence and limitations so the next attempt has a better starting point.
 
