@@ -62,7 +62,7 @@ CyberEinstein 目前处于**开发者预览阶段**，从量子与计算物理�
 
 这些基础已经实现；提出新假设、持续执行研究并验证新发现的完整流程仍在建设中。自动生成的论文关系需要核验，面向非技术用户的易用体验也尚未完成。
 
-这条路已经有了起点：[RunThePaper](https://github.com/xi-zhao/RunThePaper) 围绕 100 篇物理论文积累了复现案例，保留成功、受阻与失败的探索过程。这些[公开研究记录](https://github.com/xi-zhao/RunThePaper/tree/main/evaluation/claim-first-100)，将成为继续提问、验证和探索新知的基础。
+这条路已经有了起点：[RunThePaper](https://github.com/xi-zhao/RunThePaper) 已积累上百篇物理论文的复现案例，保留成功、受阻与失败的探索过程，案例库仍在持续扩充。这些[公开研究记录](https://github.com/xi-zhao/RunThePaper)将成为继续提问、验证和探索新知的基础。
 
 [PRAgent](https://github.com/xi-zhao/PRAgent) 专注于论文复现，CyberEinstein 将沿着这些积累探索原创研究，完整的跨项目连接仍在建设中。
 
