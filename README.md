@@ -64,11 +64,19 @@ CyberEinstein is a **developer preview**, starting with quantum and computationa
 
 These foundations are implemented in this repository. Automatically inferred paper relationships require verification, and the experience for nontechnical users is being improved.
 
-[PRAgent](https://github.com/xi-zhao/PRAgent) is our paper-reproduction engine. It reconstructs derivations and methods from papers, independently implements and runs numerical code, compares generated results with the paper, and organizes validation and independent review. [RunThePaper](https://github.com/xi-zhao/RunThePaper) has accumulated reproduction cases for more than 100 physics papers, preserving derivations, code, data, figures, evidence, and successful, blocked, and unsuccessful attempts, with new cases continuing to be added.
+### Three projects, one research path
 
-**PRAgent reconstructs and checks; RunThePaper preserves and shares. CyberEinstein builds on this existing work toward original research.** The next stage connects field history, reproduction evidence, and new research questions into a sustained original-research workflow across the three projects.
+CyberEinstein builds on the existing reproduction engine and research assets of PRAgent and RunThePaper:
 
-**Our next step is a research process around a real unanswered question that can be independently inspected.** It may produce a new result or rule out an explanation. Either way, we will preserve the evidence and limitations so the next attempt has a better starting point.
+| Project | Role |
+| --- | --- |
+| [PRAgent](https://github.com/xi-zhao/PRAgent) | **Independently reconstruct and check:** rebuild methods from papers, implement and run reproduction code, and organize validation and independent review. |
+| [RunThePaper](https://github.com/xi-zhao/RunThePaper) | **Preserve and share:** accumulate derivations, code, data, figures, evidence, failure records, and review status for people and agents to inspect, run, and extend. |
+| [CyberEinstein](https://github.com/xi-zhao/CyberEinstein) | **Build toward original research:** connect field history, reproduction evidence, and new questions into a sustained research process. |
+
+PRAgent's independent reconstruction does not require authors to release runnable code; missing scientific inputs or experimental resources remain explicit case boundaries. [RunThePaper](https://github.com/xi-zhao/RunThePaper) has accumulated reproduction cases for more than 100 physics papers, preserving successful, blocked, and unsuccessful attempts, with new cases continuing to be added. You can already inspect and rerun its public cases; PRAgent's development-repository access is separate from this repository's installation.
+
+**Our next step is a research process around a real unanswered question that can be independently inspected.** It connects field history, reproduction evidence, and new questions across the three projects. It may produce a new result or rule out an explanation. Either way, we will preserve the evidence and limitations so the next attempt has a better starting point.
 
 <a id="start"></a>
 
