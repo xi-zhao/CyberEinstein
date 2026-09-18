@@ -14,6 +14,8 @@ CyberEinstein is an open-source AI scientist in development, built toward a goal
 
 Our approach starts with the history of science. We want AI to inherit earlier methods, evidence, failures, and corrections, then find questions that remain unanswered or deserve another attempt. We call this the **Executable History of Science**.
 
+**Our starting point is independently reconstructing methods and computations from papers—not just summarizing them or wrapping existing research code.**
+
 [Why we are building it](#story) · [Our approach](#approach) · [Progress](#today) · [Get involved](#start)
 
 <a id="story"></a>
@@ -60,11 +62,11 @@ CyberEinstein is a **developer preview**, starting with quantum and computationa
 | Investigate the literature around a question | Organize searches and reading, and record evidence, contradictions, and unresolved questions. |
 | Preserve a study so work can continue | Record targets, methods, runs, evidence, and failures with version history. |
 
-These foundations are implemented. The complete process of generating new hypotheses, sustaining a study, and validating a discovery is still being built. Automatically inferred paper relationships require verification, and an accessible experience for nontechnical users is not yet complete.
+These foundations are implemented in this repository. Automatically inferred paper relationships require verification, and the experience for nontechnical users is being improved.
 
-This path already has a starting point: [RunThePaper](https://github.com/xi-zhao/RunThePaper) has accumulated reproduction cases for more than 100 physics papers, preserving successful, blocked, and unsuccessful attempts, with new cases continuing to be added. These [open research records](https://github.com/xi-zhao/RunThePaper) provide a foundation for asking further questions, testing ideas, and exploring new knowledge.
+[PRAgent](https://github.com/xi-zhao/PRAgent) is our paper-reproduction engine. It reconstructs derivations and methods from papers, independently implements and runs numerical code, compares generated results with the paper, and organizes validation and independent review. [RunThePaper](https://github.com/xi-zhao/RunThePaper) has accumulated reproduction cases for more than 100 physics papers, preserving derivations, code, data, figures, evidence, and successful, blocked, and unsuccessful attempts, with new cases continuing to be added.
 
-[PRAgent](https://github.com/xi-zhao/PRAgent) focuses on paper reproduction. CyberEinstein will build on this accumulated work to pursue original research; the complete cross-project integration remains under development.
+**PRAgent reconstructs and checks; RunThePaper preserves and shares. CyberEinstein builds on this existing work toward original research.** The next stage connects field history, reproduction evidence, and new research questions into a sustained original-research workflow across the three projects.
 
 **Our next step is a research process around a real unanswered question that can be independently inspected.** It may produce a new result or rule out an explanation. Either way, we will preserve the evidence and limitations so the next attempt has a better starting point.
 
