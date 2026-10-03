@@ -1,0 +1,52 @@
+{
+  "checked_at": "2026-10-03T22:10:44+08:00",
+  "scope": "Checkpoint verification only; preserves previous production evidence as historical records",
+  "checks": {
+    "source_copy_identical": true,
+    "python_ast_system": 4,
+    "python_compile_venv": 4,
+    "venv_python": "Python 3.12.11",
+    "system_python": "3.9.6",
+    "node_version": "v24.4.1",
+    "javascript_syntax_modules": 8,
+    "xml": {
+      "slides": 12,
+      "narration_segments": 12,
+      "followups": 2,
+      "anchors_resolve": true,
+      "scripts_match": true,
+      "transcript_matches": true
+    },
+    "tts_prepare_only": {
+      "speaker": "zh_male_m191_uranus_bigtts",
+      "resource_id": "seed-tts-2.0",
+      "endpoint": "https://openspeech.bytedance.com/api/v3/tts/unidirectional",
+      "paragraphs": 12,
+      "input_characters": 1223,
+      "called_api": false
+    },
+    "numerical_teaching_example": {
+      "samples": 100,
+      "max_spectrum_error_away_from_EP": 7.021666937153402e-16,
+      "matches_saved_results": true,
+      "ep_checks_passed": true,
+      "wrong_sign_detected": true,
+      "scope": "2x2 teaching model; not paper reproduction or project discovery"
+    },
+    "cover_integrity": {
+      "width": 1920,
+      "height": 1080,
+      "png_decodes": true,
+      "visual_inspection_this_checkpoint": false
+    },
+    "local_audio_or_video_files": [],
+    "manimgl_available_in_venv": false
+  },
+  "not_performed": [
+    "ManimGL installation or rendering",
+    "Doubao synthesis or voice audition",
+    "Online preview playback inspection",
+    "CyberEinstein application test suite"
+  ],
+  "credential_handling": "No credential read, written, printed, or sent; TTS called only with --prepare-only."
+}

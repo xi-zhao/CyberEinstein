@@ -1,0 +1,12 @@
+venv/
+.venv/
+uv-cache/
+__pycache__/
+*.pyc
+voice/
+manim-output/
+*.mp4
+*.mov
+*.zip
+.env
+.env.*

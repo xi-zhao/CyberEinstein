@@ -1,0 +1,619 @@
+{
+  "type": "teaching_example_not_a_project_research_result",
+  "model": "H=[[i*gamma,g],[g,-i*gamma]], gamma=1",
+  "analytic_spectrum": "E_plus/minus = +/-sqrt(g^2-gamma^2)",
+  "method": "NumPy eigvals versus characteristic-polynomial solution",
+  "sample_count": 100,
+  "max_spectrum_error_away_from_EP": 7.021666937153402e-16,
+  "max_trace_error": 9.036560719766055e-16,
+  "max_determinant_error": 1.2638712790303645e-15,
+  "EP_check": {
+    "H_squared_frobenius_norm": 0.0,
+    "H_rank": 1,
+    "reason": "At g=gamma=1, H is nonzero, H^2=0, so eigenvalues coalesce at zero; avoid treating ill-conditioned eigvals at the EP as exact."
+  },
+  "wrong_sign_detected": true,
+  "samples": [
+    {
+      "g": 0.0,
+      "spectrum_error": 0.0,
+      "trace_error": 0.0,
+      "determinant_error": 0.0
+    },
+    {
+      "g": 0.02,
+      "spectrum_error": 1.1102230246251565e-16,
+      "trace_error": 1.1102230763239436e-16,
+      "determinant_error": 1.110223076303264e-16
+    },
+    {
+      "g": 0.04,
+      "spectrum_error": 1.3552527156068805e-19,
+      "trace_error": 1.3552527156068805e-19,
+      "determinant_error": 1.354168079406234e-19
+    },
+    {
+      "g": 0.06,
+      "spectrum_error": 3.3306690738754696e-16,
+      "trace_error": 3.3306744119434115e-16,
+      "determinant_error": 4.440896087640205e-16
+    },
+    {
+      "g": 0.08,
+      "spectrum_error": 1.1102230246251565e-16,
+      "trace_error": 1.1102759629222426e-16,
+      "determinant_error": 1.1102756241251668e-16
+    },
+    {
+      "g": 0.1,
+      "spectrum_error": 2.220446049250313e-16,
+      "trace_error": 2.220462989844635e-16,
+      "determinant_error": 2.220462820439332e-16
+    },
+    {
+      "g": 0.12,
+      "spectrum_error": 1.734723475976807e-18,
+      "trace_error": 1.734723475976807e-18,
+      "determinant_error": 1.722188176232883e-18
+    },
+    {
+      "g": 0.14,
+      "spectrum_error": 3.3306690738754696e-16,
+      "trace_error": 3.3307142486596306e-16,
+      "determinant_error": 3.330713363239748e-16
+    },
+    {
+      "g": 0.16,
+      "spectrum_error": 3.3306690738754696e-16,
+      "trace_error": 3.3308497693360055e-16,
+      "determinant_error": 2.2207101451939773e-16
+    },
+    {
+      "g": 0.18,
+      "spectrum_error": 1.1103585416259206e-16,
+      "trace_error": 1.734723475976807e-18,
+      "determinant_error": 2.220511615408663e-16
+    },
+    {
+      "g": 0.2,
+      "spectrum_error": 1.1102230246251565e-16,
+      "trace_error": 1.1107649934270853e-16,
+      "determinant_error": 1.1107433197523465e-16
+    },
+    {
+      "g": 0.22,
+      "spectrum_error": 2.220446049250313e-16,
+      "trace_error": 3.331798259726381e-16,
+      "determinant_error": 2.2220575375868367e-16
+    },
+    {
+      "g": 0.24,
+      "spectrum_error": 1.1102230246251565e-16,
+      "trace_error": 1.1102230246251565e-16,
+      "determinant_error": 1.1102230246251565e-16
+    },
+    {
+      "g": 0.26,
+      "spectrum_error": 3.3306690738754696e-16,
+      "trace_error": 2.220446049250313e-16,
+      "determinant_error": 3.3306690738754696e-16
+    },
+    {
+      "g": 0.28,
+      "spectrum_error": 1.1102230246251565e-16,
+      "trace_error": 1.113606002252634e-16,
+      "determinant_error": 1.1133411481696097e-16
+    },
+    {
+      "g": 0.3,
+      "spectrum_error": 2.220446049250313e-16,
+      "trace_error": 2.2237639395331597e-16,
+      "determinant_error": 2.223465532151496e-16
+    },
+    {
+      "g": 0.32,
+      "spectrum_error": 1.1102230246251565e-16,
+      "trace_error": 1.1150912609939193e-16,
+      "determinant_error": 1.1145937307813292e-16
+    },
+    {
+      "g": 0.34,
+      "spectrum_error": 1.1102230246251565e-16,
+      "trace_error": 1.1103585416259206e-16,
+      "determinant_error": 1.1103428767061195e-16
+    },
+    {
+      "g": 0.36,
+      "spectrum_error": 1.3877787807814457e-17,
+      "trace_error": 1.3877787807814457e-17,
+      "determinant_error": 1.2947314098277875e-17
+    },
+    {
+      "g": 0.38,
+      "spectrum_error": 2.220446049250313e-16,
+      "trace_error": 1.1443916996305594e-16,
+      "determinant_error": 2.2352390664195256e-16
+    },
+    {
+      "g": 0.4,
+      "spectrum_error": 6.938893903907228e-18,
+      "trace_error": 6.938893903907228e-18,
+      "determinant_error": 6.359601310784502e-18
+    },
+    {
+      "g": 0.42,
+      "spectrum_error": 1.1102230246251565e-16,
+      "trace_error": 1.1150912609939193e-16,
+      "determinant_error": 1.1142340491825273e-16
+    },
+    {
+      "g": 0.44,
+      "spectrum_error": 1.1123893155135927e-16,
+      "trace_error": 1.1123893155135927e-16,
+      "determinant_error": 6.231111271582836e-18
+    },
+    {
+      "g": 0.46,
+      "spectrum_error": 1.1107649934270853e-16,
+      "trace_error": 1.1107649934270853e-16,
+      "determinant_error": 3.0805875739813185e-18
+    },
+    {
+      "g": 0.48,
+      "spectrum_error": 1.1102230246251565e-16,
+      "trace_error": 1.1236938283130691e-16,
+      "determinant_error": 1.1206045118546897e-16
+    },
+    {
+      "g": 0.5,
+      "spectrum_error": 3.3306690738754696e-16,
+      "trace_error": 3.365900013051177e-16,
+      "determinant_error": 2.2599392627395764e-16
+    },
+    {
+      "g": 0.52,
+      "spectrum_error": 1.1107649934270853e-16,
+      "trace_error": 1.1107649934270853e-16,
+      "determinant_error": 2.9634845277824207e-18
+    },
+    {
+      "g": 0.54,
+      "spectrum_error": 1.1123893155135927e-16,
+      "trace_error": 1.1123893155135927e-16,
+      "determinant_error": 1.1117580610633505e-16
+    },
+    {
+      "g": 0.56,
+      "spectrum_error": 1.1631705747361534e-16,
+      "trace_error": 2.2473876566261383e-16,
+      "determinant_error": 1.1468293504362552e-16
+    },
+    {
+      "g": 0.58,
+      "spectrum_error": 1.1102230246251565e-16,
+      "trace_error": 1.1102230246251565e-16,
+      "determinant_error": 0.0
+    },
+    {
+      "g": 0.6,
+      "spectrum_error": 1.1102230246251565e-16,
+      "trace_error": 1.1443916996305594e-16,
+      "determinant_error": 2.220446049250313e-17
+    },
+    {
+      "g": 0.62,
+      "spectrum_error": 1.1295700899707568e-16,
+      "trace_error": 2.0816681711721685e-17,
+      "determinant_error": 2.226444859701455e-16
+    },
+    {
+      "g": 0.64,
+      "spectrum_error": 1.1102230246251565e-16,
+      "trace_error": 1.1295700899707568e-16,
+      "determinant_error": 1.1216858819603068e-16
+    },
+    {
+      "g": 0.66,
+      "spectrum_error": 2.220446049250313e-16,
+      "trace_error": 2.2473876566261383e-16,
+      "determinant_error": 1.1404088491396805e-16
+    },
+    {
+      "g": 0.68,
+      "spectrum_error": 1.3877787807814457e-16,
+      "trace_error": 8.326672684688674e-17,
+      "determinant_error": 1.267016946265818e-16
+    },
+    {
+      "g": 0.7000000000000001,
+      "spectrum_error": 1.1123893155135927e-16,
+      "trace_error": 6.938893903907228e-18,
+      "determinant_error": 1.1113283606058673e-16
+    },
+    {
+      "g": 0.72,
+      "spectrum_error": 1.1102230246251565e-16,
+      "trace_error": 1.2738115944464653e-16,
+      "determinant_error": 7.042536354172255e-17
+    },
+    {
+      "g": 0.74,
+      "spectrum_error": 1.1102230246251565e-16,
+      "trace_error": 1.1295700899707568e-16,
+      "determinant_error": 5.724970148445102e-17
+    },
+    {
+      "g": 0.76,
+      "spectrum_error": 1.1102230246251565e-16,
+      "trace_error": 1.2118257228641695e-16,
+      "determinant_error": 1.1542315553866148e-16
+    },
+    {
+      "g": 0.78,
+      "spectrum_error": 1.2118257228641695e-16,
+      "trace_error": 1.2118257228641695e-16,
+      "determinant_error": 6.328803808494603e-17
+    },
+    {
+      "g": 0.8,
+      "spectrum_error": 2.3263411494723067e-16,
+      "trace_error": 6.938893903907228e-17,
+      "determinant_error": 2.2591401799415137e-16
+    },
+    {
+      "g": 0.8200000000000001,
+      "spectrum_error": 1.6073541065715024e-16,
+      "trace_error": 1.111444758393637e-16,
+      "determinant_error": 1.414222733495174e-16
+    },
+    {
+      "g": 0.84,
+      "spectrum_error": 1.5700924586837752e-16,
+      "trace_error": 2.5794843318278265e-16,
+      "determinant_error": 4.924939832040006e-17
+    },
+    {
+      "g": 0.86,
+      "spectrum_error": 1.1188630228279524e-16,
+      "trace_error": 1.3877787807814457e-17,
+      "determinant_error": 1.6668395968097243e-16
+    },
+    {
+      "g": 0.88,
+      "spectrum_error": 1.7022509214094838e-16,
+      "trace_error": 8.115699733681821e-17,
+      "determinant_error": 1.4465984165527955e-16
+    },
+    {
+      "g": 0.9,
+      "spectrum_error": 1.2180289103636325e-16,
+      "trace_error": 1.5323064403972914e-16,
+      "determinant_error": 2.785562134219714e-17
+    },
+    {
+      "g": 0.92,
+      "spectrum_error": 2.2204588185510067e-16,
+      "trace_error": 1.997315722830133e-16,
+      "determinant_error": 1.1935236995354058e-16
+    },
+    {
+      "g": 0.9400000000000001,
+      "spectrum_error": 2.688896002909594e-16,
+      "trace_error": 1.8828893175000558e-16,
+      "determinant_error": 1.2764000775579923e-16
+    },
+    {
+      "g": 0.96,
+      "spectrum_error": 1.7554167342883506e-16,
+      "trace_error": 1.622990191082527e-16,
+      "determinant_error": 7.035462411109373e-17
+    },
+    {
+      "g": 0.98,
+      "spectrum_error": 6.087272963323595e-16,
+      "trace_error": 3.5177324472562457e-16,
+      "determinant_error": 1.726050514412186e-16
+    },
+    {
+      "g": 1.02,
+      "spectrum_error": 3.6880726988814704e-16,
+      "trace_error": 2.6558837364083264e-16,
+      "determinant_error": 1.1416528211037356e-16
+    },
+    {
+      "g": 1.04,
+      "spectrum_error": 3.274369582677337e-16,
+      "trace_error": 1.6883057536160649e-16,
+      "determinant_error": 1.7697788526311672e-16
+    },
+    {
+      "g": 1.06,
+      "spectrum_error": 1.2076221357126153e-16,
+      "trace_error": 7.632783294297946e-17,
+      "determinant_error": 6.969968012137768e-17
+    },
+    {
+      "g": 1.08,
+      "spectrum_error": 4.933346195221688e-16,
+      "trace_error": 2.8609792490763985e-16,
+      "determinant_error": 3.3631387907955086e-16
+    },
+    {
+      "g": 1.1,
+      "spectrum_error": 3.1210908622327583e-16,
+      "trace_error": 4.2001807449902774e-16,
+      "determinant_error": 1.5849284330381748e-16
+    },
+    {
+      "g": 1.12,
+      "spectrum_error": 5.110348716118614e-16,
+      "trace_error": 6.145525706514757e-16,
+      "determinant_error": 2.0649170375820417e-16
+    },
+    {
+      "g": 1.1400000000000001,
+      "spectrum_error": 1.1404624333503272e-16,
+      "trace_error": 1.5700924586837752e-16,
+      "determinant_error": 6.41790863310806e-17
+    },
+    {
+      "g": 1.1600000000000001,
+      "spectrum_error": 4.503791390791857e-16,
+      "trace_error": 4.652682298944613e-16,
+      "determinant_error": 2.22142855639503e-16
+    },
+    {
+      "g": 1.18,
+      "spectrum_error": 2.5813650294381658e-16,
+      "trace_error": 1.1857187100668868e-16,
+      "determinant_error": 2.716164939914858e-16
+    },
+    {
+      "g": 1.2,
+      "spectrum_error": 4.2972418525366566e-16,
+      "trace_error": 3.608224830031759e-16,
+      "determinant_error": 3.4816689972736313e-16
+    },
+    {
+      "g": 1.22,
+      "spectrum_error": 3.06908702585693e-16,
+      "trace_error": 2.3592239273284576e-16,
+      "determinant_error": 3.0409435425903e-16
+    },
+    {
+      "g": 1.24,
+      "spectrum_error": 3.7493833614395036e-16,
+      "trace_error": 4.1748851477261595e-16,
+      "determinant_error": 2.3007621740959844e-16
+    },
+    {
+      "g": 1.26,
+      "spectrum_error": 1.2123336701929113e-16,
+      "trace_error": 1.6711069443220838e-16,
+      "determinant_error": 1.130062017450407e-16
+    },
+    {
+      "g": 1.28,
+      "spectrum_error": 2.3433001926961494e-16,
+      "trace_error": 2.2591401799415137e-16,
+      "determinant_error": 2.6960794938864585e-16
+    },
+    {
+      "g": 1.3,
+      "spectrum_error": 5.928417980472676e-16,
+      "trace_error": 5.721958498152797e-16,
+      "determinant_error": 5.570164835637401e-16
+    },
+    {
+      "g": 1.32,
+      "spectrum_error": 3.4021815010030383e-16,
+      "trace_error": 2.3263411494723067e-16,
+      "determinant_error": 3.383904413151877e-16
+    },
+    {
+      "g": 1.34,
+      "spectrum_error": 3.3642645878165795e-16,
+      "trace_error": 1.6711069443220836e-16,
+      "determinant_error": 5.557581820475716e-16
+    },
+    {
+      "g": 1.36,
+      "spectrum_error": 1.3897451972861582e-16,
+      "trace_error": 8.326672684688672e-17,
+      "determinant_error": 1.794459861230614e-16
+    },
+    {
+      "g": 1.38,
+      "spectrum_error": 4.0029660424867215e-16,
+      "trace_error": 3.1401849173675503e-16,
+      "determinant_error": 4.917373170432265e-16
+    },
+    {
+      "g": 1.4,
+      "spectrum_error": 5.987070605622573e-16,
+      "trace_error": 7.510691584075473e-16,
+      "determinant_error": 4.551128717344769e-16
+    },
+    {
+      "g": 1.42,
+      "spectrum_error": 2.556688394807469e-16,
+      "trace_error": 4.577566798522237e-16,
+      "determinant_error": 2.644431700466685e-16
+    },
+    {
+      "g": 1.44,
+      "spectrum_error": 4.589908805252359e-16,
+      "trace_error": 6.901322157724297e-16,
+      "determinant_error": 4.472961483986738e-16
+    },
+    {
+      "g": 1.46,
+      "spectrum_error": 4.440930533885049e-16,
+      "trace_error": 5.993212282476064e-16,
+      "determinant_error": 4.78789636304481e-16
+    },
+    {
+      "g": 1.48,
+      "spectrum_error": 4.440892098500626e-16,
+      "trace_error": 4.652682298944613e-16,
+      "determinant_error": 6.831255589163714e-16
+    },
+    {
+      "g": 1.5,
+      "spectrum_error": 2.9504581591051765e-16,
+      "trace_error": 1.942890293094024e-16,
+      "determinant_error": 7.0065650844355e-16
+    },
+    {
+      "g": 1.52,
+      "spectrum_error": 7.021666937153402e-16,
+      "trace_error": 7.021666937153402e-16,
+      "determinant_error": 1.1706110705351373e-15
+    },
+    {
+      "g": 1.54,
+      "spectrum_error": 2.514242305399531e-16,
+      "trace_error": 2.618455766672135e-16,
+      "determinant_error": 2.4947443476164447e-16
+    },
+    {
+      "g": 1.56,
+      "spectrum_error": 2.5476231888929306e-16,
+      "trace_error": 2.423651445728339e-16,
+      "determinant_error": 4.710277376051326e-16
+    },
+    {
+      "g": 1.58,
+      "spectrum_error": 4.965068306494546e-16,
+      "trace_error": 7.575797802392804e-16,
+      "determinant_error": 4.55620772082293e-16
+    },
+    {
+      "g": 1.6,
+      "spectrum_error": 7.021666937153402e-16,
+      "trace_error": 8.410672200088598e-16,
+      "determinant_error": 6.71748007790071e-16
+    },
+    {
+      "g": 1.62,
+      "spectrum_error": 4.965068306494546e-16,
+      "trace_error": 3.1401849173675503e-16,
+      "determinant_error": 1.1457243419821341e-15
+    },
+    {
+      "g": 1.6400000000000001,
+      "spectrum_error": 3.1401849173675503e-16,
+      "trace_error": 2.482534153247273e-16,
+      "determinant_error": 6.202004332357124e-16
+    },
+    {
+      "g": 1.6600000000000001,
+      "spectrum_error": 3.1401849173675503e-16,
+      "trace_error": 3.2398021848425308e-16,
+      "determinant_error": 3.5409033495642534e-16
+    },
+    {
+      "g": 1.6800000000000002,
+      "spectrum_error": 3.1401849173675503e-16,
+      "trace_error": 2.3714374201337736e-16,
+      "determinant_error": 5.353197944858205e-16
+    },
+    {
+      "g": 1.7000000000000002,
+      "spectrum_error": 4.441959512036313e-16,
+      "trace_error": 6.731800026102354e-16,
+      "determinant_error": 4.721433461650066e-16
+    },
+    {
+      "g": 1.7200000000000002,
+      "spectrum_error": 4.965068306494546e-16,
+      "trace_error": 4.90457592513324e-16,
+      "determinant_error": 7.434632337621419e-16
+    },
+    {
+      "g": 1.74,
+      "spectrum_error": 2.7755575615628914e-16,
+      "trace_error": 2.7755575615628914e-16,
+      "determinant_error": 2.3713334644340864e-16
+    },
+    {
+      "g": 1.76,
+      "spectrum_error": 7.021666937153402e-16,
+      "trace_error": 7.270954337185018e-16,
+      "determinant_error": 9.152829377314463e-16
+    },
+    {
+      "g": 1.78,
+      "spectrum_error": 7.021666937153402e-16,
+      "trace_error": 9.036560719766055e-16,
+      "determinant_error": 1.2638712790303645e-15
+    },
+    {
+      "g": 1.8,
+      "spectrum_error": 2.427324142612482e-16,
+      "trace_error": 2.2247786310271853e-16,
+      "determinant_error": 5.211583906791321e-16
+    },
+    {
+      "g": 1.82,
+      "spectrum_error": 3.1401849173675503e-16,
+      "trace_error": 2.482534153247273e-16,
+      "determinant_error": 5.0648077479397e-16
+    },
+    {
+      "g": 1.84,
+      "spectrum_error": 1.1102230246251565e-16,
+      "trace_error": 1.1102230246251565e-16,
+      "determinant_error": 1.714782500555485e-16
+    },
+    {
+      "g": 1.8599999999999999,
+      "spectrum_error": 4.0029660424867215e-16,
+      "trace_error": 2.2591401799415137e-16,
+      "determinant_error": 1.1955389678928219e-15
+    },
+    {
+      "g": 1.88,
+      "spectrum_error": 2.2247786310271853e-16,
+      "trace_error": 3.0436364816617974e-16,
+      "determinant_error": 5.816170108419653e-16
+    },
+    {
+      "g": 1.9,
+      "spectrum_error": 2.482534153247273e-16,
+      "trace_error": 2.482534153247273e-16,
+      "determinant_error": 1.793620188084545e-16
+    },
+    {
+      "g": 1.92,
+      "spectrum_error": 2.220446049250313e-16,
+      "trace_error": 2.423651445728339e-16,
+      "determinant_error": 9.023373063404621e-16
+    },
+    {
+      "g": 1.94,
+      "spectrum_error": 4.440892098500626e-16,
+      "trace_error": 4.613190423717512e-16,
+      "determinant_error": 9.12125624667409e-16
+    },
+    {
+      "g": 1.96,
+      "spectrum_error": 4.965068306494546e-16,
+      "trace_error": 2.618455766672135e-16,
+      "determinant_error": 1.0265187166689153e-15
+    },
+    {
+      "g": 1.98,
+      "spectrum_error": 3.1401849173675503e-16,
+      "trace_error": 1.3877787807814457e-17,
+      "determinant_error": 8.589111203184566e-16
+    },
+    {
+      "g": 2.0,
+      "spectrum_error": 2.2308370558385646e-16,
+      "trace_error": 2.2591401799415137e-16,
+      "determinant_error": 1.466120903203146e-16
+    }
+  ],
+  "limitations": "An analytically defined 2x2 teaching model; not a reproduction of a paper and not an original discovery."
+}

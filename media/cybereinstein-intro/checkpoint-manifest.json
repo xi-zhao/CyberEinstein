@@ -1,0 +1,156 @@
+{
+  "saved_at": "2026-10-03T22:13:59+08:00",
+  "repository": "xi-zhao/CyberEinstein",
+  "base_commit": "e8ce8307a878c1bc6fe5e0fcf5b680e90f2045b8",
+  "base_tree": "af43246b661b8ce5afb3e41d132b9c0f3d6d3783",
+  "file_count_excluding_manifest": 24,
+  "manifest_excludes_itself": true,
+  "original_source_files": 21,
+  "original_source_bytes_preserved": true,
+  "files": [
+    {
+      "path": "HANDOVER.md",
+      "bytes": 7536,
+      "sha256": "e95e12559a3a573acedda3198990c22921ad16bd7881cf99fb2a9c621de8bcd8",
+      "git_blob_sha": "25566e8f1b34137ee2cfd184420edd8557c2bb06"
+    },
+    {
+      "path": "media/cybereinstein-intro/.gitignore",
+      "bytes": 93,
+      "sha256": "d8fe18ff54de07c58ec0cca220f92aae1d48c24bafa56a7d85cb45377e2fb82d",
+      "git_blob_sha": "01ef559e8cfb5a3703cfdb3d7d142f7cd8bc4d66"
+    },
+    {
+      "path": "media/cybereinstein-intro/README.txt",
+      "bytes": 3430,
+      "sha256": "6d3da29c96afbc9adc3d71662c5b58fa351c2c091f1cb898c181d25d7bf00634",
+      "git_blob_sha": "37994f3f0fa4da940d790d83bd87120834d72965"
+    },
+    {
+      "path": "media/cybereinstein-intro/animation-source/citation.mjs",
+      "bytes": 1108,
+      "sha256": "5c9deffe0f5982434d2364d3069b48997b27b87c3f94566dd7a884d35fe99215",
+      "git_blob_sha": "e7202a95b1753948afcdaf606292018e65be2abc"
+    },
+    {
+      "path": "media/cybereinstein-intro/animation-source/evidence.mjs",
+      "bytes": 1296,
+      "sha256": "0dc6ebf57f9d5d98004cd6d7bddfff1df441ca0d7f9a1dbf4f4558dd1623150c",
+      "git_blob_sha": "abd6969d64c5ffc8ab1915a1ebf1213a81e16864"
+    },
+    {
+      "path": "media/cybereinstein-intro/animation-source/failure.mjs",
+      "bytes": 1320,
+      "sha256": "faf761dd6a815cba5ec5b3fd859a955047e4bc77e7e018aad30ccaa73173a842",
+      "git_blob_sha": "70260cc6d725a682fc75365e50bd8908b81b8d08"
+    },
+    {
+      "path": "media/cybereinstein-intro/animation-source/map.mjs",
+      "bytes": 1790,
+      "sha256": "5cb7c96a361972da80474963dfd381177a53d9d6505492c8e9b218592a9e2804",
+      "git_blob_sha": "d561faf11db85c97a3b960fa33e73796729fa1e3"
+    },
+    {
+      "path": "media/cybereinstein-intro/animation-source/path.mjs",
+      "bytes": 1483,
+      "sha256": "8d4a2257b93406e5fc0f58cba99e12537e25b7223a058fcec4bf04f534b0cd4e",
+      "git_blob_sha": "2dfdac22040f31c877c865303fae3acb85aa27c6"
+    },
+    {
+      "path": "media/cybereinstein-intro/animation-source/projects.mjs",
+      "bytes": 1399,
+      "sha256": "6a31e7f45513008acdd58e1a427d283fedcad6de2bcf44b6d501d2999ddc3318",
+      "git_blob_sha": "ef1a2cd4d6e2f6135683d3fd13c8dca133380052"
+    },
+    {
+      "path": "media/cybereinstein-intro/animation-source/question.mjs",
+      "bytes": 1842,
+      "sha256": "c348699df58a4c6f2fb81deb36630f74c77e1c541e77a86b2238d6c4db9826e1",
+      "git_blob_sha": "ad6f3a01ff661197cc8d24eff6511d8ce4890245"
+    },
+    {
+      "path": "media/cybereinstein-intro/animation-source/spectrum.mjs",
+      "bytes": 2030,
+      "sha256": "ca3045011452805076fbad285c6fa912f0ba66ca690b9c05a9b32e88730fd439",
+      "git_blob_sha": "bedd1869f4491b96eddce32b88218ad30a814c59"
+    },
+    {
+      "path": "media/cybereinstein-intro/build_assets.py",
+      "bytes": 3983,
+      "sha256": "95223b9a1a3a9035968dce2879978df993e030f848f9bedd044adb9ee25ed784",
+      "git_blob_sha": "3ecb1e23938c4040ac1cada210af083ee8fb5864"
+    },
+    {
+      "path": "media/cybereinstein-intro/checkpoint-verification.json",
+      "bytes": 1713,
+      "sha256": "1002e90318205a271e9f2a66ff3a1a752ec6292fc2cfc19dcc48a6da3e8c2733",
+      "git_blob_sha": "2c6280f1b67c5fc63dc6abe5f16bbfc4995e57f0"
+    },
+    {
+      "path": "media/cybereinstein-intro/custom_config.yml",
+      "bytes": 148,
+      "sha256": "e00acdb14349a2dd86445c91db82833e6263d3696b98a977bef819ac53b54fb5",
+      "git_blob_sha": "df1502adfd789eda186599ca264f1df0e6e457d5"
+    },
+    {
+      "path": "media/cybereinstein-intro/cybereinstein-cover.png",
+      "bytes": 72565,
+      "sha256": "8846901ba280158a565ab434303a35616031e55486ad09f830c42fe4706bf119",
+      "git_blob_sha": "a6fee2416eeb03df90c43e993fbc04e96d1b86ec"
+    },
+    {
+      "path": "media/cybereinstein-intro/demo-evidence.json",
+      "bytes": 18033,
+      "sha256": "cd524f40fd864465c7a4b638494a3887886c0ce97b7cb0d33b4e4be80e7378aa",
+      "git_blob_sha": "f05c6e978e6f18acea10ce00969768104388325c"
+    },
+    {
+      "path": "media/cybereinstein-intro/narration.txt",
+      "bytes": 3792,
+      "sha256": "9b8c6afcfe43302c9655f7b5356290631e06d42d884f2778bb1eee703356b6f4",
+      "git_blob_sha": "669b522fcb43c1a838071af3535c4fd921ae1f48"
+    },
+    {
+      "path": "media/cybereinstein-intro/requirements.txt",
+      "bytes": 15,
+      "sha256": "cdca57df1457ce14660900e3de6bb75f4c306e4342175789323eed76be1ec2e8",
+      "git_blob_sha": "176529e0a3f265138a1aea7344e11dde6dbcc921"
+    },
+    {
+      "path": "media/cybereinstein-intro/scenes_manim.py",
+      "bytes": 12109,
+      "sha256": "1218f75ddb8d0bd4f2d6dde24fe8d2310b482cf70f081156e45921ec9ebf8fb7",
+      "git_blob_sha": "c8bcb2ba07ce76b2605e208af3a724350e3d4032"
+    },
+    {
+      "path": "media/cybereinstein-intro/sources.json",
+      "bytes": 1254,
+      "sha256": "1cd7119af6e36abeaa18be05a088ae333aa1d0c50139faceee505ab4344452fc",
+      "git_blob_sha": "3d9f2e6dc3cb0e33fb555966eb15be4148e349b2"
+    },
+    {
+      "path": "media/cybereinstein-intro/tts_doubao.py",
+      "bytes": 4180,
+      "sha256": "67bbc1e7db2d469bc07889429a477613aa1c8d9ed51fcfe2e241bc09234b5844",
+      "git_blob_sha": "a04c6a4454569943bbf4b2b63f924ffca5be0fb4"
+    },
+    {
+      "path": "media/cybereinstein-intro/validate_and_package.py",
+      "bytes": 2959,
+      "sha256": "d55bbf1bc71474747ee6f03ce6d377a75d36715dd13a22c1d5a0ecae5e314091",
+      "git_blob_sha": "71f92a4110a34c50e3920dd0d966b8804fd0c1cd"
+    },
+    {
+      "path": "media/cybereinstein-intro/validation.json",
+      "bytes": 1096,
+      "sha256": "22ee85f5c95b0d1e109f0d8089b2e26ffec6a94bcb603eb055c934b823b92066",
+      "git_blob_sha": "c4d6b2e8b9ac52a794bc19545729bf0a94e2363c"
+    },
+    {
+      "path": "media/cybereinstein-intro/video.explainer.xml",
+      "bytes": 18785,
+      "sha256": "2d73ccf3ef761a607dfe4b42ff8fec37196e31c7f7ca9cb154a83edb693e8541",
+      "git_blob_sha": "bc0e2d05624b7d5ac38deb75cf589b66f5d122b3"
+    }
+  ]
+}

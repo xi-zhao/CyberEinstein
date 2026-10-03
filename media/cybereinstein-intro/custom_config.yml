@@ -1,0 +1,8 @@
+directories:
+  output: ./manim-output
+camera:
+  background_color: "#0b0d13"
+  resolution: "(1920, 1080)"
+  fps: 30
+style:
+  font: "Microsoft YaHei"
