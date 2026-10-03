@@ -1,0 +1,29 @@
+{
+  "online_stream_finalized": true,
+  "slides": 12,
+  "narration_segments": 12,
+  "animation_modules": 8,
+  "xml_parses": true,
+  "all_narration_refs_resolve": true,
+  "javascript_syntax_checked": true,
+  "python_syntax_checked": true,
+  "preview_duration_seconds_estimate": 242.324,
+  "cover_visually_inspected": true,
+  "preview_playback_visually_checked": false,
+  "manimgl_installed": false,
+  "manimgl_rendered": false,
+  "venv_created": true,
+  "doubao_voice": "zh_male_m191_uranus_bigtts",
+  "doubao_api_calls": 0,
+  "credentials_saved": false,
+  "input_characters": 1223,
+  "numerical_teaching_example_passed": true,
+  "spectrum_error_away_from_EP": 7.021666937153402e-16,
+  "blockers": [
+    "ManimGL dependencies were unavailable in the original source environment",
+    "Dependency installation was not completed in the original source environment",
+    "Online preview playback was not visually inspected",
+    "Native app interaction was not performed"
+  ],
+  "delivery_boundary": "Online script-animation preview with free service Chinese voice; not original ManimGL or the later requested Doubao voice."
+}

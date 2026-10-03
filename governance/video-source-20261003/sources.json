@@ -1,0 +1,29 @@
+{
+  "retrieved_on": "2026-10-03",
+  "sources": [
+    {
+      "url": "https://github.com/xi-zhao/CyberEinstein/blob/main/README.zh-CN.md",
+      "blob_sha": "dd4bc50b744deb2a3f527f639da6f3d5c8a7e630",
+      "use": "项目定位、现有能力、三项目分工、未来目标"
+    },
+    {
+      "url": "https://github.com/xi-zhao/CyberEinstein/blob/main/docs/field-history.md",
+      "blob_sha": "0c9add8522e771a2d02388ce207ffcf53fdfd050",
+      "use": "1–3跳引用扩展、主题级前沿发现、关系的证据边界"
+    },
+    {
+      "url": "https://github.com/xi-zhao/CyberEinstein/blob/main/docs/architecture.md",
+      "blob_sha": "fa5780bc1f1ad4f4fdb40cd50b6021c250807b58",
+      "use": "证据追溯、独立审查、失败经验及适用范围"
+    },
+    {
+      "url": "https://github.com/3b1b/manim",
+      "use": "用户指定的原版 Manim；Python源码目标版本1.7.2"
+    },
+    {
+      "url": "https://docs.volcengine.com/docs/DoubaoVoice/unidirectional-streaming-text-to-speech-http?lang=zh",
+      "use": "准备配音适配器的认证、音色、请求和流式响应结构"
+    }
+  ],
+  "scientific_example": "视频教学示例由解析特征方程与 NumPy eigvals 独立检查，不代表项目实测科学发现。"
+}

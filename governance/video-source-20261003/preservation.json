@@ -1,0 +1,163 @@
+{
+  "purpose": "Preserve only the local CyberEinstein introduction-video deliverable, with explicit privacy edits.",
+  "source_label": "CyberEinstein introduction-video source deliverable 2026-10-03",
+  "full_local_repository_available": false,
+  "source_git_history_available": false,
+  "base_remote_commit": "e8ce8307a878c1bc6fe5e0fcf5b680e90f2045b8",
+  "source_files": 21,
+  "files": {
+    "sources.json": {
+      "source_sha256": "1cd7119af6e36abeaa18be05a088ae333aa1d0c50139faceee505ab4344452fc",
+      "publication_sha256": "1cd7119af6e36abeaa18be05a088ae333aa1d0c50139faceee505ab4344452fc",
+      "publication_bytes": 1254
+    },
+    "requirements.txt": {
+      "source_sha256": "cdca57df1457ce14660900e3de6bb75f4c306e4342175789323eed76be1ec2e8",
+      "publication_sha256": "cdca57df1457ce14660900e3de6bb75f4c306e4342175789323eed76be1ec2e8",
+      "publication_bytes": 15
+    },
+    "build_assets.py": {
+      "source_sha256": "95223b9a1a3a9035968dce2879978df993e030f848f9bedd044adb9ee25ed784",
+      "publication_sha256": "fbeb825d50dc0248ce6f8bebb07d84a638619a74d0bc55d5e716c6c47df0cf84",
+      "publication_bytes": 3958
+    },
+    "demo-evidence.json": {
+      "source_sha256": "cd524f40fd864465c7a4b638494a3887886c0ce97b7cb0d33b4e4be80e7378aa",
+      "publication_sha256": "cd524f40fd864465c7a4b638494a3887886c0ce97b7cb0d33b4e4be80e7378aa",
+      "publication_bytes": 18033
+    },
+    "custom_config.yml": {
+      "source_sha256": "e00acdb14349a2dd86445c91db82833e6263d3696b98a977bef819ac53b54fb5",
+      "publication_sha256": "e00acdb14349a2dd86445c91db82833e6263d3696b98a977bef819ac53b54fb5",
+      "publication_bytes": 148
+    },
+    "video.explainer.xml": {
+      "source_sha256": "2d73ccf3ef761a607dfe4b42ff8fec37196e31c7f7ca9cb154a83edb693e8541",
+      "publication_sha256": "fc99220c03b2ed5d8331826eb91205b7c4c7bd0efcb4a26e59cbb9a0a3c2339a",
+      "publication_bytes": 18761
+    },
+    "cybereinstein-cover.png": {
+      "source_sha256": "8846901ba280158a565ab434303a35616031e55486ad09f830c42fe4706bf119",
+      "publication_sha256": "8846901ba280158a565ab434303a35616031e55486ad09f830c42fe4706bf119",
+      "publication_bytes": 72565
+    },
+    "tts_doubao.py": {
+      "source_sha256": "67bbc1e7db2d469bc07889429a477613aa1c8d9ed51fcfe2e241bc09234b5844",
+      "publication_sha256": "67bbc1e7db2d469bc07889429a477613aa1c8d9ed51fcfe2e241bc09234b5844",
+      "publication_bytes": 4180
+    },
+    "validation.json": {
+      "source_sha256": "22ee85f5c95b0d1e109f0d8089b2e26ffec6a94bcb603eb055c934b823b92066",
+      "publication_sha256": "0bfe1ccf977b0df405a110b0553e5426c003bc41b12f8304a40604c1fb523438",
+      "publication_bytes": 1121
+    },
+    "scenes_manim.py": {
+      "source_sha256": "1218f75ddb8d0bd4f2d6dde24fe8d2310b482cf70f081156e45921ec9ebf8fb7",
+      "publication_sha256": "1218f75ddb8d0bd4f2d6dde24fe8d2310b482cf70f081156e45921ec9ebf8fb7",
+      "publication_bytes": 12109
+    },
+    "README.txt": {
+      "source_sha256": "6d3da29c96afbc9adc3d71662c5b58fa351c2c091f1cb898c181d25d7bf00634",
+      "publication_sha256": "b52e8f4223373b7bafe7999fe4ce7f1709ae31f7ba317ba4b477875ae92c92b5",
+      "publication_bytes": 1716
+    },
+    "narration.txt": {
+      "source_sha256": "9b8c6afcfe43302c9655f7b5356290631e06d42d884f2778bb1eee703356b6f4",
+      "publication_sha256": "f0f1141bc86f01829928d11cf30b42acb937a45dc43177dc592c3a6d3b33959f",
+      "publication_bytes": 3768
+    },
+    "validate_and_package.py": {
+      "source_sha256": "d55bbf1bc71474747ee6f03ce6d377a75d36715dd13a22c1d5a0ecae5e314091",
+      "publication_sha256": "532bee4372521891f812cdefbec17b20310185037a0be93034786cb776427d46",
+      "publication_bytes": 2984
+    },
+    "animation-source/spectrum.mjs": {
+      "source_sha256": "ca3045011452805076fbad285c6fa912f0ba66ca690b9c05a9b32e88730fd439",
+      "publication_sha256": "ca3045011452805076fbad285c6fa912f0ba66ca690b9c05a9b32e88730fd439",
+      "publication_bytes": 2030
+    },
+    "animation-source/failure.mjs": {
+      "source_sha256": "faf761dd6a815cba5ec5b3fd859a955047e4bc77e7e018aad30ccaa73173a842",
+      "publication_sha256": "faf761dd6a815cba5ec5b3fd859a955047e4bc77e7e018aad30ccaa73173a842",
+      "publication_bytes": 1320
+    },
+    "animation-source/evidence.mjs": {
+      "source_sha256": "0dc6ebf57f9d5d98004cd6d7bddfff1df441ca0d7f9a1dbf4f4558dd1623150c",
+      "publication_sha256": "0dc6ebf57f9d5d98004cd6d7bddfff1df441ca0d7f9a1dbf4f4558dd1623150c",
+      "publication_bytes": 1296
+    },
+    "animation-source/question.mjs": {
+      "source_sha256": "c348699df58a4c6f2fb81deb36630f74c77e1c541e77a86b2238d6c4db9826e1",
+      "publication_sha256": "c348699df58a4c6f2fb81deb36630f74c77e1c541e77a86b2238d6c4db9826e1",
+      "publication_bytes": 1842
+    },
+    "animation-source/projects.mjs": {
+      "source_sha256": "6a31e7f45513008acdd58e1a427d283fedcad6de2bcf44b6d501d2999ddc3318",
+      "publication_sha256": "6a31e7f45513008acdd58e1a427d283fedcad6de2bcf44b6d501d2999ddc3318",
+      "publication_bytes": 1399
+    },
+    "animation-source/citation.mjs": {
+      "source_sha256": "5c9deffe0f5982434d2364d3069b48997b27b87c3f94566dd7a884d35fe99215",
+      "publication_sha256": "5c9deffe0f5982434d2364d3069b48997b27b87c3f94566dd7a884d35fe99215",
+      "publication_bytes": 1108
+    },
+    "animation-source/map.mjs": {
+      "source_sha256": "5cb7c96a361972da80474963dfd381177a53d9d6505492c8e9b218592a9e2804",
+      "publication_sha256": "5cb7c96a361972da80474963dfd381177a53d9d6505492c8e9b218592a9e2804",
+      "publication_bytes": 1790
+    },
+    "animation-source/path.mjs": {
+      "source_sha256": "8d4a2257b93406e5fc0f58cba99e12537e25b7223a058fcec4bf04f534b0cd4e",
+      "publication_sha256": "8d4a2257b93406e5fc0f58cba99e12537e25b7223a058fcec4bf04f534b0cd4e",
+      "publication_bytes": 1483
+    }
+  },
+  "changed_for_publication": [
+    "README.txt",
+    "build_assets.py",
+    "narration.txt",
+    "validate_and_package.py",
+    "validation.json",
+    "video.explainer.xml"
+  ],
+  "privacy_edits": [
+    "Replace an absolute local font path with a font filename placeholder.",
+    "Generalize personal background text in narration and XML consistently.",
+    "Replace source-environment permission details with general dependency/playback limitations.",
+    "Replace the source README with a publication-safe preservation description."
+  ],
+  "new_checks": {
+    "python_ast_files": 4,
+    "javascript_syntax_files": 8,
+    "json_parse_files": 3,
+    "xml_slides": 12,
+    "xml_narration_segments": 12,
+    "all_narration_refs_resolve": true,
+    "animation_modules_match_xml": true,
+    "narration_matches_xml": true,
+    "source_and_publication_hashes_recorded": true
+  },
+  "not_executed": [
+    "Numerical teaching example",
+    "Scientific experiments",
+    "ManimGL rendering",
+    "TTS or model API calls",
+    "Online preview playback",
+    "Dependency installation",
+    "Full project unit tests"
+  ],
+  "excluded": [
+    "Source ZIP transport duplicate",
+    "venv",
+    "uv-cache",
+    "Credentials",
+    "Personal font path and local permission details",
+    "Private PRAgent implementation and acceptance records",
+    "Paper original text"
+  ],
+  "limitations": [
+    "This is a video-deliverable preservation copy, not a backup of the complete CyberEinstein source repository.",
+    "Historical validation results were retained as source observations, not claimed as newly reproduced.",
+    "Rendering requires dependency, font, and audio preparation; no rendering success is asserted."
+  ]
+}
