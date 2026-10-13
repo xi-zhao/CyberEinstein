@@ -1,0 +1,193 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>THEORY</title><style>body{margin:0;background:#f1f3f5;color:#17212b;font:17px/1.85 system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}main{max-width:1050px;margin:30px auto;padding:38px 50px;background:white}h1{font-size:30px;line-height:1.4}h2{margin-top:34px;border-top:1px solid #ddd;padding-top:18px;font-size:23px}h3{font-size:19px}pre{background:#f3f5f7;padding:16px;overflow:auto;font-size:14px;line-height:1.6}code{font-family:ui-monospace,monospace}table{border-collapse:collapse;display:block;overflow:auto;font-size:14px}th,td{border-bottom:1px solid #ddd;padding:9px 13px;vertical-align:top;min-width:100px}th{background:#f1f4f7}a{color:#205b84;overflow-wrap:anywhere}img{max-width:100%}.math{overflow:auto}nav{font-size:14px;border-bottom:1px solid #ddd;padding-bottom:16px}@media(max-width:720px){main{margin:0;padding:22px}h1{font-size:25px}}</style><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script></head><body><main><nav><a href="REPORT.html">研究结果</a> · <a href="THEORY.html">推导</a> · <a href="NOVELTY_AUDIT.html">贡献审查</a> · <a href="README.md">复算说明</a></nav><h1>Mixed-state topology and the resources of its readout</h1>
+<p>Research note, 13 October 2026. These are derivations and bounded checks produced in this session. They are not a peer-reviewed publication, a verified novelty certificate, or a general classification of interacting mixed states. The primary operational distinction is between a topological feature of a promised Gaussian Gibbs family and what a specified measurement can infer about it.</p>
+<h2>0. Scope and definitions</h2>
+<p>Consider a ring with M≥3 unit cells (2M spinless fermion sites), intracell hoppings v_j&gt;0, intercell hoppings w_j&gt;0, chemical potential zero, and no density interactions. The single-particle Hamiltonian h is nearest-neighbor and bipartite. The many-body state is grand canonical,</p>
+<div class="math">\[
+ \rho_\beta=Z^{-1}e^{-\beta\sum h_{ij}c_i^\dagger c_j},\qquad \beta&gt;0.
+\]</div>
+<p>The structure of the nearest-neighbor Gaussian Gibbs family and coarse hopping/temperature bounds are assumed known, but individual hoppings need not be known. If every hopping is already known exactly, computing the drift directly is simpler than this measurement protocol. The hopping realization may break translation and inversion. We use</p>
+<div class="math">\[
+ \mu_M=\frac1M\sum_{j=1}^M\ln(w_j/v_j).
+\]</div>
+<p>This is the signed zero-energy transfer drift. Its relation to random-chain localization and chiral topology is established prior knowledge [R4], not a new result here. For the periodic continuation of this M-cell realization, the winding convention is ν=1 if μ_M&gt;0, and ν=0 if μ_M&lt;0: det T(k) has one winding-dependent term proportional to ∏w and one constant term proportional to ∏v. Equality is the transition. For a stationary ergodic infinite random chain, μ_M tends to the mean logarithmic drift; a finite realization alone does not certify the sign of an unknown infinite-disorder distribution without a finite-sampling assumption/concentration bound.</p>
+<p>All Gaussian statements below require this known family. The bounds do not require a positive lower bound on the spectral gap, but do require bounds on individual nonzero hoppings for the local construction. They do not establish a general mixed-state invariant once arbitrary non-Gaussian perturbations, interactions, number postselection or long-range modular terms are allowed. In a gapless thermodynamic setting we are diagnosing the promised parent's transfer/topological structure; this must not silently be identified with every definition of mixed-state phases.</p>
+<h2>1. Two cuts: an exact zero-energy term plus a regular thermal remainder</h2>
+<p>Let h_W denote the open path obtained by cutting w_M, and h_V the path obtained by cutting v_1. Let</p>
+<div class="math">\[
+ \chi_c(\pi)=\operatorname{Tr}\rho_{\beta,c}(-1)^{\hat N},\qquad
+ X_{\beta,M}=\frac{\ln|\chi_V(\pi)|-\ln|\chi_W(\pi)|}{2M}.
+\]</div>
+<p>The Gaussian FCS determinant is known [R1]. Since h has 2M eigenvalues,</p>
+<div class="math">\[
+ \ln|\chi_c(\pi)|=\operatorname{Tr}\ln|\tanh(\beta h_c/2)|.
+\]</div>
+<p>The bidiagonal off-diagonal blocks of the two open paths give</p>
+<div class="math">\[
+ |\det h_W|=\left(\prod_jv_j\right)^2,\quad
+ |\det h_V|=\left(\prod_jw_j\right)^2.
+\]</div>
+<p>Define the continuous even function</p>
+<div class="math">\[
+ r_\beta(x)=\ln\frac{\tanh(\beta x/2)}{\beta x/2},\qquad r_\beta(0)=0.
+\]</div>
+<p>Then</p>
+<div class="math">\[
+ \ln|\chi_c|=\ln|\det h_c|+2M\ln(\beta/2)+\operatorname{Tr}r_\beta(h_c).
+\]</div>
+<p>The integral representation tanh(y)/y=∫₀¹sech²(ty)dt implies that the logarithmic derivative with respect to y is a weighted average of −2t tanh(ty), hence |r'_β(x)|≤β. For the trace functional, integrating along A+s(B−A) yields</p>
+<div class="math">\[
+ |\operatorname{Tr}r_\beta(A)-\operatorname{Tr}r_\beta(B)|
+ \le \beta\|A-B\|_1.
+\]</div>
+<p>This uses a scalar derivative bound inside a trace, not an unproved operator-Lipschitz assertion. Since ||h_V−h_W||₁≤2(v₁+w_M),</p>
+<div class="math">\[
+ \boxed{|X_{\beta,M}-\mu_M|\le\frac{\beta(v_1+w_M)}M.} \tag{1}
+\]</div>
+<p>For bounded boundary couplings and fixed β, the contrast converges to the logarithmic drift without a uniform spectral gap assumption. β=o(M) also suffices for the displayed error to vanish. At fixed finite M followed by β→∞, |χ_c|→1 and the contrast tends to zero; exchanging limits is not justified.</p>
+<p>A useful ring variant chooses the boundary phase so det T_ring=∏v+∏w. Then</p>
+<div class="math">\[
+ \left|\frac{\ln|\chi_{\rm ring}|-\ln|\chi_W|}{2M}
+ -\frac{\ln(1+e^{M\mu_M})}M\right|\le\frac{\beta w_M}M.
+\]</div>
+<p>The signed two-cut construction avoids reducing the drift to its positive part. Equations (1) and this ring identity are new session derivations; their general ingredients and boundary-FCS idea are prior art. They are not, by themselves, a novelty or importance certificate.</p>
+<h3>Why this did not become the selected readout</h3>
+<p>For a direct sample mean of parity, relative standard error r requires approximately (1−χ²)/(r²χ²) independent copies. At fixed nonzero temperature |χ| can be exponentially small with length. Computing a ratio of two such means does not cancel their shot noise. In the clean v=.8,w=1.2,β=2,M=16 example, 10% relative standard error of the two individual parity means costs approximately 10^8.90 and 10^19.84 copies. This is NOT a lower bound on every estimator using the full occupation record, different preparations or quantum measurements.</p>
+<p>Also, an open classical chain H=∑J_j(n_j−1/2)(n_{j+1}−1/2) has</p>
+<div class="math">\[
+ \langle(-1)^N\rangle=\prod_{j\ {\rm odd}}[-\tanh(\beta J_j/4)]
+\]</div>
+<p>on an even number of sites. Thus an extensive cut response is not an unrestricted interacting topological invariant. This known-type classical calculation is a scope control, not a new physical discovery.</p>
+<h2>2. A local-density estimator with a controlled thermal bias</h2>
+<p>The covariance matrix is C=(1+e^{βh})⁻¹. Chiral symmetry gives C_ii=1/2. Wick's rule gives, for i≠j,</p>
+<div class="math">\[
+ g_{ij}:=-\operatorname{Cov}(n_i,n_j)=|C_{ij}|^2.
+\]</div>
+<p>Let g_v,j and g_w,j be the values on the two alternating sets of bonds. Define</p>
+<div class="math">\[
+ Y_\beta=\frac1{2M}\sum_j\ln\frac{g_{w,j}}{g_{v,j}}. \tag{2}
+\]</div>
+<p>At high temperature g_e≈β²t_e²/16, so the common scale cancels and Y_β≈μ_M. Crucially this is a logarithmic/geometric statistic over all bonds, not the difference between two arithmetic averages. That difference can have the wrong sign for an inhomogeneous chain.</p>
+<p>Here is a uniform quantitative version. Suppose t_e≥t_min&gt;0 and a known K bounds ||h||. For example, K can be the maximum absolute row sum, or 2t_max. The scalar inequality |tanh x−x|≤|x|³/3 gives</p>
+<div class="math">\[
+ \left\|C-\frac I2+\frac{\beta h}4\right\|\le\frac{\beta^3K^3}{48}.
+\]</div>
+<p>Set</p>
+<div class="math">\[
+ a=\frac{\beta^2K^3}{12t_{\min}}&lt;1.
+\]</div>
+<p>Every nearest-neighbor amplitude obeys</p>
+<div class="math">\[
+ \frac{\beta t_e}4(1-a)\le|C_e|\le\frac{\beta t_e}4(1+a).
+\]</div>
+<p>Consequently,</p>
+<div class="math">\[
+ \boxed{|Y_\beta-\mu_M|\le b_{\rm th}:=\ln\frac{1+a}{1-a}.} \tag{3}
+\]</div>
+<p>This applies uniformly in M; it is a sufficient bound and can be conservative. A sign is certified only when its uncertainty interval excludes zero. The statistic itself is not quantized and is not an all-temperature invariant. The numerical tests explicitly found two sign mismatches at β=1,3 outside the certified regime.</p>
+<p>In a concrete inhomogeneous sequence v_j=1 and w_j alternating .2 and 2, μ_M=(1/2)ln(.4)=−0.458145..., but the high-T arithmetic difference of w- and v-bond density correlations is positive. At M=16,β=.03, Y_β=−0.458068893, and b_th=0.020250692. This illustrates why the particular aggregation matters, not a refutation of a clean-chain indicator outside its assumptions.</p>
+<h2>3. Elimination of independent local readout biases</h2>
+<p>Let the measured binary occupation m_i obey a site-dependent binary channel</p>
+<div class="math">\[
+ \Pr(m_i=1\mid n_i)=f_i+r_i n_i,
+\]</div>
+<p>where f_i is the false-positive probability and r_i=Pr(m_i=1|n_i=1)−f_i&gt;0. These parameters are fixed across the data acquisition but may vary arbitrarily from site to site. Conditional on the actual occupations, errors on different sites are independent. Then exactly,</p>
+<div class="math">\[
+ \operatorname{Cov}(m_i,m_j)=r_i r_j\operatorname{Cov}(n_i,n_j),\quad i\ne j.
+\]</div>
+<p>Use the centered measured covariance, not an uncentered spin-parity product. The two sets of bonds in (2) are both perfect matchings of the same ring, so every r_i occurs once in each product:</p>
+<div class="math">\[
+ \boxed{\frac1{2M}\ln\frac{\prod_j[-\operatorname{Cov}(m_{B_j},m_{A_{j+1}})]}
+ {\prod_j[-\operatorname{Cov}(m_{A_j},m_{B_j})]}=Y_\beta.} \tag{4}
+\]</div>
+<p>Neither f_i nor r_i needs to be estimated individually. This is an exact population-level cancellation, not immunity to shot noise. The algebra holds more generally for matching ratios of covariances, so its abstract statistical mechanism should not be advertised as a new physical law. Its proposed application here is a controlled topology diagnostic within a specified model family.</p>
+<p>For open chains the matchings do not cover identical endpoint sets, and (4) generally leaves boundary factors. For time-drifting common errors, cross-talk, correlated global erasure, r_i=0, or uncontrolled noise before state preparation, the conclusion does not follow. A correlated erasure control in the evidence changes Y from0.4113828071 to0.4176341504 even though its probability is only0.0003. No general robustness claim is made.</p>
+<h3>Confidence intervals that can abstain</h3>
+<p>One snapshot measures all2M occupations. There are2M means and2M neighboring pair moments. For n independent snapshots and a fixed chosen n, Hoeffding plus a union bound gives simultaneous moment errors at most</p>
+<div class="math">\[
+ e_n=\sqrt{\frac{\ln(8M/\delta)}{2n}}
+\]</div>
+<p>with probability at least1−δ. Each covariance error is at most3e_n: one pair-moment error plus at most two mean errors. Put \hat g_e=−\widehat{Cov}(m_i,m_j) and g_e^±=\hat g_e±3e_n. If any g_e^-≤0, abstain. Otherwise an interval for μ_M is</p>
+<div class="math">\[
+ \left[
+ \frac{\sum_j\ln g_{w,j}^- -\sum_j\ln g_{v,j}^+}{2M}-b_{\rm th},
+ \frac{\sum_j\ln g_{w,j}^+ -\sum_j\ln g_{v,j}^-}{2M}+b_{\rm th}
+ \right]. \tag{5}
+\]</div>
+<p>An interval entirely above or below zero certifies the corresponding sample/supercell drift sign. This does not require known detector efficiencies; poor efficiency simply broadens statistical uncertainty and can prevent any conclusion. Optional sequential stopping would require an anytime-valid bound or an explicitly allocated error schedule; the fixed-n guarantee must not be applied repeatedly without correction.</p>
+<p>Ideal readout can alternatively be bounded directly with the ±1 pair-parity variables. Since their mean magnitude is q_e=4g_e, q_min≥β²t_min²(1−a)²/4, a uniform relative error η is guaranteed by</p>
+<div class="math">\[
+ n\ge\frac{2\ln(4M/\delta)}{\eta^2q_{\min}^2}.
+\]</div>
+<p>The induced error in the logarithmic indicator is at most −ln(1−η). This is an upper bound, not a minimal experimental sample count. Its size scaling is logarithmic at fixed local bounds and precision, but its temperature/contrast prefactor can be large. The8-site conservative readout-noise example uses10^8 simulated-count shots to obtain a useful interval, so we do not call it already practical.</p>
+<h3>What this does not certify</h3>
+<p>A state that is completely dephased in the occupation basis gives exactly the same occupation snapshots as the original state. Thus density data alone cannot independently verify the Gaussian/coherent model promise. Equations (2)–(5) infer the promised parent's structure; they do not certify arbitrary quantum topological order from untrusted data. β and the hopping bounds are additional input assumptions. No single finite sample proves an infinite random-disorder phase without a specified continuation or disorder law.</p>
+<h2>4. A sharp benchmark: the temperature cost depends on measurement access</h2>
+<p>Consider a separate, deliberately simple two-hypothesis task on the periodic2M-site chain, M≥3. The known possibilities are</p>
+<div class="math">\[
+ H_A=t\sum_j(c_{2j}^\dagger c_{2j+1}+h.c.),\qquad
+ H_B=t\sum_j(c_{2j+1}^\dagger c_{2j+2}+h.c.).
+\]</div>
+<p>With the same fixed two-site unit cell, these are the trivial and topological fully dimerized limits. Here some bonds are zero: this benchmark is separate from the positive-t_min estimator theorem. The task is to identify which Gibbs state was prepared with equal priors and average error≤1/3. The promise is much stronger than classifying an unknown interacting state. One copy means one entire2M-site preparation and readout; increasing M is not a free resource.</p>
+<p>Let u=βt, s=tanh(u/2), k=s², and z_i=2n_i−1. The full occupation distributions are exactly</p>
+<div class="math">\[
+ P_A(z)=2^{-2M}\prod_j(1-k z_{2j}z_{2j+1}),\qquad
+ P_B(z)=2^{-2M}\prod_j(1-k z_{2j+1}z_{2j+2}). \tag{6}
+\]</div>
+<p>These are all the information available to any protocol which measures bare occupations of each copy, with arbitrary classical postprocessing. They are not just a chosen low-order estimator.</p>
+<h3>4.1 Necessary copies for arbitrary occupation-snapshot postprocessing</h3>
+<p>The exact classical relative entropy is</p>
+<div class="math">\[
+ \boxed{D(P_A\|P_B)=M k\operatorname{atanh}k.} \tag{7}
+\]</div>
+<p>To verify (7), an A bond has mean z_i z_j=−k, while a B bond in P_A has mean zero. Subtracting their expected log factors gives k atanh(k) per cell. The log likelihood itself is</p>
+<div class="math">\[
+ \ln(P_A/P_B)=-\operatorname{atanh}k\,S(z),\quad
+ S(z)=\sum_j[z_{2j}z_{2j+1}-z_{2j+1}z_{2j+2}].
+\]</div>
+<p>For n copies, distinguishability with error≤1/3 requires total variation at least1/3. Pinsker gives TV²≤nD/2, hence</p>
+<div class="math">\[
+ \boxed{n\ge\frac{2}{9M k\operatorname{atanh}k}.} \tag{8}
+\]</div>
+<p>This lower bound includes any downstream computation, fitting, machine learning or subset of the full occupation data. It does not apply after coherent basis changes, changed state preparation, switched boundaries or joint quantum measurements.</p>
+<p>A matching-order sufficient condition comes from the exact Bhattacharyya coefficient</p>
+<div class="math">\[
+ B=\sum_z\sqrt{P_A P_B}=a^M+(1-a)^M,\quad
+ a=\frac{1+\sqrt{1-k^2}}2. \tag{9}
+\]</div>
+<p>Writing sqrt(1−kx)=A+Bx for x=±1, the ring sum keeps only the empty and full even subgraphs, giving (9). The likelihood-ratio test has error≤B^n/2, using min(p,q)≤sqrt(pq). Thus n≥ln(3/2)/(−ln B) suffices. At high temperature,</p>
+<div class="math">\[
+ n_{\rm occupations}=\Theta\!\left(\max\{1,[M(\beta t)^4]^{-1}\}\right). \tag{10}
+\]</div>
+<p>This is a fixed-error temperature exponent for this promise problem, not a universal complexity class of mixed-state topology. In particular, global total-number FCS on these two periodic isospectral dimer states is identical; the spatial record is essential. This benchmark must not be misrepresented as a lower bound on every boundary-preparation FCS protocol in[R1].</p>
+<h3>4.2 A depth-one number-preserving readout achieves a better exponent</h3>
+<p>Apply a50:50 beam splitter on every intracell pair and measure occupations. The number difference in that basis measures</p>
+<div class="math">\[
+ X_j=c_{2j}^\dagger c_{2j+1}+h.c.,\quad Q=\sum_jX_j.
+\]</div>
+<p>Under A, ⟨Q⟩=−Ms and Var(Q)=M(1−s²)/2. Under B, ⟨Q⟩=0 and Var(Q)=M/2 for M≥3. The threshold −Ms/2 on the sample mean, followed by Chebyshev, gives error≤2/(nMs²), so</p>
+<div class="math">\[
+ n\ge6/(M s^2) \tag{11}
+\]</div>
+<p>suffices for error≤1/3. No collective measurement across copies is required.</p>
+<p>Conversely, the two quantum Gibbs states have equal partition functions and</p>
+<div class="math">\[
+ D(\rho_A\|\rho_B)=\beta\operatorname{Tr}\rho_A(H_B-H_A)=M u\tanh(u/2).
+\]</div>
+<p>Quantum Pinsker and data processing give n≥2/[9M u tanh(u/2)] even with arbitrary quantum measurements. Therefore</p>
+<div class="math">\[
+ n_{\rm coherent}=\Theta\!\left(\max\{1,[M(\beta t)^2]^{-1}\}\right). \tag{12}
+\]</div>
+<p>The scaling improvement is obtained by changing a specified readout resource, not by postprocessing the same occupation data more cleverly. This reflects the first-order coherence versus second-order density signal; related high-temperature Hamiltonian-learning methods already exploit general local measurements[R5]. The session calculation is not a claim that this general principle is newly discovered.</p>
+<p>Example: M=16,u=.1 gives the necessary occupation-only bound n≥2230, while the explicit coherent protocol is guaranteed by the conservative bound n=151. At u=.01 the corresponding values are22,222,963 and15,001. These are rigorous necessary/sufficient bounds from exact formulas, not measured optimal runtimes. Readout-gate errors and detector biases in the coherent scheme have not been incorporated.</p>
+<h2>5. Verification, novelty and actual decision</h2>
+<p>The main results here are analytic. Finite matrices check implementation and examples, not generality. <code>probe_boundary.py</code>:36 parameter rows,108 eigenvalue evaluations, maximum32×32. <code>independent_utility.py</code>:12 independent Fock trace cases≤8 sites; classical controls and analytic shot-cost evaluations. <code>local_density.py</code>:80 random parameter rows plus15 arithmetic controls,54 within the sufficient bias regime; one exact8-site Fock probability crosscheck and aggregate multinomial trials. <code>dimer_information.py</code>:8 full6/8-site thermal density-matrix checks of probabilities, KL, overlap and both variance formulas. <code>readout_cancellation.py</code>:the full256-outcome classical detector map, exact covariance identities, an excluded correlated-noise control and finite-confidence interval simulations.</p>
+<p>The largest M=64 resource table in the dimer task evaluates proved analytic formulas; it is not a128-site full density-matrix simulation. Similarly, drawing multinomial counts for10^10 nominal snapshots is a classical distributional simulation, not actually preparing10^10 quantum states. No uncontrolled quantity is upgraded to a theorem.</p>
+<p>Primary comparison: Gaussian FCS and boundary subtraction[R1], interacting/disorder-parameter extension[R2], local thermal indicators and correlation markers[R3], random-chain localization/topology[R4], high-temperature Hamiltonian learning[R5], and limited-access dynamical learning[R6]. They eliminate the broad claims “first interaction extension”, “first local finite-T diagnostic”, “first efficient thermal reconstruction”. The specific combination of disorder-aware logarithmic aggregation, affine detector cancellation and finite-confidence certification was not established by the exact passages compared here, but targeted literature search for its priority returned many irrelevant results. Thus priority remains bounded by the actually read sources. We do not call this a confirmed PRL-level contribution. See NOVELTY_AUDIT.md for the current research allocation decision.</p>
+<h2>Primary sources actually inspected</h2>
+<p>[R1] Liang Mao, Hui Zhai, Fan Yang. <em>Probing the Topology of Fermionic Gaussian Mixed States with U(1) symmetry by Full Counting Statistics</em>. arXiv:2402.15964v2. https://arxiv.org/html/2402.15964v2</p>
+<p>[R2] Shao-Hang Shi, Xiao-Qi Sun, Zi-Xiang Li. <em>Diagnosis of mixed-state topological phases in strongly correlated systems via disorder parameters</em>. arXiv:2511.19311v1. https://arxiv.org/html/2511.19311v1</p>
+<p>[R3] Julia D. Hannukainen, Nigel R. Cooper. <em>Characterizing topology at nonzero temperature: Topological invariants and indicators in the extended SSH model</em>. arXiv:2512.00464v2, §IV–VI. https://arxiv.org/html/2512.00464v2</p>
+<p>[R4] Mondragon-Shem et al. <em>Topological Criticality in the Chiral-Symmetric AIII Class at Strong Disorder</em>. arXiv:1311.5233, zero-energy recurrence and inverse localization length. https://arxiv.org/html/1311.5233</p>
+<p>[R5] Haah, Kothari, Tang. <em>Optimal learning of quantum Hamiltonians from high-temperature Gibbs states</em>. arXiv:2108.04842. https://arxiv.org/html/2108.04842</p>
+<p>[R6] <em>Out-of-control Hamiltonian Learning</em>. arXiv:2610.06709. Minimal-control dynamics/measurement access, not the thermal snapshot promise used here. https://arxiv.org/html/2610.06709</p>
+</main></body></html>

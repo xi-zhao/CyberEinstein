@@ -1,0 +1,608 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Exact zero-capacity boundary: constructive proof</title><style>
+:root{color-scheme:light}*{box-sizing:border-box}body{margin:0;background:#eef1f5;color:#172432;font:17px/1.9 system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}main{max-width:1120px;margin:28px auto;padding:40px 58px 60px;background:#fff;border-radius:12px;box-shadow:0 6px 30px #2130450b}nav{font-size:14px;line-height:1.6;border-bottom:1px solid #d8e1e9;padding-bottom:18px;margin-bottom:25px}a{color:#135c8c;overflow-wrap:anywhere}h1{font-size:30px;line-height:1.4;letter-spacing:-.4px}h2{font-size:23px;line-height:1.5;border-top:1px solid #e0e7ec;margin-top:40px;padding-top:22px}h3{font-size:19px;margin-top:28px;line-height:1.6}p{margin:15px 0}strong{color:#122d46}pre{padding:20px;overflow:auto;line-height:1.65;font-size:14px;background:#f4f6f9;border-left:3px solid #7a94a8}code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.88em}p code,li code{background:#f2f5f7;padding:2px 4px}table{display:block;overflow-x:auto;border-collapse:collapse;margin:22px 0;width:100%;font-size:15px;line-height:1.7}th,td{padding:12px 14px;border-bottom:1px solid #dbe4eb;text-align:left;vertical-align:top;min-width:110px}th{background:#eef3f7}blockquote{border-left:3px solid #859daf;margin-left:0;padding-left:20px;color:#3f5366}img{display:block;max-width:100%;height:auto;margin:24px auto}figure{margin:24px 0}figcaption{font-size:14px;color:#5e7181;text-align:center}.math.display{display:block;overflow-x:auto;padding:8px 0;margin:18px 0}.notice{font-size:13px;color:#60778a;border-top:1px solid #dce4ea;margin-top:44px;padding-top:15px}@media(max-width:720px){body{font-size:16px}main{margin:0;padding:22px 20px;border-radius:0}h1{font-size:25px}h2{font-size:21px}table{font-size:14px}pre{padding:14px}}
+</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script></head><body><main><nav><a href="REPORT.html">研究结果</a> · <a href="THEORY.html">完整证明</a> · <a href="NOVELTY_AUDIT.html">首创性与贡献核查</a> · <a href="README.md">重做说明</a></nav><h1
+id="exact-zero-capacity-boundary-for-strongly-dephased-bosonic-loss-channels">Exact
+zero-capacity boundary for strongly dephased bosonic loss channels</h1>
+<p>Research derivation and reproducible certificate, 13 October
+2026.</p>
+<p><strong>Status.</strong> This note contains a proposed new
+infinite-dimensional theorem, a complete constructive proof, an exact
+rational certificate for its stated parameter range, and independent
+finite-channel implementation checks. It is an internally reviewed
+research result, not an externally peer-reviewed or
+proof-assistant-certified publication. It proves the strong-dephasing
+portion of Conjecture 40 of [R1]; it does not establish the conjectured
+largest parameter range. Literature comparison and its limitations are
+recorded separately in <code>NOVELTY_AUDIT.md</code>.</p>
+<h2 id="model-operational-question-and-theorem">1. Model, operational
+question, and theorem</h2>
+<p>Use the convention</p>
+<p><span class="math display">\[
+\mathcal N_{\eta,\gamma}=\mathcal E_\eta\circ\mathcal D_\gamma,
+\qquad \mathcal D_\gamma(|n\rangle\langle m|)
+=e^{-\gamma(n-m)^2/2}|n\rangle\langle m|,
+\qquad q=e^{-\gamma}.
+\]</span></p>
+<p>Here <span class="math inline">\(\mathcal E_\eta\)</span> is the
+bosonic pure-loss channel with vacuum environment and transmissivity
+<span class="math inline">\(\eta\)</span>. Its Fock action is</p>
+<p><span class="math display">\[
+\mathcal N_{\eta,\gamma}(|n\rangle\langle m|)
+=q^{(n-m)^2/2}\sum_{\ell=0}^{\min(n,m)}
+\sqrt{\binom n\ell\binom m\ell}
+(1-\eta)^\ell\eta^{(n+m)/2-\ell}
+|n-\ell\rangle\langle m-\ell|. \tag{1}
+\]</span></p>
+<p>The question is the sign of the <strong>unassisted quantum
+capacity</strong> of independent uses of this channel, allowing
+arbitrary collective encoding and decoding. For an energy constraint, it
+is the usual mean input photon-number constraint per use, not an imposed
+minimum photon number. No preshared entanglement, two-way classical
+feedback, postselection, access to the environment, or intermediate
+error correction inside the noise interval is assumed.</p>
+<p><strong>Theorem.</strong> For every <span
+class="math inline">\(0&lt;q\le1/20\)</span>, and every <span
+class="math inline">\(0\le\eta\le1\)</span>,</p>
+<p><span class="math display">\[
+\mathcal N_{\eta,-\ln q}\text{ is anti-degradable}
+\quad\Longleftrightarrow\quad
+\eta\le\eta_c(q):=\frac1{1+q}. \tag{2}
+\]</span></p>
+<p>Moreover, for every positive mean energy allowance <span
+class="math inline">\(E&gt;0\)</span>,</p>
+<p><span class="math display">\[
+Q_E(\mathcal N_{\eta,-\ln q})=0
+\quad\Longleftrightarrow\quad
+\eta\le\frac1{1+q}, \tag{3}
+\]</span></p>
+<p>and <span class="math inline">\(Q_E&gt;0\)</span> above that line.
+This identifies the boundary, <strong>not the value of the positive
+capacity</strong>. The same sign statement applies without an energy
+constraint.</p>
+<p>The anti-degradable direction is the new constructive part. The
+necessity already follows from the qubit restriction in [R1, Theorems
+2/38]. Section 6 gives a separate coherent-information argument that
+proves strict positivity above the line; non-anti-degradability alone
+would not suffice.</p>
+<h2 id="a-binomial-gram-decomposition-suffices">2. A binomial Gram
+decomposition suffices</h2>
+<p>Set</p>
+<p><span class="math display">\[
+G_{nm}=q^{(n-m)^2/2},\qquad
+B_{nk}=\binom nk(1-q)^kq^{n-k}\quad(0\le k\le n),
+\]</span></p>
+<p>and <span class="math inline">\(B_{nk}=0\)</span> otherwise. The
+kernel <span class="math inline">\(G\)</span> is positive semidefinite:
+it is the Gram matrix of real coherent states <span
+class="math inline">\(|\sqrt\gamma n\rangle\)</span>, or equivalently of
+the Gaussian phase functions.</p>
+<p>We will construct kernels <span
+class="math inline">\(A^{(k)}\succeq0\)</span> satisfying</p>
+<p><span class="math display">\[
+A^{(k)}_{nn}=B_{nk},\qquad
+\sum_{k=0}^\infty A^{(k)}_{nm}=G_{nm}. \tag{4}
+\]</span></p>
+<p>Each matrix element of the sum is finite because positivity and the
+zero diagonal force <span class="math inline">\(A^{(k)}_{nm}=0\)</span>
+when <span class="math inline">\(k&gt;\min(n,m)\)</span>. For <span
+class="math inline">\(n,m\ge k\)</span> define the correlation
+kernel</p>
+<p><span class="math display">\[
+K^{(k)}_{nm}=\frac{A^{(k)}_{nm}}{\sqrt{B_{nk}B_{mk}}}. \tag{5}
+\]</span></p>
+<p>It is positive semidefinite and has unit diagonal. Thus there exist
+unit vectors <span class="math inline">\(|e_n^{(k)}\rangle\)</span> with
+this Gram kernel. Countably many such vectors can be realized in
+separable Hilbert spaces.</p>
+<h3 id="an-explicit-two-output-isometry">2.1 An explicit two-output
+isometry</h3>
+<p>At <span class="math inline">\(\eta=1/(1+q)\)</span>, set</p>
+<p><span class="math display">\[
+r=1-\eta=\frac q{1+q},\qquad
+s=2\eta-1=\frac{1-q}{1+q},\qquad 2r+s=1.
+\]</span></p>
+<p>Define on every Fock basis vector</p>
+<p><span class="math display">\[
+V|n\rangle=
+\sum_{k=0}^n\sum_{\ell=0}^{n-k}
+\sqrt{\frac{n!}{\ell!\,(n-k-\ell)!\,k!}}
+\,r^{(n-k)/2}s^{k/2}
+|n-\ell\rangle_{B_1}|\ell+k\rangle_{B_2}
+|e_{n-\ell}^{(k)}\rangle_{E_1}
+|e_{\ell+k}^{(k)}\rangle_{E_2}|k\rangle_{E_3}. \tag{6}
+\]</span></p>
+<p>Every sum in (6) is finite. Distinct terms for a fixed <span
+class="math inline">\(n\)</span> have orthogonal output/register labels,
+and their squared coefficients sum to <span
+class="math inline">\((2r+s)^n=1\)</span>. For different <span
+class="math inline">\(n,m\)</span>, terms with distinct <span
+class="math inline">\(k\)</span> are orthogonal; at equal <span
+class="math inline">\(k\)</span>, the total output photon number is
+<span class="math inline">\(n+k\)</span>, respectively <span
+class="math inline">\(m+k\)</span>. Hence <span
+class="math inline">\(V^\dagger V=I\)</span>. It extends by continuity
+to an isometry on the full bosonic Hilbert space. This is the
+infinite-dimensional step; no limit of numerical feasibility tests is
+being used.</p>
+<p>When <span class="math inline">\(B_2,E_1,E_2,E_3\)</span> are traced
+out, surviving terms have the same <span
+class="math inline">\(k\)</span>, and <span
+class="math inline">\(\ell\)</span> on bra and ket. Their coefficient is
+the ordinary loss coefficient in (1), times</p>
+<p><span class="math display">\[
+\sum_k\sqrt{B_{n-\ell,k}B_{m-\ell,k}}
+K^{(k)}_{n-\ell,m-\ell}
+=G_{n-\ell,m-\ell}=G_{nm}. \tag{7}
+\]</span></p>
+<p>The last equality uses the translation-invariance of the Gaussian
+dephasing kernel. Thus the <span class="math inline">\(B_1\)</span>
+marginal is exactly <span class="math inline">\(\mathcal N\)</span>. By
+the exchange symmetry of (6), the <span
+class="math inline">\(B_2\)</span> marginal is identical. Taking the
+complement of <span class="math inline">\(B_1\)</span> to be <span
+class="math inline">\(B_2E_1E_2E_3\)</span>, tracing out <span
+class="math inline">\(E_1E_2E_3\)</span> is an anti-degrading map. This
+proves anti-degradability directly, without an infinite-dimensional
+maximally entangled Choi vector.</p>
+<p>The isometry is a mathematical channel dilation, not a proposed
+passive optical implementation. Its ability to create a second noisy
+output is allowed in a converse proof; it does not copy an unknown pure
+input.</p>
+<p>It remains to establish (4).</p>
+<h2 id="remove-the-two-saturated-low-photon-directions">3. Remove the
+two saturated low-photon directions</h2>
+<p>Define two vectors, indexed by <span
+class="math inline">\(n\ge0\)</span>,</p>
+<p><span class="math display">\[
+u_{0n}=q^{n^2/2},\qquad
+u_{1n}=q^{(n-1)^2/2}\frac{1-q^n}{\sqrt{1-q}},\quad u_{10}=0. \tag{8}
+\]</span></p>
+<p>These are the first two Gram-Schmidt columns of <span
+class="math inline">\(G\)</span>. Consequently</p>
+<p><span class="math display">\[
+R=G-u_0u_0^\mathsf T-u_1u_1^\mathsf T\succeq0, \tag{9}
+\]</span></p>
+<p>and rows/columns <span class="math inline">\(0,1\)</span> vanish.
+This assertion can equivalently be verified by the Schur complement of
+the principal block <span
+class="math inline">\(\begin{pmatrix}1&amp;\sqrt q\\\sqrt
+q&amp;1\end{pmatrix}\)</span>.</p>
+<p>Define nonnegative residual probabilities</p>
+<p><span class="math display">\[
+p_{n0}=B_{n0}-u_{0n}^2,
+\quad p_{n1}=B_{n1}-u_{1n}^2,
+\quad p_{nk}=B_{nk}\ (k\ge2). \tag{10}
+\]</span></p>
+<p>For <span class="math inline">\(n=0,1\)</span>, all <span
+class="math inline">\(p_{nk}=0\)</span>. For <span
+class="math inline">\(n\ge2\)</span>, <span
+class="math inline">\(p_{n0}=q^n-q^{n^2}\ge0\)</span>. For the other
+potentially nontrivial column,</p>
+<p><span class="math display">\[
+\frac{u_{1n}^2}{B_{n1}}
+=\frac{q^{(n-1)(n-2)}}n
+\left(\frac{1-q^n}{1-q}\right)^2.
+\]</span></p>
+<p>At <span class="math inline">\(n=2\)</span> this is <span
+class="math inline">\((1+q)^2/2&lt;1\)</span>. For <span
+class="math inline">\(n\ge3\)</span> it is at most <span
+class="math inline">\(q^2/[3(1-q)^2]&lt;1\)</span>. Both hold throughout
+<span class="math inline">\(q\le1/20\)</span>. Also <span
+class="math inline">\(\sum_kp_{nk}=R_{nn}&gt;0\)</span> for <span
+class="math inline">\(n\ge2\)</span>.</p>
+<p>For <span class="math inline">\(n,m\ge2\)</span>, set</p>
+<p><span class="math display">\[
+H_{nm}=\sum_k\sqrt{p_{nk}p_{mk}},\qquad
+C_{nm}=R_{nm}/H_{nm}. \tag{11}
+\]</span></p>
+<p>The denominator is positive (e.g. the <span
+class="math inline">\(k=2\)</span> term). The diagonal of <span
+class="math inline">\(C\)</span> is one. Moreover,</p>
+<p><span class="math display">\[
+\frac{R_{nm}}{G_{nm}}
+=1-q^{nm}
+-\frac{q^{(n-1)(m-1)}(1-q^n)(1-q^m)}{1-q}, \tag{12}
+\]</span></p>
+<p>so <span class="math inline">\(0\le R_{nm}\le G_{nm}\)</span>. Indeed
+the right side is at least <span
+class="math inline">\(1-q^4-q/(1-q)&gt;0\)</span> in the range under
+consideration.</p>
+<p>If <span class="math inline">\(C\succeq0\)</span>, define <span
+class="math inline">\(D_k=\operatorname{diag}(\sqrt{p_{nk}})\)</span>,
+with zeros in its first two rows, and</p>
+<p><span class="math display">\[
+A^{(0)}=u_0u_0^\mathsf T+D_0CD_0,
+\quad A^{(1)}=u_1u_1^\mathsf T+D_1CD_1,
+\quad A^{(k)}=D_kCD_k\ (k\ge2). \tag{13}
+\]</span></p>
+<p>They are positive, have the prescribed binomial diagonal, and sum
+entrywise to <span class="math inline">\(u_0u_0^\mathsf T+u_1u_1^\mathsf
+T+C\circ H=G\)</span>. Thus (4) follows from positivity of the residual
+kernel <span class="math inline">\(C\)</span>.</p>
+<h2 id="uniform-positivity-of-the-residual-kernel">4. Uniform positivity
+of the residual kernel</h2>
+<h3 id="a-bound-valid-at-arbitrarily-high-photon-number">4.1 A bound
+valid at arbitrarily high photon number</h3>
+<p>For <span class="math inline">\(m\ge2,d\ge1\)</span>, define</p>
+<p><span class="math display">\[
+z_m(q)=q^m+m(1-q)q^{m-1},
+\]</span></p>
+<p><span class="math display">\[
+U_{m,d}(q)=
+\frac{q^{d(d-1)/2}}{1-z_m(q)}
+\sqrt{\prod_{j=1}^d\frac{mq+j}{m+j}}. \tag{14}
+\]</span></p>
+<p>We claim <span class="math inline">\(0\le C_{m,m+d}\le
+U_{m,d}(q)\)</span>.</p>
+<p>Because <span class="math inline">\(p_{nk}=B_{nk}\)</span> for <span
+class="math inline">\(k\ge2\)</span>,</p>
+<p><span class="math display">\[
+H_{m,m+d}\ge\sum_{k=2}^{m}\sqrt{B_{mk}B_{m+d,k}}.
+\]</span></p>
+<p>Let <span class="math inline">\(L\sim\operatorname{Bin}(m,q)\)</span>
+be the number of failures. Rewriting the last sum gives</p>
+<p><span class="math display">\[
+q^{d/2}\sqrt{(m+1)_d}
+\mathbb E\left[f_d(L)\,1_{L\le m-2}\right],
+\quad f_d(x)=\prod_{j=1}^d(x+j)^{-1/2}.
+\]</span></p>
+<p>The function <span class="math inline">\(f_d\)</span> is decreasing
+and convex: <span class="math inline">\((\log
+f_d)&#39;&#39;&gt;0\)</span>, and <span
+class="math inline">\(f_d&#39;&#39;=f_d[(\log f_d)&#39;^2+(\log
+f_d)&#39;&#39;]&gt;0\)</span>. Jensen yields <span
+class="math inline">\(\mathbb E f_d(L)\ge f_d(mq)\)</span>. Since <span
+class="math inline">\(mq\le m-1\)</span> in the stated range, the
+omitted terms obey</p>
+<p><span class="math display">\[
+\mathbb E[f_d(L)1_{L\ge m-1}]\le z_m(q)f_d(mq).
+\]</span></p>
+<p>It follows that</p>
+<p><span class="math display">\[
+H_{m,m+d}\ge
+q^{d/2}\sqrt{\frac{(m+1)_d}{(mq+1)_d}}[1-z_m(q)].
+\]</span></p>
+<p>Combining with <span class="math inline">\(R_{m,m+d}\le
+q^{d^2/2}\)</span> proves (14).</p>
+<p>For fixed <span class="math inline">\(m,d\)</span>, <span
+class="math inline">\(U_{m,d}(q)\)</span> increases with <span
+class="math inline">\(q\)</span>. For fixed <span
+class="math inline">\(q,d\)</span>, it decreases with <span
+class="math inline">\(m\)</span>. To see the latter, <span
+class="math inline">\(z_m\)</span> decreases with <span
+class="math inline">\(m\)</span>, while each factor <span
+class="math inline">\((mq+j)/(m+j)=q+(1-q)j/(m+j)\)</span> also
+decreases. Explicitly,</p>
+<p><span class="math display">\[
+z_m-z_{m+1}=m(1-q)^2q^{m-1}\ge0,\qquad
+\partial_q z_m=m(m-1)(1-q)q^{m-2}\ge0.
+\]</span></p>
+<p>Therefore it suffices to bound the kernel at <span
+class="math inline">\(q_0=1/20\)</span>.</p>
+<p>For <span class="math inline">\(d\ge2\)</span>,</p>
+<p><span class="math display">\[
+U_{m,d}(q)\le\frac{q^{d(d-1)/2}}{(1-q)^2},
+\quad
+\sum_{d\ge D}U_{m,d}(q)
+\le\frac{q^{D(D-1)/2}}{(1-q)^2(1-q^D)},\quad D\ge2. \tag{15}
+\]</span></p>
+<p>Here <span class="math inline">\(z_m\le z_2=2q-q^2\)</span>, and
+consecutive exponents in the series differ by at least <span
+class="math inline">\(D\)</span>.</p>
+<h3 id="a-fully-hand-readable-subrange-q-1100">4.2 A fully hand-readable
+subrange, q &lt;= 1/100</h3>
+<p>This simpler variant establishes the existential strong-dephasing
+result without the optimized seven-weight certificate. Put <span
+class="math inline">\(w_2=3/4\)</span>, <span
+class="math inline">\(w_n=1\)</span> for <span
+class="math inline">\(n\ge3\)</span>, and let <span
+class="math inline">\(a_m=U_{m,1}\)</span>. At <span
+class="math inline">\(q\le1/100\)</span>, direct squaring of rational
+inequalities gives</p>
+<p><span class="math display">\[
+a_2\le0.60,\quad a_3\le0.51,\quad a_4\le0.46,
+\quad \sum_{d\ge2}U_{m,d}\le0.011.
+\]</span></p>
+<p>The weighted off-diagonal row sums, divided by <span
+class="math inline">\(w_n\)</span>, are bounded by</p>
+<p><span class="math display">\[
+\frac43(0.60+0.011)&lt;1\quad(n=2),
+\]</span> <span class="math display">\[
+\frac34(0.60)+0.51+2(0.011)=0.982&lt;1\quad(n=3),
+\]</span> <span class="math display">\[
+0.51+0.46+2(0.011)=0.992&lt;1\quad(n\ge4).
+\]</span></p>
+<p>The numbers here are terminating rationals and the inequalities can
+be checked without a floating-point eigensolver.</p>
+<h3 id="exact-rational-certificate-extending-to-q-120">4.3 Exact
+rational certificate extending to q &lt;= 1/20</h3>
+<p>Choose the following fixed rational weights:</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>n</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>all n &gt;= 9</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>w_n</td>
+<td>0.6051</td>
+<td>0.8687</td>
+<td>0.8305</td>
+<td>0.6861</td>
+<td>0.5585</td>
+<td>0.5192</td>
+<td>0.6258</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>For the seven head rows, sum the upper bounds (14) for <span
+class="math inline">\(2\le m\le12\)</span>. The uncomputed half-line
+<span class="math inline">\(m\ge13\)</span> is bounded by (15) with
+<span class="math inline">\(D=13-n\)</span>. Exact rational upper bounds
+on the square roots yield the following conservative margins:</p>
+<table>
+<thead>
+<tr class="header">
+<th>row n</th>
+<th>w_n - upper bound on sum_{m != n} U_{min(m,n),abs(m-n)} w_m</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2</td>
+<td>&gt; 0.00202784127123</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>&gt; 0.00198387869673</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>&gt; 0.00201976810579</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td>&gt; 0.00197372899500</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td>&gt; 0.00198301210558</td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td>&gt; 0.00203364010180</td>
+</tr>
+<tr class="odd">
+<td>8</td>
+<td>&gt; 0.00197038634823</td>
+</tr>
+</tbody>
+</table>
+<p>For <strong>every</strong> <span
+class="math inline">\(n\ge9\)</span>, all weights are at most one and
+<span class="math inline">\(w_n=1\)</span>. The two nearest neighbors
+and both remaining half-lines obey</p>
+<p><span class="math display">\[
+\sum_{m\ne n}U_{\min(m,n),|m-n|}(q_0)w_m
+\le a_8(q_0)+a_9(q_0)
++\frac{2q_0}{(1-q_0)^2(1-q_0^2)}
+&lt;0.886276&lt;1. \tag{16}
+\]</span></p>
+<p><code>src/verify_infinite_kernel.py</code> checks the seven rows and
+(16) using only Python integers and <code>fractions.Fraction</code>. For
+each positive rational radicand <span class="math inline">\(v\)</span>,
+it selects the smallest integer <span class="math inline">\(s\)</span>
+satisfying <span class="math inline">\(s^2\ge 10^{28}v\)</span> and uses
+<span class="math inline">\(s/10^{14}\)</span> as a rational square-root
+upper bound. It checks this squared inequality exactly. The full
+rational numerators/denominators are in
+<code>results/infinite_kernel_certificate.json</code>. Neither a
+numerical LP solution nor a truncated eigenvalue is the certificate. The
+LP was used only to discover weights, which were then rounded and
+independently checked.</p>
+<p>For every finite principal submatrix, <span
+class="math inline">\(\operatorname{diag}(w)C\operatorname{diag}(w)\)</span>
+has nonnegative diagonal and is diagonally dominant in absolute row sum.
+It is therefore positive semidefinite. All finite principal submatrices
+are positive, which is exactly positivity as a countable Gram kernel. In
+fact the certificate gives a strictly positive relative margin greater
+than 0.00228. This proves the required <span
+class="math inline">\(C\succeq0\)</span> for <strong>all</strong> photon
+indices and all <span class="math inline">\(0&lt;q\le1/20\)</span>, and
+hence the construction (13), isometry (6), and anti-degradability at the
+boundary.</p>
+<h2
+id="complete-the-anti-degradability-region-and-compare-the-old-construction">5.
+Complete the anti-degradability region and compare the old
+construction</h2>
+<p>For <span class="math inline">\(\eta&lt;\eta_c\)</span>, apply an
+additional pure-loss channel <span class="math inline">\(\mathcal
+E_{\eta/\eta_c}\)</span> to each broadcast output. Each marginal becomes
+the desired <span class="math inline">\(\mathcal
+N_{\eta,\gamma}\)</span>. Hence every channel below the boundary is
+anti-degradable. The converse above the boundary follows either from
+[R1, Theorem 38] or from the strict capacity positivity in Section
+6.</p>
+<p>The Hadamard kernel of [R1, Theorem 41] at this boundary is</p>
+<p><span class="math display">\[
+\widetilde C_{nm}=G_{nm}/\sum_k\sqrt{B_{nk}B_{mk}}.
+\]</span></p>
+<p>Its first three indices give</p>
+<p><span class="math display">\[
+\widetilde C_{01}=1,\quad
+\widetilde C_{02}=q,\quad
+\widetilde C_{12}=\frac1{q+\sqrt2(1-q)}.
+\]</span></p>
+<p>Consequently the determinant of that 3-by-3 principal block is</p>
+<p><span class="math display">\[
+-\left(q-\frac1{q+\sqrt2(1-q)}\right)^2&lt;0\quad(0&lt;q&lt;1). \tag{17}
+\]</span></p>
+<p>Thus simply proving positivity of the <strong>old</strong> Hadamard
+kernel more carefully cannot reach the exact boundary. Our construction
+changes the channel extension: the dephasing correlation kernel is
+conditioned on the binomial outcome <span
+class="math inline">\(k\)</span>, and the saturated first two Gram
+directions are removed before applying a common residual kernel. This
+distinguishes the mechanism from merely refining the diagonal-dominance
+estimate in [R1]. It does not prove global literature priority.</p>
+<h2 id="strictly-positive-capacity-above-the-boundary">6. Strictly
+positive capacity above the boundary</h2>
+<p>Consider <span
+class="math inline">\(\rho_x=(1-x)|0\rangle\langle0|+x|1\rangle\langle1|\)</span>,
+<span class="math inline">\(0&lt;x&lt;1\)</span>. Its mean energy is
+<span class="math inline">\(x\)</span>. The output entropy is <span
+class="math inline">\(h_2(\eta x)\)</span>. For the purification <span
+class="math inline">\(\sqrt{1-x}|00\rangle+\sqrt x|11\rangle\)</span>,
+the joint reference-output state’s nonzero eigenvalues are <span
+class="math inline">\((1-\eta)x\)</span> and <span
+class="math inline">\(\lambda_\pm\)</span>, where</p>
+<p><span class="math display">\[
+\lambda_++\lambda_-=1-(1-\eta)x,
+\quad \lambda_+\lambda_-=\eta(1-q)x(1-x).
+\]</span></p>
+<p>Expanding at small positive <span
+class="math inline">\(x\)</span>,</p>
+<p><span class="math display">\[
+I_c(\rho_x,\mathcal N)
+=[\eta(1+q)-1]x\log_2(1/x)+O(x). \tag{18}
+\]</span></p>
+<p>For every fixed <span class="math inline">\(q&gt;0\)</span> and <span
+class="math inline">\(\eta&gt;1/(1+q)\)</span>, the leading coefficient
+is positive. A sufficiently small <span class="math inline">\(x\)</span>
+therefore has positive coherent information. Standard finite-dimensional
+quantum coding applied to this invariant two-level input/output
+restriction gives a positive achievable quantum rate. For any <span
+class="math inline">\(E&gt;0\)</span>, choose <span
+class="math inline">\(x&lt;E\)</span> with a strict energy margin; the
+same coding argument respects the usual asymptotic average-energy
+constraint.</p>
+<p>This argument does not suppose that every non-anti-degradable channel
+has positive capacity. It constructs a witness in this specific family.
+It also does not promise a useful numerical throughput near the
+threshold: the required <span class="math inline">\(x\)</span>, and the
+lower-bound rate, can be extremely small. For example, at <span
+class="math inline">\(q=0.05,\eta=0.953\)</span>, a verified input <span
+class="math inline">\(x=10^{-128}\)</span> gives only about <span
+class="math inline">\(6.31\times10^{-131}\)</span> qubits/use. The
+result is a sign theorem.</p>
+<p>Because the broadcast construction establishes anti-degradability
+below and on the boundary, the quantum capacity there vanishes. This
+completes (3). The model’s two-way assisted capacity is positive for
+<span class="math inline">\(\eta&gt;0\)</span> and finite <span
+class="math inline">\(\gamma\)</span>, as already proved in [R1, Theorem
+42]; no contradiction is involved.</p>
+<h2
+id="exact-finite-time-disappearance-of-unassisted-quantum-capacity">7.
+Exact finite-time disappearance of unassisted quantum capacity</h2>
+<p>For the memoryless Lindblad evolution</p>
+<p><span class="math display">\[
+\dot\rho=\kappa\mathcal D[a](\rho)+\kappa_\phi\mathcal D[n](\rho),
+\quad n=a^\dagger a,
+\quad\mathcal D[L](\rho)=L\rho L^\dagger-\tfrac12\{L^\dagger L,\rho\},
+\]</span></p>
+<p>with <span class="math inline">\(\kappa,\kappa_\phi&gt;0\)</span>,
+the finite-time map has</p>
+<p><span class="math display">\[
+\eta(t)=e^{-\kappa t},\qquad q(t)=e^{-\kappa_\phi t}.
+\]</span></p>
+<p>The two generators commute on the Fock matrix units, since photon
+loss preserves the bra-ket number difference. Let <span
+class="math inline">\(t_*\)</span> be the unique positive solution</p>
+<p><span class="math display">\[
+e^{-\kappa t_*}(1+e^{-\kappa_\phi t_*})=1. \tag{19}
+\]</span></p>
+<p>If</p>
+<p><span class="math display">\[
+\frac{\kappa_\phi}{\kappa}
+\ge\frac{\ln20}{\ln(21/20)}
+=61.4003319019\ldots, \tag{20}
+\]</span></p>
+<p>then <span class="math inline">\(q(t_*)\le1/20\)</span>. For every
+<span class="math inline">\(t&lt;t_*\)</span>, (18) proves positive
+capacity, regardless of whether the strong-dephasing condition has yet
+been reached. For every <span class="math inline">\(t\ge t_*\)</span>,
+the channel lies in the anti-degradable region proved above. Thus <span
+class="math inline">\(t_*\)</span> is the exact first zero-capacity time
+for this noise model and operational setting.</p>
+<p>For example, at <span
+class="math inline">\(\kappa_\phi/\kappa=100\)</span>,</p>
+<p><span class="math display">\[
+\kappa t_*=0.03372581431726\ldots,\qquad
+\eta(t_*)=0.9668365610411\ldots .
+\]</span></p>
+<p>Only about 3.316% of the initial mean photon number has been lost
+when unassisted quantum capacity reaches zero. The possibility that
+strong dephasing combines with arbitrarily weak loss to kill capacity
+was already established in [R1]; the increment here is the <strong>exact
+boundary/time</strong> in the stated regime, not the qualitative effect.
+The result is not a bound on a continuously actively corrected memory,
+on two-way assisted storage, or on a device without the stated noise
+law.</p>
+<h2 id="verification-failed-branches-and-limitations">8. Verification,
+failed branches, and limitations</h2>
+<p>The acceptance argument is analytic plus exact rational inequalities.
+It is independent of the exploratory semidefinite solver.
+<code>verify_broadcast.py</code> builds (13) with 90/110-digit
+arithmetic and checks both full two-output marginals against a
+separately built loss-Kraus/dephasing Choi channel. Finite tests go
+through nine Fock levels for the full joint channel and twenty-five
+levels for coefficient identities; these sizes are implementation
+checks, not cutoffs in the theorem.</p>
+<p><code>capacity_consequences.py</code> independently exponentiates the
+Lindblad superoperator and compares it with the finite-time channel. It
+also evaluates high-precision coherent-information witnesses and scalar
+roots of (19). <code>verify_infinite_kernel.py</code> has no
+numerical-library dependency.</p>
+<p>Exploratory SDP timeouts and inaccurate statuses are retained as
+unresolved numerical attempts, never as proof of infeasibility. A
+Gram-Schmidt measurement followed by a classical stochastic correction
+produced negative coefficients and was abandoned. The shared
+residual-kernel construction itself has negative finite principal
+eigenvalues around <span class="math inline">\(q=0.4\)</span>; this
+rejects extrapolation of this particular construction,
+<strong>not</strong> the underlying conjecture. The seven-weight
+certificate establishes only <span
+class="math inline">\(q\le1/20\)</span>. A stronger method may extend
+it.</p>
+<p>No test demonstrates that a cognitive-map loop outperforms an
+equal-budget research baseline. The online research and proof decisions
+were made by the current model using tools; the saved scripts verify the
+result and preserve failed branches, rather than autonomously
+rediscovering the topic from scratch.</p>
+<h2 id="references">References</h2>
+<p>[R1] F. A. Mele, F. Salek, V. Giovannetti, L. Lami, <em>Quantum
+communication on the bosonic loss-dephasing channel</em>, Physical
+Review A 110, 012460 (2024), arXiv:2401.15634v3. Main comparison:
+Theorems 1/30, 2/38, Lemma 39, Conjecture 40, Theorem 41, Theorem 42.
+Conjecture 40 and Theorem 41 were also checked against PDF pp. 28–29.
+https://arxiv.org/html/2401.15634v3</p>
+<p>[R2] P. Leviant, Q. Xu, L. Jiang, S. Rosenblum, <em>Quantum capacity
+and codes for the bosonic loss-dephasing channel</em>, Quantum 6, 821
+(2022), arXiv:2205.00341v4.
+https://quantum-journal.org/papers/q-2022-09-29-821/</p>
+<p>Other technical and follow-on comparisons, including separate noise
+models and communication tasks, are in <code>NOVELTY_AUDIT.md</code>.
+These are sources for prior results, not sources for the new
+constructive derivation above.</p>
+<p class="notice">研究记录 · 2026-10-13 · 公式排版使用 MathJax；离线查看请同时保留 Markdown 源文件。未对外发表。</p></main></body></html>

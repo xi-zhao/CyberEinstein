@@ -1,0 +1,503 @@
+{
+  "all_passed": true,
+  "dense_cases": 9,
+  "max_dense_dimension": 256,
+  "rows": [
+    {
+      "L": 4,
+      "alpha": 0.25,
+      "gap_exact": 0.22314355131420976,
+      "gap_numerical": 0.22314355131420993,
+      "trace_distance": 0.01442307692307691,
+      "relative_entropy_nats": 0.0016607020266662664,
+      "max_tested_cmi_nats": 0.0011524871951529292,
+      "ring_shielded_cmi_nats": 0.0009973182730198538,
+      "cmi_cases": [
+        {
+          "buffer": 1,
+          "cmi_nats": 0.0011524871951529292
+        },
+        {
+          "buffer": 2,
+          "cmi_nats": 0.0011144655024102335
+        }
+      ],
+      "spin_residual": 0.0,
+      "translation_residual": 0.0,
+      "entropy_crosscheck_error": 2.220446049250313e-16,
+      "sigma_z_correlations": [
+        -0.010256410256410256,
+        0.005128205128205129
+      ],
+      "twist_overlap": 4.082155997157844e-17,
+      "twist_cost": 0.22314355131420882,
+      "checks": {
+        "translation": true,
+        "spin_singlet": true,
+        "full_rank": true,
+        "trace_one": true,
+        "unique_constant_gap": true,
+        "modular_matrix": true,
+        "trace_distance": true,
+        "relative_entropy": true,
+        "cmi_bound": true,
+        "entropy_implementations": true,
+        "correlation_bound": true,
+        "twist_orthogonal": true,
+        "twist_cost_constant": true
+      }
+    },
+    {
+      "L": 4,
+      "alpha": 1.0,
+      "gap_exact": 0.6931471805599453,
+      "gap_numerical": 0.6931471805599447,
+      "trace_distance": 0.055147058823529424,
+      "relative_entropy_nats": 0.020922105308264605,
+      "max_tested_cmi_nats": 0.013665893340769841,
+      "ring_shielded_cmi_nats": 0.01149494398433859,
+      "cmi_cases": [
+        {
+          "buffer": 1,
+          "cmi_nats": 0.013665893340769841
+        },
+        {
+          "buffer": 2,
+          "cmi_nats": 0.013160813918407399
+        }
+      ],
+      "spin_residual": 0.0,
+      "translation_residual": 0.0,
+      "entropy_crosscheck_error": 2.220446049250313e-16,
+      "sigma_z_correlations": [
+        -0.0392156862745098,
+        0.019607843137254905
+      ],
+      "twist_overlap": 4.082155997157844e-17,
+      "twist_cost": 0.6931471805599458,
+      "checks": {
+        "translation": true,
+        "spin_singlet": true,
+        "full_rank": true,
+        "trace_one": true,
+        "unique_constant_gap": true,
+        "modular_matrix": true,
+        "trace_distance": true,
+        "relative_entropy": true,
+        "cmi_bound": true,
+        "entropy_implementations": true,
+        "correlation_bound": true,
+        "twist_orthogonal": true,
+        "twist_cost_constant": true
+      }
+    },
+    {
+      "L": 4,
+      "alpha": 3.0,
+      "gap_exact": 1.3862943611198906,
+      "gap_numerical": 1.38629436111989,
+      "trace_distance": 0.14802631578947373,
+      "relative_entropy_nats": 0.12000118751963351,
+      "max_tested_cmi_nats": 0.0700401837342608,
+      "ring_shielded_cmi_nats": 0.05566893068930501,
+      "cmi_cases": [
+        {
+          "buffer": 1,
+          "cmi_nats": 0.0700401837342608
+        },
+        {
+          "buffer": 2,
+          "cmi_nats": 0.06699024910372708
+        }
+      ],
+      "spin_residual": 0.0,
+      "translation_residual": 0.0,
+      "entropy_crosscheck_error": 4.440892098500626e-16,
+      "sigma_z_correlations": [
+        -0.10526315789473684,
+        0.052631578947368425
+      ],
+      "twist_overlap": 4.082155997157844e-17,
+      "twist_cost": 1.3862943611198895,
+      "checks": {
+        "translation": true,
+        "spin_singlet": true,
+        "full_rank": true,
+        "trace_one": true,
+        "unique_constant_gap": true,
+        "modular_matrix": true,
+        "trace_distance": true,
+        "relative_entropy": true,
+        "cmi_bound": true,
+        "entropy_implementations": true,
+        "correlation_bound": true,
+        "twist_orthogonal": true,
+        "twist_cost_constant": true
+      }
+    },
+    {
+      "L": 6,
+      "alpha": 0.25,
+      "gap_exact": 0.22314355131420976,
+      "gap_numerical": 0.22314355131420852,
+      "trace_distance": 0.003830252918287936,
+      "relative_entropy_nats": 0.0004426738122455913,
+      "max_tested_cmi_nats": 0.0003286040340162444,
+      "ring_shielded_cmi_nats": 0.0002522400301421257,
+      "cmi_cases": [
+        {
+          "buffer": 1,
+          "cmi_nats": 0.0003286040340162444
+        },
+        {
+          "buffer": 2,
+          "cmi_nats": 0.0003260762818682039
+        },
+        {
+          "buffer": 3,
+          "cmi_nats": 0.00030610024704813554
+        },
+        {
+          "buffer": 4,
+          "cmi_nats": 0.0002521718055952249
+        }
+      ],
+      "spin_residual": 0.0,
+      "translation_residual": 0.0,
+      "entropy_crosscheck_error": 4.440892098500626e-16,
+      "sigma_z_correlations": [
+        -0.0012970168612191958,
+        -0.0012970168612191958,
+        0.0012970168612191958
+      ],
+      "twist_overlap": 3.2965908403409893e-17,
+      "twist_cost": 0.22314355131421149,
+      "checks": {
+        "translation": true,
+        "spin_singlet": true,
+        "full_rank": true,
+        "trace_one": true,
+        "unique_constant_gap": true,
+        "modular_matrix": true,
+        "trace_distance": true,
+        "relative_entropy": true,
+        "cmi_bound": true,
+        "entropy_implementations": true,
+        "correlation_bound": true,
+        "twist_orthogonal": true,
+        "twist_cost_constant": true
+      }
+    },
+    {
+      "L": 6,
+      "alpha": 1.0,
+      "gap_exact": 0.6931471805599453,
+      "gap_numerical": 0.6931471805599437,
+      "trace_distance": 0.015144230769230747,
+      "relative_entropy_nats": 0.0058234190197253705,
+      "max_tested_cmi_nats": 0.004123402925555908,
+      "ring_shielded_cmi_nats": 0.003006369965134148,
+      "cmi_cases": [
+        {
+          "buffer": 1,
+          "cmi_nats": 0.004123402925555908
+        },
+        {
+          "buffer": 2,
+          "cmi_nats": 0.004083683196483001
+        },
+        {
+          "buffer": 3,
+          "cmi_nats": 0.003780657670689358
+        },
+        {
+          "buffer": 4,
+          "cmi_nats": 0.0030024221528410777
+        }
+      ],
+      "spin_residual": 0.0,
+      "translation_residual": 0.0,
+      "entropy_crosscheck_error": 4.440892098500626e-16,
+      "sigma_z_correlations": [
+        -0.005128205128205128,
+        -0.005128205128205128,
+        0.005128205128205128
+      ],
+      "twist_overlap": 3.2965908403409893e-17,
+      "twist_cost": 0.6931471805599463,
+      "checks": {
+        "translation": true,
+        "spin_singlet": true,
+        "full_rank": true,
+        "trace_one": true,
+        "unique_constant_gap": true,
+        "modular_matrix": true,
+        "trace_distance": true,
+        "relative_entropy": true,
+        "cmi_bound": true,
+        "entropy_implementations": true,
+        "correlation_bound": true,
+        "twist_orthogonal": true,
+        "twist_cost_constant": true
+      }
+    },
+    {
+      "L": 6,
+      "alpha": 3.0,
+      "gap_exact": 1.3862943611198906,
+      "gap_numerical": 1.3862943611198888,
+      "trace_distance": 0.04407649253731344,
+      "relative_entropy_nats": 0.03695430642362464,
+      "max_tested_cmi_nats": 0.023965611372455342,
+      "ring_shielded_cmi_nats": 0.015786711688011046,
+      "cmi_cases": [
+        {
+          "buffer": 1,
+          "cmi_nats": 0.023965611372455342
+        },
+        {
+          "buffer": 2,
+          "cmi_nats": 0.023624645609946704
+        },
+        {
+          "buffer": 3,
+          "cmi_nats": 0.021234716127723985
+        },
+        {
+          "buffer": 4,
+          "cmi_nats": 0.01570332710293698
+        }
+      ],
+      "spin_residual": 0.0,
+      "translation_residual": 0.0,
+      "entropy_crosscheck_error": 4.440892098500626e-16,
+      "sigma_z_correlations": [
+        -0.014925373134328356,
+        -0.014925373134328356,
+        0.014925373134328356
+      ],
+      "twist_overlap": 3.2965908403409893e-17,
+      "twist_cost": 1.3862943611198904,
+      "checks": {
+        "translation": true,
+        "spin_singlet": true,
+        "full_rank": true,
+        "trace_one": true,
+        "unique_constant_gap": true,
+        "modular_matrix": true,
+        "trace_distance": true,
+        "relative_entropy": true,
+        "cmi_bound": true,
+        "entropy_implementations": true,
+        "correlation_bound": true,
+        "twist_orthogonal": true,
+        "twist_cost_constant": true
+      }
+    },
+    {
+      "L": 8,
+      "alpha": 0.25,
+      "gap_exact": 0.22314355131420976,
+      "gap_numerical": 0.22314355131420816,
+      "trace_distance": 0.0009717987804878024,
+      "relative_entropy_nats": 0.00011241915530653987,
+      "max_tested_cmi_nats": 8.258310005704317e-05,
+      "ring_shielded_cmi_nats": 6.101264934610384e-05,
+      "cmi_cases": [
+        {
+          "buffer": 1,
+          "cmi_nats": 8.258310005704317e-05
+        },
+        {
+          "buffer": 2,
+          "cmi_nats": 8.256556783070579e-05
+        },
+        {
+          "buffer": 3,
+          "cmi_nats": 8.116162373994484e-05
+        },
+        {
+          "buffer": 4,
+          "cmi_nats": 8.077857429267254e-05
+        },
+        {
+          "buffer": 5,
+          "cmi_nats": 7.401299230469505e-05
+        },
+        {
+          "buffer": 6,
+          "cmi_nats": 6.764415704374471e-05
+        }
+      ],
+      "spin_residual": 0.0,
+      "translation_residual": 0.0,
+      "entropy_crosscheck_error": 1.3322676295501878e-15,
+      "sigma_z_correlations": [
+        -0.0005420054200542005,
+        0.00010840108401084011,
+        -0.00010840108401084012,
+        0.00010840108401084012
+      ],
+      "twist_overlap": 1.0408340855860843e-17,
+      "twist_cost": 0.22314355131421149,
+      "checks": {
+        "translation": true,
+        "spin_singlet": true,
+        "full_rank": true,
+        "trace_one": true,
+        "unique_constant_gap": true,
+        "modular_matrix": true,
+        "trace_distance": true,
+        "relative_entropy": true,
+        "cmi_bound": true,
+        "entropy_implementations": true,
+        "correlation_bound": true,
+        "twist_orthogonal": true,
+        "twist_cost_constant": true
+      }
+    },
+    {
+      "L": 8,
+      "alpha": 1.0,
+      "gap_exact": 0.6931471805599453,
+      "gap_numerical": 0.6931471805599435,
+      "trace_distance": 0.0038758511673151726,
+      "relative_entropy_nats": 0.0014955010672994496,
+      "max_tested_cmi_nats": 0.0010458279320086916,
+      "ring_shielded_cmi_nats": 0.0007259593186583757,
+      "cmi_cases": [
+        {
+          "buffer": 1,
+          "cmi_nats": 0.0010458279320086916
+        },
+        {
+          "buffer": 2,
+          "cmi_nats": 0.0010455534623226015
+        },
+        {
+          "buffer": 3,
+          "cmi_nats": 0.0010235082602356727
+        },
+        {
+          "buffer": 4,
+          "cmi_nats": 0.0010176309841849474
+        },
+        {
+          "buffer": 5,
+          "cmi_nats": 0.0009162851539388228
+        },
+        {
+          "buffer": 6,
+          "cmi_nats": 0.0008254839253902801
+        }
+      ],
+      "spin_residual": 0.0,
+      "translation_residual": 0.0,
+      "entropy_crosscheck_error": 8.881784197001252e-16,
+      "sigma_z_correlations": [
+        -0.00216169476869866,
+        0.00043233895373973193,
+        -0.000432338953739732,
+        0.000432338953739732
+      ],
+      "twist_overlap": 1.0408340855860843e-17,
+      "twist_cost": 0.6931471805599481,
+      "checks": {
+        "translation": true,
+        "spin_singlet": true,
+        "full_rank": true,
+        "trace_one": true,
+        "unique_constant_gap": true,
+        "modular_matrix": true,
+        "trace_distance": true,
+        "relative_entropy": true,
+        "cmi_bound": true,
+        "entropy_implementations": true,
+        "correlation_bound": true,
+        "twist_orthogonal": true,
+        "twist_cost_constant": true
+      }
+    },
+    {
+      "L": 8,
+      "alpha": 3.0,
+      "gap_exact": 1.3862943611198906,
+      "gap_numerical": 1.3862943611198901,
+      "trace_distance": 0.011537765444015434,
+      "relative_entropy_nats": 0.009759334303111841,
+      "max_tested_cmi_nats": 0.006223350037138253,
+      "ring_shielded_cmi_nats": 0.0038015021953521355,
+      "cmi_cases": [
+        {
+          "buffer": 1,
+          "cmi_nats": 0.006223350037138253
+        },
+        {
+          "buffer": 2,
+          "cmi_nats": 0.006221017465692036
+        },
+        {
+          "buffer": 3,
+          "cmi_nats": 0.006032048262246015
+        },
+        {
+          "buffer": 4,
+          "cmi_nats": 0.0059845032525958075
+        },
+        {
+          "buffer": 5,
+          "cmi_nats": 0.005205098960046506
+        },
+        {
+          "buffer": 6,
+          "cmi_nats": 0.004571051203818399
+        }
+      ],
+      "spin_residual": 0.0,
+      "translation_residual": 0.0,
+      "entropy_crosscheck_error": 8.881784197001252e-16,
+      "sigma_z_correlations": [
+        -0.006435006435006435,
+        0.001287001287001287,
+        -0.001287001287001287,
+        0.001287001287001287
+      ],
+      "twist_overlap": 1.0408340855860843e-17,
+      "twist_cost": 1.386294361119889,
+      "checks": {
+        "translation": true,
+        "spin_singlet": true,
+        "full_rank": true,
+        "trace_one": true,
+        "unique_constant_gap": true,
+        "modular_matrix": true,
+        "trace_distance": true,
+        "relative_entropy": true,
+        "cmi_bound": true,
+        "entropy_implementations": true,
+        "correlation_bound": true,
+        "twist_orthogonal": true,
+        "twist_cost_constant": true
+      }
+    }
+  ],
+  "vector_checks": [
+    {
+      "L": 10,
+      "translation_residual": 0.0,
+      "spin_residual": 0.0
+    },
+    {
+      "L": 12,
+      "translation_residual": 0.0,
+      "spin_residual": 0.0
+    }
+  ],
+  "wall_seconds": 0.056227579999983845,
+  "numerical_role": "implementation checks only; all-L result is analytic",
+  "scope": "No local bath preparation, bounded-depth circuit, or thermodynamic consistency claim",
+  "versions": {
+    "python": "3.13.5",
+    "numpy": "2.3.5"
+  }
+}

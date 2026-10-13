@@ -1,0 +1,162 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>首创性与物理贡献核查</title><style>
+:root{color-scheme:light}*{box-sizing:border-box}body{margin:0;background:#eef1f5;color:#172432;font:17px/1.9 system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}main{max-width:1120px;margin:28px auto;padding:40px 58px 60px;background:#fff;border-radius:12px;box-shadow:0 6px 30px #2130450b}nav{font-size:14px;line-height:1.6;border-bottom:1px solid #d8e1e9;padding-bottom:18px;margin-bottom:25px}a{color:#135c8c;overflow-wrap:anywhere}h1{font-size:30px;line-height:1.4;letter-spacing:-.4px}h2{font-size:23px;line-height:1.5;border-top:1px solid #e0e7ec;margin-top:40px;padding-top:22px}h3{font-size:19px;margin-top:28px;line-height:1.6}p{margin:15px 0}strong{color:#122d46}pre{padding:20px;overflow:auto;line-height:1.65;font-size:14px;background:#f4f6f9;border-left:3px solid #7a94a8}code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.88em}p code,li code{background:#f2f5f7;padding:2px 4px}table{display:block;overflow-x:auto;border-collapse:collapse;margin:22px 0;width:100%;font-size:15px;line-height:1.7}th,td{padding:12px 14px;border-bottom:1px solid #dbe4eb;text-align:left;vertical-align:top;min-width:110px}th{background:#eef3f7}blockquote{border-left:3px solid #859daf;margin-left:0;padding-left:20px;color:#3f5366}img{display:block;max-width:100%;height:auto;margin:24px auto}figure{margin:24px 0}figcaption{font-size:14px;color:#5e7181;text-align:center}.math.display{display:block;overflow-x:auto;padding:8px 0;margin:18px 0}.notice{font-size:13px;color:#60778a;border-top:1px solid #dce4ea;margin-top:44px;padding-top:15px}@media(max-width:720px){body{font-size:16px}main{margin:0;padding:22px 20px;border-radius:0}h1{font-size:25px}h2{font-size:21px}table{font-size:14px}pre{padding:14px}}
+</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script></head><body><main><nav><a href="REPORT.html">研究结果</a> · <a href="THEORY.html">完整证明</a> · <a href="NOVELTY_AUDIT.html">首创性与贡献核查</a> · <a href="README.md">重做说明</a></nav><h1
+id="首创性与物理贡献核查损耗退相干通道的精确边界">首创性与物理贡献核查：损耗—退相干通道的精确边界</h1>
+<p>核查日期：2026-10-13。对应本轮
+<code>THEORY.md</code>，不是对旧暗模工作的再次包装。</p>
+<h2 id="决策">决策</h2>
+<p><strong>推进为本项目的主要理论成果，而不再归为工具测试算例。</strong>
+理由是：本轮提供了对一个明确文献猜想的、无限维的充分性证明，并与必要条件/正容量证明闭合，决定了一类基本开放系统何时仍具有量子信息传输能力。这个物理问题与增量在投入主要证明前已经确定，不是计算结束后补上的用途。</p>
+<p>数学结论是：在 Gaussian 数目退相干 q=e^{-gamma}≤1/20
+的整个强退相干区间，纯损耗—退相干通道的反降级边界及无辅助量子容量零/正边界均为
+eta=1/(1+q)。不是算出完整的正容量数值，也不是证明所有 q。</p>
+<p><strong>首创性判断：与本次实际核对的最接近工作相比，存在明确新增内容；没有发现其中已证明同一无限维强退相干边界。</strong>
+这是一项有对象、有等价性分析的核查结果，不是“全球绝对首创”证明。没有外部专家审稿或第二个模型的独立盲审。不得据此预测期刊接收。</p>
+<h2 id="一最直接前作与真正增量">一、最直接前作与真正增量</h2>
+<p>主前作：Mele, Salek, Giovannetti, Lami, <em>Quantum communication on
+the bosonic loss-dephasing channel</em>, PRA 110, 012460 (2024),
+arXiv:2401.15634v3。PDF 第28页的 Conjecture 40 与第29页 Theorem 41
+已直接截图核对；2026-10-13访问的 arXiv元数据仍列v3为最新版。</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>前作位置</th>
+<th>关系</th>
+<th>本轮的区别/处理</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Theorems 1/30</td>
+<td>无限维反降级充分条件，但不是精确边界</td>
+<td>以其较强 theta 条件作为解析基线，不只挑较弱的 1/(1+9q)</td>
+</tr>
+<tr class="even">
+<td>Theorems 2/38</td>
+<td>从零/单光子子空间得到必要条件 eta≤1/(1+q)</td>
+<td>不把这条公式的提出归为本轮；新的部分是无限维充分性</td>
+</tr>
+<tr class="odd">
+<td>Lemma 39、Conjecture 40</td>
+<td>低维精确分析与有限截断数值支持同一边界</td>
+<td>全光子数证明不来自增加截断，而来自一个一致的无限维等距扩展</td>
+</tr>
+<tr class="even">
+<td>Theorem 41</td>
+<td>单一Hadamard核的正性提供扩展</td>
+<td>本轮证明旧核在候选边界的3阶主子式严格为负，不能仅通过加强原估计到达边界；改用依赖二项结果k的核</td>
+</tr>
+<tr class="odd">
+<td>Theorem 42</td>
+<td>双向经典通信辅助容量与本题不同</td>
+<td>本轮Q=0不意味着Q2=0，更不意味着所有QKD或中间纠错方案失效</td>
+</tr>
+</tbody>
+</table>
+<p>旧核障碍的直接计算为</p>
+<p><span class="math display">\[
+\widetilde C_{01}=1,\quad\widetilde C_{02}=q,\quad
+\widetilde C_{12}=\frac{1}{q+\sqrt2(1-q)},
+\]</span> <span class="math display">\[
+\det\widetilde C_{\{0,1,2\}}=
+-\left[q-\frac{1}{q+\sqrt2(1-q)}\right]^2&lt;0.
+\]</span></p>
+<p>这一步说明新构造不是把已有误差界的系数调好：它确实改变了构造。旧理论不因此被否定，它本来就只有充分条件。</p>
+<p>本轮先剥离两个饱和的低光子数Gram方向，剩余部分按二项概率分配；用一个正的共享余核补齐，再构造结果依赖的双输出等距映射。所有光子数的正性由解析尾项界与有限条<strong>有理数严格不等式</strong>共同保证。q≤1/100还有无需优化权重的手算版本。</p>
+<h2 id="二横向及后续工作筛查">二、横向及后续工作筛查</h2>
+<p>以下是实际阅读的原始页面及所查的技术对象，不代表整个引文网络已经被穷尽。</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>来源</th>
+<th>核查对象与排除理由</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Leviant–Xu–Jiang–Rosenblum, Quantum 6,821 (2022),
+arXiv:2205.00341v4</td>
+<td>同一复合通道的非可降级性、容量界和编码数值；不含本轮精确强退相干边界。其2022旧猜想不能与2024
+Conjecture40混淆。</td>
+</tr>
+<tr class="even">
+<td>Lami–Wilde, <em>Exact solution for the quantum and private
+capacities of bosonic dephasing channels</em>, Nature
+Photonics17,525–530 (2023), arXiv:2205.05736</td>
+<td>对象是纯退相干、无光子损耗；精确容量不覆盖本轮复合噪声。出版信息从2022论文的期刊引文链确认；本次尝试的v4
+HTML返回错误，不宣称读了该版本全文。</td>
+</tr>
+<tr class="odd">
+<td>Huang–Lami–Singh–Wilde, arXiv:2603.19911v1</td>
+<td>同一噪声族的能量约束通道判别及SDP，而非反降级/量子容量精确零边界。阅读摘要、任务定义和应用结构。</td>
+</tr>
+<tr class="even">
+<td>Catalano–Fanizza–Mele–De Palma–Giovannetti, arXiv:2604.26874v2</td>
+<td>随机透射率的纯损耗混合(fading)；通道不同。弱输入正容量方法可作通用参照，不把类似熵展开声称原创。</td>
+</tr>
+<tr class="odd">
+<td>Mele et al., arXiv:2607.27449v1</td>
+<td>热衰减器与非Gaussian输入容量下界；噪声含热光子，非本轮Gaussian相位扩散复合通道；仍引用2024前作。</td>
+</tr>
+<tr class="even">
+<td>Korkmaz et al., arXiv:2607.07603v1</td>
+<td>双轨偏振的特定协议数值和操作阈值；不是单模无限维、全编码量子容量零/正边界。</td>
+</tr>
+<tr class="odd">
+<td>Kondra et al., arXiv:2608.01308v1</td>
+<td>有限维已知(反)可降级通道的强逆定理；不判定本轮无限维通道在哪些参数下反降级。本轮也未采用其强逆结论。</td>
+</tr>
+<tr class="even">
+<td><em>Non-asymptotic quantum communication on lossy transmission lines
+with memory</em>, arXiv:2503.13207v1</td>
+<td>带记忆的损耗线路，非独立Gaussian退相干噪声；题目与参数任务不同。</td>
+</tr>
+</tbody>
+</table>
+<p>期刊Quantum的2022论文页面还列出了可访问的前向引用，包括代码设计、特定码族性能、纯退相干容量与判别工作；其中直接同题前作为2024论文。APS页面的动态“Citing
+Articles”入口返回错误，不能声称已逐篇完成其全部前向引用。作者组网页直接访问返回登录状态，未当作完整出版列表。</p>
+<p>通用关键词检索多次返回无关结果；这被记录为检索局限，不被解读成“没有前作”。更有效的路径是精确题名、arXiv编号、期刊引用列表及已识别的2026同作者/同主题工作。</p>
+<h2
+id="三为什么不是正确但没用的又一个定理">三、为什么不是“正确但没用”的又一个定理</h2>
+<p>旧项目的困难是：给一个特殊编码加上额外限制，再推导它的成本，却没说明该编码为何值得采用。本轮问题没有这个结构：它问的是标准噪声通道上<strong>任何允许的集体编码</strong>还能否以正速率可靠传递量子信息。答案给出编码优化无法跨过的区域，而不是某一算法没有搜到。</p>
+<p>具体的知识增量是：在 q≤0.05
+内，低光子数必要条件事实上支配了无限Fock空间的边界。高能、复杂或多通道联合编码不能在这条线以下恢复无辅助容量；在线以上，一个低能输入即证明正容量。此前被上下界夹住的区间由此得到判定。</p>
+<p>对 Lindblad 噪声 kappa D[a]+kappa_phi D[n]，当
+kappa_phi/kappa≥61.4003319 时，还得到精确容量消失时间：exp(-kappa
+t*)[1+exp(-kappa_phi
+t*)]=1。这个后果对严格声明的被动存储间隔成立；不假装覆盖持续主动纠错或反馈方案。</p>
+<p><strong>强退相干配合小损耗即可杀死量子容量这一现象本身不是新发现。</strong>
+本轮新增的是精确条件与无限维证明。严格正容量也不等于实用高码率，在边界附近给出的可达率可能极小。</p>
+<h2
+id="四结论与剩余风险不是同一件事">四、结论与剩余风险不是同一件事</h2>
+<ul>
+<li>已有：明确的原文猜想、对齐的参数定义、完整构造、无限维正性证明、双边容量符号证明、可复算的精确证书、直接前作方法无法覆盖边界的解析检查。</li>
+<li>已完成的价值判断：这是基本量子噪声模型中一个有实质学科意义的能力边界，而不是流程或规模演示；值得围绕它形成正式理论稿。</li>
+<li>仍有限制：q∈(0.05,约0.41]未解决；正容量值未求得；无任意两向辅助/中间纠错结论；查新不是全世界文献完备性证明；没有外部同行评审或形式化证明系统审查。</li>
+</ul>
+<p>这些限制约束成果的准确表述，不把已经完成的“新增命题及其物理后果核查”重新推回给用户。</p>
+<h2 id="原始来源">原始来源</h2>
+<ul>
+<li>https://arxiv.org/html/2401.15634v3</li>
+<li>https://arxiv.org/pdf/2401.15634 (pp.28–29)</li>
+<li>https://arxiv.org/abs/2401.15634</li>
+<li>https://journals.aps.org/pra/abstract/10.1103/PhysRevA.110.012460</li>
+<li>https://quantum-journal.org/papers/q-2022-09-29-821/</li>
+<li>https://arxiv.org/html/2205.00341v4</li>
+<li>https://arxiv.org/html/2603.19911v1</li>
+<li>https://arxiv.org/html/2604.26874v2</li>
+<li>https://arxiv.org/html/2607.27449v1</li>
+<li>https://arxiv.org/html/2607.07603v1</li>
+<li>https://arxiv.org/html/2608.01308v1</li>
+<li>https://arxiv.org/html/2503.13207v1</li>
+</ul>
+<p class="notice">研究记录 · 2026-10-13 · 公式排版使用 MathJax；离线查看请同时保留 Markdown 源文件。未对外发表。</p></main></body></html>

@@ -1,0 +1,107 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>翟荟开放系统主题：协议实测</title><style>body{margin:0;background:#f2f4f6;color:#182735;font:17px/1.85 system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}main{max-width:1040px;margin:30px auto;background:#fff;padding:38px 54px;border-radius:10px}h1{font-size:30px;line-height:1.4}h2{font-size:23px;border-top:1px solid #e1e6eb;padding-top:20px;margin-top:36px}h3{font-size:19px}p{margin:15px 0}a{color:#155779;overflow-wrap:anywhere}table{display:block;overflow:auto;border-collapse:collapse;font-size:14px}th,td{padding:11px 14px;border-bottom:1px solid #dae1e7;text-align:left}th{background:#f1f5f8}pre{overflow:auto;background:#f4f6f8;padding:17px;font:14px/1.7 ui-monospace,monospace}code{font-size:.88em}img{max-width:100%;height:auto}nav{font-size:14px;padding-bottom:17px;border-bottom:1px solid #ddd}.math{overflow-x:auto;padding:9px 0}footer{margin-top:35px;border-top:1px solid #ddd;padding-top:12px;color:#62727f;font-size:13px}@media(max-width:720px){main{margin:0;padding:22px}h1{font-size:25px}h2{font-size:21px}body{font-size:16px}}</style><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script></head><body><main><nav><a href="REPORT.html">研究报告</a> · <a href="THEORY.html">完整推导</a> · <a href="research/DECISIONS.md">实际决策</a> · <a href="research/STATE.md">恢复状态</a></nav><h1>翟荟开放系统主题：科研 loop 首轮实测</h1>
+<p>日期：2026-10-13。用户已确认研究者为翟荟（Hui Zhai）。这是当前会话模型＋检索与计算工具对 v1.1 协议的实测，不是另行调用 Codex，也不是新安装宿主的盲测。</p>
+<p><a href="THEORY.html">完整推导</a> · <a href="research/DECISIONS.md">原始决策</a> · <a href="research/LITERATURE.md">文献对照</a> · <a href="research/STATE.md">当前状态</a></p>
+<h2>结论先行</h2>
+<p>这一轮得到一个严格的<strong>状态层条件不足性诊断</strong>：一族自旋 1/2 对称态同时具有均匀短程相关和对所有分区指数小的条件互信息，但其纠缠哈密顿量仍有唯一基态和有限谱隙。因此，不能仅靠这些信息量性质推出所需的纠缠谱结论。</p>
+<p>这没有证明翟荟等人的局域耦合自旋链算例有错，也没有获得“任意局域浴都可以违反纠缠 LSM”的结果。原文的物理制备范围比抽象状态性质更强；本构造是否属于那个范围尚未建立。<strong>本轮不计为已达成高价值新物理目标，不放行大规模扩算。</strong></p>
+<p>测试的实际作用是：在扩大自旋链模拟之前，识别了一步必须补充条件的推理，并把下一笔投入从“更多尺寸”改成“核对局域制备究竟提供什么额外约束”。</p>
+<h2>1. 从翟荟的工作中筛什么，而不是先跑哪个模型</h2>
+<p>入口选取《Reviving the Lieb–Schultz–Mattis theorem in open quantum systems》。它提出把闭系统的能谱约束转移到混态的纠缠哈密顿量 K=-log rho，并讨论“短程相关 → 近似空间 Markov → 纠缠哈密顿量足够局域 → 低谱隙消失”的路线。[R1]</p>
+<p>初审还筛了 Krylov 复杂度与 Rényi 熵动力学主题。前者未形成有足够依据的具体增量，暂存；“两个耗散时间尺度”等宽泛主张已有前作，关闭其新颖性主张。没有为这些分支启动计算。</p>
+<p>对主候选，问题不是“是否又出现一种非局域 EH”。相关后续已研究过这一现象。[R3] 我们选择的是更窄、能决定后续投入的命题：<strong>态在信息论距离上接近局域热态，是否足以控制其 -log rho 的低谱？</strong> Kato–Brandão 的结果给出的是相对熵近似，不能直接换成对数的算符范数近似。[R2]</p>
+<h2>2. 行动前审批，确实早于数值结果</h2>
+<p>D001 批准 <code>PROBE</code> 而非整项目 <code>ADVANCE</code>：只允许一个解析构造和 L=4、6、8 的小矩阵检查，另有 L=10、12 的向量对称性检查。每条命令最多 45 秒，单数值线程，不使用额外 API、GPU、用户电脑或付费服务。</p>
+<p>前审明确记录：如果构造只满足状态层条件，就不能写成局域有隙浴的反例；若通用现象已有，就只保留其针对具体推理的诊断价值。</p>
+<p>原始数值程序有一次 JSON 布尔值序列化错误；修复前源码和错误事件已保留。该工程失败没有被记为物理失败。</p>
+<h2>3. 实际结果：信息量趋零，纠缠谱隙不趋零</h2>
+<p>取偶数 L 的一站点平移不变自旋单态 |psi_L&gt;，定义 D=2^L：</p>
+<div class="math">\[
+\rho_L=\frac{I+\alpha|\psi_L\rangle\langle\psi_L|}{D+\alpha},\qquad \alpha&gt;0.
+\]</div>
+<p>这是满秩态，具有全局 SO(3) 与一站点平移弱对称性。两本征值之比为固定的 1+alpha；没有利用零本征值或发散条件数。</p>
+<div class="math">\[
+K_L=\ln(D+\alpha)I-\ln(1+\alpha)|\psi_L\rangle\langle\psi_L|,
+\qquad \boxed{\Delta_K=\ln(1+\alpha)}.
+\]</div>
+<p>同时，对于任意分区 A、B、C，</p>
+<div class="math">\[
+I(A:C|B)\le D(\rho_L\|I/D)
+=\frac{(1+\alpha)\ln(1+\alpha)-\alpha}{2^L}+O(4^{-L}).
+\]</div>
+<p>所有互不重叠局域观测量的连通相关均有统一的指数上界；完整证明不靠尺寸拟合。</p>
+<p>alpha=1 时的公式值如下。L=16、32、64 行只计算解析公式，<strong>不是对这些维数作全矩阵模拟</strong>。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">L</th>
+<th style="text-align:right">到 I/2^L 的迹距离</th>
+<th style="text-align:right">任意分区 CMI 的严格解析上界，nats</th>
+<th style="text-align:right">纠缠谱隙，nats</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">8</td>
+<td style="text-align:right">3.87585×10^-3</td>
+<td style="text-align:right">1.49550×10^-3</td>
+<td style="text-align:right">ln 2</td>
+</tr>
+<tr>
+<td style="text-align:right">16</td>
+<td style="text-align:right">1.52583×10^-5</td>
+<td style="text-align:right">5.89418×10^-6</td>
+<td style="text-align:right">ln 2</td>
+</tr>
+<tr>
+<td style="text-align:right">32</td>
+<td style="text-align:right">2.32831×10^-10</td>
+<td style="text-align:right">8.99412×10^-11</td>
+<td style="text-align:right">ln 2</td>
+</tr>
+<tr>
+<td style="text-align:right">64</td>
+<td style="text-align:right">5.42101×10^-20</td>
+<td style="text-align:right">2.09411×10^-20</td>
+<td style="text-align:right">ln 2</td>
+</tr>
+</tbody>
+</table>
+<p>九个小矩阵组合（3 个 L ×3 个 alpha）核验了满秩、平移、单态、谱隙、条件互信息、两种偏迹/熵实现和 LSM 扭转操作。扭转态与基态正交，但代价恰为 ln(1+alpha)，而不是 1/L。</p>
+<p><img src="diagnostic.png" alt="状态距离与纠缠谱隙的区别。曲线取自解析式，不是大尺寸密度矩阵模拟。" /></p>
+<h2>4. 修正的方向：要的是谱意义上的控制</h2>
+<p>相对熵小不足以保证对数谱接近。本轮说明了一个更强的充分条件：如果相对于局域参考态 sigma，有</p>
+<div class="math">\[
+e^{-\epsilon_L}\sigma_L\preceq\rho_L\preceq e^{\epsilon_L}\sigma_L,
+\]</div>
+<p>则两个纠缠哈密顿量的低谱隙之差至多 2 epsilon_L。只有再证明 epsilon_L 随尺寸消失，才能沿这一路径传递无隙结论。它是一般谱稳定性事实在这里的应用，不另称方法原创；尚未证明局域浴能自动保证该条件。</p>
+<p>还推得一个可操作的限制：仅凭上述态的独立副本，区分它与最大混态、达到等先验成功概率 2/3，至少需要指数级副本数（即使允许集体测量）。L=32、alpha=1 时，Pinsker 下界为 2,470,750,996 份。这是特定承诺态对的区分下界，不是对所有实验或掌握可信制备模型的情况的限制。</p>
+<h2>5. 首创性与物理价值的结论</h2>
+<ul>
+<li>R1 的公开主文仍把近似 Markov 到纠缠哈密顿量局域性写为猜想；所以本诊断针对真实的逻辑步骤，而非人为发明一个弱基线。</li>
+<li>R2 的严格定理是相对熵意义下靠近局域 Gibbs 态，本结果不反驳它。</li>
+<li>R3 已研究短程物理体系中的非局域 EH；不能声称首次发现这种现象。其 XXZ 对称性与扇区结果也不能直接当作本构造的证明。</li>
+<li>秩一微扰与对数谱不稳定、以及 Pinsker/Weyl 不等式都不是新的通用知识。本轮的有限增量是针对该信息论证明路线给出显式、全尺寸、满足半整数自旋弱对称条件的诊断。</li>
+<li>期刊补充 ZIP 和作者讲义的访问失败已记录。不能推断缺失材料没有额外条件，也不能在这个前提下宣称完整推翻原工作的物理命题。</li>
+</ul>
+<p><strong>研究决定：保留状态层诊断；局域制备反例与完整新颖性主张均不放行。</strong> 下一步值得调查的对象是固定、均匀局域、保持对称的系统—浴制备所产生的态族及其谱正则性，而不是继续给这个显式构造加尺寸和曲线。</p>
+<h2>6. 这次对 loop 的实际评价</h2>
+<p>**已观察到的行为：**读入真实协议；在数值行动前保留审查与资源范围；关闭已知宽泛主张；用最小检验代替昂贵模拟；实际根据条件审查缩小结论；续接时从文件读取状态并复用已有 A01 证据。预先记录的思路是“归一化统计权重小，不代表 -log rho 的低谱变化小”，它决定了先做何种诊断，不是结果出来后才补的心智模型标签。</p>
+<p>**实际发现的协议缺陷：**续接后的查询计数没有严格跟随 D002 的局部预算。当前续接段执行 9 条 search_query，而该阶段约定 4 条；保守计为超出 5 条。没有追加昂贵计算或付费调用。这是实测缺陷，不能靠事后重新分配预算掩盖。建议在每批检索前读取并递减余量，身份核实单独事先划定额度。此建议未伪装成已实现硬限制。</p>
+<p>**不能宣称的效果：**没有等预算无协议对照，没有证明教授式能力已经内化，没有新宿主安装后的盲测，也没有从此例推导高价值命中率。两段脚本在新进程中重跑、科学字段一致，只检验可复算性，不等于宿主能自主重演科研过程。</p>
+<h2>7. 文件与复做</h2>
+<p><code>src/check_spiked_singlet.py</code>：九个有边界的密度矩阵检查。</p>
+<p><code>src/spectral_sensitivity.py</code>：四行高精度解析后果与独立谱和检查。</p>
+<p><code>research/artifacts/A01/</code>、<code>A02/</code>：首轮证据。</p>
+<p><code>research/artifacts/A03/</code>：新进程重跑与比较。</p>
+<p><code>protocol_snapshot/</code>：实际使用的协议副本。</p>
+<p>使用新目录复做，不覆盖原始结果：</p>
+<pre><code class="language-bash">OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python src/check_spiked_singlet.py --output NEW_RUN/diagnostic.json
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python src/spectral_sensitivity.py --output NEW_RUN/sensitivity.json
+</code></pre>
+<p>所需依赖：Python、NumPy、SciPy、mpmath。实际版本见 environment 与 requirements。没有后台任务、外部模型调用、GitHub 提交或论文外发。</p>
+<h2>参考来源</h2>
+<p>[R1] Zhou et al., <em>Reviving the Lieb–Schultz–Mattis theorem in open quantum systems</em>, NSR 12(1), nwae287. 主文的条件、信息论证明步骤与局域浴讨论；预印本 PDF pp.2–3 已截图核对。https://academic.oup.com/nsr/article/12/1/nwae287/7737777</p>
+<p>[R2] Kato–Brandão, <em>Quantum Approximate Markov Chains are Thermal</em>, Theorems 1–2. https://arxiv.org/html/1609.06636v3</p>
+<p>[R3] Tzeng–Möller, <em>Dissociation of bulk and entanglement phase transitions in the Haldane phase</em>, v2. https://arxiv.org/html/2509.03588v2</p>
+<p>主文和补充材料的实际访问边界、其他分支和比较见 research/LITERATURE.md。</p>
+<footer>本轮内部理论诊断与数值检查，不是外部审稿。公式显示依赖 MathJax；离线可阅读同名 Markdown 源文件。</footer></main></body></html>

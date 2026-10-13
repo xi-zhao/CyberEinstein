@@ -1,0 +1,131 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Finite-time resource-bound proof</title><style>body{margin:0;background:#eef1f4;color:#18232d;font:17px/1.82 system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}main{max-width:1000px;margin:28px auto;padding:42px 54px;background:white;border-radius:12px}h1{font-size:31px;line-height:1.35}h2{font-size:24px;margin-top:40px;border-top:1px solid #dce3e8;padding-top:20px;line-height:1.45}h3{font-size:20px;margin-top:30px}pre{background:#f3f5f7;padding:18px 22px;overflow-x:auto;line-height:1.6;border-left:3px solid #8b9ca9;border-radius:4px}code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:14px}p code{background:#f3f5f7;padding:2px 4px}table{display:block;overflow-x:auto;border-collapse:collapse;font-size:15px;margin:22px 0}th,td{text-align:left;padding:10px 12px;border-bottom:1px solid #dae2e8;min-width:110px;vertical-align:top}th{background:#f1f4f6}a{color:#155d94;overflow-wrap:anywhere}img{max-width:100%;height:auto}nav{font-size:14px;border-bottom:1px solid #ddd;padding-bottom:14px}blockquote{border-left:3px solid #9aabb9;margin-left:0;padding-left:18px;color:#3d4c59}@media(max-width:700px){main{padding:24px 19px;margin:0;border-radius:0}h1{font-size:25px}h2{font-size:21px}body{font-size:16px}pre{padding:14px 12px}}</style></head><body><main><nav><a href="REPORT.html">实验报告</a> · <a href="THEORY.html">完整推导</a> · <a href="HANDOVER.html">复现与交接</a></nav><h1>Finite-time resource bounds for nonlinear processing of a dissipatively protected bosonic mode</h1>
+<p><strong>Research note, 13 October 2026 (Asia/Shanghai).</strong> Derived during the exp03 research session. This is a self-contained proposed theorem and its proof, with numerical cross-checks; it has not received independent human review or proof-assistant verification. Derivation in this session does not establish literature priority. The weak-Kerr ring limit is already contained in Zapletal, Nunnenkamp and Brunelli, arXiv:2103.12457, and is not claimed as new.</p>
+<h2>1. Model and operational task</h2>
+<p>Consider M bosonic modes. A fixed normalized single-particle vector v defines d† = sum_i v_i a_i† and |D_n&gt; = (d†)^n|0&gt;/sqrt(n!). The code is span{|D_0&gt;, |D_1&gt;, |D_2&gt;}; the target is the nonlinear sign gate diag(1,1,-1). This is a three-level bosonic operation, not a demonstrated universal quantum computer or a fault-tolerant encoded gate.</p>
+<p>The time-local master equation is</p>
+<pre><code>rho_dot = -i [V(t) + H0(t), rho] + sum_mu D[L_mu(t)] rho,
+L_mu(t) = sum_i ell_mu,i(t) a_i,
+Gamma(t) = ell(t)† ell(t),     Gamma(t) v = 0.</code></pre>
+<p>The bath is in the vacuum. All operators conserve or lower excitation number, so the total-N&lt;=2 calculation is exactly closed for this task. This is an explicit GKLS model, not an assertion of microscopic Markovian validity for arbitrary hardware.</p>
+<p>In the two-excitation sector, let C project onto onsite doublons |2_i&gt;; let F=I-C project onto states with the two excitations at distinct sites. The allowed nonlinear interaction satisfies</p>
+<pre><code>V(t) = C V(t) C.</code></pre>
+<p>Arbitrary time-dependent, signed and strong onsite Kerr interactions satisfy this condition. So does arbitrary Hermitian pair hopping between doublons. A cross-Kerr n_i n_j (i!=j) generally does not. The theorem is actually valid for any interaction annihilating a chosen subspace F; contact support is the physical instance studied here.</p>
+<p>Initially take H0=0. Later we allow quadratic coherent transport H0=sum h_ij a_i†a_j with h v=0. A uniform single-particle frequency can be put into the final linear phase correction. General site detunings, drives, changing the dark code, measurements, feedback, error correction and postselection are not free resources included in the simple dissipation-only bound.</p>
+<p>Write Gamma's second quantization in the two-particle sector as dGamma(Gamma), and define</p>
+<pre><code>D(t) = (1/2) dGamma(Gamma(t)),     D(t)|D_2&gt; = 0.</code></pre>
+<p>D is a positive amplitude-damping operator. Gamma's eigenvalues are single-particle <em>population</em> damping rates. This convention prevents a factor-of-two ambiguity.</p>
+<h2>2. Fidelity is an unconditional channel quantity</h2>
+<p>Let |psi(t)&gt; be the unnormalized no-jump state from |D_2&gt;. Put |d&gt;=|D_2&gt;, A=&lt;d|psi(T)&gt;. Vacuum and |D_1&gt; acquire neither loss nor phase in the chosen frame. Every Kraus operator containing a jump lowers excitation number and therefore has zero trace against the target gate on the code. Consequently the <em>unconditional entanglement fidelity</em> is exactly</p>
+<pre><code>Fe(theta) = |1 + exp(i theta) - exp(2i theta) A|^2 / 9.</code></pre>
+<p>Theta is an optional final linear phase correction. No trajectory is postselected or renormalized. We distinguish delta_0=1-Fe(0), and delta_lin=1-max_theta Fe(theta). Full GKLS propagation independently verifies this identity.</p>
+<p>Let p=1-||psi(T)||^2, e=psi(T)+d, and eta=||e||. Then</p>
+<pre><code>delta_0 &gt;= p/3 + 2 eta^2/9,                         (1)
+delta_lin &gt;= p/3 + eta^2/18.                      (2)</code></pre>
+<p>For (1), set a=A+1. Since p=2 Re(a)-eta^2 and |a|^2&lt;=eta^2,</p>
+<pre><code>delta_0=(6 Re(a)-|a|^2)/9 &gt;= p/3+2 eta^2/9.</code></pre>
+<p>For (2), put x=exp(i theta), z=(1,x,-x^2 A). The identity</p>
+<pre><code>9-|sum z_i|^2 = 3(1-|A|^2) + sum_(i&lt;j)|z_i-z_j|^2</code></pre>
+<p>and |A+1| &lt;= |1+xA| + |1-x| (because |A|&lt;=1) give delta(theta)&gt;=(1-|A|^2)/3+|A+1|^2/18. Writing ||psi||^2-|A|^2=q&gt;=0 yields (2). The inequality holds at every theta, hence also at its optimum.</p>
+<p><strong>Why two constants?</strong> Applying the stronger fixed-phase result to a freely phase-corrected gate would be invalid. For example, with no interaction and no dissipation, an optimized linear phase alone improves fidelity relative to the fixed nonlinear-sign target, although it cannot realize that target. Our main physical conclusions use the phase-free constant below.</p>
+<h2>3. Exact endpoint theorem: no weak-control approximation</h2>
+<p>For any vector w in F, w†V=0. Thus, when H0=0,</p>
+<pre><code>&lt;w|psi(T)-d&gt; = - integral_0^T &lt;w|D(t)|psi(t)&gt; dt.</code></pre>
+<p>The norm-loss identity and positive-operator Cauchy-Schwarz imply</p>
+<pre><code>p = 2 integral &lt;psi|D|psi&gt; dt,
+2 |&lt;w|d&gt;| &lt;= ||w|| eta + sqrt(a_w p/2),
+a_w = integral &lt;w|D(t)|w&gt; dt.                  (3)</code></pre>
+<p>Combining (3) with (1) or (2), then maximizing over w in F, proves</p>
+<pre><code>delta &gt;= (8/3) &lt;d_F|[ integral D_F(t) dt + c I_F ]^(-1)|d_F&gt;,   (4)</code></pre>
+<p>where d_F=F d, D_F=FDF restricted to F, and</p>
+<pre><code>c=3  for fixed linear phase;
+c=12 for arbitrary final linear phase correction.</code></pre>
+<p>The maximization is the ordinary generalized Rayleigh quotient. Equation (4) is finite-time and endpoint-only. It does not assume the state remains near the code at intermediate times, a slow pulse, a perturbative Kerr coefficient, or commuting generators. Piecewise-continuous, finite-duration controls with integrable loss action suffice. Singular ideal instantaneous controls can be treated only as limits for which the dynamics and bound converge.</p>
+<h3>Coherent transport extension</h3>
+<p>If H0 d=0 and H0 annihilates the kernel of D (automatically true for a unique instantaneous dark mode in the N=2 sector), define</p>
+<pre><code>R(t) = D(t) + H0(t) D(t)^+ H0(t).</code></pre>
+<p>Indeed (D+iH0)D^+(D-iH0)=D+H0 D^+ H0: the cross terms cancel on the damped complement. Cauchy-Schwarz in (3) therefore holds with a_w=integral &lt;w|R|w&gt; dt. The general theorem is</p>
+<pre><code>delta &gt;= (8/3) &lt;d_F|[ integral R_F(t) dt + c I_F ]^(-1)|d_F&gt;.   (5)</code></pre>
+<p>This explicitly accounts for coherent transport rather than incorrectly forbidding it. For h(t)=J(t) Gamma(t), H0=2J D and R=(1+4J^2)D. The simple dissipation-only action is replaced by the action weighted by 1+4J^2. General coherent resources need the matrix expression, not this scalar shortcut.</p>
+<h2>4. Delocalization costs dissipative action</h2>
+<p>For the uniform mode v_i=1/sqrt(M), ||d_F||^2=(M-1)/M. Also</p>
+<pre><code>&lt;d_F|D(t)|d_F&gt; = Tr Gamma(t)/M^2.</code></pre>
+<p>This follows by writing d_F=d-d_C, using Dd=0, and noting that the matrix of dGamma(Gamma)/2 between doublons has diagonal entries Gamma_ii and no off-diagonal entries. Define the dimensionless <em>per-mode mean dissipative action</em></p>
+<pre><code>B = integral_0^T [Tr Gamma(t)/M] dt.</code></pre>
+<p>Choosing w=d_F in (3) gives</p>
+<pre><code>delta_lin &gt;= 8(M-1)^2 / {3M [B+12(M-1)]}.       (6)</code></pre>
+<p>For delta_0, replace 12 by 3. The controls may have arbitrary individual Kerr strengths, signs and waveforms, arbitrary contact-sector pair hopping, and arbitrary time-dependent dark-preserving linear losses. Extra coherent transport is not included in (6); use (5) instead.</p>
+<p>A necessary condition for delta_lin&lt;=epsilon is</p>
+<pre><code>B &gt;= max{0, 8(M-1)^2/(3M epsilon)-12(M-1)}.    (7)</code></pre>
+<p>At high accuracy and large M, this is B=Omega(M/epsilon). This is a lower bound on resources for <em>this operation and resource class</em>, not an impossibility of bosonic computation.</p>
+<p>For a nonuniform dark mode, let P2=sum_i |v_i|^4, r=1-P2. The exact scalar bound is</p>
+<pre><code>delta_lin &gt;= 8r^2 / {3[integral sum_i Gamma_ii |v_i|^4 dt +12r]}.</code></pre>
+<p>If every local diagonal damping rate is at most b, the denominator's integral is at most b T P2. Hence the same form as (6) holds with M replaced by the inverse participation number M_eff=1/P2 and B replaced by bT. This connects the limitation to delocalization, not just to a count of empty auxiliary modes.</p>
+<h2>5. Geometry: a two-walker encounter, not only a spectral gap</h2>
+<p>For a fixed real graph Laplacian Gamma, F D F is a two-particle diffusion generator with absorption when the two particles meet at a site. Each single walker has generator -Gamma/2. The bosonic symmetric representation and the ordered-walker representation give the same quadratic form with the correct normalization.</p>
+<p>The quantity</p>
+<pre><code>&lt;d_F|D_F^(-1)|d_F&gt;</code></pre>
+<p>is the mean first-meeting time from the stationary independent initial distribution, with initial coincidence assigned meeting time zero. No claim of novelty is made for graph-theoretic meeting-time identities themselves.</p>
+<p>For a connected vertex-transitive graph, define nonzero eigenvalues kappa_alpha of Gamma and</p>
+<pre><code>A_c(T) = sum_(alpha&gt;0) c/(c+T kappa_alpha).</code></pre>
+<p>Then (4) becomes the exact spectral bound</p>
+<pre><code>delta &gt;= [8/(3c)] A_c(T)/(1+A_c(T)).             (8)</code></pre>
+<p>Proof: the return probability to the coincidence set after starting from coincidence is R(t)=Tr exp(-Gamma t)/M, independent of the meeting site. The stationary coincidence probability is 1/M. First-meeting renewal gives the Laplace transform of the first-meeting distribution</p>
+<pre><code>f_tilde(z)=1/[1+z sum_(alpha&gt;0)1/(z+kappa_alpha)].</code></pre>
+<p>The survival transform is (1-f_tilde(z))/z. Substituting z=c/T into (4) yields (8). This derivation does not use the nonlinear control waveform.</p>
+<p>Let S=Tr Gamma^+=sum_(alpha&gt;0)1/kappa_alpha. For c=12 and 0&lt;epsilon&lt;1/9, delta_lin&lt;=epsilon implies the <em>finite-accuracy</em> necessary condition</p>
+<pre><code>T &gt;= [8/(3epsilon)-24] S.                       (9)</code></pre>
+<p>To see this, x_alpha=c/(c+T kappa_alpha) and A=sum x_alpha. From (8), A&lt;=a=3c epsilon/(8-3c epsilon)&lt;1. Since</p>
+<pre><code>S=(T/c) sum x_alpha/(1-x_alpha) &lt;= (T/c) a/(1-a),</code></pre>
+<p>equation (9) follows. The fixed-phase counterpart has -6 instead of -24.</p>
+<h3>Time-varying local rates do not remove the geometry penalty</h3>
+<p>The quadratic resolvent form in (4) is convex in the integrated loss matrix; its variational expression is a supremum of affine functions. Averaging that matrix over graph automorphisms leaves d_F unchanged and cannot increase the bound. On an edge-transitive graph at fixed total action, this average has equal edge weights. Thus the uniform graph gives a valid lower bound even if individual edge rates are arbitrarily redistributed in time, as long as no extra edges, coherent transport or interactions outside C are introduced.</p>
+<p>For periodic hypercubic lattices with equal side lengths, fixed mean local damping b, and M=L^d, the inverse spectral sum scales as</p>
+<pre><code>S ~ M^2/(6b)                  in d=1,
+S = Theta(M log M / b)        in d=2,
+S = Theta(M/b)                in d&gt;2.</code></pre>
+<p>These follow from kappa(q) proportional to q^2 at small q, not from fitting a few simulated sizes. Equation (9) transfers these size dependences to necessary operation time, even for strong or optimized contact controls. The geometrical classification uses this class of local periodic graphs; it does not assert all physical dimensions or all reservoir designs obey the same dispersion.</p>
+<p>For an all-to-all uniformly weighted graph with b=Tr Gamma/M, S=(M-1)^2/(M b). Therefore sparse local geometry can impose an additional penalty beyond delocalization alone.</p>
+<h2>6. A matching scaling construction, and the known perturbative limit</h2>
+<p>Uniform onsite U yields projected Kerr chi=U/M. Perturbation theory at fixed graph gives</p>
+<pre><code>z_2 = chi - i chi^2 S + O(U^3),
+delta_0(T=pi/chi) = (2pi/3) chi S + higher orders.</code></pre>
+<p>The ring form of this result is already contained in arXiv:2103.12457 Eq. (13), after converting its Kerr convention H=U_old sum a†²a² to U=2U_old. The second-order loss, the inverse-rate sum and the generic Zeno mechanism are not the main new claim of this note.</p>
+<p>For a desired small error, the uniform protocol attains a time proportional to S/epsilon, matching the scaling of (9), but not its numerical constant. There is no global optimal-control claim.</p>
+<p>On the complete graph the entire N=2 trajectory from |D_2&gt; is exactly represented by the 2x2 matrix</p>
+<pre><code>K = [[U/M, U sqrt(M-1)/M],
+     [U sqrt(M-1)/M, U(M-1)/M - i b M/(M-1)]].</code></pre>
+<p>This exact symmetry reduction permits tests up to M=4096 without pretending to simulate the entire Fock space. It has been checked against the full two-particle matrix at small M.</p>
+<h2>7. Intrinsic loss creates an unavoidable error floor</h2>
+<p>Now add independent uniform loss sqrt(kappa0) a_i. In each fixed-number no-jump sector it is a scalar and commutes with all number-preserving controls. If A0 is the no-intrinsic-loss amplitude, then</p>
+<pre><code>Fe_kappa(theta)=|1+a exp(i theta)-a^2 exp(2i theta) A0|^2/9,
+a=exp(-kappa0 T/2).</code></pre>
+<p>If B0(T) is any phase-free lower bound on the engineered-loss error, the triangle inequality gives</p>
+<pre><code>delta_kappa &gt;= 1-[1+a-2a^2+3a^2 sqrt(1-B0(T))]^2/9.          (10)</code></pre>
+<p>This follows by writing the trace amplitude as a^2 times the zero-intrinsic-loss trace amplitude plus (1-a^2)+(a-a^2)exp(i theta), whose latter coefficients are nonnegative. Equation (10) remains valid with arbitrary final linear phase correction.</p>
+<p>Using (6) with constant or bounded mean damping b and minimizing (10) over all T yields an all-control lower envelope. We enclose that scalar minimum with interval branch-and-bound; a local numerical minimizer alone is not treated as a proof. The enclosure bounds the minimum of the bound, not the physical optimum.</p>
+<p>For fixed M&gt;=2 and kappa0/b -&gt;0, the lower envelope has leading form</p>
+<pre><code>delta_min &gt;= [4+o(1)] (M-1) sqrt[2 kappa0/(3 M b)].          (11)</code></pre>
+<p>The uniform complete-graph protocol has attainable leading error</p>
+<pre><code>delta_protocol = [2pi+o(1)] (M-1) sqrt[2 kappa0/(3 M b)].    (12)</code></pre>
+<p>Thus the square-root size/loss scaling is pinned between two explicit constants, whose ratio is pi/2. Neither constant is claimed optimal. A joint large-M limit must stay in M kappa0/b &lt;&lt;1 for the high-fidelity expansion; finite-size statements use (10), not that expansion.</p>
+<p>At kappa0/b=10^-8, the conservative phase-free lower bound for M=4096 is at least 0.0201848368. An explicit uniform protocol attains numerical error 0.0318738824 in the same ideal model. These are theoretical dimensionless settings, not hardware performance forecasts. The construction's optimization over U and T is local, sufficient to exhibit an achievable value but not to establish optimality.</p>
+<h2>8. Scope checks and routes around the bound</h2>
+<ol>
+<li><strong>Coherent transport:</strong> h=J Gamma changes the accounting to R=(1+4J^2)D. Explicit exact simulations violate the incorrectly applied dissipation-only bound and satisfy the enlarged-resource bound. This is not a contradiction.</li>
+<li><strong>Cross-site interaction:</strong> U N(N-1)/2 includes cross-Kerr on separated particles, directly phases the entire dark pair and gives an exact nonlinear sign gate in the ideal vacuum-loss model. It violates V=CVC and is a constructive escape route.</li>
+<li><strong>Pair hopping alone:</strong> arbitrary doublon-to-doublon exchange remains contact-supported and cannot remove the limitation by itself.</li>
+<li><strong>Localized or changing code:</strong> localization reduces M_eff. Changing the mode during the operation requires a different analysis and additional resources; it is not included here.</li>
+<li><strong>Other codes and measurements:</strong> cat stabilization with a two-photon drive/loss, active error correction, heralding and measurement-conditioned gates are outside this task. No impossibility of those architectures is claimed.</li>
+</ol>
+<h2>9. What is and is not established</h2>
+<p>The mathematical center is the exact interaction-free-component inequality (4)/(5), its resource and geometry consequences, and its intrinsic-loss envelope. The proof is independent of the numerical tests; tests examine implementation and hidden assumptions. The research session produced this derivation and executable evidence, but independent review could still reveal errors.</p>
+<p>Novelty checking found direct predecessors for nonlinear dark-mode channel decompositions, Zeno-induced two-particle loss, and general dissipative gate speed tradeoffs. A 2026 pure-dissipation Hamiltonian-simulation paper also derives 1/epsilon costs, but under a different task: time-uniform approximation of a Hamiltonian by purely dissipative generators. That is not a proof that the endpoint, contact-support and network bounds here are new. A complete citation-chain comparison has not been finished. No PRL acceptance prediction or certified high-value label is attached.</p>
+<p>The proposed physical advance, if the theorem and priority survive review, is a control-independent design constraint linking delocalized protected storage to the resource cost of nonlinear processing, with explicit ways to change the relevant resource class. It is not a claim that larger verified toy calculations automatically constitute important physics.</p>
+<h2>References</h2>
+<p>R1. P. Zapletal, A. Nunnenkamp, M. Brunelli, <em>Stabilization of multi-mode Schrödinger cat states via normal-mode dissipation engineering</em>, arXiv:2103.12457. <a href="https://arxiv.org/html/2103.12457">https://arxiv.org/html/2103.12457</a></p>
+<p>R2. <em>Hamiltonian Conditions for Dark Modes in Multimode Bosonic Systems</em>, arXiv:2607.10118v1. <a href="https://arxiv.org/html/2607.10118v1">https://arxiv.org/html/2607.10118v1</a></p>
+<p>R3. <em>Hamiltonian dynamics from pure dissipation</em>, arXiv:2604.18533v2. <a href="https://arxiv.org/html/2604.18533v2">https://arxiv.org/html/2604.18533v2</a></p>
+<p>R4. <em>Balanced cross-Kerr coupling for superconducting qubit readout</em>, arXiv:2501.09010v2. <a href="https://arxiv.org/html/2501.09010v2">https://arxiv.org/html/2501.09010v2</a></p>
+<p>R5. <em>Kerr-effect-based quantum logical gates in decoherence-free subspace</em>, arXiv:2306.05625v3; Quantum 8, 1342 (2024). <a href="https://arxiv.org/html/2306.05625v3">https://arxiv.org/html/2306.05625v3</a></p>
+<p>R6. <em>Combined Dissipative and Hamiltonian Confinement of Cat Qubits</em>, arXiv:2112.05545v5. <a href="https://arxiv.org/html/2112.05545v5">https://arxiv.org/html/2112.05545v5</a></p>
+</main></body></html>

@@ -1,0 +1,22 @@
+{
+  "all_passed": true,
+  "comparisons": [
+    {
+      "original": "A01/diagnostic.json",
+      "replay": "A03/diagnostic_replay.json",
+      "excluded_fields": [
+        "wall_seconds"
+      ],
+      "all_scientific_fields_exactly_equal": true
+    },
+    {
+      "original": "A02/sensitivity.json",
+      "replay": "A03/sensitivity_replay.json",
+      "excluded_fields": [
+        "runtime_seconds"
+      ],
+      "all_scientific_fields_exactly_equal": true
+    }
+  ],
+  "scope": "same code, new processes/output files; not independent implementation or fresh-agent blind test"
+}

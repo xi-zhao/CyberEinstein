@@ -1,0 +1,112 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>REPORT</title><style>body{margin:0;background:#f1f3f5;color:#17212b;font:17px/1.85 system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}main{max-width:1050px;margin:30px auto;padding:38px 50px;background:white}h1{font-size:30px;line-height:1.4}h2{margin-top:34px;border-top:1px solid #ddd;padding-top:18px;font-size:23px}h3{font-size:19px}pre{background:#f3f5f7;padding:16px;overflow:auto;font-size:14px;line-height:1.6}code{font-family:ui-monospace,monospace}table{border-collapse:collapse;display:block;overflow:auto;font-size:14px}th,td{border-bottom:1px solid #ddd;padding:9px 13px;vertical-align:top;min-width:100px}th{background:#f1f4f7}a{color:#205b84;overflow-wrap:anywhere}img{max-width:100%}.math{overflow:auto}nav{font-size:14px;border-bottom:1px solid #ddd;padding-bottom:16px}@media(max-width:720px){main{margin:0;padding:22px}h1{font-size:25px}}</style><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script></head><body><main><nav><a href="REPORT.html">研究结果</a> · <a href="THEORY.html">推导</a> · <a href="NOVELTY_AUDIT.html">贡献审查</a> · <a href="README.md">复算说明</a></nav><h1>新版 loop 实际续跑：混态拓扑的可读出性</h1>
+<p>2026-10-13。沿翟荟的混态拓扑/FCS方向前瞻探索；不继续审查旧LSM论文。主协议v1.2；当前宿主没有可核实的新模型会话创建工具，因此本轮是<strong>同上下文中的阶段性重新选路</strong>，不是已完成的Fork-and-Flush独立分支实验。</p>
+<h2>当前结果</h2>
+<p>完成了三次有证据的路线选择，得到一个受控局域诊断和一项精确的读出资源比较：</p>
+<ul>
+<li>全链奇偶信号的两切口响应与零能局域化漂移存在明确关系，但直接测量对比度太小，未选作实验主线。</li>
+<li>转向局域密度关联的几何聚合，推导了温度误差界，以及独立站点读出误差的严格抵消条件。</li>
+<li>从“后处理能否解决样本问题”进一步转向测量权限，精确比较了两个拓扑二聚体热态：裸占据快照需β^-4级别的副本数，一层保粒子数读出旋转可达到β^-2级别。</li>
+</ul>
+<p><strong>这些是已推导、已计算核验的专门结果，不是已确认的PRL级新物理。</strong> 与已知局域指标和高温Hamiltonian学习相比，窄组合有可检查的差别，但强模型假设、实验对比度与优先性覆盖仍限制其贡献等级。详细判断在<a href="NOVELTY_AUDIT.html">贡献审查</a>，不是留一句“以后再判断”。</p>
+<p><a href="THEORY.html">完整推导</a> · <a href="research/DECISIONS.md">实际决策</a> · <a href="research/artifacts/">原始数据</a> · <a href="research/artifacts/F15/replay_check.json">重跑记录</a></p>
+<h2>1. 从翟荟方向提出的问题</h2>
+<p>Mao、Zhai、Yang将Gaussian混态拓扑与全计数统计联系起来[R1]。本轮没有再次提出“把FCS用于混态拓扑”；也没有把加入相互作用、通量或固定粒子数当成新意，因为已找到直接后续方案[R2,R7]。</p>
+<p>实际选择的问题是：<strong>一个混态仍有拓扑结构，与实验人员在可用测量条件下读出它，是否需要不同的资源判断？</strong> 这区别决定研究应优先改进拓扑表达式、统计方法，还是读出操作。</p>
+<h2>2. 第一条关系成立，但价值检查阻止了扩算</h2>
+<p>对有M个胞、2M个站点的随机近邻手征链，分别切断一条胞内键与一条胞间键，记奇偶特征函数为χ_V、χ_W。本轮推得</p>
+<div class="math">\[
+\left|\frac{\ln|\chi_V(\pi)|-\ln|\chi_W(\pi)|}{2M}
+-\frac1M\sum_j\ln\frac{w_j}{v_j}\right|
+\le\frac{\beta(v_1+w_M)}M.
+\]</div>
+<p>没有谱隙假设，温度修正有显式上界。它将已知FCS行列式与已知随机链的对数漂移连接起来；并非首次发现该漂移的拓扑意义[R1,R4]。</p>
+<p>但是，直接估计极小的χ仍需很多样本：例如v=.8,w=1.2,β=2,M=16，单独获得两种奇偶均值10%相对标准误差，分别需要约10^8.90和10^19.84次。这里只是直接奇偶平均的成本，不是所有测量方式的下界。经典密度相互作用对照也能产生类似的广延切口响应，不能推广成任意相互作用拓扑不变量。</p>
+<p>因此，没有继续增大链长或推广二维。</p>
+<h2>3. 建设性转向：用局域关联的配对比消去读出偏差</h2>
+<p>定义每条相邻键的连通密度关联</p>
+<div class="math">\[
+g_{ij}=-\operatorname{Cov}(n_i,n_j),\qquad
+Y_\beta=\frac1{2M}\sum_j\ln\frac{g_{B_j,A_{j+1}}}{g_{A_j,B_j}}.
+\]</div>
+<p>在声明的半填充Gaussian Gibbs模型中，g_ij=|C_ij|²。若t_min是耦合正下界、K≥||h||，且</p>
+<div class="math">\[
+a=\frac{\beta^2K^3}{12t_{\min}}&lt;1,
+\]</div>
+<p>则</p>
+<div class="math">\[
+\left|Y_\beta-\mu_M\right|\le\ln\frac{1+a}{1-a},
+\quad\mu_M=\frac1M\sum_j\ln\frac{w_j}{v_j}.
+\]</div>
+<p>没有假设每条键均匀，也不要求反演对称。协议需要已知模型族与粗耦合界，但不要求知道逐键耦合；若每条耦合本就精确已知，直接计算漂移更简单。已有工作已经提出干净SSH的局域密度/扭转指标[R3]；本轮不声称首次用局域测量判断有限温拓扑。</p>
+<p>新的操作设计在于：令站点i的观测满足独立二元读出模型E[m_i|n_i]=f_i+r_i n_i。连通协方差恰好乘上r_i r_j。两种键配对各包含每个站点一次，于是全部未知r_i在乘积比中抵消，f_i由连通化消去。</p>
+<p><strong>不需要逐站点估计误报和漏报，但需要独立、稳定的读出误差模型。</strong> 相互相关的误差、零效率、漂移和串扰不在保证中。还必须使用连通关联，不能对有偏读出直接套用未中心化的奇偶乘积。</p>
+<p>一个8站点例子v=.6,w=.9,β=.4的结果：</p>
+<table>
+<thead>
+<tr>
+<th>情况</th>
+<th style="text-align:right">几何关联指标Y</th>
+<th>算术平均差的符号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>理想读出</td>
+<td style="text-align:right">0.4113828071</td>
+<td>正</td>
+</tr>
+<tr>
+<td>不均匀误报/漏报</td>
+<td style="text-align:right">0.4113828071</td>
+<td>正</td>
+</tr>
+<tr>
+<td>专门使简单比较受偏置的独立读出</td>
+<td style="text-align:right">0.4113828071</td>
+<td><strong>负，判向改变</strong></td>
+</tr>
+</tbody>
+</table>
+<p>真实μ=ln1.5=0.4054651081，温度误差界为0.1502822030。第三行不是对R3的反例；它加入了不同的非均匀读出条件。</p>
+<p>有限样本时，本轮给出同时置信区间，证据不足就拒答。保守8站点含误差例子在10^6次样本下拒答，在10^8次聚合多项分布模拟下得到不跨零的区间。<strong>这些是理论分布的抽样，不是实际采集了亿次实验；也说明总体偏差抵消不等于样本便宜。</strong></p>
+<h2>4. 一项更明确的能力边界：光靠更聪明的经典后处理不够</h2>
+<p>选择一个可精确处理的基准：同一个周期链上的胞内二聚体热态与胞间二聚体热态。相对于固定胞，它们对应不同的SSH拓扑。假定只需在这两个已知候选中识别，不是在所有未知相互作用态中学习拓扑。</p>
+<p>令u=βt、k=tanh²(u/2)。对完整占据快照分布，而非单个统计量，本轮精确得到</p>
+<div class="math">\[
+D(P_A\|P_B)=M k\operatorname{atanh}k.
+\]</div>
+<p>结合可达的似然检验与必要的信息界，在错误概率≤1/3的任务中，</p>
+<div class="math">\[
+n_{\rm 只测占据}=\Theta\!\left(\max\{1,[M(\beta t)^4]^{-1}\}\right).
+\]</div>
+<p>任意经典后处理都受这个温度标度限制，因为输入已包含整个占据字符串。</p>
+<p>加入一层胞内保粒子数读出旋转，直接测局域跃迁相干，可得到</p>
+<div class="math">\[
+n_{\rm 相干读出}=\Theta\!\left(\max\{1,[M(\beta t)^2]^{-1}\}\right).
+\]</div>
+<p>下界允许任意量子测量；上界由简单局域读出实现。因此温度幂次不是优化器拟合。两边均指整条链的副本数，空间大小M也是资源；不声称所有量子拓扑判别都有这两种指数。已知高温Hamiltonian学习采用更丰富测量时也有β^-2标度[R5]，不能把这个一般思想重新归为首创。</p>
+<p>例如M=16、βt=.1，纯占据读出至少需要<strong>2230</strong>份副本；允许上述相干读出时，一项明确方案用<strong>151</strong>份已足以达到同一错误保证。这是必要下界与充分上界的比较，不是精确最优样本数。其读出门噪声尚未纳入。</p>
+<p><img src="figures/readout_bounds.png" alt="理论样本界" /></p>
+<h2>5. 不是任意混态或器件无关的认证</h2>
+<p>必须保留以下区分：</p>
+<ul>
+<li>局域诊断依赖已知近邻Gaussian Gibbs族、半填充、温度与耦合界。它推断的是该族的样本/周期延拓结构。不能由有限无序样本无条件推出无限随机系统的相。</li>
+<li>完全占据去相干不改变这些测量数据，因此仅凭密度快照不能独立证明Gaussian/coherence模型先验。</li>
+<li>温度误差界外确实发现了错误符号；其存在不是新相变，不能对全部温度外推。</li>
+<li>独立读出误差抵消不覆盖相关误差。总体量不偏，并不能防止有限样本噪声或对数偏差。</li>
+<li>二聚体判别基准有明确的两假设承诺；其样本优势不是任意拓扑识别算法的结论，更不是对原文开放边界制备协议的普遍否定。</li>
+</ul>
+<h2>6. 新版协议实际执行到了哪里</h2>
+<p>继承了原始工作区与限制，没有复活已关闭的LSM/泛相互作用创新。F10–F14在计算前记录了前审及有界投入。第一次诊断后重新议题：放弃直接奇偶实验主线；后续转向局域聚合与读出权限，不把原路线自动带入下一阶段。</p>
+<p>但是，<strong>未建立真正不继承旧聊天的新模型会话</strong>。这次只能记录为v1.2允许的同上下文重议，不声称已经测试了Fork-and-Flush改善发现率。没有等预算研究对照，也没有外部模型或同行盲审。</p>
+<p>五段数值程序已在新进程、新目录重跑，全部科学数据一致。最多8站点全Fock计算，较大尺寸只用单粒子矩阵或解析公式。出现的方法反例、超出条件的错误符号及过大样本成本全部保留。首阶段一次批量检索比本阶段8项额度多1项，已即时记录；全程24项总额度未超。不能将纯协议描述成硬预算强制器。</p>
+<p><strong>本轮的研究状态：有可复核的专门方法与信息论结果；高价值新物理目标尚未达成。</strong> 不把正确性或少量新公式当作科学分量认证。最值得保留的是测量资源这一问题表述，而不是继续做更大矩阵。</p>
+<h2>主要出处</h2>
+<p>[R1] https://arxiv.org/html/2402.15964v2</p>
+<p>[R2] https://arxiv.org/html/2511.19311v1</p>
+<p>[R3] https://arxiv.org/html/2512.00464v2</p>
+<p>[R4] https://arxiv.org/html/1311.5233</p>
+<p>[R5] https://arxiv.org/html/2108.04842</p>
+<p>[R7] https://arxiv.org/html/2401.10993 ; https://arxiv.org/html/2511.10163v1</p>
+<p>各原文如何限制本轮创新主张，见NOVELTY_AUDIT。上述理论公式来自本轮推导，基础工具与前作内容已分别注明；没有对外提交、发表或调用用户设备。</p>
+</main></body></html>

@@ -1,0 +1,123 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>State-level entanglement-LSM diagnosis</title><style>body{margin:0;background:#f2f4f6;color:#182735;font:17px/1.85 system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}main{max-width:1040px;margin:30px auto;background:#fff;padding:38px 54px;border-radius:10px}h1{font-size:30px;line-height:1.4}h2{font-size:23px;border-top:1px solid #e1e6eb;padding-top:20px;margin-top:36px}h3{font-size:19px}p{margin:15px 0}a{color:#155779;overflow-wrap:anywhere}table{display:block;overflow:auto;border-collapse:collapse;font-size:14px}th,td{padding:11px 14px;border-bottom:1px solid #dae1e7;text-align:left}th{background:#f1f5f8}pre{overflow:auto;background:#f4f6f8;padding:17px;font:14px/1.7 ui-monospace,monospace}code{font-size:.88em}img{max-width:100%;height:auto}nav{font-size:14px;padding-bottom:17px;border-bottom:1px solid #ddd}.math{overflow-x:auto;padding:9px 0}footer{margin-top:35px;border-top:1px solid #ddd;padding-top:12px;color:#62727f;font-size:13px}@media(max-width:720px){main{margin:0;padding:22px}h1{font-size:25px}h2{font-size:21px}body{font-size:16px}}</style><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script></head><body><main><nav><a href="REPORT.html">研究报告</a> · <a href="THEORY.html">完整推导</a> · <a href="research/DECISIONS.md">实际决策</a> · <a href="research/STATE.md">恢复状态</a></nav><h1>State-level obstruction to an entanglement-LSM proof route</h1>
+<p>Research note, 13 October 2026. Internal derivation, not external peer review.</p>
+<h2>1. Exact question and scope</h2>
+<p>Zhou, Li, Zhai, Li and Gu [R1] propose an entanglement-spectrum LSM constraint and discuss a proof route from short correlations to approximate spatial Markov structure, then to a sufficiently local modular Hamiltonian, then to a vanishing twist cost. The published main text still labels the approximate-Markov-to-locality step a conjecture. It also motivates local system–bath coupling and local gapped-ladder examples.</p>
+<p>We test ONLY the implication from symmetry, uniform decay of state correlations, and small conditional mutual information to a low spectral gap of K=-log rho. We do <strong>not</strong> claim a counterexample within a fixed, uniformly local, uniformly gapped parent-Hamiltonian or local-Lindbladian preparation class. The paper's numerical ladder results are not reproduced or refuted.</p>
+<p>“Markov” here refers to spatial conditional mutual information of a state, not to the temporal Markov approximation of a dynamical bath.</p>
+<h2>2. A full-rank translation- and SO(3)-invariant family</h2>
+<p>Let L&gt;=4 be even, D=2^L, and let T translate a periodic spin-1/2 chain by one site. Define a nearest-neighbor dimer product</p>
+<div class="math">\[
+|v_L\rangle=\bigotimes_{j=1}^{L/2}
+  (|\uparrow_{2j-1}\downarrow_{2j}\rangle-|\downarrow_{2j-1}\uparrow_{2j}\rangle)/\sqrt2.
+\]</div>
+<p>Since T^2|v_L&gt;=|v_L&gt;, the nonzero normalized vector</p>
+<div class="math">\[
+|\psi_L\rangle=\frac{|v_L\rangle+T|v_L\rangle}
+ {\|\,|v_L\rangle+T|v_L\rangle\|}
+\]</div>
+<p>is a total-spin singlet with translation eigenvalue +1. Set P_L=|psi_L&gt;&lt;psi_L|. For fixed alpha&gt;0, independent of L, define</p>
+<div class="math">\[
+\rho_L=\frac{I+\alpha P_L}{D+\alpha}
+       =(1-p_L)\tau_L+p_LP_L,
+\quad \tau_L=I/D,\quad p_L=\frac{\alpha}{D+\alpha}.
+\tag{1}
+\]</div>
+<p>This is full rank and invariant under one-site translation and global spin rotations. These are weak symmetries (U rho U†=rho), not support in one fixed total-spin sector.</p>
+<p>Its largest eigenvalue is (1+alpha)/(D+alpha), unique; the other D-1 eigenvalues equal 1/(D+alpha). In particular its condition number is the constant 1+alpha, not a diverging one.</p>
+<h2>3. Uniform clustering</h2>
+<p>For disjoint observables A,B with operator norm at most one, tau is a product state. The change of the AB expectation from tau is at most 2p_L; the change of the product of one-point expectations is at most 4p_L. Consequently</p>
+<div class="math">\[
+|\langle AB\rangle_{\rho_L}-\langle A\rangle_{\rho_L}\langle B\rangle_{\rho_L}|
+\le 6p_L\le6\alpha2^{-L}.
+\tag{2}
+\]</div>
+<p>For the usual ring distance r&lt;=L/2, this gives a uniform exponential-clustering bound 6alpha exp(-2r ln2), with constants independent of L. Single-site traceless spin observables have the sharper p_L bound because singlets have maximally mixed one-site marginals.</p>
+<p>This is exponential upper-bound clustering, not a claim of a nonzero fitted correlation length or a specific local preparation mechanism. Every fixed-size reduced state tends to the maximally mixed state. The family has not been shown projectively consistent under changing L; no fixed local thermodynamic parent is asserted.</p>
+<h2>4. Conditional mutual information is exponentially small for every partition</h2>
+<p>For any disjoint A,B,C (they need not fill the chain), let R=ABC. With natural logarithms,</p>
+<div class="math">\[
+I(A:C|B)_\rho\le I(AB:C)_\rho
+\le D(\rho_R\|\tau_R)\le D(\rho_L\|\tau_L).
+\tag{3}
+\]</div>
+<p>The first inequality is the chain rule and I(B:C)&gt;=0. The second follows by decomposing relative entropy to a product maximally mixed state into mutual information and nonnegative marginal relative entropies. The last is data processing under partial trace.</p>
+<p>The global relative entropy is exactly</p>
+<div class="math">\[
+s_L:=D(\rho_L\|\tau_L)
+=-\ln(1+\alpha/D)+\frac{1+\alpha}{D+\alpha}\ln(1+\alpha)
+=\frac{(1+\alpha)\ln(1+\alpha)-\alpha}{2^L}+O(4^{-L}).
+\tag{4}
+\]</div>
+<p>In particular s_L&lt;=(1+alpha)ln(1+alpha)2^{-L}. If a shielding buffer has length ell&lt;=L, this is also bounded by a constant times 2^{-ell}, uniformly in L and the partition. Thus the counterexample satisfies a stronger entropy condition than checking selected buffers.</p>
+<p>The finite calculations test examples of (3). Equation (3), not finite-size sampling, supplies the all-partition conclusion.</p>
+<h2>5. Yet the entanglement gap and the twist cost remain finite</h2>
+<p>The logarithm is elementary:</p>
+<div class="math">\[
+K_L=-\ln\rho_L=\ln(D+\alpha)I-\ln(1+\alpha)P_L.
+\tag{5}
+\]</div>
+<p>It has a unique ground state psi_L and gap</p>
+<div class="math">\[
+\boxed{\Delta_K=\ln(1+\alpha)&gt;0}
+\tag{6}
+\]</div>
+<p>for every L. K is explicitly nonlocal. It is not a short-range Hamiltonian to which the original closed-system LSM theorem applies.</p>
+<p>For U_tw=exp[(2pi i/L) sum_j j S_j^z], the spin-1/2 and singlet properties imply that U_tw psi has momentum pi relative to psi. They are orthogonal. Therefore</p>
+<div class="math">\[
+\langle U_{\rm tw}\psi_L|K_L|U_{\rm tw}\psi_L\rangle-
+\langle\psi_L|K_L|\psi_L\rangle=\ln(1+\alpha),
+\tag{7}
+\]</div>
+<p>not O(1/L). Translation, singlet properties, orthogonality and this cost were checked by independent dense operator calculations at L=4,6,8; vector-only symmetry checks were made at L=10,12.</p>
+<p><strong>Precise mathematical conclusion:</strong> the listed state-level hypotheses, even with full rank, bounded condition number and a uniform all-partition CMI bound, do not force the proposed low-spectrum conclusion. This does not settle stronger preparation-dependent hypotheses.</p>
+<p>One further subtlety: small individual Pauli coefficients do not by themselves establish the summable interaction-norm locality required for an LSM twist bound. Exponentially many nonlocal terms can have a finite combined effect. We use the exact twist cost, not a visual inspection of coefficients, as the diagnostic.</p>
+<h2>6. What control of a nearby Gibbs state would be sufficient?</h2>
+<p>Small trace distance and relative entropy are insufficient. Here</p>
+<div class="math">\[
+\tfrac12\|\rho_L-\tau_L\|_1
+=\frac{\alpha(D-1)}{D(D+\alpha)}\longrightarrow0,
+\quad
+\inf_c\|K_L+\ln\tau_L-cI\|_\infty
+=\tfrac12\ln(1+\alpha).
+\tag{8}
+\]</div>
+<p>A sufficient, substantially stronger comparison is the operator-order sandwich</p>
+<div class="math">\[
+e^{-\epsilon_L}\sigma_L\preceq\rho_L\preceq e^{\epsilon_L}\sigma_L.
+\tag{9}
+\]</div>
+<p>Operator monotonicity of logarithm gives</p>
+<div class="math">\[
+\|-\ln\rho_L+\ln\sigma_L\|_\infty\le\epsilon_L.
+\]</div>
+<p>Weyl's eigenvalue inequalities then give</p>
+<div class="math">\[
+|\Delta(-\ln\rho_L)-\Delta(-\ln\sigma_L)|\le2\epsilon_L.
+\tag{10}
+\]</div>
+<p>Thus a genuinely local, symmetric reference Gibbs state with vanishing low gap would transfer that property if epsilon_L tends to zero. This is only a sufficient repair of the implication; we have not proved it follows from local bath preparation, nor is operator-log stability claimed as a new mathematical theorem. Kato–Brandão [R2] proves relative-entropy approximation to local Gibbs states; it must not be silently strengthened to (9).</p>
+<h2>7. Consequence for attempts to certify the gap from copies of rho</h2>
+<p>The following is an elementary information-theoretic consequence, not a separate novelty claim. With equal priors, optimal discrimination of rho_L^tensor m from tau_L^tensor m has success (1+T_m)/2. Quantum Pinsker in natural logarithms gives</p>
+<div class="math">\[
+T_m\le\sqrt{m s_L/2}.
+\]</div>
+<p>Success at least 2/3 therefore requires</p>
+<div class="math">\[
+m\ge\frac{2}{9s_L}=\Omega(2^L)
+\tag{11}
+\]</div>
+<p>at fixed alpha. The weaker bound m&gt;=1/(3T_1) follows directly by a telescoping trace-norm argument. These allow collective measurements on all copies. They apply to discrimination of this promised pair, not to every physical entanglement-spectrum experiment or to scenarios where a trusted local generative model is already supplied.</p>
+<p>For alpha=1 and L=32 the Pinsker bound is at least 2,470,750,996 copies. No 2^32-dimensional matrix was stored: these values evaluate the exact expression (4) at 100-digit precision.</p>
+<h2>8. Scope, novelty and physical relevance</h2>
+<ol>
+<li>The failure of nonlinear spectral quantities to follow from averaged state distances is a general mathematical fact. We do not present that fact, the rank-one spike idea, or Pinsker/Weyl bounds as independently original discoveries.</li>
+<li>The concrete spin-singlet construction applies that obstruction to the state-level entanglement-LSM proof route in [R1]. It is a useful precise diagnosis, not a demonstrated contradiction of the physical ladder models.</li>
+<li>[R3] already discusses nonlocal entanglement Hamiltonians in an XXZ ladder. Its sector-resolved results and broken SU(2) setting differ; our construction does not warrant ignoring it and claiming the first nonlocal EH example.</li>
+<li>The supplementary ZIP of the published article could not be accessed. A physical-parent counterclaim is not cleared by this review. General searches were noisy, so no global priority claim is made.</li>
+<li>To justify a larger next stage, one must settle whether a fixed, physically local preparation class supplies the spectral regularity absent here, or construct a counterexample satisfying that class. More finite-spin points of (1) cannot answer it and are not approved.</li>
+</ol>
+<h2>References actually inspected</h2>
+<p>[R1] Y.-N. Zhou, X. Li, H. Zhai, C. Li, Y. Gu, <em>Reviving the Lieb–Schultz–Mattis theorem in open quantum systems</em>. arXiv:2310.01475v1 (2023); National Science Review 12(1), nwae287 (2025 issue). DOI 10.1093/nsr/nwae287. Read published main text, and checked preprint PDF pp.2–3 visually. https://academic.oup.com/nsr/article/12/1/nwae287/7737777 ; https://arxiv.org/html/2310.01475v1</p>
+<p>[R2] K. Kato, F. G. S. L. Brandão, <em>Quantum Approximate Markov Chains are Thermal</em>. arXiv:1609.06636v3; Communications in Mathematical Physics 370, 117–149 (2019). Theorems 1–2 and definitions. https://arxiv.org/html/1609.06636v3</p>
+<p>[R3] Y.-C. Tzeng, G. Möller, <em>Dissociation of bulk and entanglement phase transitions in the Haldane phase</em>. arXiv:2509.03588v2 (2026-07-14 revision), abstract, main model and LSM discussion. https://arxiv.org/html/2509.03588v2</p>
+<footer>本轮内部理论诊断与数值检查，不是外部审稿。公式显示依赖 MathJax；离线可阅读同名 Markdown 源文件。</footer></main></body></html>

@@ -1,0 +1,90 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>NOVELTY_AUDIT</title><style>body{margin:0;background:#f1f3f5;color:#17212b;font:17px/1.85 system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}main{max-width:1050px;margin:30px auto;padding:38px 50px;background:white}h1{font-size:30px;line-height:1.4}h2{margin-top:34px;border-top:1px solid #ddd;padding-top:18px;font-size:23px}h3{font-size:19px}pre{background:#f3f5f7;padding:16px;overflow:auto;font-size:14px;line-height:1.6}code{font-family:ui-monospace,monospace}table{border-collapse:collapse;display:block;overflow:auto;font-size:14px}th,td{border-bottom:1px solid #ddd;padding:9px 13px;vertical-align:top;min-width:100px}th{background:#f1f4f7}a{color:#205b84;overflow-wrap:anywhere}img{max-width:100%}.math{overflow:auto}nav{font-size:14px;border-bottom:1px solid #ddd;padding-bottom:16px}@media(max-width:720px){main{margin:0;padding:22px}h1{font-size:25px}}</style><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script></head><body><main><nav><a href="REPORT.html">研究结果</a> · <a href="THEORY.html">推导</a> · <a href="NOVELTY_AUDIT.html">贡献审查</a> · <a href="README.md">复算说明</a></nav><h1>首创性、物理后果与下一笔投入审查</h1>
+<p>日期：2026-10-13。此文件审查本轮真正产生的结果，不把检索数量当作原创证据。结论来自本轮同一模型对原始文献、推导及计算的比较；不是新会话盲审或外部同行审稿。</p>
+<h2>当前决定</h2>
+<p>保留两项可检查的专门研究结果：<strong>带温度误差与有限样本区间的、免逐站点读出校准的无序链诊断；指定拓扑二聚体判别任务中的读出资源分离</strong>。前者可作为一个实验推断协议原型，后者明确某种测量限制为何造成损失、增加什么资源能够改变温度幂次。</p>
+<p><strong>不计为本项目“高价值新物理已完成”，不认证PRL等级。</strong> 这不是因为所有推导都被否定，而是：已知局域指标、已知高温反演、已知对数漂移已覆盖不少基础内容；新的组合仍然受强模型先验和高温条件限制。抽象协方差因子抵消和基础信息不等式本身也不应被包装成新物理。</p>
+<p>投入决定：保留局域读出主张，停止扩展原来的指数小全链奇偶读出；本阶段不扩大到相互作用、二维、任意混态或更大矩阵。不通过加图或换模型来制造重要性。</p>
+<h2>一、与直接前作的实质比较</h2>
+<table>
+<thead>
+<tr>
+<th>主前作</th>
+<th>已有内容</th>
+<th>本轮实质区别与限制</th>
+<th>本轮决定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mao–Zhai–Yang, arXiv:2402.15964v2, 主文FCS与边界比较</td>
+<td>高斯、U(1)混态的FCS拓扑诊断，包含边界差异</td>
+<td>本轮两切口差的明确Lyapunov关系与O(β/M)修正；它把已知FCS与已知转移结构相接，不是新拓扑分类；直接奇偶样本昂贵</td>
+<td>保留理论关系，暂停实验主路线</td>
+</tr>
+<tr>
+<td>Shi–Sun–Li, arXiv:2511.19311v1, 主文及数值附录</td>
+<td>相互作用体系、FCS导数、有限尺寸指标和通量方案；已指出χ指数小</td>
+<td>不再提出“首次相互作用”“首次通量”主张；本轮集中测量资源，不是其QMC算法的更高效实现</td>
+<td>关闭宽泛创新</td>
+</tr>
+<tr>
+<td>Huang–Diehl, arXiv:2401.10993, S6/S7；Ma–Xu–Jiang,2511.10163</td>
+<td>固定粒子数条件下广义探针、子区域测量等已有路径</td>
+<td>总N固定不是本轮可直接填补的新空白；本轮高斯Gibbs计算也不覆盖canonical投影态</td>
+<td>关闭宽泛canonical/local主张</td>
+</tr>
+<tr>
+<td>Hannukainen–Cooper,2512.00464v2, §IV–VI</td>
+<td>已有干净SSH的局域占据/扭转指标与协方差拓扑标记；并非首次局域有限温诊断</td>
+<td>本轮用全部键的几何聚合、无反演的具体不均匀链、温度误差界、独立站点仿射读出抵消与可拒答置信区间；不认为其干净模型结论被无序反例推翻</td>
+<td>明确的组合差别，但不是自动的重大方法跃迁</td>
+</tr>
+<tr>
+<td>Mondragon-Shem等,1311.5233</td>
+<td>对数耦合比、零能局域化和无序手征拓扑已有理论</td>
+<td>不把μ=平均ln(w/v)和几何平均本身归为本轮新发现；有限实链推断到无限随机相还要样本规律</td>
+<td>作为已知目标量</td>
+</tr>
+<tr>
+<td>Haah–Kothari–Tang,2108.04842</td>
+<td>高温Gibbs的局域Hamiltonian学习，含一般局域测量与β^-2样本标度</td>
+<td>本轮密度-only资料限制更强；二聚体判别给出β^-4的精确统计模型及一次读出层实现β^-2。后者不是首次发现相干测量有益</td>
+<td>保留具体可比较任务，不作一般学习优势宣称</td>
+</tr>
+<tr>
+<td>Out-of-control Hamiltonian Learning,2610.06709</td>
+<td>极少控制/测量条件下的动力学Hamiltonian学习</td>
+<td>有主动制备和演化，非本轮固定热态副本；不能直接当作覆盖，也不能忽视这一测量资源研究线</td>
+<td>邻近而非同一任务</td>
+</tr>
+</tbody>
+</table>
+<p>每项差别都与目标、状态族、允许操作和可观测量对齐，而非按题名不同判断原创。上述最接近工作中，实际核对段落没有给出本轮全部组合，但这不是已排除所有等价前作。</p>
+<h2>二、物理后果：现在到底多能说什么</h2>
+<ol>
+<li>在已声明的热态/近邻/半填充先验下，给出了从局域密度数据到对数漂移的有界推断；独立而不均匀的探测效率及误报可在总体量中严格抵消。它减少的是逐站点校准依赖，不是量子噪声、有限样本或模型验证的需要。</li>
+<li>对两种已知的拓扑二聚体热态，即使保留整幅占据快照、允许任意经典后处理，也逃不掉一个β^-4的样本温度标度；额外一层局域保粒子数读出可以达到β^-2。其正确性由完整分布与上下界承担，而不是某个算法没成功。</li>
+<li>这两项不能拼接成“有无序、有未知读出误差时，151次即可判定任意拓扑”。151次是无噪声、双假设二聚体基准的保守保证。含读出偏差的本轮示例需要显著更多样本；统计与控制条件不同。</li>
+</ol>
+<h2>三、为什么仍不能升级成高价值完成</h2>
+<ul>
+<li>局域指标利用已知Gaussian Gibbs与短程模结构。完全去相干可保留同样的占据数据；本方法不能独立验证该先验，更不能设备无关地认证量子拓扑。</li>
+<li>热误差证书只有充分高温、正下界耦合时可用。数值中已经出现超出范围后的错误符号，不允许外推。</li>
+<li>噪声抵消是总体期望的恒等式；低效率会增加样本数。本轮8站点保守示例在10^6次下拒答，在10^8次的聚合抽样模拟中才给出符号区间，不能称已解决实验易测性。</li>
+<li>密度/相干读出的标度分离是一个清楚的专门问题，却尚未表明是宽广物理类的新普适规律。是否为已有统计辨识方法的直接应用必须保持明确。</li>
+<li>本轮宽泛优先性检索多次返回词典、医疗或其他无关内容，最后三次带域限定的查询亦如此。没有相关命中不是没有前作。已完成的是直接原文比较，未完成的是该窄组合全部引文路径的排查。</li>
+</ul>
+<h2>四、复议依据，而不是继续堆结果</h2>
+<p>只有以下行动才值得下一阶段重新批准：给上述窄构造找到与既有指标/学习方案不可替代的实际任务关系，或从现有读出分离得到一个有真实新内容、覆盖更自然任务类的理论命题；其前审仍须先核对等价前作。更低误差常数、更多温度点或更多小尺寸，本身不足以重启大规模投入。</p>
+<p>已知结果与新的可检查关系不白白删除，作为完整证据保留。没有因“还没有外部审稿”而跳过本轮价值判断：本轮明确判为<strong>有用的专门诊断与测量理论候选，未达到高价值新物理成功条件</strong>。</p>
+<h2>主要原始来源</h2>
+<p>https://arxiv.org/html/2402.15964v2
+https://arxiv.org/html/2511.19311v1
+https://arxiv.org/html/2401.10993
+https://arxiv.org/html/2511.10163v1
+https://arxiv.org/html/2512.00464v2
+https://arxiv.org/html/1311.5233
+https://arxiv.org/html/2108.04842
+https://arxiv.org/html/2610.06709</p>
+<p>当前研究中实际阅读版本与页面日期要分别理解；HTML模板显示的生成日期不当成预印本首次公开日期。正文优先引用arXiv版本标记和文中命题，不用搜索结果的“今天抓取”冒充新发表。</p>
+</main></body></html>

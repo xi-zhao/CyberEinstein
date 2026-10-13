@@ -1,0 +1,243 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>损耗—退相干通道的精确容量边界</title><style>
+:root{color-scheme:light}*{box-sizing:border-box}body{margin:0;background:#eef1f5;color:#172432;font:17px/1.9 system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}main{max-width:1120px;margin:28px auto;padding:40px 58px 60px;background:#fff;border-radius:12px;box-shadow:0 6px 30px #2130450b}nav{font-size:14px;line-height:1.6;border-bottom:1px solid #d8e1e9;padding-bottom:18px;margin-bottom:25px}a{color:#135c8c;overflow-wrap:anywhere}h1{font-size:30px;line-height:1.4;letter-spacing:-.4px}h2{font-size:23px;line-height:1.5;border-top:1px solid #e0e7ec;margin-top:40px;padding-top:22px}h3{font-size:19px;margin-top:28px;line-height:1.6}p{margin:15px 0}strong{color:#122d46}pre{padding:20px;overflow:auto;line-height:1.65;font-size:14px;background:#f4f6f9;border-left:3px solid #7a94a8}code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.88em}p code,li code{background:#f2f5f7;padding:2px 4px}table{display:block;overflow-x:auto;border-collapse:collapse;margin:22px 0;width:100%;font-size:15px;line-height:1.7}th,td{padding:12px 14px;border-bottom:1px solid #dbe4eb;text-align:left;vertical-align:top;min-width:110px}th{background:#eef3f7}blockquote{border-left:3px solid #859daf;margin-left:0;padding-left:20px;color:#3f5366}img{display:block;max-width:100%;height:auto;margin:24px auto}figure{margin:24px 0}figcaption{font-size:14px;color:#5e7181;text-align:center}.math.display{display:block;overflow-x:auto;padding:8px 0;margin:18px 0}.notice{font-size:13px;color:#60778a;border-top:1px solid #dce4ea;margin-top:44px;padding-top:15px}@media(max-width:720px){body{font-size:16px}main{margin:0;padding:22px 20px;border-radius:0}h1{font-size:25px}h2{font-size:21px}table{font-size:14px}pre{padding:14px}}
+</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script></head><body><main><nav><a href="REPORT.html">研究结果</a> · <a href="THEORY.html">完整证明</a> · <a href="NOVELTY_AUDIT.html">首创性与贡献核查</a> · <a href="README.md">重做说明</a></nav><h1
+id="损耗退相干通道强退相干区间的精确量子容量边界">损耗—退相干通道：强退相干区间的精确量子容量边界</h1>
+<p><strong>开放系统科研 loop，实验 04｜2026 年 10 月 13 日</strong></p>
+<p><a href="THEORY.html">完整证明</a> · <a
+href="NOVELTY_AUDIT.html">首创性与贡献核查</a> · <a
+href="results/infinite_kernel_certificate.json">精确证书</a> · <a
+href="replay_accepted/replay.json">干净重跑记录</a></p>
+<h2 id="本轮交付的物理结果">1. 本轮交付的物理结果</h2>
+<p>本轮不再扩展旧暗模模型，而是直接处理 Mele、Salek、Giovannetti、Lami
+在 <em>Physical Review A</em> <strong>110, 012460 (2024)</strong>
+中明确提出的猜想：玻色损耗—退相干通道在充分强的退相干下，其反降级边界是否等于最低两个光子数给出的必要条件？对应原文
+<strong>Conjecture 40</strong>，不是本轮创造的问题。原始 PDF
+第28页已视觉核对。[R1]</p>
+<p>得到的结论是：令相邻光子数相干项衰减因子为 <span
+class="math inline">\(\sqrt q\)</span>，即</p>
+<p><span class="math display">\[
+\mathcal D_\gamma(|n\rangle\langle m|)
+=q^{(n-m)^2/2}|n\rangle\langle m|,\qquad q=e^{-\gamma},
+\]</span></p>
+<p>再与真空纯损耗通道 <span class="math inline">\(\mathcal
+E_\eta\)</span> 复合。对整个区间</p>
+<p><span class="math display">\[
+0&lt;q\le\frac1{20},\qquad \gamma\ge\ln20,
+\]</span></p>
+<p>有精确边界</p>
+<p><span class="math display">\[
+\boxed{\quad Q_E(\mathcal E_\eta\circ\mathcal D_\gamma)=0
+\ \Longleftrightarrow\ \eta\le\frac1{1+e^{-\gamma}},\quad E&gt;0.\quad}
+\]</span></p>
+<p>线以上容量严格为正；线上及线以下，通道反降级，容量为零。<span
+class="math inline">\(E\)</span>
+是每次使用允许的正平均输入光子数。去掉能量约束，边界仍成立。</p>
+<p><strong>这是量子容量的零/正边界，不是完整的正容量表达式；是无限 Fock
+空间结果，不是有限光子数拟合。</strong>
+它覆盖独立重复使用通道上的任意集体编码与译码，不限于猫码、GKP
+或某个数值优化方法。</p>
+<p>容量为零的准确意思是：不能以严格正的渐近速率，在误差趋零的条件下传递量子信息。它不等于每种有限长度纠错都毫无效果，也不排除使用额外资源后的通信。</p>
+<h2 id="为什么这是新增物理而不是又一个参数扫描">2.
+为什么这是新增物理，而不是又一个参数扫描</h2>
+<p>2024 年前作已给出 <span class="math inline">\(\eta\le1/(1+q)\)</span>
+的必要条件，并用低维解析结果和有限截断支持猜想；但尚没有把这条边界证明为无限维充分条件。[R1]</p>
+<p>本轮补上的关键一半是：<strong>当 <span
+class="math inline">\(q\le0.05\)</span>
+时，环境确实能够模拟接收端的完整输出。</strong>
+因而，不存在通过增加光子数或使用更复杂集体编码逃出零容量区的办法。在线以上，又由一个低能输入的正相干信息，独立证明容量为正。</p>
+<p>前作中较强的解析充分条件是 theta 级数条件，而不只是较松的 <span
+class="math inline">\(1/(1+9q)\)</span>。与这个解析条件比较：</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;"><span
+class="math inline">\(q=e^{-\gamma}\)</span></th>
+<th style="text-align: right;">前作 theta 条件保证零容量的最大 <span
+class="math inline">\(\eta\)</span></th>
+<th style="text-align: right;">本轮精确零/正边界</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0.001</td>
+<td style="text-align: right;">0.9960119691</td>
+<td style="text-align: right;">0.9990009990</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.010</td>
+<td style="text-align: right;">0.9611696777</td>
+<td style="text-align: right;">0.9900990099</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.025</td>
+<td style="text-align: right;">0.9070413944</td>
+<td style="text-align: right;">0.9756097561</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.050</td>
+<td style="text-align: right;">0.8265195042</td>
+<td style="text-align: right;">0.9523809524</td>
+</tr>
+</tbody>
+</table>
+<p>这里比较的是<strong>前作明确证明的 theta
+解析充分条件</strong>，不是声称前作最好的数值估计只能到这里。图中阴影也只表达与这一解析条件之间已闭合的差距。数值由
+<code>capacity_consequences.py</code> 计算，边界本身由定理给出。</p>
+<figure>
+<img src="results/capacity_boundary.png"
+alt="量子容量边界与已发表解析充分条件" />
+<figcaption
+aria-hidden="true">量子容量边界与已发表解析充分条件</figcaption>
+</figure>
+<p>强退相干配合少量损耗会使量子容量消失这一现象，前作已经证明。本轮新增的不是该定性现象，而是上述区间内的<strong>精确条件与无限维证明</strong>。</p>
+<h2 id="证明为什么不是有限截断外推">3. 证明为什么不是有限截断外推</h2>
+<p>首先，证明原有单一 Hadamard
+核在候选边界上存在严格为负的三阶主子式。也就是说，仅加强原来的正性估计不能到达边界；必须改变通道扩展本身。</p>
+<p>新的构造把 Gaussian 相干核 <span
+class="math inline">\(G_{nm}=q^{(n-m)^2/2}\)</span>
+按二项概率分成一族正核。它先剥离两个最低光子数对应的饱和 Gram
+方向，再用一个共享正余核补足剩余部分。不同二项结果使用不同的相关核，避开旧构造的低阶正性障碍。</p>
+<p>随后得到一个明确的双输出等距映射：两个输出边缘都精确等于原损耗—退相干通道。每个
+Fock
+输入的等距映射只有有限项，且不同输入严格正交，因此可以连续延拓到整个玻色
+Hilbert
+空间。这直接给出反降级映射，不需要使用不可归一化的无限维最大纠缠态。</p>
+<p>关键余核的正性，来自<strong>解析全光子数上界＋有限条有理数严格不等式</strong>。七个低阶行逐项验证，所有剩余无限多个行用一个统一尾项界覆盖。<code>verify_infinite_kernel.py</code>
+只用 Python 整数与 <code>Fraction</code>，不用浮点本征值或 SDP
+结果充当证明。</p>
+<p>对 <span
+class="math inline">\(q\le0.01\)</span>，还给出一个仅用简单有理权重即可手算的独立子区间证明。对
+<span
+class="math inline">\(q\le0.05\)</span>，使用固定七个四位小数权重，并用精确平方比较向上包围平方根；所有不等式有正余量。</p>
+<p>最后，反降级只证明零容量。线以上的正容量另由</p>
+<p><span class="math display">\[
+\rho_x=(1-x)|0\rangle\langle0|+x|1\rangle\langle1|,
+\]</span></p>
+<p><span class="math display">\[
+I_c(\rho_x,\mathcal N)
+=[\eta(1+q)-1]x\log_2(1/x)+O(x)
+\]</span></p>
+<p>证明。领先系数在线以上为正，所以足够小的正 <span
+class="math inline">\(x&lt;E\)</span>
+给出可达正速率。<strong>没有使用“不是反降级就一定有正容量”这一错误推论。</strong></p>
+<h2 id="一个可直接计算的物理后果量子存储间隔的精确极限">4.
+一个可直接计算的物理后果：量子存储间隔的精确极限</h2>
+<p>考虑两个独立、可交换的 Lindblad 噪声项：</p>
+<p><span class="math display">\[
+\dot\rho=\kappa\mathcal D[a]\rho+\kappa_\phi\mathcal D[n]\rho,
+\quad\mathcal D[L]\rho=L\rho L^\dagger-\tfrac12\{L^\dagger L,\rho\}.
+\]</span></p>
+<p>有限时间通道参数为 <span class="math inline">\(\eta=e^{-\kappa
+t}\)</span>、<span class="math inline">\(q=e^{-\kappa_\phi
+t}\)</span>。当</p>
+<p><span class="math display">\[
+\frac{\kappa_\phi}{\kappa}\ge
+\frac{\ln20}{\ln(21/20)}=61.4003319019\ldots,
+\]</span></p>
+<p>首次零容量时间 <span class="math inline">\(t_*\)</span>
+精确由下式唯一决定：</p>
+<p><span class="math display">\[
+\boxed{e^{-\kappa t_*}(1+e^{-\kappa_\phi t_*})=1.}
+\]</span></p>
+<p>例如取理论参数 <span
+class="math inline">\(\kappa_\phi/\kappa=100\)</span>，得到</p>
+<p><span class="math display">\[
+\kappa t_*=0.03372581431726\ldots,\qquad
+\eta(t_*)=0.9668365610411\ldots .
+\]</span></p>
+<p>此时平均光子数只损失约
+<strong>3.316%</strong>，无辅助容量已为零。这是规定噪声模型下的能力界限，不是硬件数据，也不限制在存储期间持续加入主动纠错、测量反馈或其他新动力学的方案。</p>
+<h2 id="实际执行失败分支和核验">5. 实际执行、失败分支和核验</h2>
+<p>旧暗模路线因物理动机与前作覆盖问题保持冻结。本轮先确定原始论文中的目标猜想，再校准低光子数
+SDP，随后发现高维 SDP 不能提供可靠的无限维结论，转向解析扩展。最初的
+Gram–Schmidt 测量＋经典随机后处理出现负概率，被明确拒绝；新余核构造在
+<span class="math inline">\(q\approx0.4\)</span>
+的有限主子矩阵仍有负本征值，因此没有越过已证区间外推。</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>核验</th>
+<th>结果与解释</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>无限核严格证书</td>
+<td>七个头部行均有正余量；统一覆盖所有 <span
+class="math inline">\(n\ge9\)</span> 的尾部行；精确有理数运算</td>
+</tr>
+<tr class="even">
+<td>双输出完整通道</td>
+<td>四组参数，最高九个 Fock 能级；独立 Kraus
+参照，两个边缘均相符；最大边缘误差约 <span
+class="math inline">\(1.16\times10^{-16}\)</span></td>
+</tr>
+<tr class="odd">
+<td>高光子数系数恒等式</td>
+<td>25 个能级、110 位运算；最大 Gram 求和误差约 <span
+class="math inline">\(1.67\times10^{-111}\)</span></td>
+</tr>
+<tr class="even">
+<td>正容量输入</td>
+<td>220 位运算检查四组参数，包含非常接近边界的弱输入</td>
+</tr>
+<tr class="odd">
+<td>Lindblad 独立实现</td>
+<td>超算符指数与 Kraus 形式最大差约 <span
+class="math inline">\(1.28\times10^{-15}\)</span></td>
+</tr>
+<tr class="even">
+<td>有针对性的反证检查</td>
+<td>40
+组独立高精度余核上界检查；旧核负主子式；新构造超出区间后失败；手算子区间</td>
+</tr>
+<tr class="odd">
+<td>干净重跑</td>
+<td>四个被接受的验证阶段在新目录全部重跑通过；四份结果与原证据逐字节一致</td>
+</tr>
+</tbody>
+</table>
+<p>有限维测试只是检查实现、因子和部分迹，<strong>全光子数结论由证明承担</strong>。纯有理数证书可以单独运行，不需要半定规划求解器。</p>
+<h2 id="首创性与价值的当前判断">6. 首创性与价值的当前判断</h2>
+<p>已实际对照 2022 和 2024
+年直接前作，并筛查后续同噪声族的通道判别、不同 bosonic
+噪声的容量、特定码/协议阈值及反降级强逆定理工作。被查的后续工作没有提供与本轮相同的无限维强退相干充分性证明。核查对象、具体区别及未能访问的引用入口均记录在
+<a
+href="NOVELTY_AUDIT.html">NOVELTY_AUDIT.html</a>，不是用“搜索不到题名”推断首创。</p>
+<p><strong>本轮判断：这项结果有明确的文献增量和物理后果，值得作为主要理论成果推进，而不再归为工具测试资产。</strong>
+它完成了一个已公开猜想的明确参数区间，将原来的上下界间隙变成精确的零/正判定。</p>
+<p>必须保留的边界是：其余较弱退相干区间尚未解决；没有求完整正容量值；严格正容量可以小到没有实用吞吐量；两个方向的经典通信辅助容量不同，前作已证明其在有限退相干和非零透射率下为正。[R1,
+Theorem 42]</p>
+<p>数学证明和比较由当前研究模型及工具完成，尚无外部同行审稿或形式化证明系统认证；文献核查也不是全世界文献完备性证明。这些是成果表述的限制，不是把首创性与物理意义检查再交回给用户。</p>
+<p>这轮没有等预算的“无认知地图”对照，因此不能把成果直接归因于某种自动科研架构。脚本负责核验与保存证据，不会在新会话自动重新选择并发现这一题目。未使用
+Codex、外部模型 API、用户电脑或付费计算；没有 GitHub
+提交、作者联系、论文投稿或后台运行。</p>
+<h2 id="重做入口">7. 重做入口</h2>
+<p>最小严格证书只需要 Python 标准库：</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> src/verify_infinite_kernel.py</span></code></pre></div>
+<p>完整四阶段核验需要 NumPy、SciPy、mpmath，写入一个不存在的新目录：</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> verify.py <span class="at">--output</span> ./my_fresh_verification</span></code></pre></div>
+<p>已有输出不会被覆盖。数学证明见
+<code>THEORY.md/HTML</code>，详细核查见
+<code>NOVELTY_AUDIT.md/HTML</code>，运行与文件说明见
+<code>README.md</code>。</p>
+<h2 id="原始文献">原始文献</h2>
+<p>[R1] F. A. Mele, F. Salek, V. Giovannetti, L. Lami, <em>Quantum
+communication on the bosonic loss-dephasing channel</em>, Physical
+Review A 110, 012460 (2024), arXiv:2401.15634v3.
+https://arxiv.org/html/2401.15634v3</p>
+<p>[R2] P. Leviant, Q. Xu, L. Jiang, S. Rosenblum, <em>Quantum capacity
+and codes for the bosonic loss-dephasing channel</em>, Quantum 6, 821
+(2022). https://quantum-journal.org/papers/q-2022-09-29-821/</p>
+<p class="notice">研究记录 · 2026-10-13 · 公式排版使用 MathJax；离线查看请同时保留 Markdown 源文件。未对外发表。</p></main></body></html>
